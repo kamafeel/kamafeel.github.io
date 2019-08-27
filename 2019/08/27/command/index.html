@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="I figure it out,if you change –pod-network-cidr when you reinitialize kubernetes via kubeadm init,you should delete some auto-created things,just follow the steps below before you execute kubeadm init">
+  <meta name="description" content="-XX:+AlwaysPreTouch  JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了  -XX:AutoBoxCacheMax=20000  JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Zq">
-<meta property="og:url" content="https://zhangqicd.github.io/2019/06/20/k8s-reset/index.html">
+<meta property="og:title" content="JVM 调优">
+<meta property="og:url" content="https://zhangqicd.github.io/2019/08/27/command/index.html">
 <meta property="og:site_name" content="Zq">
-<meta property="og:description" content="I figure it out,if you change –pod-network-cidr when you reinitialize kubernetes via kubeadm init,you should delete some auto-created things,just follow the steps below before you execute kubeadm init">
+<meta property="og:description" content="-XX:+AlwaysPreTouch  JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了  -XX:AutoBoxCacheMax=20000  JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-06-20T07:05:54.258Z">
+<meta property="og:updated_time" content="2019-08-27T08:22:35.572Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zq">
-<meta name="twitter:description" content="I figure it out,if you change –pod-network-cidr when you reinitialize kubernetes via kubeadm init,you should delete some auto-created things,just follow the steps below before you execute kubeadm init">
+<meta name="twitter:title" content="JVM 调优">
+<meta name="twitter:description" content="-XX:+AlwaysPreTouch  JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了  -XX:AutoBoxCacheMax=20000  JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://zhangqicd.github.io/2019/06/20/k8s-reset/">
+  <link rel="canonical" href="https://zhangqicd.github.io/2019/08/27/command/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title> | Zq</title>
+  <title>JVM 调优 | Zq</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/06/20/k8s-reset/">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/08/27/command/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zq">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">JVM 调优
 
               
             
@@ -332,9 +332,13 @@
                 
               
 
-              <time title="Erstellt: 2019-06-20 15:05:54" itemprop="dateCreated datePublished" datetime="2019-06-20T15:05:54+08:00">2019-06-20</time>
+              <time title="Erstellt: 2019-08-27 16:20:51 / Geändert am: 16:22:35" itemprop="dateCreated datePublished" datetime="2019-08-27T16:20:51+08:00">2019-08-27</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -367,16 +371,15 @@
       
 
       
-        <p>I figure it out,if you change –pod-network-cidr when you reinitialize kubernetes via kubeadm init,you should delete some auto-created things,just follow the steps below before you execute kubeadm init again:</p>
-<pre><code>execute Kubeadm reset on master and nodes.
+        <blockquote>
+<p>-XX:+AlwaysPreTouch</p>
+</blockquote>
+<p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p>
+<blockquote>
+<p>-XX:AutoBoxCacheMax=20000</p>
+</blockquote>
+<p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p>
 
-execute etcdctl rm --recursive registry reset data in etcd.
-
-rm -rf /var/lib/cni on master and nodes
-rm -rf /run/flannel on master and nodes
-rm -rf /etc/cni on master and nodes
-ifconfig cni0 down on master and nodes
-brctl delbr cni0 on master and nodes</code></pre>
       
     </div>
 
@@ -406,15 +409,15 @@ brctl delbr cni0 on master and nodes</code></pre>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/08/27/java_Metaspace/" rel="next" title="JVM Metaspace">
+                <i class="fa fa-chevron-left"></i> JVM Metaspace
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/27/java_Metaspace/" rel="prev" title="JVM Metaspace">
-                JVM Metaspace <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
