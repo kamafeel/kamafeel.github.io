@@ -1,5 +1,0 @@
-hexo new "XXX"
-hexo s
-hexo clean && hexo g && hexo d
-
-![header]( img/header.jpg)
