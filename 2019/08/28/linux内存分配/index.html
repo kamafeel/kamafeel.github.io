@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="-XX:+AlwaysPreTouch  JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了   -XX:AutoBoxCacheMax=20000  JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存">
-<meta name="keywords" content="JVM">
+  <meta name="description" content="glibc 64M，发现glibc从2.11开始对每个线程引入内存池（64位机器大小就是64M内存）">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM 调优">
-<meta property="og:url" content="https://zhangqicd.github.io/2019/08/27/command/index.html">
+<meta property="og:title" content="linux内存分配">
+<meta property="og:url" content="https://zhangqicd.github.io/2019/08/28/linux内存分配/index.html">
 <meta property="og:site_name" content="Zq">
-<meta property="og:description" content="-XX:+AlwaysPreTouch  JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了   -XX:AutoBoxCacheMax=20000  JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存">
+<meta property="og:description" content="glibc 64M，发现glibc从2.11开始对每个线程引入内存池（64位机器大小就是64M内存）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-27T08:43:58.658Z">
+<meta property="og:image" content="https://zhangqicd.github.io/2019/08/28/linux内存分配/img/20170115234108145.png">
+<meta property="og:updated_time" content="2019-08-28T06:55:24.847Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM 调优">
-<meta name="twitter:description" content="-XX:+AlwaysPreTouch  JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了   -XX:AutoBoxCacheMax=20000  JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存">
+<meta name="twitter:title" content="linux内存分配">
+<meta name="twitter:description" content="glibc 64M，发现glibc从2.11开始对每个线程引入内存池（64位机器大小就是64M内存）">
+<meta name="twitter:image" content="https://zhangqicd.github.io/2019/08/28/linux内存分配/img/20170115234108145.png">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://zhangqicd.github.io/2019/08/27/command/">
+  <link rel="canonical" href="https://zhangqicd.github.io/2019/08/28/linux内存分配/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>JVM 调优 | Zq</title>
+  <title>linux内存分配 | Zq</title>
   
 
 
@@ -290,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/08/27/command/">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/08/28/linux内存分配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zq">
@@ -307,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JVM 调优
+          <h1 class="post-title" itemprop="name headline">linux内存分配
 
               
             
@@ -333,7 +335,7 @@
                 
               
 
-              <time title="创建时间：2019-08-27 16:20:51 / 修改时间：16:43:58" itemprop="dateCreated datePublished" datetime="2019-08-27T16:20:51+08:00">2019-08-27</time>
+              <time title="创建时间：2019-08-28 14:35:09 / 修改时间：14:55:24" itemprop="dateCreated datePublished" datetime="2019-08-28T14:35:09+08:00">2019-08-28</time>
             
 
             
@@ -343,24 +345,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -390,14 +374,8 @@
       
 
       
-        <blockquote>
-<p>-XX:+AlwaysPreTouch</p>
-</blockquote>
-<p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p>
-<blockquote>
-<p> -XX:AutoBoxCacheMax=20000</p>
-</blockquote>
-<p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p>
+        <p>glibc 64M，发现glibc从2.11开始对每个线程引入内存池（64位机器大小就是64M内存）</p>
+<p><img src="img/20170115234108145.png" alt="header"></p>
 
       
     </div>
@@ -424,7 +402,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
         </div>
       
@@ -437,8 +415,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/27/k8s-reset/" rel="next" title="K8S reset 命令">
-                <i class="fa fa-chevron-left"></i> K8S reset 命令
+              <a href="/2019/08/28/JAVA内存调测/" rel="next" title="JAVA内存调测">
+                <i class="fa fa-chevron-left"></i> JAVA内存调测
               </a>
             
           </div>
@@ -446,10 +424,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/28/dubbo异步/" rel="prev" title="dubbo异步">
-                dubbo异步 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
