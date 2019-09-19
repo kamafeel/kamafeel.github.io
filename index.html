@@ -286,6 +286,311 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/09/19/防刷-限流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/19/防刷-限流/" class="post-title-link" itemprop="url">防刷,限流</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-19 10:47:13 / 修改时间：10:50:24" itemprop="dateCreated datePublished" datetime="2019-09-19T10:47:13+08:00">2019-09-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>OpenResty,lua脚本 redis</p>
+<p>防刷代码lua<br>`– access_by_lua_file ‘/opt/ops/lua/access_limit.lua’<br>local function close_redis(red)<br>    if not red then<br>        return<br>    end<br>    –释放连接(连接池实现)<br>    local pool_max_idle_time = 10000 –毫秒<br>    local pool_size = 100 –连接池大小<br>    local ok, err = red:set_keepalive(pool_max_idle_time, pool_size)</p>
+<pre><code>if not ok then
+    ngx_log(ngx_ERR, &quot;set redis keepalive error : &quot;, err)
+end</code></pre><p>end</p>
+<p>local redis = require “resty.redis”<br>local red = redis:new()<br>red:set_timeout(1000)<br>local ip = “redis-ip”<br>local port = redis-port<br>local ok, err = red:connect(ip,port)<br>if not ok then<br>    return close_redis(red)<br>end</p>
+<p>local clientIP = ngx.req.get_headers()[“X-Real-IP”]<br>if clientIP == nil then<br>   clientIP = ngx.req.get_headers()[“x_forwarded_for”]<br>end<br>if clientIP == nil then<br>   clientIP = ngx.var.remote_addr<br>end</p>
+<p>local incrKey = “user:”..clientIP..”:freq”<br>local blockKey = “user:”..clientIP..”:block”</p>
+<p>local is_block,err = red:get(blockKey) – check if ip is blocked<br>if tonumber(is_block) == 1 then<br>   ngx.exit(ngx.HTTP_FORBIDDEN)<br>   return close_redis(red)<br>end</p>
+<p>res, err = red:incr(incrKey)</p>
+<p>if res == 1 then<br>   res, err = red:expire(incrKey,1)<br>end</p>
+<p>if res &gt; 200 then<br>    res, err = red:set(blockKey,1)<br>    res, err = red:expire(blockKey,600)<br>end</p>
+<p>close_redis(red)`</p>
+<p>限流代码-lua<br>`– access_by_lua_file ‘/opt/ops/lua/access_flow_control.lua’<br>local function close_redis(red)<br>    if not red then<br>        return<br>    end<br>    –释放连接(连接池实现)<br>    local pool_max_idle_time = 10000 –毫秒<br>    local pool_size = 100 –连接池大小<br>    local ok, err = red:set_keepalive(pool_max_idle_time, pool_size)</p>
+<pre><code>if not ok then
+    ngx_log(ngx_ERR, &quot;set redis keepalive error : &quot;, err)
+end</code></pre><p>end</p>
+<p>local function wait()<br>   ngx.sleep(1)<br>end</p>
+<p>local redis = require “resty.redis”<br>local red = redis:new()<br>red:set_timeout(1000)<br>local ip = “redis-ip”<br>local port = redis-port<br>local ok, err = red:connect(ip,port)<br>if not ok then<br>    return close_redis(red)<br>end</p>
+<p>local uri = ngx.var.uri – 获取当前请求的uri<br>local uriKey = “req:uri:”..uri<br>res, err = red:eval(“local res, err = redis.call(‘incr’,KEYS[1]) if res == 1 then local resexpire, err = redis.call(‘expire’,KEYS[1],KEYS[2]) end return (res)”,2,uriKey,1)<br>while (res 10)<br>do<br>   local twait, err = ngx.thread.spawn(wait)<br>   ok, threadres = ngx.thread.wait(twait)<br>   if not ok then<br>      ngx_log(ngx_ERR, “wait sleep error: “, err)<br>      break;<br>   end<br>   res, err = red:eval(“local res, err = redis.call(‘incr’,KEYS[1]) if res == 1 then local resexpire, err = redis.call(‘expire’,KEYS[1],KEYS[2]) end return (res)”,2,uriKey,1)<br>end<br>close_redis(red)`</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/09/18/lua-in-redis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/18/lua-in-redis/" class="post-title-link" itemprop="url">lua in redis</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-18 16:47:21 / 修改时间：16:47:39" itemprop="dateCreated datePublished" datetime="2019-09-18T16:47:21+08:00">2019-09-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://redisbook.readthedocs.io/en/latest/feature/scripting.html" target="_blank" rel="noopener">https://redisbook.readthedocs.io/en/latest/feature/scripting.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/09/18/JVM软引用的回收机制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1553,7 +1858,7 @@ brctl delbr cni0 on master and nodes</code></pre>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1599,7 +1904,13 @@ brctl delbr cni0 on master and nodes</code></pre>
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
