@@ -96,19 +96,17 @@
 
 
 
-  <meta name="description" content="增加java.util.logging.ConsoleHandler配置">
+  <meta name="description" content="花几小时，处理maven依赖的问题，真的一点生产力都没有。 常用套路 1.右键 pom.xml -&amp;gt; maven -&amp;gt; reimport; 2.File -&amp;gt; Invalidate Caches / Restart 3.删除iml,然后 File &amp;gt; Project Structures &amp;gt; Modules &amp;gt; Add &amp;gt; Import Module &amp;g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tomcat错误日志">
-<meta property="og:url" content="https://zhangqicd.github.io/2019/09/02/tomcat错误日志/index.html">
+<meta property="og:title" content="idea和maven的哪些事情">
+<meta property="og:url" content="https://zhangqicd.github.io/2020/03/25/idea和maven的哪些事情/index.html">
 <meta property="og:site_name" content="Zq">
-<meta property="og:description" content="增加java.util.logging.ConsoleHandler配置">
+<meta property="og:description" content="花几小时，处理maven依赖的问题，真的一点生产力都没有。 常用套路 1.右键 pom.xml -&amp;gt; maven -&amp;gt; reimport; 2.File -&amp;gt; Invalidate Caches / Restart 3.删除iml,然后 File &amp;gt; Project Structures &amp;gt; Modules &amp;gt; Add &amp;gt; Import Module &amp;g">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://zhangqicd.github.io/2019/09/02/tomcat错误日志/img/QQ%E5%9B%BE%E7%89%8720190902140541.png">
-<meta property="og:updated_time" content="2019-09-02T06:06:28.234Z">
+<meta property="og:updated_time" content="2020-03-25T02:44:58.164Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tomcat错误日志">
-<meta name="twitter:description" content="增加java.util.logging.ConsoleHandler配置">
-<meta name="twitter:image" content="https://zhangqicd.github.io/2019/09/02/tomcat错误日志/img/QQ%E5%9B%BE%E7%89%8720190902140541.png">
+<meta name="twitter:title" content="idea和maven的哪些事情">
+<meta name="twitter:description" content="花几小时，处理maven依赖的问题，真的一点生产力都没有。 常用套路 1.右键 pom.xml -&amp;gt; maven -&amp;gt; reimport; 2.File -&amp;gt; Invalidate Caches / Restart 3.删除iml,然后 File &amp;gt; Project Structures &amp;gt; Modules &amp;gt; Add &amp;gt; Import Module &amp;g">
 
 
 
@@ -116,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://zhangqicd.github.io/2019/09/02/tomcat错误日志/">
+  <link rel="canonical" href="https://zhangqicd.github.io/2020/03/25/idea和maven的哪些事情/">
 
 
 
@@ -126,7 +124,7 @@
   };
 </script>
 
-  <title>tomcat错误日志 | Zq</title>
+  <title>idea和maven的哪些事情 | Zq</title>
   
 
 
@@ -291,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/09/02/tomcat错误日志/">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/03/25/idea和maven的哪些事情/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zq">
@@ -308,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tomcat错误日志
+          <h1 class="post-title" itemprop="name headline">idea和maven的哪些事情
 
               
             
@@ -334,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-09-02 14:04:49 / 修改时间：14:06:28" itemprop="dateCreated datePublished" datetime="2019-09-02T14:04:49+08:00">2019-09-02</time>
+              <time title="创建时间：2020-03-25 10:35:04 / 修改时间：10:44:58" itemprop="dateCreated datePublished" datetime="2020-03-25T10:35:04+08:00">2020-03-25</time>
             
 
             
@@ -373,8 +371,17 @@
       
 
       
-        <p>增加java.util.logging.ConsoleHandler配置</p>
-<p><img src="img/QQ%E5%9B%BE%E7%89%8720190902140541.png" alt="header"></p>
+        <p>花几小时，处理maven依赖的问题，真的一点生产力都没有。</p>
+<p>常用套路</p>
+<p>1.右键 pom.xml -&gt; maven -&gt; reimport;</p>
+<p>2.File -&gt; Invalidate Caches / Restart</p>
+<p>3.删除iml,然后 File &gt; Project Structures &gt; Modules &gt; Add &gt; Import Module &gt; (select your modules base directory) &gt; OK</p>
+<p>如果还不行，看下是否存在Event Log是否存在错误，</p>
+<p>Help -&gt; Show Log in Explorer</p>
+<p>看到相关错误，仍到<a href="https://stackoverflow.com/" target="_blank" rel="noopener">https://stackoverflow.com/</a> 里面查询下。</p>
+<p>最后，idea和maven的版本配置好后，别瞎升级，会浪费你几小时的生产力</p>
+<p><a href="http://maven.apache.org/docs/history.html" target="_blank" rel="noopener">http://maven.apache.org/docs/history.html</a><br>下载比你当前idea版本更早的maven版本</p>
+<p><a href="https://archive.apache.org/dist/maven/maven-3/3.5.2/binaries/" target="_blank" rel="noopener">https://archive.apache.org/dist/maven/maven-3/3.5.2/binaries/</a></p>
 
       
     </div>
@@ -405,8 +412,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/28/linux内存分配/" rel="next" title="linux内存分配">
-                <i class="fa fa-chevron-left"></i> linux内存分配
+              <a href="/2020/03/24/Tomcat-Caused-by-java-util-zip-ZipException-error-in-opening-zip-file/" rel="next" title="Tomcat Caused by: java.util.zip.ZipException: error in opening zip file">
+                <i class="fa fa-chevron-left"></i> Tomcat Caused by: java.util.zip.ZipException: error in opening zip file
               </a>
             
           </div>
@@ -414,10 +421,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/18/JVM软引用的回收机制/" rel="prev" title="JVM软引用的回收机制">
-                JVM软引用的回收机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
