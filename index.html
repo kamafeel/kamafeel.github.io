@@ -286,6 +286,586 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/04/28/mysql-分页和数据量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/04/28/mysql-分页和数据量/" class="post-title-link" itemprop="url">mysql 分页和数据量</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-28 15:18:01 / 修改时间：15:23:26" itemprop="dateCreated datePublished" datetime="2020-04-28T15:18:01+08:00">2020-04-28</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>select id,title from collect limit 0,10;
+select id,title from collect limit 1000,10;
+select id,title from collect limit 90000,10;
+select id from collect order by id limit 90000,10; -走主键索引 
+select id,title from collect where id&gt;=(select id from collect order by id limit 90000,1) limit 10;  -走主键索引 
+
+带查询条件
+select id from collect where vtype=1 order by id limit 90000,10; 
+create idx_search(vtype,id)
+
+select id ,title from collect where vtype=1 limit 90000,10;--慢</code></pre><p>如果对于有where 条件，又想走索引用limit的，必须设计一个索引，将where 放第一位，limit用到的主键放第2位，而且只能select 主键</p>
+<p>最终办法 用IN 查询主键，会走索引<br>select * from collect where id in (9000,12,50,7000); </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/04/21/lua-gprc-Tengine-call-Dubbo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/04/21/lua-gprc-Tengine-call-Dubbo/" class="post-title-link" itemprop="url">lua gprc & Tengine call Dubbo</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-21 18:20:15" itemprop="dateCreated datePublished" datetime="2020-04-21T18:20:15+08:00">2020-04-21</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/04/20/double，float/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/04/20/double，float/" class="post-title-link" itemprop="url">double，float</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-20 18:00:34 / 修改时间：18:01:21" itemprop="dateCreated datePublished" datetime="2020-04-20T18:00:34+08:00">2020-04-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>记住java一定要用double，亘古不变，就算数值不大也要用double，float放在内存中其实是当作double来处理的，它不会比double更节约内存资源，对应的double虚拟机会直接以double形式来进行处理，快速而且精度高，用float，不但不会节约内存资源，虚拟机为了校验float的精度，会花费更多的系统资源。同样short,char,boolean,byte在内存中都是以int形式来处理的。</p>
+<p>在《Effective Java》这本书中也提到这个原则： float和double只能用来做科学计算或者是工程计算; 在商业计算中我们要用java.math.BigDecimal</p>
+<p>BigDecimal 内存占用稍大</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/04/20/java-修饰符/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zq">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zq">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/04/20/java-修饰符/" class="post-title-link" itemprop="url">java 修饰符</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-04-20 17:59:17 / 修改时间：17:59:44" itemprop="dateCreated datePublished" datetime="2020-04-20T17:59:17+08:00">2020-04-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="img/_20200420175813.png" alt="header"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/04/16/Java-函数编程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -331,7 +911,7 @@
                 
               
 
-              <time title="创建时间：2020-04-16 14:48:46 / 修改时间：14:49:10" itemprop="dateCreated datePublished" datetime="2020-04-16T14:48:46+08:00">2020-04-16</time>
+              <time title="创建时间：2020-04-16 14:48:46 / 修改时间：14:51:41" itemprop="dateCreated datePublished" datetime="2020-04-16T14:48:46+08:00">2020-04-16</time>
             
 
             
@@ -373,7 +953,23 @@
         
           
             <p><img src="img/20200416144742.png" alt="header"></p>
+<p>@FunctionalInterface</p>
+<pre><code>import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.function.Function;
 
+@FunctionalInterface
+interface Interface1 {
+    int doubleNum(int i);
+
+    default int add(int x, int y) {
+        return x + y;
+    }
+
+    static int sub(int x, int y) {
+        return x - y;
+    }
+}</code></pre>
           
         
       
@@ -1133,607 +1729,6 @@ public String getDefaultValue() {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/03/26/协程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zq">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zq">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/26/协程/" class="post-title-link" itemprop="url">协程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-26 12:08:23 / 修改时间：16:37:12" itemprop="dateCreated datePublished" datetime="2020-03-26T12:08:23+08:00">2020-03-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>协程的特点：</p>
-<ol>
-<li>线程的切换由操作系统负责调度，协程由用户自己进行调度，因此减少了上下文切换。</li>
-<li>线程的默认Stack大小是1M，而协程更轻量，接近1K。因此可以在相同的内存中开启更多的协程。</li>
-<li>由于在同一个线程上，因此可以避免竞争关系而使用锁。</li>
-<li>在非 Ring 机制支持执行权限 CPU上面实现多任务（运动手环，基于硬件限制，都是采用协同调度的架构）</li>
-</ol>
-<p>适应场景：</p>
-<p>IO阻塞(数据库读写)</p>
-<p>计算密集型不适合.</p>
-<p>最佳实践：<br>nginx+lua</p>
-<p>kotlin，go,Quasar(java)</p>
-<p>参考：<br><a href="https://blog.youxu.info/2014/12/04/coroutine/" target="_blank" rel="noopener">https://blog.youxu.info/2014/12/04/coroutine/</a></p>
-<p><a href="https://www.cnblogs.com/tohxyblog/p/10712798.html" target="_blank" rel="noopener">https://www.cnblogs.com/tohxyblog/p/10712798.html</a></p>
-<p><a href="https://my.oschina.net/u/2539854/blog/845149" target="_blank" rel="noopener">https://my.oschina.net/u/2539854/blog/845149</a></p>
-<p><a href="https://www.codedump.info/post/20190501-lua-stream/" target="_blank" rel="noopener">https://www.codedump.info/post/20190501-lua-stream/</a></p>
-<p><a href="https://kaixue.io/kotlin-coroutines-1/" target="_blank" rel="noopener">https://kaixue.io/kotlin-coroutines-1/</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/03/25/Java集合对象/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zq">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zq">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/25/Java集合对象/" class="post-title-link" itemprop="url">Java集合对象</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-25 16:03:52 / 修改时间：16:10:15" itemprop="dateCreated datePublished" datetime="2020-03-25T16:03:52+08:00">2020-03-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="img/Java.util.Collection_hierarchy.svg.png" alt="avatar"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/03/25/idea和maven的哪些事情/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zq">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zq">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/25/idea和maven的哪些事情/" class="post-title-link" itemprop="url">idea和maven的哪些事情</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-25 10:35:04 / 修改时间：10:44:58" itemprop="dateCreated datePublished" datetime="2020-03-25T10:35:04+08:00">2020-03-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>花几小时，处理maven依赖的问题，真的一点生产力都没有。</p>
-<p>常用套路</p>
-<p>1.右键 pom.xml -&gt; maven -&gt; reimport;</p>
-<p>2.File -&gt; Invalidate Caches / Restart</p>
-<p>3.删除iml,然后 File &gt; Project Structures &gt; Modules &gt; Add &gt; Import Module &gt; (select your modules base directory) &gt; OK</p>
-<p>如果还不行，看下是否存在Event Log是否存在错误，</p>
-<p>Help -&gt; Show Log in Explorer</p>
-<p>看到相关错误，仍到<a href="https://stackoverflow.com/" target="_blank" rel="noopener">https://stackoverflow.com/</a> 里面查询下。</p>
-<p>最后，idea和maven的版本配置好后，别瞎升级，会浪费你几小时的生产力</p>
-<p><a href="http://maven.apache.org/docs/history.html" target="_blank" rel="noopener">http://maven.apache.org/docs/history.html</a><br>下载比你当前idea版本更早的maven版本</p>
-<p><a href="https://archive.apache.org/dist/maven/maven-3/3.5.2/binaries/" target="_blank" rel="noopener">https://archive.apache.org/dist/maven/maven-3/3.5.2/binaries/</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/03/24/Tomcat-Caused-by-java-util-zip-ZipException-error-in-opening-zip-file/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Zq">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zq">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/24/Tomcat-Caused-by-java-util-zip-ZipException-error-in-opening-zip-file/" class="post-title-link" itemprop="url">Tomcat Caused by: java.util.zip.ZipException: error in opening zip file</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-24 10:12:36 / 修改时间：10:59:18" itemprop="dateCreated datePublished" datetime="2020-03-24T10:12:36+08:00">2020-03-24</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>linux:</p>
-<p>for j in $(find /path/to/lib -name ‘*.jar’); do jar -tvf $j &gt; /dev/null 2&gt;&1; [ “$?” -ne 0 ] &amp;&amp; echo “$j jar is broken”; done</p>
-<p>windows:</p>
-<p><img src="img/_20200324105437.png" alt="header"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1780,7 +1775,7 @@ public String getDefaultValue() {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

@@ -96,15 +96,18 @@
 
 
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="@FunctionalInterface import java.text.DecimalFormat; import java.util.Arrays; import java.util.function.Function;  @FunctionalInterface interface Interface1 {     int doubleNum(int i);      default i">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java 函数编程">
 <meta property="og:url" content="https://zhangqicd.github.io/2020/04/16/Java-函数编程/index.html">
 <meta property="og:site_name" content="Zq">
+<meta property="og:description" content="@FunctionalInterface import java.text.DecimalFormat; import java.util.Arrays; import java.util.function.Function;  @FunctionalInterface interface Interface1 {     int doubleNum(int i);      default i">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://zhangqicd.github.io/2020/04/16/Java-函数编程/img/20200416144742.png">
-<meta property="og:updated_time" content="2020-04-16T06:49:10.494Z">
+<meta property="og:updated_time" content="2020-04-16T06:51:41.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 函数编程">
+<meta name="twitter:description" content="@FunctionalInterface import java.text.DecimalFormat; import java.util.Arrays; import java.util.function.Function;  @FunctionalInterface interface Interface1 {     int doubleNum(int i);      default i">
 <meta name="twitter:image" content="https://zhangqicd.github.io/2020/04/16/Java-函数编程/img/20200416144742.png">
 
 
@@ -331,7 +334,7 @@
                 
               
 
-              <time title="创建时间：2020-04-16 14:48:46 / 修改时间：14:49:10" itemprop="dateCreated datePublished" datetime="2020-04-16T14:48:46+08:00">2020-04-16</time>
+              <time title="创建时间：2020-04-16 14:48:46 / 修改时间：14:51:41" itemprop="dateCreated datePublished" datetime="2020-04-16T14:48:46+08:00">2020-04-16</time>
             
 
             
@@ -371,7 +374,23 @@
 
       
         <p><img src="img/20200416144742.png" alt="header"></p>
+<p>@FunctionalInterface</p>
+<pre><code>import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.function.Function;
 
+@FunctionalInterface
+interface Interface1 {
+    int doubleNum(int i);
+
+    default int add(int x, int y) {
+        return x + y;
+    }
+
+    static int sub(int x, int y) {
+        return x - y;
+    }
+}</code></pre>
       
     </div>
 
@@ -410,6 +429,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/20/java-修饰符/" rel="prev" title="java 修饰符">
+                java 修饰符 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -469,7 +492,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
