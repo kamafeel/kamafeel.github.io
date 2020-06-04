@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="PECS总结： 要从泛型类取数据时，用extends；要往泛型类写数据时，用super；既要取又要写，就不用通配符（即extends与super都不用）。 https://www.cnblogs.com/en-heng/p/5041124.html">
+  <meta name="description" content="1.突出的是运行期增加行为，这和继承是不同的，继承是在编译期增加行为 方式： 定义一个共同接口1.定义一个实现此接口的具体对象2.定义一个抽象类，依赖接口，并且依赖接口实现对象3.实现此抽象类，并且添加具体装饰方法 装饰者，被装饰者，都需要实现同一个接口">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 协变和逆变">
-<meta property="og:url" content="https://zhangqicd.github.io/2020/04/15/Java-协变和逆变/index.html">
+<meta property="og:title" content="设计模式-装饰">
+<meta property="og:url" content="https://zhangqicd.github.io/2020/06/04/设计模式-装饰/index.html">
 <meta property="og:site_name" content="Zq">
-<meta property="og:description" content="PECS总结： 要从泛型类取数据时，用extends；要往泛型类写数据时，用super；既要取又要写，就不用通配符（即extends与super都不用）。 https://www.cnblogs.com/en-heng/p/5041124.html">
+<meta property="og:description" content="1.突出的是运行期增加行为，这和继承是不同的，继承是在编译期增加行为 方式： 定义一个共同接口1.定义一个实现此接口的具体对象2.定义一个抽象类，依赖接口，并且依赖接口实现对象3.实现此抽象类，并且添加具体装饰方法 装饰者，被装饰者，都需要实现同一个接口">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-15T09:15:48.348Z">
+<meta property="og:updated_time" content="2020-06-04T08:47:56.984Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 协变和逆变">
-<meta name="twitter:description" content="PECS总结： 要从泛型类取数据时，用extends；要往泛型类写数据时，用super；既要取又要写，就不用通配符（即extends与super都不用）。 https://www.cnblogs.com/en-heng/p/5041124.html">
+<meta name="twitter:title" content="设计模式-装饰">
+<meta name="twitter:description" content="1.突出的是运行期增加行为，这和继承是不同的，继承是在编译期增加行为 方式： 定义一个共同接口1.定义一个实现此接口的具体对象2.定义一个抽象类，依赖接口，并且依赖接口实现对象3.实现此抽象类，并且添加具体装饰方法 装饰者，被装饰者，都需要实现同一个接口">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://zhangqicd.github.io/2020/04/15/Java-协变和逆变/">
+  <link rel="canonical" href="https://zhangqicd.github.io/2020/06/04/设计模式-装饰/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Java 协变和逆变 | Zq</title>
+  <title>设计模式-装饰 | Zq</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/04/15/Java-协变和逆变/">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/06/04/设计模式-装饰/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zq">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java 协变和逆变
+          <h1 class="post-title" itemprop="name headline">设计模式-装饰
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2020-04-15 17:15:14 / 修改时间：17:15:48" itemprop="dateCreated datePublished" datetime="2020-04-15T17:15:14+08:00">2020-04-15</time>
+              <time title="创建时间：2020-06-04 16:42:51 / 修改时间：16:47:56" itemprop="dateCreated datePublished" datetime="2020-06-04T16:42:51+08:00">2020-06-04</time>
             
 
             
@@ -371,9 +371,10 @@
       
 
       
-        <p>PECS总结：</p>
-<p>要从泛型类取数据时，用extends；<br>要往泛型类写数据时，用super；<br>既要取又要写，就不用通配符（即extends与super都不用）。</p>
-<p><a href="https://www.cnblogs.com/en-heng/p/5041124.html" target="_blank" rel="noopener">https://www.cnblogs.com/en-heng/p/5041124.html</a></p>
+        <p>1.突出的是运行期增加行为，这和继承是不同的，继承是在编译期增加行为</p>
+<p>方式：</p>
+<p>定义一个共同接口<br>1.定义一个实现此接口的具体对象<br>2.定义一个抽象类，依赖接口，并且依赖接口实现对象<br>3.实现此抽象类，并且添加具体装饰方法</p>
+<p>装饰者，被装饰者，都需要实现同一个接口</p>
 
       
     </div>
@@ -404,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/14/纠正完美主义陷阱/" rel="next" title="纠正完美主义陷阱">
-                <i class="fa fa-chevron-left"></i> 纠正完美主义陷阱
+              <a href="/2020/06/04/设计模式-策略/" rel="next" title="设计模式-策略">
+                <i class="fa fa-chevron-left"></i> 设计模式-策略
               </a>
             
           </div>
@@ -414,8 +415,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/04/16/java-Optional-orElse/" rel="prev" title="java Optional orElse">
-                java Optional orElse <i class="fa fa-chevron-right"></i>
+              <a href="/2020/06/04/设计模式-代理/" rel="prev" title="设计模式-代理">
+                设计模式-代理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

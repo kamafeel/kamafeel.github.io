@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="PECS总结： 要从泛型类取数据时，用extends；要往泛型类写数据时，用super；既要取又要写，就不用通配符（即extends与super都不用）。 https://www.cnblogs.com/en-heng/p/5041124.html">
+  <meta name="description" content="静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。 JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。 动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$Enhanc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java 协变和逆变">
-<meta property="og:url" content="https://zhangqicd.github.io/2020/04/15/Java-协变和逆变/index.html">
+<meta property="og:title" content="设计模式-代理">
+<meta property="og:url" content="https://zhangqicd.github.io/2020/06/04/设计模式-代理/index.html">
 <meta property="og:site_name" content="Zq">
-<meta property="og:description" content="PECS总结： 要从泛型类取数据时，用extends；要往泛型类写数据时，用super；既要取又要写，就不用通配符（即extends与super都不用）。 https://www.cnblogs.com/en-heng/p/5041124.html">
+<meta property="og:description" content="静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。 JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。 动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$Enhanc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-15T09:15:48.348Z">
+<meta property="og:updated_time" content="2020-06-04T10:17:31.807Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java 协变和逆变">
-<meta name="twitter:description" content="PECS总结： 要从泛型类取数据时，用extends；要往泛型类写数据时，用super；既要取又要写，就不用通配符（即extends与super都不用）。 https://www.cnblogs.com/en-heng/p/5041124.html">
+<meta name="twitter:title" content="设计模式-代理">
+<meta name="twitter:description" content="静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。 JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。 动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$Enhanc">
 
 
 
@@ -114,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://zhangqicd.github.io/2020/04/15/Java-协变和逆变/">
+  <link rel="canonical" href="https://zhangqicd.github.io/2020/06/04/设计模式-代理/">
 
 
 
@@ -124,7 +124,7 @@
   };
 </script>
 
-  <title>Java 协变和逆变 | Zq</title>
+  <title>设计模式-代理 | Zq</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/04/15/Java-协变和逆变/">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/06/04/设计模式-代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zq">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java 协变和逆变
+          <h1 class="post-title" itemprop="name headline">设计模式-代理
 
               
             
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2020-04-15 17:15:14 / 修改时间：17:15:48" itemprop="dateCreated datePublished" datetime="2020-04-15T17:15:14+08:00">2020-04-15</time>
+              <time title="创建时间：2020-06-04 17:23:24 / 修改时间：18:17:31" itemprop="dateCreated datePublished" datetime="2020-06-04T17:23:24+08:00">2020-06-04</time>
             
 
             
@@ -371,9 +371,12 @@
       
 
       
-        <p>PECS总结：</p>
-<p>要从泛型类取数据时，用extends；<br>要往泛型类写数据时，用super；<br>既要取又要写，就不用通配符（即extends与super都不用）。</p>
-<p><a href="https://www.cnblogs.com/en-heng/p/5041124.html" target="_blank" rel="noopener">https://www.cnblogs.com/en-heng/p/5041124.html</a></p>
+        <p>静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。</p>
+<p>JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。</p>
+<p>动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$EnhancerByCGLIB$$552188b6。</p>
+<p>静态代理在编译时产生class字节码文件，可以直接使用，效率高。</p>
+<p>动态代理必须实现InvocationHandler接口，通过反射代理方法，比较消耗系统性能，但可以减少代理类的数量，使用更灵活。</p>
+<p>cglib代理无需实现接口，通过生成类字节码实现代理，比反射稍快，不存在性能问题，但cglib会继承目标对象，需要重写方法，所以目标对象不能为final类。</p>
 
       
     </div>
@@ -404,8 +407,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/14/纠正完美主义陷阱/" rel="next" title="纠正完美主义陷阱">
-                <i class="fa fa-chevron-left"></i> 纠正完美主义陷阱
+              <a href="/2020/06/04/设计模式-装饰/" rel="next" title="设计模式-装饰">
+                <i class="fa fa-chevron-left"></i> 设计模式-装饰
               </a>
             
           </div>
@@ -413,10 +416,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/16/java-Optional-orElse/" rel="prev" title="java Optional orElse">
-                java Optional orElse <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
