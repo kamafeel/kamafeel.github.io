@@ -96,18 +96,17 @@
 
 
 
-  <meta name="description" content="yum install nginx //输入下载 oryum install epel-release //如果上一步安装失败   yum install nginx //再次下载  https://juejin.im/post/5b371678f265da599f68dfa2">
-<meta name="keywords" content="nginx">
+  <meta name="description" content="用途：减少NEW对象的内存占用 方式： 利用Enum 实例化一次，并且线程安全。 2.2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx安装">
-<meta property="og:url" content="https://zhangqicd.github.io/2019/10/24/nginx安装/index.html">
+<meta property="og:title" content="设计模式-单例">
+<meta property="og:url" content="https://zhangqicd.github.io/2020/06/04/设计模式-单例/index.html">
 <meta property="og:site_name" content="Zq">
-<meta property="og:description" content="yum install nginx //输入下载 oryum install epel-release //如果上一步安装失败   yum install nginx //再次下载  https://juejin.im/post/5b371678f265da599f68dfa2">
+<meta property="og:description" content="用途：减少NEW对象的内存占用 方式： 利用Enum 实例化一次，并且线程安全。 2.2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-24T02:04:02.196Z">
+<meta property="og:updated_time" content="2020-06-04T03:40:39.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx安装">
-<meta name="twitter:description" content="yum install nginx //输入下载 oryum install epel-release //如果上一步安装失败   yum install nginx //再次下载  https://juejin.im/post/5b371678f265da599f68dfa2">
+<meta name="twitter:title" content="设计模式-单例">
+<meta name="twitter:description" content="用途：减少NEW对象的内存占用 方式： 利用Enum 实例化一次，并且线程安全。 2.2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)">
 
 
 
@@ -115,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://zhangqicd.github.io/2019/10/24/nginx安装/">
+  <link rel="canonical" href="https://zhangqicd.github.io/2020/06/04/设计模式-单例/">
 
 
 
@@ -125,7 +124,7 @@
   };
 </script>
 
-  <title>nginx安装 | Zq</title>
+  <title>设计模式-单例 | Zq</title>
   
 
 
@@ -290,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2019/10/24/nginx安装/">
+    <link itemprop="mainEntityOfPage" href="https://zhangqicd.github.io/2020/06/04/设计模式-单例/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zq">
@@ -307,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nginx安装
+          <h1 class="post-title" itemprop="name headline">设计模式-单例
 
               
             
@@ -333,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2019-10-24 09:52:20 / 修改时间：10:04:02" itemprop="dateCreated datePublished" datetime="2019-10-24T09:52:20+08:00">2019-10-24</time>
+              <time title="创建时间：2020-06-04 11:38:22 / 修改时间：11:40:39" itemprop="dateCreated datePublished" datetime="2020-06-04T11:38:22+08:00">2020-06-04</time>
             
 
             
@@ -372,14 +371,9 @@
       
 
       
-        <blockquote>
-<p>yum install nginx //输入下载</p>
-<p>or<br>yum install epel-release //如果上一步安装失败</p>
-</blockquote>
-<blockquote>
-<p>yum install nginx //再次下载</p>
-</blockquote>
-<p><a href="https://juejin.im/post/5b371678f265da599f68dfa2" target="_blank" rel="noopener">https://juejin.im/post/5b371678f265da599f68dfa2</a></p>
+        <p>用途：减少NEW对象的内存占用</p>
+<p>方式：<br> 利用Enum 实例化一次，并且线程安全。</p>
+<p>2.2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)</p>
 
       
     </div>
@@ -401,15 +395,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/nginx/" rel="tag"># nginx</a>
-          
-        </div>
-      
 
       
       
@@ -419,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/布隆过滤器/" rel="next" title="布隆过滤器">
-                <i class="fa fa-chevron-left"></i> 布隆过滤器
+              <a href="/2020/06/04/设计模式-工厂/" rel="next" title="设计模式-工厂">
+                <i class="fa fa-chevron-left"></i> 设计模式-工厂
               </a>
             
           </div>
@@ -428,10 +413,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/26/tomcat-JVM-调优/" rel="prev" title="tomcat JVM 调优">
-                tomcat JVM 调优 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
