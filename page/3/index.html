@@ -528,7 +528,7 @@
             <p>linux:</p>
 <p>for j in $(find /path/to/lib -name ‘*.jar’); do jar -tvf $j &gt; /dev/null 2&gt;&1; [ “$?” -ne 0 ] &amp;&amp; echo “$j jar is broken”; done</p>
 <p>windows:</p>
-<p><img src="/.io//_20200324105437.png" alt="header"></p>
+<p><img src="/2020/03/24/Tomcat-Caused-by-java-util-zip-ZipException-error-in-opening-zip-file/_20200324105437.png" alt="header"></p>
 
           
         
@@ -1124,8 +1124,8 @@ JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quo
             <p><strong>什么是布隆过滤器</strong></p>
 <p>本质上布隆过滤器是一种数据结构，比较巧妙的概率型数据结构（probabilistic data structure），特点是高效地插入和查询，可以用来告诉你 “某样东西一定不存在或者可能存在”。</p>
 <p>相比于传统的 List、Set、Map 等数据结构，它更高效、占用空间更少，但是缺点是其返回的结果是概率性的，而不是确切的。</p>
-<p><img src="/.io//bf1.jpg" alt="header"></p>
-<p><img src="/.io//bf2.jpg" alt="header"></p>
+<p><img src="/2019/09/19/布隆过滤器/bf1.jpg" alt="header"></p>
+<p><img src="/2019/09/19/布隆过滤器/bf2.jpg" alt="header"></p>
 <p><strong>计数删除</strong></p>
 <p>目前我们知道布隆过滤器可以支持 add 和 isExist 操作，那么 delete 操作可以么，答案是不可以，例如上图中的 bit 位 4 被两个值共同覆盖的话，一旦你删除其中一个值例如 “tencent” 而将其置位 0，那么下次判断另一个值例如 “baidu” 是否存在的话，会直接返回 false，而实际上你并没有删除它。</p>
 <p>如何解决这个问题，答案是计数删除。但是计数删除需要存储一个数值，而不是原先的 bit 位，会增大占用的内存大小。这样的话，增加一个值就是将对应索引槽上存储的值加一，删除则是减一，判断是否存在则是看值是否大于0。</p>
@@ -1726,7 +1726,7 @@ end</code></pre><p>end</p>
         
           
             <p>增加java.util.logging.ConsoleHandler配置</p>
-<p><img src="/.io//QQ%E5%9B%BE%E7%89%8720190902140541.png" alt="header"></p>
+<p><img src="/2019/09/02/tomcat错误日志/QQ%E5%9B%BE%E7%89%8720190902140541.png" alt="header"></p>
 
           
         
