@@ -103,7 +103,7 @@
 <meta property="og:site_name" content="Kamafeel">
 <meta property="og:description" content="基于lucene, 倒排索引 DSL为官方查询基准语言 index 索引下面type概念逐步淡化 Java客户端，推荐使用high level  spring官方封装的任然是基于 TransportClient sql模式，x-pack  但是里面用的是PreBuiltXPackTransportClient 基于TransportClient 基本查询，query [must, must_not">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-07-03T08:39:08.223Z">
+<meta property="og:updated_time" content="2020-07-03T09:25:05.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elastic_search">
 <meta name="twitter:description" content="基于lucene, 倒排索引 DSL为官方查询基准语言 index 索引下面type概念逐步淡化 Java客户端，推荐使用high level  spring官方封装的任然是基于 TransportClient sql模式，x-pack  但是里面用的是PreBuiltXPackTransportClient 基于TransportClient 基本查询，query [must, must_not">
@@ -332,7 +332,7 @@
                 
               
 
-              <time title="创建时间：2020-07-03 15:21:32 / 修改时间：16:39:08" itemprop="dateCreated datePublished" datetime="2020-07-03T15:21:32+08:00">2020-07-03</time>
+              <time title="创建时间：2020-07-03 15:21:32 / 修改时间：17:25:05" itemprop="dateCreated datePublished" datetime="2020-07-03T15:21:32+08:00">2020-07-03</time>
             
 
             
@@ -394,8 +394,15 @@
 <p>index 索引下面type概念逐步淡化</p>
 <p>Java客户端，推荐使用high level  spring官方封装的任然是基于 TransportClient</p>
 <p>sql模式，x-pack  但是里面用的是PreBuiltXPackTransportClient 基于TransportClient</p>
-<p>基本查询，query [must, must_not, match,bool,should,filter]等等，以及其组合。<br>disMax 可以避免组合查询得分SUM，影响真正的匹配得分</p>
-<p>分桶(group by)  aggs [term分组，histogram,datahistogram,filter,extendStats各类聚合数学运算]</p>
+<p>基本查询，query [must, must_not, match,bool,should,filter]等等，以及其组合。<br>某些特性<br>disMax 可以避免组合查询得分SUM，影响真正的匹配得分<br>cross_fields copy to 多个字段，计算TF,IDF得分<br>scoreFunctionBuilder 可以自定义boost 计算得分<br>filter不会计算得分，而且使用bitSet进行缓存，单纯过滤尽量使用filte</p>
+<p>nested查询需要指定nestedPath</p>
+<p>分桶(group by)  aggs [term分组，histogram,datahistogram,filter,percentiles,extendStats各类聚合数学运算]</p>
+<p>percentiles百分数聚合，可以分析异常数据分布百分比<br>注意使用算法为:TDigest<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html#search-aggregations-metrics-percentile-aggregation" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-percentile-aggregation.html#search-aggregations-metrics-percentile-aggregation</a></p>
+<p>极端百分比更准确，数据量不大，结果基本是全正确的<br>compression参数将最大节点数限制为20 * compression</p>
+<p>“hdr”: {<br> “number_of_significant_value_digits” : 3<br>}
+HDR Histogram 计算百分百</p>
+<p>50.0 10<br>70.0 20<br>95.0 30<br>99.0 33</p>
+<p>50%的数据在10以下<br>95%的数据在30以下</p>
 <p>aggs可以嵌套，order size实现top N功能。</p>
 <p>nested 嵌套对象，<br>script 脚本处理。</p>
 <hr>
@@ -444,6 +451,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/16/mysql配置/" rel="prev" title="mysql配置">
+                mysql配置 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -503,7 +514,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -532,7 +543,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
