@@ -96,17 +96,20 @@
 
 
 
-  <meta name="description" content="1.二叉搜索树 容易倾斜 导致性能和链表类似。 2.红黑树（最大好处，查找时间复杂度，是logn） 数学理论支撑  左旋，右旋 – 目的是红黑树，尽量平衡。  一个节点下面的2个节点的差，不会大于较小的那个节点的2倍差异。 新插入的节点都是RED，存在规则和情况，负责进行左旋或者右旋，改色。 3 2-3树 二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整">
+  <meta name="description" content="1.二叉搜索树容易倾斜;导致性能和链表类似。 2.红黑树（最大好处，查找时间复杂度，是logn） 数学理论支撑  左旋，右旋 – 目的是红黑树，尽量平衡。  一个节点下面的2个节点的差，不会大于较小的那个节点的2倍差异。 新插入的节点都是RED，存在规则和情况，负责进行左旋或者右旋，改色。 3 2-3树二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整">
+<meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构-树">
 <meta property="og:url" content="https://kamafeel.github.io/2020/09/11/数据结构-树/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="1.二叉搜索树 容易倾斜 导致性能和链表类似。 2.红黑树（最大好处，查找时间复杂度，是logn） 数学理论支撑  左旋，右旋 – 目的是红黑树，尽量平衡。  一个节点下面的2个节点的差，不会大于较小的那个节点的2倍差异。 新插入的节点都是RED，存在规则和情况，负责进行左旋或者右旋，改色。 3 2-3树 二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整">
+<meta property="og:description" content="1.二叉搜索树容易倾斜;导致性能和链表类似。 2.红黑树（最大好处，查找时间复杂度，是logn） 数学理论支撑  左旋，右旋 – 目的是红黑树，尽量平衡。  一个节点下面的2个节点的差，不会大于较小的那个节点的2倍差异。 新插入的节点都是RED，存在规则和情况，负责进行左旋或者右旋，改色。 3 2-3树二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-11T13:06:28.436Z">
+<meta property="og:image" content="https://kamafeel.github.io/2020/09/11/数据结构-树/interview-6-06.png">
+<meta property="og:updated_time" content="2020-09-11T13:23:13.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构-树">
-<meta name="twitter:description" content="1.二叉搜索树 容易倾斜 导致性能和链表类似。 2.红黑树（最大好处，查找时间复杂度，是logn） 数学理论支撑  左旋，右旋 – 目的是红黑树，尽量平衡。  一个节点下面的2个节点的差，不会大于较小的那个节点的2倍差异。 新插入的节点都是RED，存在规则和情况，负责进行左旋或者右旋，改色。 3 2-3树 二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整">
+<meta name="twitter:description" content="1.二叉搜索树容易倾斜;导致性能和链表类似。 2.红黑树（最大好处，查找时间复杂度，是logn） 数学理论支撑  左旋，右旋 – 目的是红黑树，尽量平衡。  一个节点下面的2个节点的差，不会大于较小的那个节点的2倍差异。 新插入的节点都是RED，存在规则和情况，负责进行左旋或者右旋，改色。 3 2-3树二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整">
+<meta name="twitter:image" content="https://kamafeel.github.io/2020/09/11/数据结构-树/interview-6-06.png">
 
 
 
@@ -332,7 +335,7 @@
                 
               
 
-              <time title="创建时间：2020-09-11 21:04:43 / 修改时间：21:06:28" itemprop="dateCreated datePublished" datetime="2020-09-11T21:04:43+08:00">2020-09-11</time>
+              <time title="创建时间：2020-09-11 21:04:43 / 修改时间：21:23:13" itemprop="dateCreated datePublished" datetime="2020-09-11T21:04:43+08:00">2020-09-11</time>
             
 
             
@@ -371,13 +374,11 @@
       
 
       
-        <p>1.二叉搜索树 容易倾斜</p>
-<p>导致性能和链表类似。</p>
-<p>2.红黑树（最大好处，查找时间复杂度，是logn）</p>
+        <h2 id="1-二叉搜索树"><a href="#1-二叉搜索树" class="headerlink" title="1.二叉搜索树"></a>1.二叉搜索树</h2><p>容易倾斜;导致性能和链表类似。</p>
+<h2 id="2-红黑树"><a href="#2-红黑树" class="headerlink" title="2.红黑树"></a>2.红黑树</h2><p>（最大好处，查找时间复杂度，是logn）</p>
 <p>数学理论支撑  左旋，右旋 – 目的是红黑树，尽量平衡。  一个节点下面的2个节点的差，不会大于较小的那个节点的2倍差异。</p>
 <p>新插入的节点都是RED，存在规则和情况，负责进行左旋或者右旋，改色。</p>
-<p>3 2-3树</p>
-<p>二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整</p>
+<h2 id="3-2-3树"><a href="#3-2-3树" class="headerlink" title="3 2-3树"></a>3 2-3树</h2><p>二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整<br><img src="/2020/09/11/数据结构-树/interview-6-06.png" alt="alt"></p>
 
       
     </div>
@@ -398,6 +399,15 @@
     
 
     <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
+          
+        </div>
       
 
       
@@ -464,8 +474,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -546,7 +565,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -573,6 +594,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-二叉搜索树"><span class="nav-number">1.</span> <span class="nav-text">1.二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-红黑树"><span class="nav-number">2.</span> <span class="nav-text">2.红黑树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-3树"><span class="nav-number">3.</span> <span class="nav-text">3 2-3树</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
