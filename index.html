@@ -286,6 +286,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/14/ElasticSearch-0/" class="post-title-link" itemprop="url">ElasticSearch</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-14 11:12:13 / 修改时间：11:15:47" itemprop="dateCreated datePublished" datetime="2020-09-14T11:12:13+08:00">2020-09-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>日志分析、时序分析、全文检索,大数据的一些聚合查询</p>
+<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>底层 Lucene 高效的信息检索,利用倒排索引,存储使用LSM数据模型</p>
+<p><img src="/2020/09/14/ElasticSearch-0/dp_index.jpg" alt="alt"><br><img src="/2020/09/14/ElasticSearch-0/m.jpg" alt="alt"><br><img src="/2020/09/14/ElasticSearch-0/lsm_tree.png" alt="alt"></p>
+<h2 id="ES-读"><a href="#ES-读" class="headerlink" title="ES 读"></a>ES 读</h2><p>Elasticsearch查询的时候需要查询所有Shard</p>
+<h2 id="ES-写"><a href="#ES-写" class="headerlink" title="ES 写"></a>ES 写</h2><p><img src="/2020/09/14/ElasticSearch-0/w.png" alt="alt"></p>
+<h2 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h2><p>FST 倒排索引 占据了绝大部分堆内内存（优化到堆外存储）<br><img src="/2020/09/14/ElasticSearch-0/fst.png" alt="alt"></p>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>Lucene 没有更新的概念。ES 并不适合高频率更新文档操作,会导致效率极低。<br>插入数据如果带ID，也会导致类UPDATE操作，效率降低至少1倍。</p>
+<h2 id="各类资料"><a href="#各类资料" class="headerlink" title="各类资料"></a>各类资料</h2><p>各个版本基本描述文档：<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.5/getting-started.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/6.5/getting-started.html</a></p>
+<p>文档汇总：<br><a href="https://www.elastic.co/guide/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/index.html</a></p>
+<p>官方中文：<br><a href="https://www.elastic.co/guide/cn/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/cn/index.html</a></p>
+<p>JavaAPI<br><a href="https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html</a></p>
+<p>JAVA 客户端API<br><a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.5/java-rest-high-put-template.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.5/java-rest-high-put-template.html</a></p>
+<p>底层进阶：<br><a href="https://cloud.tencent.com/developer/article/1626250" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1626250</a><br><a href="https://cloud.tencent.com/developer/column/2428" target="_blank" rel="noopener">https://cloud.tencent.com/developer/column/2428</a></p>
+<p>日常阅读：<br><a href="https://elasticsearch.cn/article/" target="_blank" rel="noopener">https://elasticsearch.cn/article/</a></p>
+<p>plugin 模式开发<br><a href="https://www.cnblogs.com/wangnanhui/articles/10413066.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangnanhui/articles/10413066.html</a><br><a href="https://github.com/wangnanhui/elastic-plugin-test" target="_blank" rel="noopener">https://github.com/wangnanhui/elastic-plugin-test</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/Spring-Bean添加启动逻辑/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -331,7 +513,7 @@
                 
               
 
-              <time title="创建时间：2020-09-14 09:34:55 / 修改时间：09:36:00" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 09:34:55 / 修改时间：09:55:24" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
             
 
             
@@ -341,6 +523,31 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -512,7 +719,7 @@ LOG.info(&quot;init-method&quot;);
                 
               
 
-              <time title="创建时间：2020-09-14 09:30:46 / 修改时间：09:34:15" itemprop="dateCreated datePublished" datetime="2020-09-14T09:30:46+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 09:30:46 / 修改时间：09:55:50" itemprop="dateCreated datePublished" datetime="2020-09-14T09:30:46+08:00">2020-09-14</time>
             
 
             
@@ -535,6 +742,13 @@ LOG.info(&quot;init-method&quot;);
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
 
                 
                 
@@ -690,7 +904,7 @@ catch (Exception e) {
                 
               
 
-              <time title="创建时间：2020-09-14 09:28:26 / 修改时间：09:29:34" itemprop="dateCreated datePublished" datetime="2020-09-14T09:28:26+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 09:28:26 / 修改时间：09:56:11" itemprop="dateCreated datePublished" datetime="2020-09-14T09:28:26+08:00">2020-09-14</time>
             
 
             
@@ -700,6 +914,31 @@ catch (Exception e) {
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -839,7 +1078,7 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 
               
 
-              <time title="创建时间：2020-09-14 09:27:25 / 修改时间：09:27:45" itemprop="dateCreated datePublished" datetime="2020-09-14T09:27:25+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 09:27:25 / 修改时间：09:56:35" itemprop="dateCreated datePublished" datetime="2020-09-14T09:27:25+08:00">2020-09-14</time>
             
 
             
@@ -849,6 +1088,31 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/源码解读/" itemprop="url" rel="index"><span itemprop="name">源码解读</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1827,190 +2091,6 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/11/数据结构-树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/11/数据结构-树/" class="post-title-link" itemprop="url">数据结构-树</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-11 21:04:43" itemprop="dateCreated datePublished" datetime="2020-09-11T21:04:43+08:00">2020-09-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-09-14 09:38:26" itemprop="dateModified" datetime="2020-09-14T09:38:26+08:00">2020-09-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/树/" itemprop="url" rel="index"><span itemprop="name">树</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="1-二叉搜索树"><a href="#1-二叉搜索树" class="headerlink" title="1.二叉搜索树"></a>1.二叉搜索树</h2><p>容易倾斜;导致性能和链表类似。</p>
-<h2 id="2-红黑树"><a href="#2-红黑树" class="headerlink" title="2.红黑树"></a>2.红黑树</h2><p>（最大好处，查找时间复杂度，是logn）</p>
-<p>数学理论支撑  左旋，右旋 – 目的是红黑树，尽量平衡。  一个节点下面的2个节点的差，不会大于较小的那个节点的2倍差异。</p>
-<p>新插入的节点都是RED，存在规则和情况，负责进行左旋或者右旋，改色。</p>
-<h2 id="3-2-3树"><a href="#3-2-3树" class="headerlink" title="3 2-3树"></a>3 2-3树</h2><p>二三树允许在一个节点中可以有两个元素，等元素数量等于3个时候再进行调整<br><img src="/2020/09/11/数据结构-树/interview-6-06.png" alt="alt"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2057,7 +2137,7 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2102,7 +2182,21 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2145,7 +2239,11 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
