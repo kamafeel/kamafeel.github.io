@@ -706,7 +706,7 @@
                 
               
 
-              <time title="Erstellt: 2020-09-16 15:32:10 / Geändert am: 15:35:49" itemprop="dateCreated datePublished" datetime="2020-09-16T15:32:10+08:00">2020-09-16</time>
+              <time title="Erstellt: 2020-09-16 15:32:10 / Geändert am: 16:57:41" itemprop="dateCreated datePublished" datetime="2020-09-16T15:32:10+08:00">2020-09-16</time>
             
 
             
@@ -778,32 +778,13 @@
 <li>AtomicStampedReference：原子更新引用类型，这种更新方式会带有版本号。而为什么在更新的时候会带有版本号，是为了解决 CAS 的 ABA 问题；</li>
 </ul>
 <p>实列：</p>
-<pre><code>public class AtomicDemo {
-    private static AtomicIntegerFieldUpdater updater = AtomicIntegerFieldUpdater.newUpdater(User.class,&quot;age&quot;);
-    public static void main(String[] args) {
-    User user = new User(&quot;a&quot;, 1);
-    int oldValue = updater.getAndAdd(user, 5);
-    System.out.println(oldValue);
-    System.out.println(updater.get(user));
-    }
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicDemo</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> AtomicIntegerFieldUpdater updater = AtomicIntegerFieldUpdater.newUpdater(User.class,<span class="string">"age"</span>);</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	    User user = <span class="keyword">new</span> User(<span class="string">"a"</span>, <span class="number">1</span>);</span><br><span class="line">	    <span class="keyword">int</span> oldValue = updater.getAndAdd(user, <span class="number">5</span>);</span><br><span class="line">	    System.out.println(oldValue);</span><br><span class="line">	    System.out.println(updater.get(user));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">public</span> **<span class="keyword">volatile</span>** <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String userName, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"User&#123;"</span> +</span><br><span class="line">                <span class="string">"userName='"</span> + userName + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-static class User {
-private String userName;
-public **volatile** int age;
 
-public User(String userName, int age) {
-    this.userName = userName;
-    this.age = age;
-}
 
-@Override
-public String toString() {
-    return &quot;User{&quot; +
-            &quot;userName=&apos;&quot; + userName + &apos;\&apos;&apos; +
-            &quot;, age=&quot; + age +
-            &apos;}&apos;;
-}
-}</code></pre>
+
+
+
           
         
       
@@ -1099,7 +1080,7 @@ public String toString() {
                 
                   <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="Geändert am: 2020-09-16 11:29:59" itemprop="dateModified" datetime="2020-09-16T11:29:59+08:00">2020-09-16</time>
+                <time title="Geändert am: 2020-09-16 17:02:59" itemprop="dateModified" datetime="2020-09-16T17:02:59+08:00">2020-09-16</time>
               
             
           </span>
@@ -1209,36 +1190,9 @@ public String toString() {
 <p>ConcurrentLinkedQueue head指针和 tail指针<br><img src="/2020/09/15/并发容器/20200916104316.png" alt="alt"></p>
 <h2 id="ThreadLocal-内存泄露"><a href="#ThreadLocal-内存泄露" class="headerlink" title="ThreadLocal 内存泄露"></a>ThreadLocal 内存泄露</h2><p><img src="/2020/09/15/并发容器/20200916112056.png" alt="alt"><br>threadLocal外部强引用被置为null 会被GC，但是entry就存在key为null，这样对应的value无法被GC，导致内存泄露。</p>
 <p>SimpleDateFormat里面的Calendar操作高并发会出现SET,Clear的问题，Servlet, @Controller, @Service成员变量同样也存在(可以使用@Scope(value = “prototype”)解决)</p>
-<pre><code>public class ThreadLocalDemo {
-    private static ThreadLocal&lt;SimpleDateFormat&gt; sdf = new ThreadLocal&lt;&gt;();
-    public static void main(String[] args) {
-    ExecutorService executorService = Executors.newFixedThreadPool(10);
-    for (int i = 0; i &amp;lt; 100; i++) {
-        executorService.submit(new DateUtil(&quot;2019-11-25 09:00:&quot; + i % 60));
-    }
-}
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalDemo</span> </span>&#123;</span><br><span class="line">   	<span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;SimpleDateFormat&gt; sdf = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> DateUtil(<span class="string">"2019-11-25 09:00:"</span> + i % <span class="number">60</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DateUtil</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String date;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DateUtil</span><span class="params">(String date)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sdf.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            sdf.set(<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Date date = sdf.get().parse(<span class="keyword">this</span>.date);</span><br><span class="line">                System.out.println(date);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    static class DateUtil implements Runnable {
-    private String date;
 
-    public DateUtil(String date) {
-        this.date = date;
-    }
-
-    @Override
-    public void run() {
-        if (sdf.get() == null) {
-            sdf.set(new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;));
-        } else {
-            try {
-                Date date = sdf.get().parse(this.date);
-                System.out.println(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-}</code></pre>
           
         
       
@@ -1515,12 +1469,24 @@ public String toString() {
                 
               
 
-              <time title="Erstellt: 2020-09-15 18:29:52 / Geändert am: 20:34:02" itemprop="dateCreated datePublished" datetime="2020-09-15T18:29:52+08:00">2020-09-15</time>
+              <time title="Erstellt: 2020-09-15 18:29:52" itemprop="dateCreated datePublished" datetime="2020-09-15T18:29:52+08:00">2020-09-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2020-09-16 17:03:46" itemprop="dateModified" datetime="2020-09-16T17:03:46+08:00">2020-09-16</time>
               
             
           </span>
@@ -1583,14 +1549,12 @@ public String toString() {
           
             <p>AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。</p>
 <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>核心成员变量</p>
-<pre><code>private volatile int state;//共享变量，使用volatile修饰保证线程可见性</code></pre><p>核心代码：</p>
-<pre><code>public final void acquire(int arg) {
-    //先看同步状态是否获取成功，如果成功则方法结束返回
-    //若失败则先调用addWaiter()方法再调用acquireQueued()方法
-    if (!tryAcquire(arg) &amp;&amp;
-        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
-        selfInterrupt();
-}</code></pre><p><img src="/2020/09/15/AbstractQueuedSynchronizer-AQS/20200915195039.png" alt="alt"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> state;<span class="comment">//共享变量，使用volatile修饰保证线程可见性</span></span><br></pre></td></tr></table></figure>
+
+<p>核心代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//先看同步状态是否获取成功，如果成功则方法结束返回</span></span><br><span class="line">	<span class="comment">//若失败则先调用addWaiter()方法再调用acquireQueued()方法</span></span><br><span class="line">       <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">           acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">           selfInterrupt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/15/AbstractQueuedSynchronizer-AQS/20200915195039.png" alt="alt"></p>
 <p><img src="/2020/09/15/AbstractQueuedSynchronizer-AQS/1024555-20170717114859238-311670115.png" alt="alt"><br>双端双向链表</p>
 <p>AQS维护一个共享资源state，通过内置的FIFO来完成获取资源线程的排队工作。（这个内置的同步队列称为”CLH”队列）。该队列由一个一个的Node结点组成，每个Node结点维护一个prev引用和next引用，分别指向自己的前驱和后继结点。AQS维护两个指针，分别指向队列头部head和尾部tail。</p>
 <p>当线程获取资源失败（比如tryAcquire时试图设置state状态失败），会被构造成一个结点加入CLH队列中，同时当前线程会被阻塞在队列中（通过LockSupport.park实现，其实是等待态）。当持有同步状态的线程释放同步状态时，会唤醒后继结点，然后此结点线程继续加入到对同步状态的争夺中</p>
@@ -1705,12 +1669,24 @@ public String toString() {
                 
               
 
-              <time title="Erstellt: 2020-09-15 18:02:01 / Geändert am: 18:29:18" itemprop="dateCreated datePublished" datetime="2020-09-15T18:02:01+08:00">2020-09-15</time>
+              <time title="Erstellt: 2020-09-15 18:02:01" itemprop="dateCreated datePublished" datetime="2020-09-15T18:02:01+08:00">2020-09-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2020-09-16 17:04:16" itemprop="dateModified" datetime="2020-09-16T17:04:16+08:00">2020-09-16</time>
               
             
           </span>
@@ -1812,41 +1788,9 @@ public String toString() {
 </tbody></table>
 <p>虽然LockSuport可以指定monitor的object对象，但和object.wait()，两者的阻塞队列并不交叉。object.notifyAll()不能唤醒LockSupport的阻塞Thread</p>
 <h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>kill有-9和-15两种参数，默认是-15。如果是-15参数，系统就发送一个关闭信号给进程，然后等待进程关闭。</p>
-<pre><code>final Thread waitThread = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            System.out.println(&quot;thread begin&quot;);
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Thread waitThread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               System.out.println(<span class="string">"thread begin"</span>);</span><br><span class="line"></span><br><span class="line">               <span class="comment">//等待获取许可</span></span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   Thread.sleep(<span class="number">1000000</span>);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="comment">//输出thread over.true</span></span><br><span class="line">               System.out.println(<span class="string">"thread over."</span> + Thread.currentThread().isInterrupted());</span><br><span class="line"></span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       waitThread.start();</span><br><span class="line">       <span class="comment">//绑定钩子</span></span><br><span class="line">       Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   waitThread.interrupt();</span><br><span class="line">                   waitThread.join();</span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">               System.out.println(<span class="string">"shutdown success"</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;));</span><br></pre></td></tr></table></figure>
 
-            //等待获取许可
-            try {
-                Thread.sleep(1000000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            //输出thread over.true
-            System.out.println(&quot;thread over.&quot; + Thread.currentThread().isInterrupted());
-
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    });
-    waitThread.start();
-    //绑定钩子
-    Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-        @Override
-        public void run() {
-            try {
-                waitThread.interrupt();
-                waitThread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(&quot;shutdown success&quot;);
-        }
-    }));</code></pre><h2 id="线程中断"><a href="#线程中断" class="headerlink" title="线程中断"></a>线程中断</h2><p>首先，一个线程不应该由其他线程来强制中断或停止，而是应该由线程自己自行停止。所以，Thread.stop, Thread.suspend, Thread.resume 都已经被废弃了。而 Thread.interrupt 的作用其实也不是中断线程，而是「通知线程应该中断了」，具体到底中断还是继续运行，应该由被通知的线程自己处理。具体来说，当对一个线程，调用 interrupt() 时，① 如果线程处于被阻塞状态（例如处于sleep, wait, join 等状态），那么线程将立即退出被阻塞状态，并抛出一个InterruptedException异常。仅此而已。② 如果线程处于正常活动状态，那么会将该线程的中断标志设置为 true，仅此而已。被设置中断标志的线程将继续正常运行，不受影响。interrupt() 并不能真正的中断线程，需要被调用的线程自己进行配合才行。也就是说，一个线程如果有被中断的需求，那么就可以这样做。</p>
+<h2 id="线程中断"><a href="#线程中断" class="headerlink" title="线程中断"></a>线程中断</h2><p>首先，一个线程不应该由其他线程来强制中断或停止，而是应该由线程自己自行停止。所以，Thread.stop, Thread.suspend, Thread.resume 都已经被废弃了。而 Thread.interrupt 的作用其实也不是中断线程，而是「通知线程应该中断了」，具体到底中断还是继续运行，应该由被通知的线程自己处理。具体来说，当对一个线程，调用 interrupt() 时，① 如果线程处于被阻塞状态（例如处于sleep, wait, join 等状态），那么线程将立即退出被阻塞状态，并抛出一个InterruptedException异常。仅此而已。② 如果线程处于正常活动状态，那么会将该线程的中断标志设置为 true，仅此而已。被设置中断标志的线程将继续正常运行，不受影响。interrupt() 并不能真正的中断线程，需要被调用的线程自己进行配合才行。也就是说，一个线程如果有被中断的需求，那么就可以这样做。</p>
 <p>-① 在正常运行任务时，经常检查本线程的中断标志位，如果被设置了中断标志就自行停止线程。<br>-② 在调用阻塞方法时正确处理InterruptedException异常。（例如，catch异常后就结束线程。）</p>
 <pre><code>Thread thread = new Thread(() -&gt; {
 while (!Thread.interrupted()) {

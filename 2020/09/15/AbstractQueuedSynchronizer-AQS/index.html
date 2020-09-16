@@ -96,20 +96,20 @@
 
 
 
-  <meta name="description" content="AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。 数据结构核心成员变量 private volatile int state;//共享变量，使用volatile修饰保证线程可见性核心代码： public final void acquire(int arg) {     //先看同步状态是否获取成功，如果成功则方法结束返回     //若失败">
+  <meta name="description" content="AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。 数据结构核心成员变量 1private volatile int state;//共享变量，使用volatile修饰保证线程可见性  核心代码： 1234567public final void acquire(int arg) &amp;#123;	//先看同步状态是否获取成功，如果成功则方法结束返">
 <meta name="keywords" content="多线程,AQS,JAVA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AbstractQueuedSynchronizer(AQS)">
 <meta property="og:url" content="https://kamafeel.github.io/2020/09/15/AbstractQueuedSynchronizer-AQS/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。 数据结构核心成员变量 private volatile int state;//共享变量，使用volatile修饰保证线程可见性核心代码： public final void acquire(int arg) {     //先看同步状态是否获取成功，如果成功则方法结束返回     //若失败">
+<meta property="og:description" content="AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。 数据结构核心成员变量 1private volatile int state;//共享变量，使用volatile修饰保证线程可见性  核心代码： 1234567public final void acquire(int arg) &amp;#123;	//先看同步状态是否获取成功，如果成功则方法结束返">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kamafeel.github.io/2020/09/15/AbstractQueuedSynchronizer-AQS/20200915195039.png">
 <meta property="og:image" content="https://kamafeel.github.io/2020/09/15/AbstractQueuedSynchronizer-AQS/1024555-20170717114859238-311670115.png">
-<meta property="og:updated_time" content="2020-09-15T12:34:02.073Z">
+<meta property="og:updated_time" content="2020-09-16T09:03:46.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AbstractQueuedSynchronizer(AQS)">
-<meta name="twitter:description" content="AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。 数据结构核心成员变量 private volatile int state;//共享变量，使用volatile修饰保证线程可见性核心代码： public final void acquire(int arg) {     //先看同步状态是否获取成功，如果成功则方法结束返回     //若失败">
+<meta name="twitter:description" content="AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。 数据结构核心成员变量 1private volatile int state;//共享变量，使用volatile修饰保证线程可见性  核心代码： 1234567public final void acquire(int arg) &amp;#123;	//先看同步状态是否获取成功，如果成功则方法结束返">
 <meta name="twitter:image" content="https://kamafeel.github.io/2020/09/15/AbstractQueuedSynchronizer-AQS/20200915195039.png">
 
 
@@ -340,12 +340,24 @@
                 
               
 
-              <time title="Erstellt: 2020-09-15 18:29:52 / Geändert am: 20:34:02" itemprop="dateCreated datePublished" datetime="2020-09-15T18:29:52+08:00">2020-09-15</time>
+              <time title="Erstellt: 2020-09-15 18:29:52" itemprop="dateCreated datePublished" datetime="2020-09-15T18:29:52+08:00">2020-09-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2020-09-16 17:03:46" itemprop="dateModified" datetime="2020-09-16T17:03:46+08:00">2020-09-16</time>
               
             
           </span>
@@ -406,14 +418,12 @@
       
         <p>AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。</p>
 <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>核心成员变量</p>
-<pre><code>private volatile int state;//共享变量，使用volatile修饰保证线程可见性</code></pre><p>核心代码：</p>
-<pre><code>public final void acquire(int arg) {
-    //先看同步状态是否获取成功，如果成功则方法结束返回
-    //若失败则先调用addWaiter()方法再调用acquireQueued()方法
-    if (!tryAcquire(arg) &amp;&amp;
-        acquireQueued(addWaiter(Node.EXCLUSIVE), arg))
-        selfInterrupt();
-}</code></pre><p><img src="/2020/09/15/AbstractQueuedSynchronizer-AQS/20200915195039.png" alt="alt"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> state;<span class="comment">//共享变量，使用volatile修饰保证线程可见性</span></span><br></pre></td></tr></table></figure>
+
+<p>核心代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//先看同步状态是否获取成功，如果成功则方法结束返回</span></span><br><span class="line">	<span class="comment">//若失败则先调用addWaiter()方法再调用acquireQueued()方法</span></span><br><span class="line">       <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">           acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">           selfInterrupt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2020/09/15/AbstractQueuedSynchronizer-AQS/20200915195039.png" alt="alt"></p>
 <p><img src="/2020/09/15/AbstractQueuedSynchronizer-AQS/1024555-20170717114859238-311670115.png" alt="alt"><br>双端双向链表</p>
 <p>AQS维护一个共享资源state，通过内置的FIFO来完成获取资源线程的排队工作。（这个内置的同步队列称为”CLH”队列）。该队列由一个一个的Node结点组成，每个Node结点维护一个prev引用和next引用，分别指向自己的前驱和后继结点。AQS维护两个指针，分别指向队列头部head和尾部tail。</p>
 <p>当线程获取资源失败（比如tryAcquire时试图设置state状态失败），会被构造成一个结点加入CLH队列中，同时当前线程会被阻塞在队列中（通过LockSupport.park实现，其实是等待态）。当持有同步状态的线程释放同步状态时，会唤醒后继结点，然后此结点线程继续加入到对同步状态的争夺中</p>

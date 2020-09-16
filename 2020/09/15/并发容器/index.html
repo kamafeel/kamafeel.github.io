@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://kamafeel.github.io/2020/09/15/并发容器/20200916104316.png">
 <meta property="og:image" content="https://kamafeel.github.io/2020/09/15/并发容器/20200916112056.png">
-<meta property="og:updated_time" content="2020-09-16T03:29:59.160Z">
+<meta property="og:updated_time" content="2020-09-16T09:02:59.686Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="并发容器">
 <meta name="twitter:description" content="类型 并发特性 其他 网页    ConcurrentHashMap CAS synchronzied volatile  保证内存可见性     CopyOnWriteArrayList CopyOnWrite （COW）ReentrantLock控制写独占锁,volatile修饰唯一数据结构数组,依据happen before写对读可见 内存写时，有2个对象,避免GC 存在延迟 http">
@@ -357,7 +357,7 @@
                 
                   <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="Geändert am: 2020-09-16 11:29:59" itemprop="dateModified" datetime="2020-09-16T11:29:59+08:00">2020-09-16</time>
+                <time title="Geändert am: 2020-09-16 17:02:59" itemprop="dateModified" datetime="2020-09-16T17:02:59+08:00">2020-09-16</time>
               
             
           </span>
@@ -465,36 +465,9 @@
 <p>ConcurrentLinkedQueue head指针和 tail指针<br><img src="/2020/09/15/并发容器/20200916104316.png" alt="alt"></p>
 <h2 id="ThreadLocal-内存泄露"><a href="#ThreadLocal-内存泄露" class="headerlink" title="ThreadLocal 内存泄露"></a>ThreadLocal 内存泄露</h2><p><img src="/2020/09/15/并发容器/20200916112056.png" alt="alt"><br>threadLocal外部强引用被置为null 会被GC，但是entry就存在key为null，这样对应的value无法被GC，导致内存泄露。</p>
 <p>SimpleDateFormat里面的Calendar操作高并发会出现SET,Clear的问题，Servlet, @Controller, @Service成员变量同样也存在(可以使用@Scope(value = “prototype”)解决)</p>
-<pre><code>public class ThreadLocalDemo {
-    private static ThreadLocal&lt;SimpleDateFormat&gt; sdf = new ThreadLocal&lt;&gt;();
-    public static void main(String[] args) {
-    ExecutorService executorService = Executors.newFixedThreadPool(10);
-    for (int i = 0; i &amp;lt; 100; i++) {
-        executorService.submit(new DateUtil(&quot;2019-11-25 09:00:&quot; + i % 60));
-    }
-}
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalDemo</span> </span>&#123;</span><br><span class="line">   	<span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;SimpleDateFormat&gt; sdf = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> DateUtil(<span class="string">"2019-11-25 09:00:"</span> + i % <span class="number">60</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DateUtil</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String date;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DateUtil</span><span class="params">(String date)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sdf.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            sdf.set(<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Date date = sdf.get().parse(<span class="keyword">this</span>.date);</span><br><span class="line">                System.out.println(date);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    static class DateUtil implements Runnable {
-    private String date;
 
-    public DateUtil(String date) {
-        this.date = date;
-    }
-
-    @Override
-    public void run() {
-        if (sdf.get() == null) {
-            sdf.set(new SimpleDateFormat(&quot;yyyy-MM-dd HH:mm:ss&quot;));
-        } else {
-            try {
-                Date date = sdf.get().parse(this.date);
-                System.out.println(date);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-}</code></pre>
       
     </div>
 

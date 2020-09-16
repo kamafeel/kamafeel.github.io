@@ -711,12 +711,24 @@
                 
               
 
-              <time title="Erstellt: 2020-09-14 09:34:55 / Geändert am: 09:55:24" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
+              <time title="Erstellt: 2020-09-14 09:34:55" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2020-09-16 17:05:00" itemprop="dateModified" datetime="2020-09-16T17:05:00+08:00">2020-09-16</time>
               
             
           </span>
@@ -787,36 +799,7 @@
 <li>Spring Boot ApplicationRunner</li>
 </ul>
 <p>启动顺序：</p>
-<pre><code>@Component
-@Scope(value = &quot;prototype&quot;)
-public class AllStrategiesExampleBean implements InitializingBean {
-
-private static final Logger LOG 
-  = Logger.getLogger(AllStrategiesExampleBean.class);
-
-public AllStrategiesExampleBean() {
-LOG.info(&quot;Constructor&quot;);
-}
-
-@Override
-public void afterPropertiesSet() throws Exception {
-LOG.info(&quot;InitializingBean&quot;);
-}
-
-@PostConstruct
-public void postConstruct() {
-LOG.info(&quot;PostConstruct&quot;);
-}
-
-public void init() {
-LOG.info(&quot;init-method&quot;);
-}
-}
-
-[main] INFO o.b.startup.AllStrategiesExampleBean - Constructor
-[main] INFO o.b.startup.AllStrategiesExampleBean - PostConstruct
-[main] INFO o.b.startup.AllStrategiesExampleBean - InitializingBean
-[main] INFO o.b.startup.AllStrategiesExampleBean - init-method</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Scope</span>(value = <span class="string">"prototype"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AllStrategiesExampleBean</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG </span><br><span class="line">  = Logger.getLogger(AllStrategiesExampleBean.class);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AllStrategiesExampleBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"Constructor"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"InitializingBean"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postConstruct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"init-method"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - Constructor</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - PostConstruct</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - InitializingBean</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - init-method</span><br></pre></td></tr></table></figure>
           
         
       
@@ -917,12 +900,24 @@ LOG.info(&quot;init-method&quot;);
                 
               
 
-              <time title="Erstellt: 2020-09-14 09:30:46 / Geändert am: 09:55:50" itemprop="dateCreated datePublished" datetime="2020-09-14T09:30:46+08:00">2020-09-14</time>
+              <time title="Erstellt: 2020-09-14 09:30:46" itemprop="dateCreated datePublished" datetime="2020-09-14T09:30:46+08:00">2020-09-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2020-09-16 17:05:16" itemprop="dateModified" datetime="2020-09-16T17:05:16+08:00">2020-09-16</time>
               
             
           </span>
@@ -983,20 +978,10 @@ LOG.info(&quot;init-method&quot;);
       
         
           
-            <pre><code>try (
-    InputStream fis = new FileInputStream(source);
-    OutputStream fos = new FileOutputStream(target)
- ){
-    byte[] buf = new byte[8192];
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (</span><br><span class="line">    InputStream fis = <span class="keyword">new</span> FileInputStream(source);</span><br><span class="line">    OutputStream fos = <span class="keyword">new</span> FileOutputStream(target)</span><br><span class="line"> )&#123;</span><br><span class="line">    <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">8192</span>];</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">while</span> ((i = fis.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">        fos.write(buf, <span class="number">0</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    int i;
-    while ((i = fis.read(buf)) != -1) {
-        fos.write(buf, 0, i);
-    }
-}
-catch (Exception e) {
-    e.printStackTrace();
-}</code></pre><ul>
+
+<ul>
 <li>try括号内的资源会在try语句结束后自动释放，前提是这些可关闭的资源必须实现 java.lang.AutoCloseable 接口。</li>
 <li>InputStream 和OutputStream 父类中一定实现了AutoCloseable接口</li>
 <li>ThreadLocal 作为属性 放到一个实现java.lang.AutoCloseable 接口类里，实现自动清理</li>

@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Spring启动时执行逻辑： Javax的@PostConstruct InitializingBean ApplicationListener @Bean和initMethod Spring Boot为CommanLineRunner Spring Boot ApplicationRunner  启动顺序： @Component @Scope(value = &amp;quot;prototype&amp;q">
+  <meta name="description" content="Spring启动时执行逻辑： Javax的@PostConstruct InitializingBean ApplicationListener @Bean和initMethod Spring Boot为CommanLineRunner Spring Boot ApplicationRunner  启动顺序： 1234567891011121314151617181920212223242526">
 <meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Bean添加启动逻辑">
 <meta property="og:url" content="https://kamafeel.github.io/2020/09/14/Spring-Bean添加启动逻辑/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="Spring启动时执行逻辑： Javax的@PostConstruct InitializingBean ApplicationListener @Bean和initMethod Spring Boot为CommanLineRunner Spring Boot ApplicationRunner  启动顺序： @Component @Scope(value = &amp;quot;prototype&amp;q">
+<meta property="og:description" content="Spring启动时执行逻辑： Javax的@PostConstruct InitializingBean ApplicationListener @Bean和initMethod Spring Boot为CommanLineRunner Spring Boot ApplicationRunner  启动顺序： 1234567891011121314151617181920212223242526">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:updated_time" content="2020-09-14T01:55:24.102Z">
+<meta property="og:updated_time" content="2020-09-16T09:05:00.590Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Bean添加启动逻辑">
-<meta name="twitter:description" content="Spring启动时执行逻辑： Javax的@PostConstruct InitializingBean ApplicationListener @Bean和initMethod Spring Boot为CommanLineRunner Spring Boot ApplicationRunner  启动顺序： @Component @Scope(value = &amp;quot;prototype&amp;q">
+<meta name="twitter:description" content="Spring启动时执行逻辑： Javax的@PostConstruct InitializingBean ApplicationListener @Bean和initMethod Spring Boot为CommanLineRunner Spring Boot ApplicationRunner  启动顺序： 1234567891011121314151617181920212223242526">
 
 
 
@@ -337,12 +337,24 @@
                 
               
 
-              <time title="Erstellt: 2020-09-14 09:34:55 / Geändert am: 09:55:24" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
+              <time title="Erstellt: 2020-09-14 09:34:55" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2020-09-16 17:05:00" itemprop="dateModified" datetime="2020-09-16T17:05:00+08:00">2020-09-16</time>
               
             
           </span>
@@ -411,36 +423,7 @@
 <li>Spring Boot ApplicationRunner</li>
 </ul>
 <p>启动顺序：</p>
-<pre><code>@Component
-@Scope(value = &quot;prototype&quot;)
-public class AllStrategiesExampleBean implements InitializingBean {
-
-private static final Logger LOG 
-  = Logger.getLogger(AllStrategiesExampleBean.class);
-
-public AllStrategiesExampleBean() {
-LOG.info(&quot;Constructor&quot;);
-}
-
-@Override
-public void afterPropertiesSet() throws Exception {
-LOG.info(&quot;InitializingBean&quot;);
-}
-
-@PostConstruct
-public void postConstruct() {
-LOG.info(&quot;PostConstruct&quot;);
-}
-
-public void init() {
-LOG.info(&quot;init-method&quot;);
-}
-}
-
-[main] INFO o.b.startup.AllStrategiesExampleBean - Constructor
-[main] INFO o.b.startup.AllStrategiesExampleBean - PostConstruct
-[main] INFO o.b.startup.AllStrategiesExampleBean - InitializingBean
-[main] INFO o.b.startup.AllStrategiesExampleBean - init-method</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Scope</span>(value = <span class="string">"prototype"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AllStrategiesExampleBean</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG </span><br><span class="line">  = Logger.getLogger(AllStrategiesExampleBean.class);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AllStrategiesExampleBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"Constructor"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"InitializingBean"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postConstruct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"init-method"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - Constructor</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - PostConstruct</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - InitializingBean</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - init-method</span><br></pre></td></tr></table></figure>
       
     </div>
 
