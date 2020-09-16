@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh_CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -97,13 +97,13 @@
 
 
   <meta name="description" content="类型 并发特性 其他    CountDownLatch 一般用于某个线程 A 等待若干个其他线程执行完任务之后，它才执行 不可复用   CyclicBarrier 般用于一组线程互相等待至某个状态，然后这一组线程再同时执行 可复用;方法更多   Semaphore 流控（资源并发控制）    Exchanger 用于线程间协作的工具类，用于两个线程间能够交换">
-<meta name="keywords" content="JAVA,多线程">
+<meta name="keywords" content="多线程,JAVA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程工具包">
 <meta property="og:url" content="https://kamafeel.github.io/2020/09/16/多线程工具包/index.html">
 <meta property="og:site_name" content="Kamafeel">
 <meta property="og:description" content="类型 并发特性 其他    CountDownLatch 一般用于某个线程 A 等待若干个其他线程执行完任务之后，它才执行 不可复用   CyclicBarrier 般用于一组线程互相等待至某个状态，然后这一组线程再同时执行 可复用;方法更多   Semaphore 流控（资源并发控制）    Exchanger 用于线程间协作的工具类，用于两个线程间能够交换">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:updated_time" content="2020-09-16T07:49:25.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程工具包">
@@ -166,7 +166,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
 
   
   
@@ -189,11 +189,15 @@
       </a>
     </div>
     
+      
+        <p class="site-subtitle">������,������;������,������,������,�ذ�</p>
+      
+    
     
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Navigationsleiste an/ausschalten">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -221,7 +225,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
 
   </li>
         
@@ -238,7 +242,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
 
@@ -326,14 +330,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-16 15:41:13 / 修改时间：15:49:25" itemprop="dateCreated datePublished" datetime="2020-09-16T15:41:13+08:00">2020-09-16</time>
+              <time title="Erstellt: 2020-09-16 15:41:13 / Geändert am: 15:49:25" itemprop="dateCreated datePublished" datetime="2020-09-16T15:41:13+08:00">2020-09-16</time>
             
 
             
@@ -352,14 +356,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -452,9 +456,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
-          
             <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
           
         </div>
       
@@ -476,6 +480,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/09/16/数据库事务/" rel="prev" title="数据库事务">
+                数据库事务 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -535,8 +543,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
-                    <span class="site-state-item-name">日志</span>
+                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -547,62 +555,60 @@
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
                     
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">Kategorien</span>
                   
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">24</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
                 </div>
               
 
@@ -612,56 +618,54 @@
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
                     
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">schlagwörter</span>
                   
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">21</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
                 </div>
               
             </nav>
@@ -713,7 +717,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 
@@ -721,7 +725,7 @@
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
 
 
 

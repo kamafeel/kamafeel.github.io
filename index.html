@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next pisces use-motion" lang="zh_CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -100,7 +100,7 @@
 <meta property="og:title" content="Kamafeel">
 <meta property="og:url" content="https://kamafeel.github.io/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kamafeel">
 
@@ -161,7 +161,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
 
   
   
@@ -185,11 +185,15 @@
       </a>
     </div>
     
+      
+        <p class="site-subtitle">������,������;������,������,������,�ذ�</p>
+      
+    
     
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button aria-label="Navigationsleiste an/ausschalten">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -217,7 +221,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
 
   </li>
         
@@ -234,7 +238,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
 
@@ -270,6 +274,181 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/16/数据库事务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/16/数据库事务/" class="post-title-link" itemprop="url">数据库事务</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2020-09-16 16:20:04 / Geändert am: 16:30:21" itemprop="dateCreated datePublished" datetime="2020-09-16T16:20:04+08:00">2020-09-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><strong>未提交读（READ UNCOMMITTED）</strong></p>
+<p>事务中的修改，即使没有提交，对其他事务也是可见的。</p>
+<p><strong>提交读（READ COMMITTED）</strong></p>
+<p>一个事务只能读取已经提交的事务所做的修改。换句话说，一个事务所做的修改在提交之前对其他事务是不可见的。</p>
+<p><strong>可重复读（REPEATABLE READ）</strong></p>
+<p>保证在同一个事务中多次读取同样数据的结果是一样的。</p>
+<p><strong>可串行化（SERIALIZABLE）</strong></p>
+<p>强制事务串行执行。需要加锁实现，而其它隔离级别通常不需要。</p>
+<p><strong>不可重复读,幻读</strong><br>不可重复读重点在于update和delete，而幻读的重点在于insert。<br>解决办法,select * from test where id=1 for update;(加锁)</p>
+<p>主流数据库基本都使用 Multi-version Concurrency Control (MVCC) 控制事务。</p>
+<p>PostgreSQL(事务回滚迅速),Oracle 提交读<br>MYSQL 可重复读</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000016566788" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016566788</a></li>
+<li><a href="https://juejin.im/post/6844903911623491592#heading-8" target="_blank" rel="noopener">https://juejin.im/post/6844903911623491592#heading-8</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -324,14 +503,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-16 15:41:13 / 修改时间：15:49:25" itemprop="dateCreated datePublished" datetime="2020-09-16T15:41:13+08:00">2020-09-16</time>
+              <time title="Erstellt: 2020-09-16 15:41:13 / Geändert am: 15:49:25" itemprop="dateCreated datePublished" datetime="2020-09-16T15:41:13+08:00">2020-09-16</time>
             
 
             
@@ -350,14 +529,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -520,14 +699,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-16 15:32:10 / 修改时间：15:35:49" itemprop="dateCreated datePublished" datetime="2020-09-16T15:32:10+08:00">2020-09-16</time>
+              <time title="Erstellt: 2020-09-16 15:32:10 / Geändert am: 15:35:49" itemprop="dateCreated datePublished" datetime="2020-09-16T15:32:10+08:00">2020-09-16</time>
             
 
             
@@ -546,14 +725,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -718,14 +897,14 @@ public String toString() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-16 15:16:45 / 修改时间：15:20:01" itemprop="dateCreated datePublished" datetime="2020-09-16T15:16:45+08:00">2020-09-16</time>
+              <time title="Erstellt: 2020-09-16 15:16:45 / Geändert am: 15:20:01" itemprop="dateCreated datePublished" datetime="2020-09-16T15:16:45+08:00">2020-09-16</time>
             
 
             
@@ -744,14 +923,14 @@ public String toString() {
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -896,14 +1075,14 @@ public String toString() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-15 20:47:11" itemprop="dateCreated datePublished" datetime="2020-09-15T20:47:11+08:00">2020-09-15</time>
+              <time title="Erstellt: 2020-09-15 20:47:11" itemprop="dateCreated datePublished" datetime="2020-09-15T20:47:11+08:00">2020-09-15</time>
             
 
             
@@ -918,9 +1097,9 @@ public String toString() {
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">更新于</span>
+                  <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="修改时间：2020-09-16 11:29:59" itemprop="dateModified" datetime="2020-09-16T11:29:59+08:00">2020-09-16</time>
+                <time title="Geändert am: 2020-09-16 11:29:59" itemprop="dateModified" datetime="2020-09-16T11:29:59+08:00">2020-09-16</time>
               
             
           </span>
@@ -934,14 +1113,14 @@ public String toString() {
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -1153,14 +1332,14 @@ public String toString() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-15 20:30:29 / 修改时间：20:33:57" itemprop="dateCreated datePublished" datetime="2020-09-15T20:30:29+08:00">2020-09-15</time>
+              <time title="Erstellt: 2020-09-15 20:30:29 / Geändert am: 20:33:57" itemprop="dateCreated datePublished" datetime="2020-09-15T20:30:29+08:00">2020-09-15</time>
             
 
             
@@ -1179,14 +1358,14 @@ public String toString() {
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -1329,14 +1508,14 @@ public String toString() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-15 18:29:52 / 修改时间：20:34:02" itemprop="dateCreated datePublished" datetime="2020-09-15T18:29:52+08:00">2020-09-15</time>
+              <time title="Erstellt: 2020-09-15 18:29:52 / Geändert am: 20:34:02" itemprop="dateCreated datePublished" datetime="2020-09-15T18:29:52+08:00">2020-09-15</time>
             
 
             
@@ -1355,14 +1534,14 @@ public String toString() {
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -1519,14 +1698,14 @@ public String toString() {
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-15 18:02:01 / 修改时间：18:29:18" itemprop="dateCreated datePublished" datetime="2020-09-15T18:02:01+08:00">2020-09-15</time>
+              <time title="Erstellt: 2020-09-15 18:02:01 / Geändert am: 18:29:18" itemprop="dateCreated datePublished" datetime="2020-09-15T18:02:01+08:00">2020-09-15</time>
             
 
             
@@ -1545,14 +1724,14 @@ public String toString() {
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -1772,14 +1951,14 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-14 17:56:51 / 修改时间：18:01:40" itemprop="dateCreated datePublished" datetime="2020-09-14T17:56:51+08:00">2020-09-14</time>
+              <time title="Erstellt: 2020-09-14 17:56:51 / Geändert am: 18:01:40" itemprop="dateCreated datePublished" datetime="2020-09-14T17:56:51+08:00">2020-09-14</time>
             
 
             
@@ -1798,14 +1977,14 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
 
                 
                 
-                  ，
+                  . 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/应用/" itemprop="url" rel="index"><span itemprop="name">应用</span></a></span>
@@ -1957,14 +2136,14 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="创建时间：2020-09-14 15:31:13 / 修改时间：15:51:20" itemprop="dateCreated datePublished" datetime="2020-09-14T15:31:13+08:00">2020-09-14</time>
+              <time title="Erstellt: 2020-09-14 15:31:13 / Geändert am: 15:51:20" itemprop="dateCreated datePublished" datetime="2020-09-14T15:31:13+08:00">2020-09-14</time>
             
 
             
@@ -1983,7 +2162,7 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">in</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
@@ -2069,205 +2248,11 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/MySQL数据结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/MySQL数据结构/" class="post-title-link" itemprop="url">MySQL数据结构</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 15:19:01 / 修改时间：18:06:06" itemprop="dateCreated datePublished" datetime="2020-09-14T15:19:01+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/原理/" itemprop="url" rel="index"><span itemprop="name">原理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
-<li>InnoDB 聚簇索引 数据和索引B+树存储在一起</li>
-</ul>
-<blockquote>
-<p>InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形</p>
-</blockquote>
-<ul>
-<li>MyISM 非聚簇索引 主键B+树在叶子节点存储指向真正数据行的指针，而非主键</li>
-</ul>
-<p><img src="/2020/09/14/MySQL数据结构/20141025120025957.png" alt="alt"></p>
-<ul>
-<li>辅助索引B+树中检索Name，到达其叶子节点获取对应的主键</li>
-</ul>
-<ul>
-<li>使用主键在主索引B+树种再执行一次B+树检索操作，最终到达叶子节点即可获取整行数据</li>
-</ul>
-<p>储存主键ID而不直接存储地址值，这样避免行移动或者数据页分裂时辅助索引的维护工作。</p>
-<p><img src="/2020/09/14/MySQL数据结构/20141025103804500.png" alt="alt"><br>Page结构 InnoDB存储的最基本构件（最小单位）<br>InnoDB最大64TB的存储容量（16Kib * 2^32 = 64Tib）</p>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>如果数据不更改，使用MyISM性能也不错，但是数据一点不变，为什么不用redis呢？</p>
-<p>MYSQL8 各方面超越5.7  如果新选择不要考虑5.7</p>
-<blockquote>
-<p>窗口函数</p>
-<p>多线程各方面性能</p>
-<p>降序索引 DESC</p>
-</blockquote>
-<p>主键不要使用uuid之类的，索引树的特性而要分裂、调整节点，十分低效。<br>辅助索引占用更多的空间，因为辅助索引保存主键的值。</p>
-<p>自适应哈希索引(Adaptive Hash Index, AHI) 有一些触发条件创建</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Nächste Seite"></i></a>
   </nav>
 
 
@@ -2309,8 +2294,8 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
-                    <span class="site-state-item-name">日志</span>
+                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -2321,62 +2306,60 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
                     
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">Kategorien</span>
                   
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">24</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
                 </div>
               
 
@@ -2386,56 +2369,54 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
                     
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">schlagwörter</span>
                   
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">21</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
                 </div>
               
             </nav>
@@ -2487,7 +2468,7 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 
@@ -2495,7 +2476,7 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
 
 
 
