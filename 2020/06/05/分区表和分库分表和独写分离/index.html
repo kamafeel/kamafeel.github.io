@@ -96,18 +96,20 @@
 
 
 
-  <meta name="description" content="由于分区表在MySQL Server层为一个表，因此： 1、DDL操作需要锁定所有分区，导致所有分区上操作都被阻塞。 2、当表数据量较小时，分区表和非分区表性能相近，分区表效果有限。 3、当表数据量较大时，对分区表进行DDL或其他运维操作难度大风险高。 4、分区表使用较少，存在未知风险多，BUG多BUG多BUG多，MySQL社区版本免费，横向扩展成&amp;gt; 本低，分库分表实现简单且中间件完善。">
+  <meta name="description" content="分区表 由于分区表在MySQL Server层为一个表，因此： 1、DDL操作需要锁定所有分区，导致所有分区上操作都被阻塞。 2、当表数据量较小时，分区表和非分区表性能相近，分区表效果有限。 3、当表数据量较大时，对分区表进行DDL或其他运维操作难度大风险高。 4、分区表使用较少，存在未知风险多，BUG多BUG多BUG多，MySQL社区版本免费，横向扩展成&amp;gt; 本低，分库分表实现简单且中间件完">
 <meta name="keywords" content="MYSQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分区表和分库分表">
-<meta property="og:url" content="https://kamafeel.github.io/2020/06/05/分区表-和分库分表/index.html">
+<meta property="og:title" content="分区表和分库分表和读写分离">
+<meta property="og:url" content="https://kamafeel.github.io/2020/06/05/分区表和分库分表和独写分离/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="由于分区表在MySQL Server层为一个表，因此： 1、DDL操作需要锁定所有分区，导致所有分区上操作都被阻塞。 2、当表数据量较小时，分区表和非分区表性能相近，分区表效果有限。 3、当表数据量较大时，对分区表进行DDL或其他运维操作难度大风险高。 4、分区表使用较少，存在未知风险多，BUG多BUG多BUG多，MySQL社区版本免费，横向扩展成&amp;gt; 本低，分库分表实现简单且中间件完善。">
+<meta property="og:description" content="分区表 由于分区表在MySQL Server层为一个表，因此： 1、DDL操作需要锁定所有分区，导致所有分区上操作都被阻塞。 2、当表数据量较小时，分区表和非分区表性能相近，分区表效果有限。 3、当表数据量较大时，对分区表进行DDL或其他运维操作难度大风险高。 4、分区表使用较少，存在未知风险多，BUG多BUG多BUG多，MySQL社区版本免费，横向扩展成&amp;gt; 本低，分库分表实现简单且中间件完">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-14T03:26:09.692Z">
+<meta property="og:image" content="https://kamafeel.github.io/2020/06/05/分区表和分库分表和独写分离/master-slave.png">
+<meta property="og:updated_time" content="2020-09-17T07:43:42.827Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分区表和分库分表">
-<meta name="twitter:description" content="由于分区表在MySQL Server层为一个表，因此： 1、DDL操作需要锁定所有分区，导致所有分区上操作都被阻塞。 2、当表数据量较小时，分区表和非分区表性能相近，分区表效果有限。 3、当表数据量较大时，对分区表进行DDL或其他运维操作难度大风险高。 4、分区表使用较少，存在未知风险多，BUG多BUG多BUG多，MySQL社区版本免费，横向扩展成&amp;gt; 本低，分库分表实现简单且中间件完善。">
+<meta name="twitter:title" content="分区表和分库分表和读写分离">
+<meta name="twitter:description" content="分区表 由于分区表在MySQL Server层为一个表，因此： 1、DDL操作需要锁定所有分区，导致所有分区上操作都被阻塞。 2、当表数据量较小时，分区表和非分区表性能相近，分区表效果有限。 3、当表数据量较大时，对分区表进行DDL或其他运维操作难度大风险高。 4、分区表使用较少，存在未知风险多，BUG多BUG多BUG多，MySQL社区版本免费，横向扩展成&amp;gt; 本低，分库分表实现简单且中间件完">
+<meta name="twitter:image" content="https://kamafeel.github.io/2020/06/05/分区表和分库分表和独写分离/master-slave.png">
 
 
 
@@ -115,7 +117,7 @@
 
   
   
-  <link rel="canonical" href="https://kamafeel.github.io/2020/06/05/分区表-和分库分表/">
+  <link rel="canonical" href="https://kamafeel.github.io/2020/06/05/分区表和分库分表和独写分离/">
 
 
 
@@ -125,7 +127,7 @@
   };
 </script>
 
-  <title>分区表和分库分表 | Kamafeel</title>
+  <title>分区表和分库分表和读写分离 | Kamafeel</title>
   
 
 
@@ -294,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/06/05/分区表-和分库分表/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/06/05/分区表和分库分表和独写分离/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -311,7 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分区表和分库分表
+          <h1 class="post-title" itemprop="name headline">分区表和分库分表和读写分离
 
               
             
@@ -354,7 +356,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-14 11:26:09" itemprop="dateModified" datetime="2020-09-14T11:26:09+08:00">2020-09-14</time>
+                <time title="修改时间：2020-09-17 15:43:42" itemprop="dateModified" datetime="2020-09-17T15:43:42+08:00">2020-09-17</time>
               
             
           </span>
@@ -413,7 +415,7 @@
       
 
       
-        <blockquote>
+        <h2 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h2><blockquote>
 <p>由于分区表在MySQL Server层为一个表，因此：</p>
 <p>1、DDL操作需要锁定所有分区，导致所有分区上操作都被阻塞。</p>
 <p>2、当表数据量较小时，分区表和非分区表性能相近，分区表效果有限。</p>
@@ -424,7 +426,12 @@
 <p>7、使用分库分表可以有效运维降低运维操作影响，对1亿数据量表做DDL操作需要谨慎评估，而&gt; 对10万数据量表做DDL操作可以默认其很快完成。</p>
 <p>8、使用分库分表可以有效减小宕机或其他故障影响，将数据分库分表到10套群集上，一套群集&gt; 发生故障仅影响业务的一成。</p>
 </blockquote>
-<p>分区表无法解决单库的性能瓶颈<br>分区表关联查询，很困难<br>不走分区健，将会导致所有分区性能下降<br>DDL操作风险大</p>
+<blockquote><p>分区表无法解决单库的性能瓶颈<br>分区表关联查询，很困难<br>不走分区健，将会导致所有分区性能下降<br>DDL操作风险大</p>
+</blockquote>
+
+<h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><p>sharding-jdbc</p>
+<h2 id="独写分离"><a href="#独写分离" class="headerlink" title="独写分离"></a>独写分离</h2><p><img src="/2020/06/05/分区表和分库分表和独写分离/master-slave.png" alt="alt"></p>
+<p>MYSQL双主,主从等<br>replication协议 的大数据量延迟很严重,需要特别注意。</p>
 
       
     </div>
@@ -520,8 +527,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -695,6 +711,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#分区表"><span class="nav-number">1.</span> <span class="nav-text">分区表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分库分表"><span class="nav-number">2.</span> <span class="nav-text">分库分表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#独写分离"><span class="nav-number">3.</span> <span class="nav-text">独写分离</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
