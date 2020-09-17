@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh_CN">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -100,7 +100,7 @@
 <meta property="og:title" content="Kamafeel">
 <meta property="og:url" content="https://kamafeel.github.io/page/2/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kamafeel">
 
@@ -161,7 +161,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh_CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -193,7 +193,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Navigationsleiste an/ausschalten">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -221,7 +221,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
         
@@ -238,7 +238,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
 
@@ -274,6 +274,171 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/数据库三大范式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/14/数据库三大范式/" class="post-title-link" itemprop="url">数据库三大范式</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-14 15:31:13 / 修改时间：15:51:20" itemprop="dateCreated datePublished" datetime="2020-09-14T15:31:13+08:00">2020-09-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>第一范式：数据表中的每一列（每个字段）必须是不可拆分的最小单元，也就是确保每一列的原子性；<strong>（用字段存JSON结构，是一种很操蛋的事情）</strong></li>
+<li>第二范式（2NF）：满足1NF后，要求表中的所有列，都必须依赖于主键，而不能有任何一列与主键没有关系，也就是说一个表只描述一件事情；<strong>（外键基本不会用）</strong></li>
+<li>第三范式：必须先满足第二范式（2NF），要求：表中的每一列只与主键直接相关而不是间接相关，（表中的每一列只能依赖于主键）；<strong>(总会建一些冗余字段)</strong></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -328,14 +493,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-14 15:19:01 / Geändert am: 18:06:06" itemprop="dateCreated datePublished" datetime="2020-09-14T15:19:01+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 15:19:01 / 修改时间：18:06:06" itemprop="dateCreated datePublished" datetime="2020-09-14T15:19:01+08:00">2020-09-14</time>
             
 
             
@@ -354,14 +519,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
 
                 
                 
-                  . 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/原理/" itemprop="url" rel="index"><span itemprop="name">原理</span></a></span>
@@ -522,14 +687,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-14 11:12:13 / Geändert am: 11:15:47" itemprop="dateCreated datePublished" datetime="2020-09-14T11:12:13+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 11:12:13 / 修改时间：11:15:47" itemprop="dateCreated datePublished" datetime="2020-09-14T11:12:13+08:00">2020-09-14</time>
             
 
             
@@ -548,14 +713,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
 
                 
                 
-                  . 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
@@ -704,14 +869,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-14 09:34:55" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 09:34:55" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
             
 
             
@@ -726,9 +891,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Geändert am: 2020-09-16 17:05:00" itemprop="dateModified" datetime="2020-09-16T17:05:00+08:00">2020-09-16</time>
+                <time title="修改时间：2020-09-16 17:05:00" itemprop="dateModified" datetime="2020-09-16T17:05:00+08:00">2020-09-16</time>
               
             
           </span>
@@ -742,14 +907,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
 
                 
                 
-                  . 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
@@ -893,14 +1058,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-14 09:30:46" itemprop="dateCreated datePublished" datetime="2020-09-14T09:30:46+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 09:30:46" itemprop="dateCreated datePublished" datetime="2020-09-14T09:30:46+08:00">2020-09-14</time>
             
 
             
@@ -915,9 +1080,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Geändert am: 2020-09-16 17:05:16" itemprop="dateModified" datetime="2020-09-16T17:05:16+08:00">2020-09-16</time>
+                <time title="修改时间：2020-09-16 17:05:16" itemprop="dateModified" datetime="2020-09-16T17:05:16+08:00">2020-09-16</time>
               
             
           </span>
@@ -931,14 +1096,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  . 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
@@ -1080,14 +1245,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-14 09:28:26 / Geändert am: 09:56:11" itemprop="dateCreated datePublished" datetime="2020-09-14T09:28:26+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 09:28:26 / 修改时间：09:56:11" itemprop="dateCreated datePublished" datetime="2020-09-14T09:28:26+08:00">2020-09-14</time>
             
 
             
@@ -1106,14 +1271,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
 
                 
                 
-                  . 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
@@ -1254,14 +1419,14 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-14 09:27:25 / Geändert am: 09:56:35" itemprop="dateCreated datePublished" datetime="2020-09-14T09:27:25+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-14 09:27:25 / 修改时间：09:56:35" itemprop="dateCreated datePublished" datetime="2020-09-14T09:27:25+08:00">2020-09-14</time>
             
 
             
@@ -1280,14 +1445,14 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
 
                 
                 
-                  . 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/源码解读/" itemprop="url" rel="index"><span itemprop="name">源码解读</span></a></span>
@@ -1433,14 +1598,14 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-12 17:49:40" itemprop="dateCreated datePublished" datetime="2020-09-12T17:49:40+08:00">2020-09-12</time>
+              <time title="创建时间：2020-09-12 17:49:40" itemprop="dateCreated datePublished" datetime="2020-09-12T17:49:40+08:00">2020-09-12</time>
             
 
             
@@ -1571,14 +1736,14 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-12 17:49:30" itemprop="dateCreated datePublished" datetime="2020-09-12T17:49:30+08:00">2020-09-12</time>
+              <time title="创建时间：2020-09-12 17:49:30" itemprop="dateCreated datePublished" datetime="2020-09-12T17:49:30+08:00">2020-09-12</time>
             
 
             
@@ -1593,9 +1758,9 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Geändert am: 2020-09-14 09:53:43" itemprop="dateModified" datetime="2020-09-14T09:53:43+08:00">2020-09-14</time>
+                <time title="修改时间：2020-09-14 09:53:43" itemprop="dateModified" datetime="2020-09-14T09:53:43+08:00">2020-09-14</time>
               
             
           </span>
@@ -1609,14 +1774,14 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
 
                 
                 
-                  . 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/散列表/" itemprop="url" rel="index"><span itemprop="name">散列表</span></a></span>
@@ -1780,14 +1945,14 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2020-09-12 17:49:23" itemprop="dateCreated datePublished" datetime="2020-09-12T17:49:23+08:00">2020-09-12</time>
+              <time title="创建时间：2020-09-12 17:49:23" itemprop="dateCreated datePublished" datetime="2020-09-12T17:49:23+08:00">2020-09-12</time>
             
 
             
@@ -1802,9 +1967,9 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Bearbeitet am</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Geändert am: 2020-09-14 20:52:56" itemprop="dateModified" datetime="2020-09-14T20:52:56+08:00">2020-09-14</time>
+                <time title="修改时间：2020-09-14 20:52:56" itemprop="dateModified" datetime="2020-09-14T20:52:56+08:00">2020-09-14</time>
               
             
           </span>
@@ -1818,14 +1983,14 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">in</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
 
                 
                 
-                  . 
+                  ，
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/队列/" itemprop="url" rel="index"><span itemprop="name">队列</span></a></span>
@@ -1951,190 +2116,11 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/12/数据结构-链表/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/12/数据结构-链表/" class="post-title-link" itemprop="url">数据结构-链表</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Erstellt: 2020-09-12 17:49:10" itemprop="dateCreated datePublished" datetime="2020-09-12T17:49:10+08:00">2020-09-12</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Bearbeitet am</span>
-                
-                <time title="Geändert am: 2020-09-14 09:39:08" itemprop="dateModified" datetime="2020-09-14T09:39:08+08:00">2020-09-14</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">in</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a></span>
-
-                
-                
-                  . 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据结构/链表/" itemprop="url" rel="index"><span itemprop="name">链表</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Vorherige Seite"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Nächste Seite"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2176,8 +2162,8 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">66</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -2239,8 +2225,10 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
-                    <span class="site-state-item-name">Kategorien</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">分类</span>
                   
                 </div>
               
@@ -2296,8 +2284,10 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
-                    <span class="site-state-item-name">schlagwörter</span>
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">标签</span>
                   
                 </div>
               
@@ -2350,7 +2340,7 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
@@ -2358,7 +2348,7 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
 
 
 
-  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.2</div>
 
 
 
