@@ -96,15 +96,18 @@
 
 
 
-  <meta name="keywords" content="JVM,调优">
+  <meta name="description" content="GC的注意事项Java 具有四种强度不同的引用类型对垃圾回收的影响。注意try括号的资源回收 https://www.pdai.tech/md/java/jvm/java-jvm-gc.html OOM处理流程-XX:+HeapDumpOutofMemoryEror Eclipse Memory Analyzer（MAT） 分析Heap DUmp文件 https://www.jianshu.com">
+<meta name="keywords" content="JVM,调优">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM参数,定位,调优,工具">
 <meta property="og:url" content="https://kamafeel.github.io/2020/09/18/JVM参数-定位-调优-工具/index.html">
 <meta property="og:site_name" content="Kamafeel">
+<meta property="og:description" content="GC的注意事项Java 具有四种强度不同的引用类型对垃圾回收的影响。注意try括号的资源回收 https://www.pdai.tech/md/java/jvm/java-jvm-gc.html OOM处理流程-XX:+HeapDumpOutofMemoryEror Eclipse Memory Analyzer（MAT） 分析Heap DUmp文件 https://www.jianshu.com">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-18T08:39:23.873Z">
+<meta property="og:updated_time" content="2020-09-18T12:47:54.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM参数,定位,调优,工具">
+<meta name="twitter:description" content="GC的注意事项Java 具有四种强度不同的引用类型对垃圾回收的影响。注意try括号的资源回收 https://www.pdai.tech/md/java/jvm/java-jvm-gc.html OOM处理流程-XX:+HeapDumpOutofMemoryEror Eclipse Memory Analyzer（MAT） 分析Heap DUmp文件 https://www.jianshu.com">
 
 
 
@@ -334,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2020-09-18 16:37:53 / 修改时间：16:39:23" itemprop="dateCreated datePublished" datetime="2020-09-18T16:37:53+08:00">2020-09-18</time>
+              <time title="创建时间：2020-09-18 16:37:53 / 修改时间：20:47:54" itemprop="dateCreated datePublished" datetime="2020-09-18T16:37:53+08:00">2020-09-18</time>
             
 
             
@@ -398,7 +401,16 @@
       
 
       
-        
+        <h2 id="GC的注意事项"><a href="#GC的注意事项" class="headerlink" title="GC的注意事项"></a>GC的注意事项</h2><p>Java 具有四种强度不同的引用类型对垃圾回收的影响。<br>注意try括号的资源回收</p>
+<p><a href="https://www.pdai.tech/md/java/jvm/java-jvm-gc.html" target="_blank" rel="noopener">https://www.pdai.tech/md/java/jvm/java-jvm-gc.html</a></p>
+<h2 id="OOM处理流程"><a href="#OOM处理流程" class="headerlink" title="OOM处理流程"></a>OOM处理流程</h2><p>-XX:+HeapDumpOutofMemoryEror</p>
+<p>Eclipse Memory Analyzer（MAT） 分析Heap DUmp文件</p>
+<p><a href="https://www.jianshu.com/p/c34af977ade1" target="_blank" rel="noopener">https://www.jianshu.com/p/c34af977ade1</a></p>
+<p>运行缓慢<br>jstack,jmap</p>
+<p><a href="https://www.pdai.tech/md/java/jvm/java-jvm-debug-tools-list.html" target="_blank" rel="noopener">https://www.pdai.tech/md/java/jvm/java-jvm-debug-tools-list.html</a></p>
+<p>动态调试<br>Arthas<br>javaAgent(JVM的AOP) Java Instrumentation API来编写Agent</p>
+<p><a href="https://www.pdai.tech/md/java/jvm/java-jvm-agent-arthas.html" target="_blank" rel="noopener">https://www.pdai.tech/md/java/jvm/java-jvm-agent-arthas.html</a></p>
+
       
     </div>
 
@@ -449,6 +461,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2020/09/18/DevOps/" rel="prev" title="DevOps">
+                DevOps <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -491,8 +507,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -507,7 +532,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -584,7 +609,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -659,7 +686,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -686,6 +715,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#GC的注意事项"><span class="nav-number">1.</span> <span class="nav-text">GC的注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OOM处理流程"><span class="nav-number">2.</span> <span class="nav-text">OOM处理流程</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
