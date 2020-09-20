@@ -96,24 +96,18 @@
 
 
 
-  <meta name="description" content="使用场景日志分析、时序分析、全文检索,大数据的一些聚合查询 基本原理底层 Lucene 高效的信息检索,利用倒排索引,存储使用LSM数据模型  ES 读Elasticsearch查询的时候需要查询所有Shard ES 写 内存模型FST 倒排索引 占据了绝大部分堆内内存（优化到堆外存储） 题外话Lucene 没有更新的概念。ES 并不适合高频率更新文档操作,会导致效率极低。插入数据如果带ID，也会">
-<meta name="keywords" content="ES">
+  <meta name="description" content="依赖注入与控制反转基本概念依赖注入：对于spring而言，将自己置身于spring的立场上去看，当调用方需要某一个类的时候我就为你提供这个类的实例，就是说spring负责将被依赖的这个对象赋值给调用方，那么就相当于我为调用方注入了这样的一个实例。从这方面来看是依赖注入。 控制反转：对于调用方来说，通常情况下是我主动的去创建的，也就是对于这个对象而言我是控制方，我有他产生与否的权力，但是，现在变了，">
+<meta name="keywords" content="Spring">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ElasticSearch">
-<meta property="og:url" content="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/index.html">
+<meta property="og:title" content="Spring依赖注入控制反转">
+<meta property="og:url" content="https://kamafeel.github.io/2020/09/20/Spring依赖注入控制反转/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="使用场景日志分析、时序分析、全文检索,大数据的一些聚合查询 基本原理底层 Lucene 高效的信息检索,利用倒排索引,存储使用LSM数据模型  ES 读Elasticsearch查询的时候需要查询所有Shard ES 写 内存模型FST 倒排索引 占据了绝大部分堆内内存（优化到堆外存储） 题外话Lucene 没有更新的概念。ES 并不适合高频率更新文档操作,会导致效率极低。插入数据如果带ID，也会">
+<meta property="og:description" content="依赖注入与控制反转基本概念依赖注入：对于spring而言，将自己置身于spring的立场上去看，当调用方需要某一个类的时候我就为你提供这个类的实例，就是说spring负责将被依赖的这个对象赋值给调用方，那么就相当于我为调用方注入了这样的一个实例。从这方面来看是依赖注入。 控制反转：对于调用方来说，通常情况下是我主动的去创建的，也就是对于这个对象而言我是控制方，我有他产生与否的权力，但是，现在变了，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/dp_index.jpg">
-<meta property="og:image" content="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/m.jpg">
-<meta property="og:image" content="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/lsm_tree.png">
-<meta property="og:image" content="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/w.png">
-<meta property="og:image" content="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/fst.png">
-<meta property="og:updated_time" content="2020-09-14T03:15:47.209Z">
+<meta property="og:updated_time" content="2020-09-20T03:41:47.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ElasticSearch">
-<meta name="twitter:description" content="使用场景日志分析、时序分析、全文检索,大数据的一些聚合查询 基本原理底层 Lucene 高效的信息检索,利用倒排索引,存储使用LSM数据模型  ES 读Elasticsearch查询的时候需要查询所有Shard ES 写 内存模型FST 倒排索引 占据了绝大部分堆内内存（优化到堆外存储） 题外话Lucene 没有更新的概念。ES 并不适合高频率更新文档操作,会导致效率极低。插入数据如果带ID，也会">
-<meta name="twitter:image" content="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/dp_index.jpg">
+<meta name="twitter:title" content="Spring依赖注入控制反转">
+<meta name="twitter:description" content="依赖注入与控制反转基本概念依赖注入：对于spring而言，将自己置身于spring的立场上去看，当调用方需要某一个类的时候我就为你提供这个类的实例，就是说spring负责将被依赖的这个对象赋值给调用方，那么就相当于我为调用方注入了这样的一个实例。从这方面来看是依赖注入。 控制反转：对于调用方来说，通常情况下是我主动的去创建的，也就是对于这个对象而言我是控制方，我有他产生与否的权力，但是，现在变了，">
 
 
 
@@ -121,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/">
+  <link rel="canonical" href="https://kamafeel.github.io/2020/09/20/Spring依赖注入控制反转/">
 
 
 
@@ -131,7 +125,7 @@
   };
 </script>
 
-  <title>ElasticSearch | Kamafeel</title>
+  <title>Spring依赖注入控制反转 | Kamafeel</title>
   
 
 
@@ -300,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/20/Spring依赖注入控制反转/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -317,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">ElasticSearch
+          <h1 class="post-title" itemprop="name headline">Spring依赖注入控制反转
 
               
             
@@ -343,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2020-09-14 11:12:13 / 修改时间：11:15:47" itemprop="dateCreated datePublished" datetime="2020-09-14T11:12:13+08:00">2020-09-14</time>
+              <time title="创建时间：2020-09-20 11:23:14 / 修改时间：11:41:47" itemprop="dateCreated datePublished" datetime="2020-09-20T11:23:14+08:00">2020-09-20</time>
             
 
             
@@ -365,14 +359,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
 
                 
                 
@@ -407,21 +401,23 @@
       
 
       
-        <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>日志分析、时序分析、全文检索,大数据的一些聚合查询</p>
-<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>底层 Lucene 高效的信息检索,利用倒排索引,存储使用LSM数据模型</p>
-<p><img src="/2020/09/14/ElasticSearch-0/dp_index.jpg" alt="alt"><br><img src="/2020/09/14/ElasticSearch-0/m.jpg" alt="alt"><br><img src="/2020/09/14/ElasticSearch-0/lsm_tree.png" alt="alt"></p>
-<h2 id="ES-读"><a href="#ES-读" class="headerlink" title="ES 读"></a>ES 读</h2><p>Elasticsearch查询的时候需要查询所有Shard</p>
-<h2 id="ES-写"><a href="#ES-写" class="headerlink" title="ES 写"></a>ES 写</h2><p><img src="/2020/09/14/ElasticSearch-0/w.png" alt="alt"></p>
-<h2 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h2><p>FST 倒排索引 占据了绝大部分堆内内存（优化到堆外存储）<br><img src="/2020/09/14/ElasticSearch-0/fst.png" alt="alt"></p>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>Lucene 没有更新的概念。ES 并不适合高频率更新文档操作,会导致效率极低。<br>插入数据如果带ID，也会导致类UPDATE操作，效率降低至少1倍。</p>
-<h2 id="各类资料"><a href="#各类资料" class="headerlink" title="各类资料"></a>各类资料</h2><p>各个版本基本描述文档：<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.5/getting-started.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/6.5/getting-started.html</a></p>
-<p>文档汇总：<br><a href="https://www.elastic.co/guide/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/index.html</a></p>
-<p>官方中文：<br><a href="https://www.elastic.co/guide/cn/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/cn/index.html</a></p>
-<p>JavaAPI<br><a href="https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html</a></p>
-<p>JAVA 客户端API<br><a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.5/java-rest-high-put-template.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.5/java-rest-high-put-template.html</a></p>
-<p>底层进阶：<br><a href="https://cloud.tencent.com/developer/article/1626250" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1626250</a><br><a href="https://cloud.tencent.com/developer/column/2428" target="_blank" rel="noopener">https://cloud.tencent.com/developer/column/2428</a></p>
-<p>日常阅读：<br><a href="https://elasticsearch.cn/article/" target="_blank" rel="noopener">https://elasticsearch.cn/article/</a></p>
-<p>plugin 模式开发<br><a href="https://www.cnblogs.com/wangnanhui/articles/10413066.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangnanhui/articles/10413066.html</a><br><a href="https://github.com/wangnanhui/elastic-plugin-test" target="_blank" rel="noopener">https://github.com/wangnanhui/elastic-plugin-test</a></p>
+        <h2 id="依赖注入与控制反转基本概念"><a href="#依赖注入与控制反转基本概念" class="headerlink" title="依赖注入与控制反转基本概念"></a>依赖注入与控制反转基本概念</h2><blockquote><p>依赖注入：对于spring而言，将自己置身于spring的立场上去看，当调用方需要某一个类的时候我就为你提供这个类的实例，就是说spring负责将被依赖的这个对象赋值给调用方，那么就相当于我为调用方注入了这样的一个实例。从这方面来看是依赖注入。</p>
+<p>控制反转：对于调用方来说，通常情况下是我主动的去创建的，也就是对于这个对象而言我是控制方，我有他产生与否的权力，但是，现在变了，现在变为spring来创建对象的实例，而我被动的接受，从这一点上看，是控制反转。</p>
+<p><strong>避免使用方,NEW 调用对象</strong></p>
+</blockquote>
+
+<h2 id="注入方式"><a href="#注入方式" class="headerlink" title="注入方式"></a>注入方式</h2><blockquote><p>1.field注入</p>
+<p>2.构造器注入<br>（1）.IOC容器启动会严格检查,构造函数为空的参数会报错,脱离IOC使用会无法注入属性。<br>（2）.避免构造方法中使用属性，NPE异常<br>   Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
+<p>3.setter注入</p>
+</blockquote>
+
+
+<h2 id="springboot-注入"><a href="#springboot-注入" class="headerlink" title="springboot 注入"></a>springboot 注入</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConstructorBinding</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"tom"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TomProperties</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> String country;</span><br><span class="line">    <span class="keyword">private</span> Date entryTime;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TomProperties</span><span class="params">(String name,</span></span></span><br><span class="line"><span class="function"><span class="params">                         String sex,</span></span></span><br><span class="line"><span class="function"><span class="params">                         <span class="keyword">int</span> age,</span></span></span><br><span class="line"><span class="function"><span class="params">                         @DefaultValue(<span class="string">"China"</span>)</span> String country,</span></span><br><span class="line"><span class="function">                         @<span class="title">DateTimeFormat</span><span class="params">(pattern = <span class="string">"yyyy-MM-dd HH:mm:ss"</span>)</span> Date entryTime) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        <span class="keyword">this</span>.country = country;</span><br><span class="line">        <span class="keyword">this</span>.entryTime = entryTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCountry</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> country;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">getEntryTime</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> entryTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"TomProperties&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", sex='"</span> + sex + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">", country='"</span> + country + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", entryTime="</span> + entryTime +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tom:</span><br><span class="line">  name: Tom</span><br><span class="line">  sex: man</span><br><span class="line">  age: 18</span><br><span class="line">  entry-time: 2012-12-12 12:00:00</span><br></pre></td></tr></table></figure>
+
+
+<p>@ConstructorBinding 这个注解，就标识这个类的参数优先通过带参数的构造器注入，如果没有带参数的构造器则再通过 setters 注入<br>不支持 @Component、@Bean、@Import 等方式创建 bean 的构造器参数绑定</p>
 
       
     </div>
@@ -448,7 +444,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/ES/" rel="tag"># ES</a>
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
           
         </div>
       
@@ -461,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/14/Spring-Bean添加启动逻辑/" rel="next" title="Spring Bean添加启动逻辑">
-                <i class="fa fa-chevron-left"></i> Spring Bean添加启动逻辑
+              <a href="/2020/09/19/Autowired-Qualifier和-Resource/" rel="next" title="@Autowired@Qualifier和@Resource">
+                <i class="fa fa-chevron-left"></i> @Autowired@Qualifier和@Resource
               </a>
             
           </div>
@@ -470,10 +466,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/09/14/MySQL数据结构/" rel="prev" title="MySQL数据结构">
-                MySQL数据结构 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -752,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">1.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本原理"><span class="nav-number">2.</span> <span class="nav-text">基本原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES-读"><span class="nav-number">3.</span> <span class="nav-text">ES 读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES-写"><span class="nav-number">4.</span> <span class="nav-text">ES 写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存模型"><span class="nav-number">5.</span> <span class="nav-text">内存模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题外话"><span class="nav-number">6.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#各类资料"><span class="nav-number">7.</span> <span class="nav-text">各类资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#依赖注入与控制反转基本概念"><span class="nav-number">1.</span> <span class="nav-text">依赖注入与控制反转基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注入方式"><span class="nav-number">2.</span> <span class="nav-text">注入方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#springboot-注入"><span class="nav-number">3.</span> <span class="nav-text">springboot 注入</span></a></li></ol></div>
             
 
           </div>
