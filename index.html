@@ -290,6 +290,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/20/UML箭头/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/20/UML箭头/" class="post-title-link" itemprop="url">UML箭头</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-20 20:01:09 / 修改时间：20:04:34" itemprop="dateCreated datePublished" datetime="2020-09-20T20:01:09+08:00">2020-09-20</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>UML描述类关系</p>
+<p><img src="/2020/09/20/UML箭头/20160204110518135.png" alt="alt"></p>
+<blockquote><p>1、关联：类之间的一种关系，如学生和老师。<br>代码中的表示：<br>class Student{<br>private Teacher mTeacher;<br>} 
+class Teacher{<br>}</p>
+<p>2、双向关联：和关联一样，不过它是两个方向的，如学生和老师，老师和学生，双向关系。<br>代码中表示：<br>class Student{<br>private Teacher mTeacher;<br>} 
+clsass Teacher{<br>private Student mStuent;<br>}</p>
+<p>3、聚合：整体和部分的关系，has-a的关系，如汽车拥有引擎。通常是通过构造函数或者setter赋值进去的。<br>代码中表示：<br>class Car{<br>private Engine mEngine;<br>public void setEngine(Engine e){<br>mEngine = e;<br>} 
+}</p>
+<p>4、组合：整体和部分的关系，is-a的关系，如手是人体的一分部。通常是在构造函数的时候，通过new创建出来。<br>代码中的表示：<br>class People{<br>private Hand mHand;<br>public People(){<br>mHand = new Hand();<br>} 
+}</p>
+<p>5、依赖：是使用的关系，例如汽车使用喇叭来鸣笛，调用汽车鸣笛的方法时，就依赖于喇叭鸣笛方法。<br>代码中表示：<br>class Car{<br>private Horn mHorn;<br>public void whistle(){<br>mHorn.whistle();<br>}</p>
+<p>6、继承：<br>7、实现接口：</p>
+</blockquote>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/20/程序员职业规划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1865,188 +2046,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/18/ForkJoin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/18/ForkJoin/" class="post-title-link" itemprop="url">ForkJoin</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-18 11:08:23 / 修改时间：16:35:03" itemprop="dateCreated datePublished" datetime="2020-09-18T11:08:23+08:00">2020-09-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h2><blockquote><p>核心思想: 分治算法<br>核心思想: work-stealing(工作窃取)算法</p>
-<p>WorkQueue双端队列<br>任务对象: ForkJoinTask (包括RecursiveTask、RecursiveAction 和 CountedCompleter)<br>执行Fork/Join任务的线程: ForkJoinWorkerThread<br>线程池: ForkJoinPool</p>
-</blockquote>
-
-<h2 id="Fork-Join-框架的执行流程"><a href="#Fork-Join-框架的执行流程" class="headerlink" title="Fork/Join 框架的执行流程"></a>Fork/Join 框架的执行流程</h2><p><img src="/2020/09/18/ForkJoin/java-thread-x-forkjoin-5.png" alt="alt"></p>
-<h2 id="实际运用"><a href="#实际运用" class="headerlink" title="实际运用"></a>实际运用</h2><p>注意顺序f1.fork()，f2.fork()， f2.join()，f1.join()<br>invokeAll()，不用太关系顺序</p>
-<p>JDK源码中的运用：</p>
-<p><strong>特别注意IO密集型,容易导致全局ForkJoinPool.common阻塞。</strong></p>
-<p>Arrays.parallel**();</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">default</span> Stream&lt;E&gt; <span class="title">parallelStream</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> StreamSupport.stream(spliterator(), <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置全局并行流并发线程数</span></span><br><span class="line">System.setProperty(<span class="string">"java.util.concurrent.ForkJoinPool.common.parallelism"</span>, <span class="string">"12"</span>);</span><br><span class="line">System.out.println(ForkJoinPool.getCommonPoolParallelism());<span class="comment">// 输出 12</span></span><br><span class="line">System.setProperty(<span class="string">"java.util.concurrent.ForkJoinPool.common.parallelism"</span>, <span class="string">"20"</span>);</span><br><span class="line">System.out.println(ForkJoinPool.getCommonPoolParallelism());<span class="comment">// 输出 12</span></span><br></pre></td></tr></table></figure>
-
-
-<p><a href="https://www.pdai.tech/md/java/thread/java-thread-x-juc-executor-ForkJoinPool.html" target="_blank" rel="noopener">https://www.pdai.tech/md/java/thread/java-thread-x-juc-executor-ForkJoinPool.html</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2093,7 +2092,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2265,7 +2264,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
