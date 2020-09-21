@@ -1373,12 +1373,24 @@
                 
               
 
-              <time title="创建时间：2020-09-17 10:38:20 / 修改时间：11:06:25" itemprop="dateCreated datePublished" datetime="2020-09-17T10:38:20+08:00">2020-09-17</time>
+              <time title="创建时间：2020-09-17 10:38:20" itemprop="dateCreated datePublished" datetime="2020-09-17T10:38:20+08:00">2020-09-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-21 20:56:02" itemprop="dateModified" datetime="2020-09-21T20:56:02+08:00">2020-09-21</time>
               
             
           </span>
@@ -1465,6 +1477,9 @@
 
 <p><a href="https://segmentfault.com/a/1190000021637869" target="_blank" rel="noopener">https://segmentfault.com/a/1190000021637869</a></p>
 <p><a href="http://www.jiangxinlingdu.com/concurrent/2019/02/16/java-memory-model.html" target="_blank" rel="noopener">http://www.jiangxinlingdu.com/concurrent/2019/02/16/java-memory-model.html</a></p>
+<h2 id="堆heap-和-栈stack"><a href="#堆heap-和-栈stack" class="headerlink" title="堆heap  和 栈stack"></a>堆heap  和 栈stack</h2><p><img src="/2020/09/17/Java内存模型/20200921204649.png" alt="alt"></p>
+<p>注意stack会出现StackOverflowError<br>线程栈的空间大小-Xss 默认是1M</p>
+<p>单纯是增加 -Xss 一般都没用 需要检查是否存在递归无限调用,导致线程栈空间不足</p>
 
           
         
