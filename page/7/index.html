@@ -290,6 +290,202 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/06/05/分区表和分库分表和独写分离/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/05/分区表和分库分表和独写分离/" class="post-title-link" itemprop="url">分区表和分库分表和读写分离</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-05 11:30:36" itemprop="dateCreated datePublished" datetime="2020-06-05T11:30:36+08:00">2020-06-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-17 15:43:42" itemprop="dateModified" datetime="2020-09-17T15:43:42+08:00">2020-09-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/分表/" itemprop="url" rel="index"><span itemprop="name">分表</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h2><blockquote>
+<p>由于分区表在MySQL Server层为一个表，因此：</p>
+<p>1、DDL操作需要锁定所有分区，导致所有分区上操作都被阻塞。</p>
+<p>2、当表数据量较小时，分区表和非分区表性能相近，分区表效果有限。</p>
+<p>3、当表数据量较大时，对分区表进行DDL或其他运维操作难度大风险高。</p>
+<p>4、分区表使用较少，存在未知风险多，BUG多BUG多BUG多，MySQL社区版本免费，横向扩展成&gt; 本低，分库分表实现简单且中间件完善。</p>
+<p>5、当单台服务器性能无法满足时，对分区表进行分拆的成本较高，而分库分表能很容易实现横&gt; 向分拆。</p>
+<p>6、当分区表操作不当导致访问所有分区时，会导致严重的性能问题，而分库分表操作不当仅影&gt; 响访问的表。</p>
+<p>7、使用分库分表可以有效运维降低运维操作影响，对1亿数据量表做DDL操作需要谨慎评估，而&gt; 对10万数据量表做DDL操作可以默认其很快完成。</p>
+<p>8、使用分库分表可以有效减小宕机或其他故障影响，将数据分库分表到10套群集上，一套群集&gt; 发生故障仅影响业务的一成。</p>
+</blockquote>
+<blockquote><p>分区表无法解决单库的性能瓶颈<br>分区表关联查询，很困难<br>不走分区健，将会导致所有分区性能下降<br>DDL操作风险大</p>
+</blockquote>
+
+<h2 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a>分库分表</h2><p>sharding-jdbc</p>
+<h2 id="独写分离"><a href="#独写分离" class="headerlink" title="独写分离"></a>独写分离</h2><p><img src="/2020/06/05/分区表和分库分表和独写分离/master-slave.png" alt="alt"></p>
+<p>MYSQL双主,主从等<br>replication协议 的大数据量延迟很严重,需要特别注意。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/06/04/设计模式-代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1789,177 +1985,6 @@ select id ,title from collect where vtype=1 limit 90000,10;--慢</code></pre><p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/04/16/Java-函数编程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/04/16/Java-函数编程/" class="post-title-link" itemprop="url">Java 函数编程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-04-16 14:48:46" itemprop="dateCreated datePublished" datetime="2020-04-16T14:48:46+08:00">2020-04-16</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-06-09 11:30:01" itemprop="dateModified" datetime="2020-06-09T11:30:01+08:00">2020-06-09</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/2020/04/16/Java-函数编程/20200416144742.png" alt="alt"></p>
-<p>@FunctionalInterface</p>
-<pre><code>import java.text.DecimalFormat;
-import java.util.Arrays;
-import java.util.function.Function;
-
-@FunctionalInterface
-interface Interface1 {
-    int doubleNum(int i);
-
-    default int add(int x, int y) {
-        return x + y;
-    }
-
-    static int sub(int x, int y) {
-        return x - y;
-    }
-}</code></pre>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2006,7 +2031,7 @@ interface Interface1 {
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">92</span>
+                    <span class="site-state-item-count">93</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2196,7 +2221,9 @@ interface Interface1 {
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
