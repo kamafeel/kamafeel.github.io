@@ -290,6 +290,389 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/17/Java内存模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/17/Java内存模型/" class="post-title-link" itemprop="url">Java内存模型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-17 10:38:20" itemprop="dateCreated datePublished" datetime="2020-09-17T10:38:20+08:00">2020-09-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-21 20:56:02" itemprop="dateModified" datetime="2020-09-21T20:56:02+08:00">2020-09-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/JMM/" itemprop="url" rel="index"><span itemprop="name">JMM</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote><p>Java Memory Model and Thread Specification<br>JMM是和线程相关的规范,JMM主要解决多线程环境下，线程之间的通信。</p>
+</blockquote>
+
+<p>多线程环境下，CPU Cache和主内存之间数据不一致问题。<br><img src="/2020/09/17/Java内存模型/3662680330-5e268264c7b95_articlex.png" alt="alt"></p>
+<p>JMM的角色：</p>
+<blockquote><p>JMM管理的程序变量，主要是指在对象实例字段、静态字段、构成数组字段的元素等，不包括<strong>方法参数、方法局部变量等保存在栈里的变量</strong>，因为栈本身就是线程私有的，并不存在线程一致性问题</p>
+</blockquote>
+
+<p><img src="/2020/09/17/Java内存模型/3353129696-5e2718ce1bbdc_articlex.png" alt="alt"></p>
+<h2 id="指令重排（Reordering）"><a href="#指令重排（Reordering）" class="headerlink" title="指令重排（Reordering）"></a>指令重排（Reordering）</h2><blockquote><p>编译器指令的重排<br>编译器在不改变单线程程序语义的前提下，可以重新调整语句的执行顺序 </p>
+<p>处理器指令级并行的重排<br>现代处理器采用了指令级并行技术来将多条指令重叠执行。如果不存在数据依赖性，处理器可以改变语句对应机器指令的执行顺序 </p>
+<p>内存系统的重排<br>由于处理器使用缓存和读/写缓冲区，这使得主内存和工作内存间的数据加载和存储操作看上去可能是在乱序执行的</p>
+</blockquote>
+
+<p>JMM的编译器重排序规则会禁止volatile变量、synchronized、final等特定指令的编译器重排序</p>
+<h2 id="Happens-before规则"><a href="#Happens-before规则" class="headerlink" title="Happens-before规则"></a>Happens-before规则</h2><blockquote><p>程序顺序规则：一个线程中的每个操作，happens-before于该线程中的任意后续操作。<br>监视器锁规则：对一个锁的解锁，happens-before于随后对这个锁的加锁。<br>volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。<br>传递性：如果A happens-before B，且B happens-before C，那么A happens-before C。<br>start()规则：如果线程A执行操作ThreadB.start()（启动线程B），那么A线程的ThreadB.start()操作happens-before于线程B中的任意操作。<br>join()规则：如果线程A执行操作ThreadB.join()并成功返回，那么线程B中的任意操作happens-before于线程A从ThreadB.join()操作成功返回。<br>程序中断规则：对线程interrupted()方法的调用先行于被中断线程的代码检测到中断时间的发生。<br>对象finalize规则：一个对象的初始化完成（构造函数执行结束）先行于发生它的finalize()方法的开始。</p>
+</blockquote>
+
+
+<h2 id="顺序一致性的解决方案："><a href="#顺序一致性的解决方案：" class="headerlink" title="顺序一致性的解决方案："></a>顺序一致性的解决方案：</h2><blockquote><p>volatile变量<br>注意变量+1这种,非原子操作,属于read,load,use,需要自行使用synchronized/Reentrantlock进行同步,或者直接使用tomicInteger之类的。</p>
+<p>synchronized关键字</p>
+<p>final关键字</p>
+</blockquote>
+
+<p><a href="https://segmentfault.com/a/1190000021637869" target="_blank" rel="noopener">https://segmentfault.com/a/1190000021637869</a></p>
+<p><a href="http://www.jiangxinlingdu.com/concurrent/2019/02/16/java-memory-model.html" target="_blank" rel="noopener">http://www.jiangxinlingdu.com/concurrent/2019/02/16/java-memory-model.html</a></p>
+<h2 id="堆heap-和-栈stack"><a href="#堆heap-和-栈stack" class="headerlink" title="堆heap  和 栈stack"></a>堆heap  和 栈stack</h2><p><img src="/2020/09/17/Java内存模型/20200921204649.png" alt="alt"></p>
+<p>注意stack会出现StackOverflowError<br>线程栈的空间大小-Xss 默认是1M</p>
+<p>单纯是增加 -Xss 一般都没用 需要检查是否存在递归无限调用,导致线程栈空间不足</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/16/数据库事务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/16/数据库事务/" class="post-title-link" itemprop="url">数据库事务</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-16 16:20:04 / 修改时间：16:30:21" itemprop="dateCreated datePublished" datetime="2020-09-16T16:20:04+08:00">2020-09-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><strong>未提交读（READ UNCOMMITTED）</strong></p>
+<p>事务中的修改，即使没有提交，对其他事务也是可见的。</p>
+<p><strong>提交读（READ COMMITTED）</strong></p>
+<p>一个事务只能读取已经提交的事务所做的修改。换句话说，一个事务所做的修改在提交之前对其他事务是不可见的。</p>
+<p><strong>可重复读（REPEATABLE READ）</strong></p>
+<p>保证在同一个事务中多次读取同样数据的结果是一样的。</p>
+<p><strong>可串行化（SERIALIZABLE）</strong></p>
+<p>强制事务串行执行。需要加锁实现，而其它隔离级别通常不需要。</p>
+<p><strong>不可重复读,幻读</strong><br>不可重复读重点在于update和delete，而幻读的重点在于insert。<br>解决办法,select * from test where id=1 for update;(加锁)</p>
+<p>主流数据库基本都使用 Multi-version Concurrency Control (MVCC) 控制事务。</p>
+<p>PostgreSQL(事务回滚迅速),Oracle 提交读<br>MYSQL 可重复读</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000016566788" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016566788</a></li>
+<li><a href="https://juejin.im/post/6844903911623491592#heading-8" target="_blank" rel="noopener">https://juejin.im/post/6844903911623491592#heading-8</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/16/多线程工具包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1878,370 +2261,11 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/数据库三大范式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/数据库三大范式/" class="post-title-link" itemprop="url">数据库三大范式</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 15:31:13 / 修改时间：15:51:20" itemprop="dateCreated datePublished" datetime="2020-09-14T15:31:13+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>第一范式：数据表中的每一列（每个字段）必须是不可拆分的最小单元，也就是确保每一列的原子性；<strong>（用字段存JSON结构，是一种很操蛋的事情）</strong></li>
-<li>第二范式（2NF）：满足1NF后，要求表中的所有列，都必须依赖于主键，而不能有任何一列与主键没有关系，也就是说一个表只描述一件事情；<strong>（外键基本不会用）</strong></li>
-<li>第三范式：必须先满足第二范式（2NF），要求：表中的每一列只与主键直接相关而不是间接相关，（表中的每一列只能依赖于主键）；<strong>(总会建一些冗余字段)</strong></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/MySQL数据结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/MySQL数据结构/" class="post-title-link" itemprop="url">MySQL数据结构</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 15:19:01 / 修改时间：18:06:06" itemprop="dateCreated datePublished" datetime="2020-09-14T15:19:01+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/MYSQL/原理/" itemprop="url" rel="index"><span itemprop="name">原理</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
-<li>InnoDB 聚簇索引 数据和索引B+树存储在一起</li>
-</ul>
-<blockquote>
-<p>InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形</p>
-</blockquote>
-<ul>
-<li>MyISM 非聚簇索引 主键B+树在叶子节点存储指向真正数据行的指针，而非主键</li>
-</ul>
-<p><img src="/2020/09/14/MySQL数据结构/20141025120025957.png" alt="alt"></p>
-<ul>
-<li>辅助索引B+树中检索Name，到达其叶子节点获取对应的主键</li>
-</ul>
-<ul>
-<li>使用主键在主索引B+树种再执行一次B+树检索操作，最终到达叶子节点即可获取整行数据</li>
-</ul>
-<p>储存主键ID而不直接存储地址值，这样避免行移动或者数据页分裂时辅助索引的维护工作。</p>
-<p><img src="/2020/09/14/MySQL数据结构/20141025103804500.png" alt="alt"><br>Page结构 InnoDB存储的最基本构件（最小单位）<br>InnoDB最大64TB的存储容量（16Kib * 2^32 = 64Tib）</p>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>如果数据不更改，使用MyISM性能也不错，但是数据一点不变，为什么不用redis呢？</p>
-<p>MYSQL8 各方面超越5.7  如果新选择不要考虑5.7</p>
-<blockquote>
-<p>窗口函数</p>
-<p>多线程各方面性能</p>
-<p>降序索引 DESC</p>
-</blockquote>
-<p>主键不要使用uuid之类的，索引树的特性而要分裂、调整节点，十分低效。<br>辅助索引占用更多的空间，因为辅助索引保存主键的值。</p>
-<p>自适应哈希索引(Adaptive Hash Index, AHI) 有一些触发条件创建</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2283,7 +2307,7 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">93</span>
+                    <span class="site-state-item-count">90</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2378,7 +2402,17 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2475,7 +2509,15 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                     
                       
                     
-                    <span class="site-state-item-count">40</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

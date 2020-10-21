@@ -96,14 +96,18 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="BIO,NIO,AIO">
-<meta property="og:url" content="https://kamafeel.github.io/2020/03/30/BIO-NIO-AIO/index.html">
+  <meta name="description" content="需要注意父类属性需要注意默认值的处理@Builder.Default声明，注解在需要默认值">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="慎用lombok的@Builder">
+<meta property="og:url" content="https://kamafeel.github.io/2020/10/21/慎用lombok的-Builder/index.html">
 <meta property="og:site_name" content="Kamafeel">
+<meta property="og:description" content="需要注意父类属性需要注意默认值的处理@Builder.Default声明，注解在需要默认值">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-30T07:53:35.803Z">
+<meta property="og:updated_time" content="2020-10-21T07:04:26.688Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BIO,NIO,AIO">
+<meta name="twitter:title" content="慎用lombok的@Builder">
+<meta name="twitter:description" content="需要注意父类属性需要注意默认值的处理@Builder.Default声明，注解在需要默认值">
 
 
 
@@ -111,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://kamafeel.github.io/2020/03/30/BIO-NIO-AIO/">
+  <link rel="canonical" href="https://kamafeel.github.io/2020/10/21/慎用lombok的-Builder/">
 
 
 
@@ -121,7 +125,7 @@
   };
 </script>
 
-  <title>BIO,NIO,AIO | Kamafeel</title>
+  <title>慎用lombok的@Builder | Kamafeel</title>
   
 
 
@@ -290,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/03/30/BIO-NIO-AIO/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/21/慎用lombok的-Builder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -307,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">BIO,NIO,AIO
+          <h1 class="post-title" itemprop="name headline">慎用lombok的@Builder
 
               
             
@@ -333,12 +337,41 @@
                 
               
 
-              <time title="创建时间：2020-03-30 15:53:35" itemprop="dateCreated datePublished" datetime="2020-03-30T15:53:35+08:00">2020-03-30</time>
+              <time title="创建时间：2020-10-21 14:59:20 / 修改时间：15:04:26" itemprop="dateCreated datePublished" datetime="2020-10-21T14:59:20+08:00">2020-10-21</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -368,7 +401,8 @@
       
 
       
-        
+        <h2 id="需要注意父类属性"><a href="#需要注意父类属性" class="headerlink" title="需要注意父类属性"></a>需要注意父类属性</h2><h2 id="需要注意默认值的处理"><a href="#需要注意默认值的处理" class="headerlink" title="需要注意默认值的处理"></a>需要注意默认值的处理</h2><p>@Builder.Default声明，注解在需要默认值</p>
+
       
     </div>
 
@@ -389,6 +423,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+        </div>
+      
 
       
       
@@ -398,8 +441,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/26/OpenResty/" rel="next" title="OpenResty">
-                <i class="fa fa-chevron-left"></i> OpenResty
+              <a href="/2020/10/19/守护线程/" rel="next" title="守护线程">
+                <i class="fa fa-chevron-left"></i> 守护线程
               </a>
             
           </div>
@@ -407,10 +450,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/14/纠正完美主义陷阱/" rel="prev" title="纠正完美主义陷阱">
-                纠正完美主义陷阱 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -454,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -470,7 +518,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">93</span>
+                    <span class="site-state-item-count">90</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -565,7 +613,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">39</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -662,7 +720,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">40</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">44</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -689,6 +755,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要注意父类属性"><span class="nav-number">1.</span> <span class="nav-text">需要注意父类属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需要注意默认值的处理"><span class="nav-number">2.</span> <span class="nav-text">需要注意默认值的处理</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
