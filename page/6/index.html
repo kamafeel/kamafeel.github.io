@@ -290,6 +290,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/Try括号代码逻辑/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/14/Try括号代码逻辑/" class="post-title-link" itemprop="url">Try括号代码逻辑</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-14 09:30:46" itemprop="dateCreated datePublished" datetime="2020-09-14T09:30:46+08:00">2020-09-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-18 18:20:21" itemprop="dateModified" datetime="2020-09-18T18:20:21+08:00">2020-09-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (</span><br><span class="line">    InputStream fis = <span class="keyword">new</span> FileInputStream(source);</span><br><span class="line">    OutputStream fos = <span class="keyword">new</span> FileOutputStream(target)</span><br><span class="line"> )&#123;</span><br><span class="line">    <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">8192</span>];</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">while</span> ((i = fis.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">        fos.write(buf, <span class="number">0</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>try括号内的资源会在try语句结束后自动释放，前提是这些可关闭的资源必须实现 java.lang.AutoCloseable 接口。</li>
+<li>InputStream 和OutputStream 父类中一定实现了AutoCloseable接口</li>
+<li>ThreadLocal 作为属性 放到一个实现java.lang.AutoCloseable 接口类里，实现自动清理</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/parallelStream/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1970,184 +2157,6 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/11/docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/11/docker/" class="post-title-link" itemprop="url">未命名</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-11 21:00:15" itemprop="dateCreated datePublished" datetime="2020-09-11T21:00:15+08:00">2020-09-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-07-30 09:43:27" itemprop="dateModified" datetime="2020-07-30T09:43:27+08:00">2020-07-30</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>docker<br>安装注意：<br>docker私有网络和宿主机网络</p>
-<p>/etc/firewalld/zones/public.xml</p>
-<p>ifconfig查看docker网络IP段</p>
-<p>firewall-cmd –permanent –zone=public –add-rich-rule=’rule family=ipv4 source address=172.17.0.0/16 accept’<br>firewall-cmd –reload</p>
-<p>容器/镜像基本操作：</p>
-<p>docker ps -a<br>docker ps -q<br>docker stop/kill/restart/start/rm  容器名/ID</p>
-<p>docker rmi 镜像名/ID</p>
-<p>容器和宿主机文件传输：<br>docker cp /opt/test/file.txt mycontainer:/opt/testnew/<br>docker cp mycontainer:/opt/testnew/file.txt /opt/test/</p>
-<p>容器是否运行，均可执行。</p>
-<p>容器观察/操作<br>docker exec -it 6d27dee87595 /bin/bash<br>docker exec -it mysqldock bash<br>docker logs    -f 容器名/ID</p>
-<p>#查看容器启动详情<br>docker inspect container</p>
-<p>容器启动：<br>docker run -itd -p 5601:5601 -v /home/zq/es/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml docker.elastic.co/kibana/kibana:7.8.0</p>
-<p>-d<br>后台运行</p>
-<p>数据挂载：<br>分为三种，volume, bind mount和tmpfs</p>
-<p>tmpfs 宿主机内存<br>bind mount 宿主机文件系统上的文件路径映射到容器中<br>volume docker直接管理 （docker volume 命令删除）</p>
-<p>-v -p : 前面为宿主机，后面为容器</p>
-<p>docker mysql的导入导出</p>
-<p>#拷贝容器mysql数据到宿主机<br>docker cp mysqldock:/var/lib/mysql /var/own/mysqldata</p>
-<p>#映射宿主机目录到容器（可以直接使用volume方式,一串长ID）<br>docker run -v /var/own/mysqldata:/var/lib/mysql –name mysqlnew -d mysql</p>
-<p>#共享其他容器的volume，使用–volumes-from参数<br>docker run –name mysqlvolumn2 –volumes-from mysqldock -d mysql</p>
-<p>#Docker - 实现本地镜像的导出、导入（export、import、save、load）<br>export 模式导出的镜像<br>docker run 需要指定 command</p>
-<p>save的不会</p>
-<p>#杂项<br>完整展示<br>docker ps -a –no-trunc</p>
-<p>磁盘空间占用<br>docker system df<br><a href="https://www.jianshu.com/p/7aeafe2ea792" target="_blank" rel="noopener">https://www.jianshu.com/p/7aeafe2ea792</a><br><a href="https://www.jianshu.com/p/54e7bcc9f147" target="_blank" rel="noopener">https://www.jianshu.com/p/54e7bcc9f147</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2194,7 +2203,7 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">97</span>
+                    <span class="site-state-item-count">98</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
