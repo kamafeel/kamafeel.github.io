@@ -335,7 +335,7 @@
                 
               
 
-              <time title="创建时间：2020-10-26 15:36:48 / 修改时间：15:50:26" itemprop="dateCreated datePublished" datetime="2020-10-26T15:36:48+08:00">2020-10-26</time>
+              <time title="创建时间：2020-10-26 15:36:48 / 修改时间：15:52:55" itemprop="dateCreated datePublished" datetime="2020-10-26T15:36:48+08:00">2020-10-26</time>
             
 
             
@@ -412,7 +412,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack pid |grep tid</span><br></pre></td></tr></table></figure>
 
 
-<p>4.jstat查看进程内存状况<br>jstat -gcutil</p>
+<p>4.已经确定是GC导致，通过jstat查看进程内存状况<br>jstat -gcutil</p>
 <p><img src="/2020/10/26/排查JAVA进程CPU占用过高/20201026154630.png" alt="alt"></p>
 <p>5.jstack 和 jmap 分析进程堆栈和内存状况<br>使用jmap命令导出heapdump文件，然后拿到本地使用jvisualvm.exe分析。(eclipse Mat)</p>
 <p>命令: jmap [option] vmid<br>jmap -dump:format=b,file=dump.bin 6764</p>
@@ -420,7 +420,8 @@
 </blockquote>
 
 
-<h2 id="方式2"><a href="#方式2" class="headerlink" title="方式2"></a>方式2</h2><blockquote><p>使用以下命令确定受影响的服务器进程的进程ID（PID）：<br>$ jps -v<br>确定步骤1中标识的PID中的哪个线程正在消耗CPU：<br>在Unix®和Linux®系统上，可以使用top命令：<br>$ top -n 1 -H -p [pid]<br>将[pid]替换为受影响进程的进程ID。<br>在Solaris®上，可以使用prstat命令：<br>$ prstat -L -p [pid]<br>将[pid]替换为受影响进程的进程ID。<br>在Microsoft®Windows®上，您可以使用过程监视器。<br>这些命令都提供一个输出，列出选定进程中的所有线程以及各种详细信息，包括CPU使用率百分比。例如，top命令给出类似于以下的输出：<br>任务：总共152次，0次跑步，152次睡眠，0次停止，0个僵尸<br>Cpu：2.0％us，1.4％sy，0.0％ni，94.7％id，0.8％wa，0.0％hi，1.1％si，0.0％st<br>内存：总计5008484k，已使用4854428k，免费154056k，缓冲区85624k<br>掉期：总5013496k，已使用6516k，免费5006980k，已缓存3393948k<br>PID用户PR NI VIRT RES SHR S％CPU％MEM TIME +命令<br>8706用户.1 20 0 2433m 561m 10m R 32.0 11.5 0：35.45 java<br>8624 user.1 20 0 2433m 561m 10m S 0.0 11.5 0：00.01 java<br>8625 user.1 20 0 2433m 561m 10m S 0.0 11.5 0：10.12 java<br>8626 user.1 20 0 2433m 561m 10m S 0.0 11.5 0：35.60 java<br>8627 user.1 20 0 2433m 561m 10m S 0.0 11.5 0：00.01 java<br>8628用户.1 20 0 2433m 561m 10m S 0.0 11.5 0：00.02 java<br>在此示例中，我们可以看到线程ID 8706正在消耗32％的CPU。<br>使用以下命令之一为步骤1中标识的PID生成堆栈跟踪：<br> jstack 命令：<br>$ jstack [PID]&gt; jstack-output.txt<br>kill -3命令（仅适用于Unix®和Linux®系统），可以始终产生更好的结果：<br>$ kill -3 [pid]<br>kill -3命令将堆栈跟踪输出到定向标准输出的日志文件（通常是错误日志文件）。kill -3命令不会停止正在运行的进程。输出堆栈跟踪后，它将继续运行。<br>将在步骤2中确定为有问题的线程ID转换为十六进制值。在我们的示例输出中，线程ID十进制值8706转换为十六进制值2202。<br>使用grep在堆栈跟踪输出中搜索此十六进制值。您正在寻找与此十六进制值匹配的线程nid：<br>$ cat jstack-output.txt | grep -i 2202<br>此命令提供类似于以下的输出：<br>“并发标记扫描GC线程” prio = 10 tid = 0x00007f1448029800 nid = 0x2202可运行<br>在此示例中，我们可以看到问题是垃圾收集器（GC）线程，这表明GC的调整不正确。</p>
+<h2 id="方式2"><a href="#方式2" class="headerlink" title="方式2"></a>方式2</h2><blockquote><p>使用以下命令确定受影响的服务器进程的进程ID（PID）：<br>$ jps -v<br>确定步骤1中标识的PID中的哪个线程正在消耗CPU：<br>在Unix®和Linux®系统上，可以使用top命令：<br>$ top -n 1 -H -p [pid]<br>将[pid]替换为受影响进程的进程ID。</p>
+<p>使用以下命令之一为步骤1中标识的PID生成堆栈跟踪：<br> jstack 命令：<br>$ jstack [PID]&gt; jstack-output.txt<br>kill -3命令（仅适用于Unix®和Linux®系统），可以始终产生更好的结果：<br>$ kill -3 [pid]<br>kill -3命令将堆栈跟踪输出到定向标准输出的日志文件（通常是错误日志文件）。kill -3命令不会停止正在运行的进程。输出堆栈跟踪后，它将继续运行。<br>将在步骤2中确定为有问题的线程ID转换为十六进制值。在我们的示例输出中，线程ID十进制值8706转换为十六进制值2202。<br>使用grep在堆栈跟踪输出中搜索此十六进制值。您正在寻找与此十六进制值匹配的线程nid：<br>$ cat jstack-output.txt | grep -i 2202<br>此命令提供类似于以下的输出：<br>“并发标记扫描GC线程” prio = 10 tid = 0x00007f1448029800 nid = 0x2202可运行<br>在此示例中，我们可以看到问题是垃圾收集器（GC）线程，这表明GC的调整不正确。</p>
 </blockquote>
           
         
