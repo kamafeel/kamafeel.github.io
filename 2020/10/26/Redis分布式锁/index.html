@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="PostgreSQL在处理海量数据集，复杂查询和读写操作时速度更快。MySQL使用只读命令的速度更快PostgreSQL自带集群,已经比较好PostgreSQL的插件真的很多,很牛逼GIS之类,请选择PostgreSQL如果需要从Oracle切换,选择PostgreSQL如果一般运用,选择MYSQL MYSQL8+ PostgreSQL10+ 功能基本无差别窗口函数,WITH表达式,申明式分区,全">
-<meta name="keywords" content="MYSQL,PostgreSQL">
+  <meta name="description" content="使用规范 1.加锁必须释放锁 2.和数据集事务@Transaction 一起使用需要注意，手动操作事务开启，提交，回滚，避免2个时间相互影响。 https://segmentfault.com/a/1190000022734691 3.尽量使用redission,避免重复造轮子 4.现在SpringBoot2 默认使用lettuce 需要参照redission，使用lua和和加锁后的“看门狗”模式">
+<meta name="keywords" content="分布式锁">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MYSQL VS PostgreSQL">
-<meta property="og:url" content="https://kamafeel.github.io/2020/09/17/MYSQL-VS-PostgreSQL/index.html">
+<meta property="og:title" content="Redis分布式锁">
+<meta property="og:url" content="https://kamafeel.github.io/2020/10/26/Redis分布式锁/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="PostgreSQL在处理海量数据集，复杂查询和读写操作时速度更快。MySQL使用只读命令的速度更快PostgreSQL自带集群,已经比较好PostgreSQL的插件真的很多,很牛逼GIS之类,请选择PostgreSQL如果需要从Oracle切换,选择PostgreSQL如果一般运用,选择MYSQL MYSQL8+ PostgreSQL10+ 功能基本无差别窗口函数,WITH表达式,申明式分区,全">
+<meta property="og:description" content="使用规范 1.加锁必须释放锁 2.和数据集事务@Transaction 一起使用需要注意，手动操作事务开启，提交，回滚，避免2个时间相互影响。 https://segmentfault.com/a/1190000022734691 3.尽量使用redission,避免重复造轮子 4.现在SpringBoot2 默认使用lettuce 需要参照redission，使用lua和和加锁后的“看门狗”模式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-17T11:30:12.840Z">
+<meta property="og:updated_time" content="2020-10-26T09:19:15.431Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MYSQL VS PostgreSQL">
-<meta name="twitter:description" content="PostgreSQL在处理海量数据集，复杂查询和读写操作时速度更快。MySQL使用只读命令的速度更快PostgreSQL自带集群,已经比较好PostgreSQL的插件真的很多,很牛逼GIS之类,请选择PostgreSQL如果需要从Oracle切换,选择PostgreSQL如果一般运用,选择MYSQL MYSQL8+ PostgreSQL10+ 功能基本无差别窗口函数,WITH表达式,申明式分区,全">
+<meta name="twitter:title" content="Redis分布式锁">
+<meta name="twitter:description" content="使用规范 1.加锁必须释放锁 2.和数据集事务@Transaction 一起使用需要注意，手动操作事务开启，提交，回滚，避免2个时间相互影响。 https://segmentfault.com/a/1190000022734691 3.尽量使用redission,避免重复造轮子 4.现在SpringBoot2 默认使用lettuce 需要参照redission，使用lua和和加锁后的“看门狗”模式">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://kamafeel.github.io/2020/09/17/MYSQL-VS-PostgreSQL/">
+  <link rel="canonical" href="https://kamafeel.github.io/2020/10/26/Redis分布式锁/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>MYSQL VS PostgreSQL | Kamafeel</title>
+  <title>Redis分布式锁 | Kamafeel</title>
   
 
 
@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/17/MYSQL-VS-PostgreSQL/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/26/Redis分布式锁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -311,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MYSQL VS PostgreSQL
+          <h1 class="post-title" itemprop="name headline">Redis分布式锁
 
               
             
@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2020-09-17 16:56:19 / 修改时间：19:30:12" itemprop="dateCreated datePublished" datetime="2020-09-17T16:56:19+08:00">2020-09-17</time>
+              <time title="创建时间：2020-10-26 17:07:18 / 修改时间：17:19:15" itemprop="dateCreated datePublished" datetime="2020-10-26T17:07:18+08:00">2020-10-26</time>
             
 
             
@@ -359,14 +359,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/PostgreSQL/" itemprop="url" rel="index"><span itemprop="name">PostgreSQL</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a></span>
 
                 
                 
@@ -401,15 +401,13 @@
       
 
       
-        <blockquote><p>PostgreSQL在处理海量数据集，复杂查询和读写操作时速度更快。<br>MySQL使用只读命令的速度更快<br>PostgreSQL自带集群,已经比较好<br>PostgreSQL的插件真的很多,很牛逼<br>GIS之类,请选择PostgreSQL<br>如果需要从Oracle切换,选择PostgreSQL<br>如果一般运用,选择MYSQL</p>
-<p>MYSQL8+ PostgreSQL10+ 功能基本无差别<br>窗口函数,WITH表达式,申明式分区,全文检索</p>
+        <p>使用规范</p>
+<blockquote><p>1.加锁必须释放锁</p>
+<p>2.和数据集事务@Transaction 一起使用<br>需要注意，手动操作事务开启，提交，回滚，避免2个时间相互影响。</p>
+<p><a href="https://segmentfault.com/a/1190000022734691" target="_blank" rel="noopener">https://segmentfault.com/a/1190000022734691</a></p>
+<p>3.尽量使用redission,避免重复造轮子</p>
+<p>4.现在SpringBoot2 默认使用lettuce 需要参照redission，使用lua和和加锁后的“看门狗”模式。<br><a href="https://juejin.im/post/6844903798125641741" target="_blank" rel="noopener">https://juejin.im/post/6844903798125641741</a></p>
 </blockquote>
-
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>PostgreSQL 区分大小写</p>
-<p><a href="https://www.jianshu.com/p/1c8b4bb02eec?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/1c8b4bb02eec?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
-<p><a href="https://github.com/digoal/blog" target="_blank" rel="noopener">https://github.com/digoal/blog</a></p>
-<p><a href="https://developer.aliyun.com/article/98539" target="_blank" rel="noopener">https://developer.aliyun.com/article/98539</a></p>
-
       
     </div>
 
@@ -435,9 +433,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/MYSQL/" rel="tag"># MYSQL</a>
-          
-            <a href="/tags/PostgreSQL/" rel="tag"># PostgreSQL</a>
+            <a href="/tags/分布式锁/" rel="tag"># 分布式锁</a>
           
         </div>
       
@@ -450,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/17/MYSQL优化建议/" rel="next" title="MYSQL优化建议">
-                <i class="fa fa-chevron-left"></i> MYSQL优化建议
+              <a href="/2020/10/26/zookeeper原理/" rel="next" title="zookeeper原理">
+                <i class="fa fa-chevron-left"></i> zookeeper原理
               </a>
             
           </div>
@@ -459,10 +455,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/09/17/PostgreSQL开发/" rel="prev" title="PostgreSQL开发">
-                PostgreSQL开发 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -506,17 +498,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -780,23 +763,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题外话"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       

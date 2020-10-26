@@ -96,19 +96,19 @@
 
 
 
-  <meta name="description" content="内部角色 https://cloud.tencent.com/developer/article/1633533 特色总结属于CP 不能保障A 写操作一定是 FIFO Channel ，先进先出。选举时，存在致命服务不可用问题。 适合强一致性读多，写少场景。">
+  <meta name="description" content="内部角色 https://cloud.tencent.com/developer/article/1633533 特色总结属于CP 不能保障A 写操作一定是 FIFO Channel ，先进先出。选举时，存在致命服务不可用问题。 适合强一致性读多，写少场景。比如强一致性的分布式锁，比redis集群的分布式锁一致性好。">
 <meta name="keywords" content="Zookeeper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="zookeeper原理">
 <meta property="og:url" content="https://kamafeel.github.io/2020/10/26/zookeeper原理/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="内部角色 https://cloud.tencent.com/developer/article/1633533 特色总结属于CP 不能保障A 写操作一定是 FIFO Channel ，先进先出。选举时，存在致命服务不可用问题。 适合强一致性读多，写少场景。">
+<meta property="og:description" content="内部角色 https://cloud.tencent.com/developer/article/1633533 特色总结属于CP 不能保障A 写操作一定是 FIFO Channel ，先进先出。选举时，存在致命服务不可用问题。 适合强一致性读多，写少场景。比如强一致性的分布式锁，比redis集群的分布式锁一致性好。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://kamafeel.github.io/2020/10/26/zookeeper原理/20201026163851.png">
-<meta property="og:updated_time" content="2020-10-26T08:43:12.395Z">
+<meta property="og:updated_time" content="2020-10-26T08:44:30.308Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zookeeper原理">
-<meta name="twitter:description" content="内部角色 https://cloud.tencent.com/developer/article/1633533 特色总结属于CP 不能保障A 写操作一定是 FIFO Channel ，先进先出。选举时，存在致命服务不可用问题。 适合强一致性读多，写少场景。">
+<meta name="twitter:description" content="内部角色 https://cloud.tencent.com/developer/article/1633533 特色总结属于CP 不能保障A 写操作一定是 FIFO Channel ，先进先出。选举时，存在致命服务不可用问题。 适合强一致性读多，写少场景。比如强一致性的分布式锁，比redis集群的分布式锁一致性好。">
 <meta name="twitter:image" content="https://kamafeel.github.io/2020/10/26/zookeeper原理/20201026163851.png">
 
 
@@ -339,7 +339,7 @@
                 
               
 
-              <time title="创建时间：2020-10-26 16:35:52 / 修改时间：16:43:12" itemprop="dateCreated datePublished" datetime="2020-10-26T16:35:52+08:00">2020-10-26</time>
+              <time title="创建时间：2020-10-26 16:35:52 / 修改时间：16:44:30" itemprop="dateCreated datePublished" datetime="2020-10-26T16:35:52+08:00">2020-10-26</time>
             
 
             
@@ -408,7 +408,7 @@
 <h2 id="特色总结"><a href="#特色总结" class="headerlink" title="特色总结"></a>特色总结</h2><blockquote><p>属于CP</p>
 <p>不能保障A</p>
 <p>写操作一定是 FIFO Channel ，先进先出。<br>选举时，存在致命服务不可用问题。</p>
-<p>适合强一致性读多，写少场景。</p>
+<p>适合强一致性读多，写少场景。比如强一致性的分布式锁，比redis集群的分布式锁一致性好。</p>
 </blockquote>
 
 
@@ -459,6 +459,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/26/Redis分布式锁/" rel="prev" title="Redis分布式锁">
+                Redis分布式锁 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -527,7 +531,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">96</span>
+                    <span class="site-state-item-count">97</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -747,7 +751,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">47</span>
+                      
+                    
+                    <span class="site-state-item-count">48</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
