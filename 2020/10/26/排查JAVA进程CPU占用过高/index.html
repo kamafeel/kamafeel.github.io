@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://kamafeel.github.io/2020/10/26/排查JAVA进程CPU占用过高/n2z0n3ob9j.jpeg">
 <meta property="og:image" content="https://kamafeel.github.io/2020/10/26/排查JAVA进程CPU占用过高/20201026154630.png">
-<meta property="og:updated_time" content="2020-10-26T07:52:55.617Z">
+<meta property="og:updated_time" content="2020-10-26T07:56:55.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排查JAVA进程CPU占用过高">
 <meta name="twitter:description" content="方式11.top看下us：用户空间占用CPU的百分比sy：内核空间占用CPU的百分比 2.查看进程内线程运行状态 1ps -mp 进程ID -o THREAD,tid,time  3.到dump文件核查转换16进制 1printf &amp;quot;%x\n&amp;quot; 6766  jstack命令打印线程堆栈信息 1jstack pid |grep tid   4.已经确定是GC导致，通过jstat查">
@@ -340,7 +340,7 @@
                 
               
 
-              <time title="创建时间：2020-10-26 15:36:48 / 修改时间：15:52:55" itemprop="dateCreated datePublished" datetime="2020-10-26T15:36:48+08:00">2020-10-26</time>
+              <time title="创建时间：2020-10-26 15:36:48 / 修改时间：15:56:55" itemprop="dateCreated datePublished" datetime="2020-10-26T15:36:48+08:00">2020-10-26</time>
             
 
             
@@ -424,7 +424,7 @@
 
 
 <h2 id="方式2"><a href="#方式2" class="headerlink" title="方式2"></a>方式2</h2><blockquote><p>使用以下命令确定受影响的服务器进程的进程ID（PID）：<br>$ jps -v<br>确定步骤1中标识的PID中的哪个线程正在消耗CPU：<br>在Unix®和Linux®系统上，可以使用top命令：<br>$ top -n 1 -H -p [pid]<br>将[pid]替换为受影响进程的进程ID。</p>
-<p>使用以下命令之一为步骤1中标识的PID生成堆栈跟踪：<br> jstack 命令：<br>$ jstack [PID]&gt; jstack-output.txt<br>kill -3命令（仅适用于Unix®和Linux®系统），可以始终产生更好的结果：<br>$ kill -3 [pid]<br>kill -3命令将堆栈跟踪输出到定向标准输出的日志文件（通常是错误日志文件）。kill -3命令不会停止正在运行的进程。输出堆栈跟踪后，它将继续运行。<br>将在步骤2中确定为有问题的线程ID转换为十六进制值。在我们的示例输出中，线程ID十进制值8706转换为十六进制值2202。<br>使用grep在堆栈跟踪输出中搜索此十六进制值。您正在寻找与此十六进制值匹配的线程nid：<br>$ cat jstack-output.txt | grep -i 2202<br>此命令提供类似于以下的输出：<br>“并发标记扫描GC线程” prio = 10 tid = 0x00007f1448029800 nid = 0x2202可运行<br>在此示例中，我们可以看到问题是垃圾收集器（GC）线程，这表明GC的调整不正确。</p>
+<p>使用以下命令之一为步骤1中标识的PID生成堆栈跟踪：<br> jstack 命令：<br>$ jstack -F -l [pid]&gt; [outputfile.txt]<br>kill -3命令（仅适用于Unix®和Linux®系统），可以始终产生更好的结果：<br>$ kill -3 [pid]<br>kill -3命令将堆栈跟踪输出到定向标准输出的日志文件（通常是错误日志文件）。kill -3命令不会停止正在运行的进程。输出堆栈跟踪后，它将继续运行。<br>将在步骤2中确定为有问题的线程ID转换为十六进制值。在我们的示例输出中，线程ID十进制值8706转换为十六进制值2202。<br>使用grep在堆栈跟踪输出中搜索此十六进制值。您正在寻找与此十六进制值匹配的线程nid：<br>$ cat jstack-output.txt | grep -i 2202<br>此命令提供类似于以下的输出：<br>“并发标记扫描GC线程” prio = 10 tid = 0x00007f1448029800 nid = 0x2202可运行<br>在此示例中，我们可以看到问题是垃圾收集器（GC）线程，这表明GC的调整不正确。</p>
 </blockquote>
       
     </div>
@@ -473,6 +473,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/10/26/导致JAVA程序CPU过高的几种情况/" rel="prev" title="导致JAVA程序CPU过高的几种情况">
+                导致JAVA程序CPU过高的几种情况 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -541,7 +545,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">94</span>
+                    <span class="site-state-item-count">95</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
