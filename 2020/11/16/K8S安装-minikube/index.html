@@ -96,20 +96,18 @@
 
 
 
-  <meta name="description" content="基本概念在微信内部运行的，有限制的(2M/5M)的前端微程序 连接后端需要HTTPS协议，域名。 要钱     登录模式 开发参考https://www.infoq.cn/article/wBPyxJTpioXF6oopEZ6Nhttps://cloud.tencent.com/developer/article/1677389">
-<meta name="keywords" content="微信小程序">
+  <meta name="description" content="安装 kubectlKubectl 是 Kubernetes 自带的命令行工具 1.查询版本https://storage.googleapis.com/kubernetes-release/release/stable.txt 2.下载（自行替换版本）https://storage.googleapis.com/kubernetes-release/release/v1.18.4/bin/lin">
+<meta name="keywords" content="K8S">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序开发">
-<meta property="og:url" content="https://kamafeel.github.io/2020/10/19/微信小程序开发/index.html">
+<meta property="og:title" content="K8S安装-minikube">
+<meta property="og:url" content="https://kamafeel.github.io/2020/11/16/K8S安装-minikube/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="基本概念在微信内部运行的，有限制的(2M/5M)的前端微程序 连接后端需要HTTPS协议，域名。 要钱     登录模式 开发参考https://www.infoq.cn/article/wBPyxJTpioXF6oopEZ6Nhttps://cloud.tencent.com/developer/article/1677389">
+<meta property="og:description" content="安装 kubectlKubectl 是 Kubernetes 自带的命令行工具 1.查询版本https://storage.googleapis.com/kubernetes-release/release/stable.txt 2.下载（自行替换版本）https://storage.googleapis.com/kubernetes-release/release/v1.18.4/bin/lin">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kamafeel.github.io/2020/10/19/微信小程序开发/20201019175333.png">
-<meta property="og:updated_time" content="2020-10-19T09:56:08.937Z">
+<meta property="og:updated_time" content="2020-11-16T08:31:36.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信小程序开发">
-<meta name="twitter:description" content="基本概念在微信内部运行的，有限制的(2M/5M)的前端微程序 连接后端需要HTTPS协议，域名。 要钱     登录模式 开发参考https://www.infoq.cn/article/wBPyxJTpioXF6oopEZ6Nhttps://cloud.tencent.com/developer/article/1677389">
-<meta name="twitter:image" content="https://kamafeel.github.io/2020/10/19/微信小程序开发/20201019175333.png">
+<meta name="twitter:title" content="K8S安装-minikube">
+<meta name="twitter:description" content="安装 kubectlKubectl 是 Kubernetes 自带的命令行工具 1.查询版本https://storage.googleapis.com/kubernetes-release/release/stable.txt 2.下载（自行替换版本）https://storage.googleapis.com/kubernetes-release/release/v1.18.4/bin/lin">
 
 
 
@@ -117,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://kamafeel.github.io/2020/10/19/微信小程序开发/">
+  <link rel="canonical" href="https://kamafeel.github.io/2020/11/16/K8S安装-minikube/">
 
 
 
@@ -127,7 +125,7 @@
   };
 </script>
 
-  <title>微信小程序开发 | Kamafeel</title>
+  <title>K8S安装-minikube | Kamafeel</title>
   
 
 
@@ -296,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/19/微信小程序开发/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/11/16/K8S安装-minikube/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -313,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">微信小程序开发
+          <h1 class="post-title" itemprop="name headline">K8S安装-minikube
 
               
             
@@ -339,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2020-10-19 17:52:30 / 修改时间：17:56:08" itemprop="dateCreated datePublished" datetime="2020-10-19T17:52:30+08:00">2020-10-19</time>
+              <time title="创建时间：2020-11-16 15:01:49 / 修改时间：16:31:36" itemprop="dateCreated datePublished" datetime="2020-11-16T15:01:49+08:00">2020-11-16</time>
             
 
             
@@ -361,14 +359,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/" itemprop="url" rel="index"><span itemprop="name">java</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/java/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/K8S/" itemprop="url" rel="index"><span itemprop="name">K8S</span></a></span>
 
                 
                 
@@ -403,16 +394,54 @@
       
 
       
-        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><blockquote><p>在微信内部运行的，有限制的(2M/5M)的前端微程序</p>
-<p>连接后端需要HTTPS协议，域名。</p>
-<p>要钱</p>
+        <h2 id="安装-kubectl"><a href="#安装-kubectl" class="headerlink" title="安装 kubectl"></a>安装 kubectl</h2><blockquote><p>Kubectl 是 Kubernetes 自带的命令行工具</p>
+<p>1.查询版本<br><a href="https://storage.googleapis.com/kubernetes-release/release/stable.txt" target="_blank" rel="noopener">https://storage.googleapis.com/kubernetes-release/release/stable.txt</a></p>
+<p>2.下载（自行替换版本）<br><a href="https://storage.googleapis.com/kubernetes-release/release/v1.18.4/bin/linux/amd64/kubectl" target="_blank" rel="noopener">https://storage.googleapis.com/kubernetes-release/release/v1.18.4/bin/linux/amd64/kubectl</a></p>
+<p>3.安装<br>赋可执行权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./kubectl</span><br></pre></td></tr></table></figure>
+移动到系统PATH中
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv ./kubectl /usr/local/bin/kubectl</span><br></pre></td></tr></table></figure></blockquote>
+
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><blockquote><p>1.各类参数调整</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install conntrack</span><br><span class="line">sysctl -w net.bridge.bridge-nf-call-iptables=1</span><br><span class="line">echo &quot;net.bridge.bridge-f-call-iptables=1&quot; &gt; /etc/sysctl.d/k8s.conf</span><br><span class="line">swapoff -a &amp;&amp; sed -i &apos;/ swap / s/^/#/&apos;  /etc/fstab</span><br></pre></td></tr></table></figure>
+
+
+<p>2.docker安装源（保存为shell执行）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&apos;EOF&apos;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://youraddr.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>3.K8S安装源（保存为shell执行）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">cat &gt;&gt; /etc/yum.repos.d/kubernetes.repo &lt;&lt;EOF</span><br><span class="line">[kubernetes]</span><br><span class="line">name=Kubernetes</span><br><span class="line">baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote><p>1.下载minikube</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -Lo minikube https://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/releases/v1.11.0/minikube-linux-amd64 &amp;&amp; chmod +x minikube &amp;&amp; sudo mv minikube /usr/local/bin/</span><br></pre></td></tr></table></figure>
+
+<p>2.安装minikube<br>使用非virtualbox驱动模式<br>minikube start –driver=none</p>
+<p>3.验证安装状态<br>minikube status</p>
+<p>4.后续启动minikube<br>minikube start</p>
 </blockquote>
 
+<h2 id="Kubernetes-Dashboard安装"><a href="#Kubernetes-Dashboard安装" class="headerlink" title="Kubernetes Dashboard安装"></a>Kubernetes Dashboard安装</h2><blockquote><p>1.下载部署文档</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml</span><br></pre></td></tr></table></figure>
+
+<p>2.检查docker images是否下载成功<br>docker images<br>如果镜像无法下载，k8s.gcr.io 替换为了 reg.qiniu.com/k8s 或者使用代理</p>
+<p>3.修改DashBoard的Service端口暴露模式为NodePort</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl edit service kubernetes-dashboard -n kubernetes-dashboard</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spec:</span><br><span class="line">  type: NodePort</span><br></pre></td></tr></table></figure>
 
 
-<h2 id="登录模式"><a href="#登录模式" class="headerlink" title="登录模式"></a>登录模式</h2><p><img src="/2020/10/19/微信小程序开发/20201019175333.png" alt="alt"></p>
-<h2 id="开发参考"><a href="#开发参考" class="headerlink" title="开发参考"></a>开发参考</h2><p><a href="https://www.infoq.cn/article/wBPyxJTpioXF6oopEZ6N" target="_blank" rel="noopener">https://www.infoq.cn/article/wBPyxJTpioXF6oopEZ6N</a><br><a href="https://cloud.tencent.com/developer/article/1677389" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1677389</a></p>
+<p>4.创建Service Account 及 ClusterRoleBinding<br>保存下面信息为auth.yaml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ServiceAccount</span><br><span class="line">metadata:</span><br><span class="line">  name: admin-user</span><br><span class="line">  namespace: kubernetes-dashboard</span><br><span class="line">---</span><br><span class="line">apiVersion: rbac.authorization.k8s.io/v1</span><br><span class="line">kind: ClusterRoleBinding</span><br><span class="line">metadata:</span><br><span class="line">  name: admin-user</span><br><span class="line">roleRef:</span><br><span class="line">  apiGroup: rbac.authorization.k8s.io</span><br><span class="line">  kind: ClusterRole</span><br><span class="line">  name: cluster-admin</span><br><span class="line">subjects:</span><br><span class="line">- kind: ServiceAccount</span><br><span class="line">  name: admin-user</span><br><span class="line">  namespace: kubernetes-dashboard</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f auth.yaml</span><br></pre></td></tr></table></figure>
+
+<p>5.查看部署端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get svc -A</span><br></pre></td></tr></table></figure>
+
+<p>6.访问<br>获取token</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk &apos;&#123;print $1&#125;&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>https://</p>
+</blockquote>
       
     </div>
 
@@ -438,7 +467,7 @@
         
         <div class="post-tags">
           
-            <a href="/tags/微信小程序/" rel="tag"># 微信小程序</a>
+            <a href="/tags/K8S/" rel="tag"># K8S</a>
           
         </div>
       
@@ -451,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/10/19/spring-mvc执行原理/" rel="next" title="spring mvc执行原理">
-                <i class="fa fa-chevron-left"></i> spring mvc执行原理
+              <a href="/2020/11/16/K8S-yaml说明/" rel="next" title="K8S yaml说明">
+                <i class="fa fa-chevron-left"></i> K8S yaml说明
               </a>
             
           </div>
@@ -460,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/10/19/守护线程/" rel="prev" title="守护线程">
-                守护线程 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -800,7 +825,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#登录模式"><span class="nav-number">2.</span> <span class="nav-text">登录模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发参考"><span class="nav-number">3.</span> <span class="nav-text">开发参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-kubectl"><span class="nav-number">1.</span> <span class="nav-text">安装 kubectl</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前期准备"><span class="nav-number">2.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kubernetes-Dashboard安装"><span class="nav-number">4.</span> <span class="nav-text">Kubernetes Dashboard安装</span></a></li></ol></div>
             
 
           </div>
