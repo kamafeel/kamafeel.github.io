@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Kamafeel">
 <meta property="og:description" content="安装和运行123docker run -d --name openresty -p 80:80 -v /root/data/openresty/config/conf.d:/etc/nginx/conf.d -v /root/data/openresty/data:/data openresty/openresty   安装插件安装 wget 软件apt updateapt install -y">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-02-24T02:26:13.335Z">
+<meta property="og:updated_time" content="2021-04-09T03:15:36.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openResty安装运行">
 <meta name="twitter:description" content="安装和运行123docker run -d --name openresty -p 80:80 -v /root/data/openresty/config/conf.d:/etc/nginx/conf.d -v /root/data/openresty/data:/data openresty/openresty   安装插件安装 wget 软件apt updateapt install -y">
@@ -337,12 +337,24 @@
                 
               
 
-              <time title="创建时间：2021-02-24 09:43:42 / 修改时间：10:26:13" itemprop="dateCreated datePublished" datetime="2021-02-24T09:43:42+08:00">2021-02-24</time>
+              <time title="创建时间：2021-02-24 09:43:42" itemprop="dateCreated datePublished" datetime="2021-02-24T09:43:42+08:00">2021-02-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-04-09 11:15:36" itemprop="dateModified" datetime="2021-04-09T11:15:36+08:00">2021-04-09</time>
               
             
           </span>
@@ -401,12 +413,19 @@
 <p>/usr/local/openresty 目录下下载需要的lua组件</p>
 <p>/etc/nginx/conf.d 配置</p>
 <p>lua_package_path “/usr/local/openresty/lualib/?.lua;;”;<br>lua_package_cpath “/usr/local/openresty/lualib/?.so;;”;</p>
-<p>include /etc/nginx/conf.d/lua.conf</p>
+<p>#不需要</p>
+<p>#include /etc/nginx/conf.d/lua.conf</p>
 </blockquote>
 
 
 <h2 id="配置lua代码"><a href="#配置lua代码" class="headerlink" title="配置lua代码"></a>配置lua代码</h2><blockquote><p>server {<br>    listen       80;<br>    server_name  _;<br>    location /lua {<br>        default_type ‘text/html’;<br>        content_by_lua_file /etc/nginx/conf.d/conf/lua/test.lua;<br>    }<br>}</p>
 </blockquote>
+
+
+
+
+<h2 id="配置openresty-nginx-核心代码"><a href="#配置openresty-nginx-核心代码" class="headerlink" title="配置openresty -nginx 核心代码"></a>配置openresty -nginx 核心代码</h2><p>/usr/local/openresty/nginx</p>
+
       
     </div>
 
@@ -528,7 +547,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">111</span>
+                    <span class="site-state-item-count">112</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -810,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和运行"><span class="nav-number">1.</span> <span class="nav-text">安装和运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装插件"><span class="nav-number">2.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置lua代码"><span class="nav-number">3.</span> <span class="nav-text">配置lua代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装和运行"><span class="nav-number">1.</span> <span class="nav-text">安装和运行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装插件"><span class="nav-number">2.</span> <span class="nav-text">安装插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置lua代码"><span class="nav-number">3.</span> <span class="nav-text">配置lua代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置openresty-nginx-核心代码"><span class="nav-number">4.</span> <span class="nav-text">配置openresty -nginx 核心代码</span></a></li></ol></div>
             
 
           </div>
