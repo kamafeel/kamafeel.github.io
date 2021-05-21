@@ -290,6 +290,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/12/10/docker安装前/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/12/10/docker安装前/" class="post-title-link" itemprop="url">docker安装前</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-12-10 18:18:31" itemprop="dateCreated datePublished" datetime="2020-12-10T18:18:31+08:00">2020-12-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-12-16 10:22:01" itemprop="dateModified" datetime="2020-12-16T10:22:01+08:00">2020-12-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>systemctl stop firewalld.service<br>systemctl disable firewalld.service </p>
+<h2 id="关闭-swap"><a href="#关闭-swap" class="headerlink" title="关闭 swap"></a>关闭 swap</h2><p>swapoff -a &amp;&amp; sed -i ‘/ swap / s/^/#/‘  /etc/fstab</p>
+<p>##关闭SElinux功能 ##<br>vi /etc/selinux/config<br>将文件中的SELINUX=enforcing改为SELINUX=disabled</p>
+<h2 id="修改docker镜像为国内的"><a href="#修改docker镜像为国内的" class="headerlink" title="修改docker镜像为国内的"></a>修改docker镜像为国内的</h2><p>/etc/docker/daemon.json<br>{ 
+“registry-mirrors”: [“<a href="https://docker.mirrors.ustc.edu.cn&quot;]" target="_blank" rel="noopener">https://docker.mirrors.ustc.edu.cn&quot;]</a><br>}</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/11/24/postGis安装和验证/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -834,12 +1011,24 @@
                 
               
 
-              <time title="创建时间：2020-11-16 15:01:49 / 修改时间：16:31:36" itemprop="dateCreated datePublished" datetime="2020-11-16T15:01:49+08:00">2020-11-16</time>
+              <time title="创建时间：2020-11-16 15:01:49" itemprop="dateCreated datePublished" datetime="2020-11-16T15:01:49+08:00">2020-11-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-05-21 10:03:45" itemprop="dateModified" datetime="2021-05-21T10:03:45+08:00">2021-05-21</time>
               
             
           </span>
@@ -939,7 +1128,6 @@
 <p>6.访问<br>获取token</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk &apos;&#123;print $1&#125;&apos;)</span><br></pre></td></tr></table></figure>
 
-<p>https://</p>
 </blockquote>
           
         
@@ -1788,179 +1976,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/26/Redis分布式锁/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/10/26/Redis分布式锁/" class="post-title-link" itemprop="url">Redis分布式锁</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-10-26 17:07:18 / 修改时间：17:19:15" itemprop="dateCreated datePublished" datetime="2020-10-26T17:07:18+08:00">2020-10-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用规范</p>
-<blockquote><p>1.加锁必须释放锁</p>
-<p>2.和数据集事务@Transaction 一起使用<br>需要注意，手动操作事务开启，提交，回滚，避免2个时间相互影响。</p>
-<p><a href="https://segmentfault.com/a/1190000022734691" target="_blank" rel="noopener">https://segmentfault.com/a/1190000022734691</a></p>
-<p>3.尽量使用redission,避免重复造轮子</p>
-<p>4.现在SpringBoot2 默认使用lettuce 需要参照redission，使用lua和和加锁后的“看门狗”模式。<br><a href="https://juejin.im/post/6844903798125641741" target="_blank" rel="noopener">https://juejin.im/post/6844903798125641741</a></p>
-</blockquote>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2007,7 +2022,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">116</span>
+                    <span class="site-state-item-count">117</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

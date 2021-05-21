@@ -290,6 +290,236 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/15/并发容器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/15/并发容器/" class="post-title-link" itemprop="url">并发容器</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-15 20:47:11" itemprop="dateCreated datePublished" datetime="2020-09-15T20:47:11+08:00">2020-09-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-16 17:02:59" itemprop="dateModified" datetime="2020-09-16T17:02:59+08:00">2020-09-16</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">并发特性</th>
+<th align="left">其他</th>
+<th align="left">网页</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">ConcurrentHashMap</td>
+<td align="left">CAS synchronzied volatile  保证内存可见性</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">CopyOnWriteArrayList</td>
+<td align="left">CopyOnWrite （COW）ReentrantLock控制写独占锁,volatile修饰唯一数据结构数组,依据happen before写对读可见</td>
+<td align="left">内存写时，有2个对象,避免GC 存在延迟</td>
+<td align="left"><a href="https://juejin.im/post/6844903602436374541" target="_blank" rel="noopener">https://juejin.im/post/6844903602436374541</a></td>
+</tr>
+<tr>
+<td align="left">ConcurrentLinkedQueue</td>
+<td align="left">CAS volatile</td>
+<td align="left">链表作为其数据结构</td>
+<td align="left">tail 和 head 是延迟更新</td>
+</tr>
+<tr>
+<td align="left">ThreadLocal</td>
+<td align="left">空间换时间</td>
+<td align="left">threadLocal 有可能存在内存泄漏 remove</td>
+<td align="left">和锁一样（加锁,释放锁），使用后必须remove</td>
+</tr>
+<tr>
+<td align="left">BlockingQueue</td>
+<td align="left"></td>
+<td align="left">ArrayBlockingQueue, DelayQueue, LinkedBlockingDeque, LinkedBlockingQueue, LinkedTransferQueue, PriorityBlockingQueue, SynchronousQueue</td>
+<td align="left">阻塞</td>
+</tr>
+<tr>
+<td align="left">ArrayBlockingQueue 与 LinkedBlockingQueue</td>
+<td align="left">condition ReentrantLock</td>
+<td align="left">LinkedBlockingQueue插入和删除采用2个condition,ArrayBlockingQueue只使用一个</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>ConcurrentLinkedQueue head指针和 tail指针<br><img src="/2020/09/15/并发容器/20200916104316.png" alt="alt"></p>
+<h2 id="ThreadLocal-内存泄露"><a href="#ThreadLocal-内存泄露" class="headerlink" title="ThreadLocal 内存泄露"></a>ThreadLocal 内存泄露</h2><p><img src="/2020/09/15/并发容器/20200916112056.png" alt="alt"><br>threadLocal外部强引用被置为null 会被GC，但是entry就存在key为null，这样对应的value无法被GC，导致内存泄露。</p>
+<p>SimpleDateFormat里面的Calendar操作高并发会出现SET,Clear的问题，Servlet, @Controller, @Service成员变量同样也存在(可以使用@Scope(value = “prototype”)解决)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalDemo</span> </span>&#123;</span><br><span class="line">   	<span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;SimpleDateFormat&gt; sdf = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> DateUtil(<span class="string">"2019-11-25 09:00:"</span> + i % <span class="number">60</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DateUtil</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String date;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DateUtil</span><span class="params">(String date)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sdf.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            sdf.set(<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Date date = sdf.get().parse(<span class="keyword">this</span>.date);</span><br><span class="line">                System.out.println(date);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/15/AQS-ConditionObject/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1986,192 +2216,6 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/parallelStream/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/parallelStream/" class="post-title-link" itemprop="url">parallelStream</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 09:28:26" itemprop="dateCreated datePublished" datetime="2020-09-14T09:28:26+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-09-18 16:35:08" itemprop="dateModified" datetime="2020-09-18T16:35:08+08:00">2020-09-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="parallelStream"><a href="#parallelStream" class="headerlink" title="parallelStream"></a>parallelStream</h2><p>底层由ForkJoinPool.commonPool 线程池创建的线程进行运行。</p>
-<p><strong>并行流内部使用了默认的ForkJoinPool（7.2节会进一步讲到分支/合并框架），它默认的线程数量就是你的处理器数量，这个值是由Runtime.getRuntime().available- Processors()得到的。 但是你可以通过系统属性java.util.concurrent.ForkJoinPool.common. parallelism来改变线程池大小，如下所示： System.setProperty(“java.util.concurrent.ForkJoinPool.common.parallelism”,”12”); 这是一个全局设置，因此它将影响代码中所有的并行流。反过来说，目前还无法专为某个 并行流指定这个值。一般而言，让ForkJoinPool的大小等于处理器数量是个不错的默认值， 除非你有很好的理由，否则我们强烈建议你不要修改它。</strong></p>
-<pre><code>// 设置全局并行流并发线程数
-System.setProperty(&quot;java.util.concurrent.ForkJoinPool.common.parallelism&quot;, &quot;12&quot;);
-System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12
-System.setProperty(&quot;java.util.concurrent.ForkJoinPool.common.parallelism&quot;, &quot;20&quot;);
-System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code></pre><p>多个parallelStream之间默认使用的是同一个线程池，所以IO操作尽量不要放进parallelStream中，否则会阻塞其他parallelStream<br>使用并行流的时候是无法保证元素的顺序的</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2218,7 +2262,7 @@ System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code><
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">116</span>
+                    <span class="site-state-item-count">117</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
