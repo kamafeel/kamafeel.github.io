@@ -290,6 +290,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/06/02/Portainer管理多个docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/06/02/Portainer管理多个docker/" class="post-title-link" itemprop="url">Portainer管理多个docker</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-06-02 09:32:15 / 修改时间：09:51:53" itemprop="dateCreated datePublished" datetime="2021-06-02T09:32:15+08:00">2021-06-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote><p>1、docker配置文件<br>docker的配置文件路径为：/usr/lib/systemd/system/docker.service</p>
+<p>2、修改启动配置文件</p>
+<p>vi /usr/lib/systemd/system编辑这个文件，找到下面一行，添加红色部分tcp信息</p>
+<p>ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/containerd.sock <strong>-H tcp://0.0.0.0:2375</strong></p>
+<p>3、重启docker<br>$ sudo systemctl daemon-reload<br>$ sudo systemctl restart docker.service</p>
+<p>4、验证可用<br>$ docker -H localhost:2375 ps</p>
+</blockquote>
+
+
+<p>Portainer配置多个docker</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/05/20/爱的艺术/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -352,7 +522,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-05-21 16:36:11" itemprop="dateModified" datetime="2021-05-21T16:36:11+08:00">2021-05-21</time>
+                <time title="修改时间：2021-06-02 09:43:26" itemprop="dateModified" datetime="2021-06-02T09:43:26+08:00">2021-06-02</time>
               
             
           </span>
@@ -411,7 +581,7 @@
 </blockquote>
 
 <h2 id="爱又是什么"><a href="#爱又是什么" class="headerlink" title="爱又是什么"></a>爱又是什么</h2><blockquote><p>如果你文案不好，技术不好，你会很容易觉得是自己能力不足，而去想法提升。</p>
-<p>而对于爱情，很多时候却会去认为是对方的不合适导致的问题。一见钟情时的过分正向投射，和生活趋于平静后矛盾问题的，过分负能力投射。都加速让你认为时对方导致的这样的生活状态。</p>
+<p>而对于爱情，很多时候却会去认为是对方的不合适导致的问题。一见钟情时的过分正向投射，和生活趋于平静后,遇到矛盾问题时，过分的负面投射。都加速让你认为是对方导致的这样的生活状态。</p>
 <p>爱，其实是一种能力，需要为之精进。</p>
 </blockquote>
 
@@ -1825,152 +1995,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/02/05/JIT介绍/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/02/05/JIT介绍/" class="post-title-link" itemprop="url">JIT介绍</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-02-05 11:42:10 / 修改时间：11:45:38" itemprop="dateCreated datePublished" datetime="2021-02-05T11:42:10+08:00">2021-02-05</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>Just-in-time compilation<br>JIT编译器在程序启动后运行，然后将代码（通常称为字节码或某种VM指令）即时（或称为即时）编译为通常更快的形式，通常是主机CPU的本机指令系统</p>
-<p>JVM 举例：<br>现在基于JVM的脚本语言也不少 比如Scala、Groovy或者Jython 他们与Java文件一样 最终都会被编译成class文件 而class被虚拟机装载后 会以解释模式运行一段时间 当发觉某些代码运行比较频繁(一种描述 关于代码被优化的原因有很多 调用次数只是其中一个) 则会对这些代码进行本地化 也就是JIT。</p>
-<p>Hotspot 名字的来源里面也有说明</p>
-<p><img src="/2021/02/05/JIT介绍/fc2d6adee7cfd35cd691b0a419dcd1a2_1440w.png" alt="alt"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2017,7 +2041,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">117</span>
+                    <span class="site-state-item-count">118</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2140,7 +2164,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">53</span>
+                      
+                    
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2273,7 +2299,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">58</span>
+                      
+                    
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
