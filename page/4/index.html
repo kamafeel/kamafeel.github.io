@@ -290,6 +290,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/19/spring-mvc执行原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/10/19/spring-mvc执行原理/" class="post-title-link" itemprop="url">spring mvc执行原理</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-10-19 17:39:05 / 修改时间：17:50:29" itemprop="dateCreated datePublished" datetime="2020-10-19T17:39:05+08:00">2020-10-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/原理/" itemprop="url" rel="index"><span itemprop="name">原理</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><img src="/2020/10/19/spring-mvc执行原理/20201019174019.png" alt="alt"></p>
+<blockquote><p>DispatcherServle —&gt;Map(url和controller中的对应关系)—&gt;参数绑定（asm框架）</p>
+</blockquote>
+
+<p><a href="https://www.cnblogs.com/w-y-c-m/p/8416630.html" target="_blank" rel="noopener">https://www.cnblogs.com/w-y-c-m/p/8416630.html</a></p>
+<h2 id="拦截器inteceptor和过滤器filter"><a href="#拦截器inteceptor和过滤器filter" class="headerlink" title="拦截器inteceptor和过滤器filter"></a>拦截器inteceptor和过滤器filter</h2><blockquote><p>Filter技术是Servlet2.3新增加的功能</p>
+<p>① 拦截器inteceptor是基于java的反射机制实现的；<br>过滤器Filter是基于函数回调实现（filter接口中的doFilter方法是回调函数实现的</p>
+<p>② 拦截器不依赖于servlet容器；<br>过滤器filter依赖servlet，没有servlet无法回调doFilter</p>
+<p>⑥ 拦截器可以获取IOC容器中的各个bean，而过滤器不行</p>
+</blockquote>
+
+
+<h2 id="核心类"><a href="#核心类" class="headerlink" title="核心类"></a>核心类</h2><p>HandlerInterceptor<br>HandlerInterceptorAdapter (适配器，只关注其中某个方法)</p>
+<p>spring boot 配置Filter<br><a href="https://blog.csdn.net/testcs_dn/article/details/80265196" target="_blank" rel="noopener">https://blog.csdn.net/testcs_dn/article/details/80265196</a><br><a href="https://www.jianshu.com/p/56cae30c2a30" target="_blank" rel="noopener">https://www.jianshu.com/p/56cae30c2a30</a></p>
+<p>开发细节<br><a href="https://blog.csdn.net/bigtree_3721/article/details/52091522" target="_blank" rel="noopener">https://blog.csdn.net/bigtree_3721/article/details/52091522</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/15/mysql的cross-join-例子/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1927,192 +2109,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/21/Java运算符优先级/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/21/Java运算符优先级/" class="post-title-link" itemprop="url">Java运算符优先级</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-21 20:58:22" itemprop="dateCreated datePublished" datetime="2020-09-21T20:58:22+08:00">2020-09-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-09-22 10:19:55" itemprop="dateModified" datetime="2020-09-22T10:19:55+08:00">2020-09-22</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/2020/09/21/Java运算符优先级/943949859_1579095580482_4B515A30E58F292D4E0C7907955D4283.png" alt="alt"></p>
-<blockquote><ul>
-<li>i++ 先赋值在运算,例如 a=i++,先赋值a=i,后运算i=i+1,所以结果是a==1<ul>
-<li>++i 先运算在赋值,例如 a=++i,先运算i=i+1,后赋值a=i,所以结果是a==2</li>
-</ul>
-</li>
-</ul>
-</blockquote>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2159,7 +2155,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">118</span>
+                    <span class="site-state-item-count">119</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

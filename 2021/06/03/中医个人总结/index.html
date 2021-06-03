@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="1.避免写过多if else, 更面向对象oo 2.符合开闭原则，只需要增加策略 3.客户端决定使用何种策略 实现方式:实现同一接口，Context改变策略对象，得到不同的策略实现">
+  <meta name="description" content="中医理论基础中医里面的五臟六腑，并非对应西医里面的具体某个脏器，而是对其相应的系统进行抽象概况。   全息概念中医认为 天人相应，人生于天地，理应符合天地的客观规律。卵即像地球(母)，精子就像從太陽(父)來的光熱與訊息，當精子射入卵子後，另一小天地的化生於焉展開，於是太極分兩儀，兩儀分四象，四象生八卦，八卦定乾坤，完成了另一個生命體，一個小天地。之後，橫膈以上像天空，兩個肺中充滿了空氣流，心臟像是">
+<meta name="keywords" content="叽叽歪歪">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式-策略">
-<meta property="og:url" content="https://kamafeel.github.io/2020/06/04/设计模式-策略/index.html">
+<meta property="og:title" content="中医个人总结">
+<meta property="og:url" content="https://kamafeel.github.io/2021/06/03/中医个人总结/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="1.避免写过多if else, 更面向对象oo 2.符合开闭原则，只需要增加策略 3.客户端决定使用何种策略 实现方式:实现同一接口，Context改变策略对象，得到不同的策略实现">
+<meta property="og:description" content="中医理论基础中医里面的五臟六腑，并非对应西医里面的具体某个脏器，而是对其相应的系统进行抽象概况。   全息概念中医认为 天人相应，人生于天地，理应符合天地的客观规律。卵即像地球(母)，精子就像從太陽(父)來的光熱與訊息，當精子射入卵子後，另一小天地的化生於焉展開，於是太極分兩儀，兩儀分四象，四象生八卦，八卦定乾坤，完成了另一個生命體，一個小天地。之後，橫膈以上像天空，兩個肺中充滿了空氣流，心臟像是">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-09T02:06:27.345Z">
+<meta property="og:updated_time" content="2021-06-03T09:56:24.587Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式-策略">
-<meta name="twitter:description" content="1.避免写过多if else, 更面向对象oo 2.符合开闭原则，只需要增加策略 3.客户端决定使用何种策略 实现方式:实现同一接口，Context改变策略对象，得到不同的策略实现">
+<meta name="twitter:title" content="中医个人总结">
+<meta name="twitter:description" content="中医理论基础中医里面的五臟六腑，并非对应西医里面的具体某个脏器，而是对其相应的系统进行抽象概况。   全息概念中医认为 天人相应，人生于天地，理应符合天地的客观规律。卵即像地球(母)，精子就像從太陽(父)來的光熱與訊息，當精子射入卵子後，另一小天地的化生於焉展開，於是太極分兩儀，兩儀分四象，四象生八卦，八卦定乾坤，完成了另一個生命體，一個小天地。之後，橫膈以上像天空，兩個肺中充滿了空氣流，心臟像是">
 
 
 
@@ -114,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://kamafeel.github.io/2020/06/04/设计模式-策略/">
+  <link rel="canonical" href="https://kamafeel.github.io/2021/06/03/中医个人总结/">
 
 
 
@@ -124,7 +125,7 @@
   };
 </script>
 
-  <title>设计模式-策略 | Kamafeel</title>
+  <title>中医个人总结 | Kamafeel</title>
   
 
 
@@ -293,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/06/04/设计模式-策略/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/06/03/中医个人总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -310,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式-策略
+          <h1 class="post-title" itemprop="name headline">中医个人总结
 
               
             
@@ -336,24 +337,12 @@
                 
               
 
-              <time title="创建时间：2020-06-04 14:20:17" itemprop="dateCreated datePublished" datetime="2020-06-04T14:20:17+08:00">2020-06-04</time>
+              <time title="创建时间：2021-06-03 09:26:42 / 修改时间：17:56:24" itemprop="dateCreated datePublished" datetime="2021-06-03T09:26:42+08:00">2021-06-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-06-09 10:06:27" itemprop="dateModified" datetime="2020-06-09T10:06:27+08:00">2020-06-09</time>
               
             
           </span>
@@ -370,7 +359,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/瞎扯蛋/" itemprop="url" rel="index"><span itemprop="name">瞎扯蛋</span></a></span>
 
                 
                 
@@ -405,11 +394,55 @@
       
 
       
-        <p>1.避免写过多if else, 更面向对象oo</p>
-<p>2.符合开闭原则，只需要增加策略</p>
-<p>3.客户端决定使用何种策略</p>
-<p>实现方式:<br>实现同一接口，Context改变策略对象，得到不同的策略实现</p>
+        <h2 id="中医理论基础"><a href="#中医理论基础" class="headerlink" title="中医理论基础"></a>中医理论基础</h2><blockquote><p>中医里面的五臟六腑，并非对应西医里面的具体某个脏器，而是对其相应的系统进行抽象概况。</p>
+</blockquote>
 
+<h2 id="全息概念"><a href="#全息概念" class="headerlink" title="全息概念"></a>全息概念</h2><blockquote><p>中医认为 天人相应，人生于天地，理应符合天地的客观规律。<br>卵即像地球(母)，精子就像從太陽(父)來的光熱與訊息，當精子射入卵子後，另一小天地的化生於焉展開，於是太極分兩儀，兩儀分四象，四象生八卦，八卦定乾坤，完成了另一個生命體，一個小天地。之後，橫膈以上像天空，兩個肺中充滿了空氣流，心臟像是太陽高掛在空中，不斷的脈動以散發出光與熱(即血管的血流)到全身，體液像湖海，滋養並保溫。</p>
+<p>人體全息元，人天，足，耳，手，是人天的全息元，可以适度调理全息的运转。</p>
+</blockquote>
+
+
+<h2 id="宏观微观理论不相通"><a href="#宏观微观理论不相通" class="headerlink" title="宏观微观理论不相通"></a>宏观微观理论不相通</h2><blockquote><p>牛顿力学，和量子力学，其实互不相同，某些认识犹如管中窥豹。不能以偏概全。</p>
+<p>中医宏观，西医微观</p>
+<p>不同尺度，存在相应尺度的规律，人体亦然，避免見樹不見林</p>
+</blockquote>
+
+<p>##无形和有形##</p>
+<blockquote><p>人類的文明產物，哪樣不是先有欲求、心念、思維的雛形，而後被實踐、創造？心念、思維屬無形，實踐、創造屬有形。</p>
+<p>在人體，無形的精神主宰有形的肉體，若問肉體殘缺嚴重？還是精神殘缺嚴重？相信大多數人會同意後者。另，人與人之間的微妙連繫，靠的不就是無形的印象與記憶？</p>
+<p>西医完全唯物主义，不应该全部忽略无形（力、能量、各種場、及資訊 (負的熵(entropy)）的概念。</p>
+<p>有生於無，無形主導有形</p>
+</blockquote>
+
+
+<p>##治疗的表象##</p>
+<blockquote><p>如果器质已经发生明显变化，并且危机生命，交给西医更好。</p>
+<p>平时调养，推拿，针灸为主。</p>
+<p>慢性病，最好中医，但需要量变到质变的缓慢过程。</p>
+</blockquote>
+
+
+<p>##筋络，穴位##</p>
+<blockquote><p>地下水有水脈，脈上必有特異之象</p>
+</blockquote>
+
+
+<p>##上火##</p>
+<blockquote><p>现代多为虚火，纵欲，熬夜，虚火上身。</p>
+</blockquote>
+
+<p>##肾##</p>
+<blockquote><p>先天之本，核心资源，熬夜，纵欲，用脑过度，都伤。</p>
+</blockquote>
+
+<p>##脾##</p>
+<blockquote><p>后天之本，调动 消化物资，输布营养到全身。</p>
+</blockquote>
+
+
+<p>##熬夜##</p>
+<blockquote><p>不顺应天地规律，无法修复今天的问题，也无法储存每天的储资，会调动虚火。</p>
+</blockquote>
       
     </div>
 
@@ -430,6 +463,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/叽叽歪歪/" rel="tag"># 叽叽歪歪</a>
+          
+        </div>
+      
 
       
       
@@ -439,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/04/设计模式-单例/" rel="next" title="设计模式-单例">
-                <i class="fa fa-chevron-left"></i> 设计模式-单例
+              <a href="/2021/06/02/Portainer管理多个docker/" rel="next" title="Portainer管理多个docker">
+                <i class="fa fa-chevron-left"></i> Portainer管理多个docker
               </a>
             
           </div>
@@ -448,10 +490,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/06/04/设计模式-装饰/" rel="prev" title="设计模式-装饰">
-                设计模式-装饰 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -495,8 +533,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -798,6 +845,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#中医理论基础"><span class="nav-number">1.</span> <span class="nav-text">中医理论基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全息概念"><span class="nav-number">2.</span> <span class="nav-text">全息概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#宏观微观理论不相通"><span class="nav-number">3.</span> <span class="nav-text">宏观微观理论不相通</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
