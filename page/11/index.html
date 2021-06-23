@@ -1808,7 +1808,7 @@ public String getDefaultValue() {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2019/11/26/tomcat-JVM-调优/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2019/11/26/JVM参数调优/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -1828,7 +1828,7 @@ public String getDefaultValue() {
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/11/26/tomcat-JVM-调优/" class="post-title-link" itemprop="url">tomcat JVM 调优</a>
+                <a href="/2019/11/26/JVM参数调优/" class="post-title-link" itemprop="url">JVM参数调优</a>
               
             
           </h1>
@@ -1870,7 +1870,7 @@ public String getDefaultValue() {
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-10-21 15:22:41" itemprop="dateModified" datetime="2020-10-21T15:22:41+08:00">2020-10-21</time>
+                <time title="修改时间：2020-10-21 15:22:28" itemprop="dateModified" datetime="2020-10-21T15:22:28+08:00">2020-10-21</time>
               
             
           </span>
@@ -1931,22 +1931,15 @@ public String getDefaultValue() {
       
         
           
-            <h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p>
-<pre><code># 设置内存，最大2048M
-JAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;
-
-# 设置jmx 是否通过ssl 连接
-JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;
-
-# 设置rmi 远程连接ip 地址
-JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;
-
-# 设置jmx 远程连接端口号
-JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;
-
-# 设置jmx 远程连接是否需要用户认证,即用户名和密码
-JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>
-
+            <blockquote><blockquote>
+<p>-XX:+AlwaysPreTouch</p>
+</blockquote>
+<p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p>
+<blockquote>
+<p> -XX:AutoBoxCacheMax=20000</p>
+</blockquote>
+<p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p>
+</blockquote>
           
         
       
@@ -2158,9 +2151,7 @@ JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quo
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2295,9 +2286,7 @@ JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quo
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">60</span>
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
