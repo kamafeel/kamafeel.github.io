@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="1、docker配置文件docker的配置文件路径为：/usr/lib/systemd/system/docker.service 2、修改启动配置文件 vi /usr/lib/systemd/system编辑这个文件，找到下面一行，添加红色部分tcp信息 ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/contain">
+  <meta name="description" content="1、docker配置文件docker的配置文件路径为：/usr/lib/systemd/system/docker.service 2、修改启动配置文件 编辑docker配置文件，找到下面一行，添加红色部分tcp信息 ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/containerd.sock -H tcp://0.">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Portainer管理多个docker">
 <meta property="og:url" content="https://kamafeel.github.io/2021/06/02/Portainer管理多个docker/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="1、docker配置文件docker的配置文件路径为：/usr/lib/systemd/system/docker.service 2、修改启动配置文件 vi /usr/lib/systemd/system编辑这个文件，找到下面一行，添加红色部分tcp信息 ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/contain">
+<meta property="og:description" content="1、docker配置文件docker的配置文件路径为：/usr/lib/systemd/system/docker.service 2、修改启动配置文件 编辑docker配置文件，找到下面一行，添加红色部分tcp信息 ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/containerd.sock -H tcp://0.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-06-02T01:51:53.709Z">
+<meta property="og:updated_time" content="2021-06-23T03:35:13.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Portainer管理多个docker">
-<meta name="twitter:description" content="1、docker配置文件docker的配置文件路径为：/usr/lib/systemd/system/docker.service 2、修改启动配置文件 vi /usr/lib/systemd/system编辑这个文件，找到下面一行，添加红色部分tcp信息 ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/contain">
+<meta name="twitter:description" content="1、docker配置文件docker的配置文件路径为：/usr/lib/systemd/system/docker.service 2、修改启动配置文件 编辑docker配置文件，找到下面一行，添加红色部分tcp信息 ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/containerd.sock -H tcp://0.">
 
 
 
@@ -337,12 +337,24 @@
                 
               
 
-              <time title="创建时间：2021-06-02 09:32:15 / 修改时间：09:51:53" itemprop="dateCreated datePublished" datetime="2021-06-02T09:32:15+08:00">2021-06-02</time>
+              <time title="创建时间：2021-06-02 09:32:15" itemprop="dateCreated datePublished" datetime="2021-06-02T09:32:15+08:00">2021-06-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-06-23 11:35:13" itemprop="dateModified" datetime="2021-06-23T11:35:13+08:00">2021-06-23</time>
               
             
           </span>
@@ -396,14 +408,14 @@
       
         <blockquote><p>1、docker配置文件<br>docker的配置文件路径为：/usr/lib/systemd/system/docker.service</p>
 <p>2、修改启动配置文件</p>
-<p>vi /usr/lib/systemd/system编辑这个文件，找到下面一行，添加红色部分tcp信息</p>
+<p>编辑docker配置文件，找到下面一行，添加红色部分tcp信息</p>
 <p>ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/containerd.sock <strong>-H tcp://0.0.0.0:2375</strong></p>
 <p>3、重启docker<br>$ sudo systemctl daemon-reload<br>$ sudo systemctl restart docker.service</p>
 <p>4、验证可用<br>$ docker -H localhost:2375 ps</p>
 </blockquote>
 
 
-<p>Portainer配置多个docker</p>
+<p>Portainer配置多个docker,通过页面操作即可</p>
 
       
     </div>
@@ -515,7 +527,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">121</span>
+                    <span class="site-state-item-count">122</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -640,7 +652,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">54</span>
+                      
+                    
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -775,7 +789,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">59</span>
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
