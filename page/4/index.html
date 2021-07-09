@@ -290,6 +290,364 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/26/排查JAVA进程CPU占用过高/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/10/26/排查JAVA进程CPU占用过高/" class="post-title-link" itemprop="url">排查JAVA进程CPU占用过高</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-10-26 15:36:48 / 修改时间：15:56:55" itemprop="dateCreated datePublished" datetime="2020-10-26T15:36:48+08:00">2020-10-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="方式1"><a href="#方式1" class="headerlink" title="方式1"></a>方式1</h2><blockquote><p>1.top<br><img src="/2020/10/26/排查JAVA进程CPU占用过高/n2z0n3ob9j.jpeg" alt="alt"><br>看下<br>us：用户空间占用CPU的百分比<br>sy：内核空间占用CPU的百分比</p>
+<p>2.查看进程内线程运行状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -mp 进程ID -o THREAD,tid,time</span><br></pre></td></tr></table></figure>
+
+<p>3.到dump文件核查<br>转换16进制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printf &quot;%x\n&quot; 6766</span><br></pre></td></tr></table></figure>
+
+<p>jstack命令打印线程堆栈信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jstack pid |grep tid</span><br></pre></td></tr></table></figure>
+
+
+<p>4.已经确定是GC导致，通过jstat查看进程内存状况<br>jstat -gcutil</p>
+<p><img src="/2020/10/26/排查JAVA进程CPU占用过高/20201026154630.png" alt="alt"></p>
+<p>5.jstack 和 jmap 分析进程堆栈和内存状况<br>使用jmap命令导出heapdump文件，然后拿到本地使用jvisualvm.exe分析。(eclipse Mat)</p>
+<p>命令: jmap [option] vmid<br>jmap -dump:format=b,file=dump.bin 6764</p>
+<p>命令: jstack [option] vmid<br>jstack -l 6764 &gt;&gt; jstack.out</p>
+</blockquote>
+
+
+<h2 id="方式2"><a href="#方式2" class="headerlink" title="方式2"></a>方式2</h2><blockquote><p>使用以下命令确定受影响的服务器进程的进程ID（PID）：<br>$ jps -v<br>确定步骤1中标识的PID中的哪个线程正在消耗CPU：<br>在Unix®和Linux®系统上，可以使用top命令：<br>$ top -n 1 -H -p [pid]<br>将[pid]替换为受影响进程的进程ID。</p>
+<p>使用以下命令之一为步骤1中标识的PID生成堆栈跟踪：<br> jstack 命令：<br>$ jstack -F -l [pid]&gt; [outputfile.txt]<br>kill -3命令（仅适用于Unix®和Linux®系统），可以始终产生更好的结果：<br>$ kill -3 [pid]<br>kill -3命令将堆栈跟踪输出到定向标准输出的日志文件（通常是错误日志文件）。kill -3命令不会停止正在运行的进程。输出堆栈跟踪后，它将继续运行。<br>将在步骤2中确定为有问题的线程ID转换为十六进制值。在我们的示例输出中，线程ID十进制值8706转换为十六进制值2202。<br>使用grep在堆栈跟踪输出中搜索此十六进制值。您正在寻找与此十六进制值匹配的线程nid：<br>$ cat jstack-output.txt | grep -i 2202<br>此命令提供类似于以下的输出：<br>“并发标记扫描GC线程” prio = 10 tid = 0x00007f1448029800 nid = 0x2202可运行<br>在此示例中，我们可以看到问题是垃圾收集器（GC）线程，这表明GC的调整不正确。</p>
+</blockquote>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/21/Spring-BodyAdvice使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/10/21/Spring-BodyAdvice使用/" class="post-title-link" itemprop="url">Spring-RequestBodyAdvice使用</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-10-21 15:20:43 / 修改时间：15:45:43" itemprop="dateCreated datePublished" datetime="2020-10-21T15:20:43+08:00">2020-10-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>@RequestBodyAdvice<br>RequestBodyAdviceAdapter </p>
+<p>@ResponseBodyAdvice</p>
+<p><a href="https://juejin.im/post/6854573214707515399" target="_blank" rel="noopener">https://juejin.im/post/6854573214707515399</a><br><a href="https://springboot.io/t/topic/1864" target="_blank" rel="noopener">https://springboot.io/t/topic/1864</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/21/慎用lombok的-Builder/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1720,344 +2078,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/23/线程启动的流程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/23/线程启动的流程/" class="post-title-link" itemprop="url">线程启动的流程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-23 19:23:45 / 修改时间：19:52:44" itemprop="dateCreated datePublished" datetime="2020-09-23T19:23:45+08:00">2020-09-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote><p>为什么线程启动是调用start方法来启动线程而不能直接调用run方法？<br>如果多次调用start方法会发生什么？</p>
-</blockquote>
-
-
-<h2 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h2><p>线程从创建到死亡是会经历多个状态的流转的。它们分别是：NEW、RUNNABLE、BLOCKED、WAITING、TIMED_WAITING、TERMINATED</p>
-<p><img src="/2020/09/23/线程启动的流程/aHR0cHM6Ly9.png" alt="alt"></p>
-<blockquote><p>start()方法是用来启动线程，真正实现了多线程运行。</p>
-<p>run()方法是一个普通方法。</p>
-<p>调用start()方法后会先判断线程的状态是否为NEW，所以线程只能启动一次。</p>
-</blockquote>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/23/时间规划/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/23/时间规划/" class="post-title-link" itemprop="url">时间规划</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-23 09:29:16 / 修改时间：09:29:59" itemprop="dateCreated datePublished" datetime="2020-09-23T09:29:16+08:00">2020-09-23</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/瞎扯蛋/" itemprop="url" rel="index"><span itemprop="name">瞎扯蛋</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote><p>生命是以时间为单位的，浪费别人的时间等于谋财害命；浪费自己的时间，等于慢性自杀。</p>
-<p>——鲁迅</p>
-</blockquote>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2104,7 +2124,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">122</span>
+                    <span class="site-state-item-count">124</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2364,7 +2384,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">59</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

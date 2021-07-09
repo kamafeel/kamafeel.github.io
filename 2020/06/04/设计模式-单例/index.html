@@ -96,17 +96,17 @@
 
 
 
-  <meta name="description" content="用途：减少NEW对象的内存占用 方式： 利用Enum 实例化一次，并且线程安全。 2.2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)">
+  <meta name="description" content="用途：减少NEW对象的内存占用 方式：  利用Enum 实例化一次，并且线程安全。  2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)  Spring bean的默认是单例模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式-单例">
 <meta property="og:url" content="https://kamafeel.github.io/2020/06/04/设计模式-单例/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="用途：减少NEW对象的内存占用 方式： 利用Enum 实例化一次，并且线程安全。 2.2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)">
+<meta property="og:description" content="用途：减少NEW对象的内存占用 方式：  利用Enum 实例化一次，并且线程安全。  2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)  Spring bean的默认是单例模式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-09T02:06:32.593Z">
+<meta property="og:updated_time" content="2021-06-25T03:45:17.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式-单例">
-<meta name="twitter:description" content="用途：减少NEW对象的内存占用 方式： 利用Enum 实例化一次，并且线程安全。 2.2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)">
+<meta name="twitter:description" content="用途：减少NEW对象的内存占用 方式：  利用Enum 实例化一次，并且线程安全。  2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)  Spring bean的默认是单例模式">
 
 
 
@@ -353,7 +353,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-09 10:06:32" itemprop="dateModified" datetime="2020-06-09T10:06:32+08:00">2020-06-09</time>
+                <time title="修改时间：2021-06-25 11:45:17" itemprop="dateModified" datetime="2021-06-25T11:45:17+08:00">2021-06-25</time>
               
             
           </span>
@@ -406,8 +406,15 @@
 
       
         <p>用途：减少NEW对象的内存占用</p>
-<p>方式：<br> 利用Enum 实例化一次，并且线程安全。</p>
-<p>2.2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)</p>
+<p>方式：</p>
+<ol>
+<li><p>利用Enum 实例化一次，并且线程安全。</p>
+</li>
+<li><p>2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)</p>
+</li>
+<li><p>Spring bean的默认是单例模式</p>
+</li>
+</ol>
 
       
     </div>
@@ -510,7 +517,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">122</span>
+                    <span class="site-state-item-count">124</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -770,7 +777,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">59</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
