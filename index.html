@@ -290,6 +290,494 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/08/02/共识算法-Raft协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/08/02/共识算法-Raft协议/" class="post-title-link" itemprop="url">共识算法-Raft协议</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-08-02 09:59:41 / 修改时间：10:12:31" itemprop="dateCreated datePublished" datetime="2021-08-02T09:59:41+08:00">2021-08-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/分布式/" itemprop="url" rel="index"><span itemprop="name">分布式</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="共识算法-Raft协议"><a href="#共识算法-Raft协议" class="headerlink" title="共识算法-Raft协议"></a>共识算法-Raft协议</h2><p>核心：<br>1.选举<br>选举超时：<br>从跟随者到候选人的超时时间（每个节点随机150-300毫秒）</p>
+<p>此时间达到（超时），即可为自己投票，并且发送给其余node,其余node如果没有投票，就会vote给发送的node，并且重置自己的选举超时时间</p>
+<p>2.变更日志复制<br>一旦形成leader，所有系统的变更都需要走leader,leader复制分发日志变更记录到其余node如果majority node reply is ok,system change 生效并且回复客户端信息</p>
+<p>演示说明：</p>
+<p><a href="http://thesecretlivesofdata.com/raft/" target="_blank" rel="noopener">http://thesecretlivesofdata.com/raft/</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/07/30/redis集群/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/07/30/redis集群/" class="post-title-link" itemprop="url">redis集群</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-07-30 16:29:25 / 修改时间：17:38:20" itemprop="dateCreated datePublished" datetime="2021-07-30T16:29:25+08:00">2021-07-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/redis/" itemprop="url" rel="index"><span itemprop="name">redis</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="redis集群方式"><a href="#redis集群方式" class="headerlink" title="redis集群方式"></a>redis集群方式</h2><p>1.主从，存在挂机弊端<br>2.哨兵，数量增加，内部逻辑复杂，数量扩展困难<br>3.Cluster 集群模式 hash slot hash槽，</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/07/30/系统设计-安全/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/07/30/系统设计-安全/" class="post-title-link" itemprop="url">系统设计-安全</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-07-30 16:23:06 / 修改时间：16:24:50" itemprop="dateCreated datePublished" datetime="2021-07-30T16:23:06+08:00">2021-07-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="密码设计"><a href="#密码设计" class="headerlink" title="密码设计"></a>密码设计</h2><p>加盐</p>
+<p><a href="https://www.tomczhen.com/2016/10/10/hashing-security/" target="_blank" rel="noopener">https://www.tomczhen.com/2016/10/10/hashing-security/</a></p>
+<h2 id="密码设计-1"><a href="#密码设计-1" class="headerlink" title="密码设计"></a>密码设计</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/07/28/docker和系统防火墙/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1501,554 +1989,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/06/02/Portainer管理多个docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/06/02/Portainer管理多个docker/" class="post-title-link" itemprop="url">Portainer管理多个docker</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-06-02 09:32:15" itemprop="dateCreated datePublished" datetime="2021-06-02T09:32:15+08:00">2021-06-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-06-23 15:06:15" itemprop="dateModified" datetime="2021-06-23T15:06:15+08:00">2021-06-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote><p>1、docker配置文件<br>docker的配置文件路径为：/usr/lib/systemd/system/docker.service</p>
-<p>2、修改启动配置文件</p>
-<p>编辑docker配置文件，找到下面一行，添加红色部分tcp信息</p>
-<p>ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/containerd.sock <strong>-H tcp://0.0.0.0:2375</strong></p>
-<p>3、重启docker<br>$ sudo systemctl daemon-reload<br>$ sudo systemctl restart docker.service</p>
-<p>4、验证可用<br>$ docker -H localhost:2375 ps</p>
-</blockquote>
-
-
-<p>Portainer配置多个docker,通过页面操作即可</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/05/20/爱的艺术/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/05/20/爱的艺术/" class="post-title-link" itemprop="url">爱的艺术</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-05-20 09:03:51" itemprop="dateCreated datePublished" datetime="2021-05-20T09:03:51+08:00">2021-05-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-06-02 09:43:26" itemprop="dateModified" datetime="2021-06-02T09:43:26+08:00">2021-06-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/瞎扯蛋/" itemprop="url" rel="index"><span itemprop="name">瞎扯蛋</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="为什么要爱"><a href="#为什么要爱" class="headerlink" title="为什么要爱"></a>为什么要爱</h2><blockquote><p>人大多是有孤寂感的，你可以短暂的寄托到群体组织上（某某爱好群），游戏上面，工作/事业上面，但这些不能使你真正脱离孤独。</p>
-<p>只有爱，才真正把能把我们从中拉出来。</p>
-</blockquote>
-
-<h2 id="爱又是什么"><a href="#爱又是什么" class="headerlink" title="爱又是什么"></a>爱又是什么</h2><blockquote><p>如果你文案不好，技术不好，你会很容易觉得是自己能力不足，而去想法提升。</p>
-<p>而对于爱情，很多时候却会去认为是对方的不合适导致的问题。一见钟情时的过分正向投射，和生活趋于平静后,遇到矛盾问题时，过分的负面投射。都加速让你认为是对方导致的这样的生活状态。</p>
-<p>爱，其实是一种能力，需要为之精进。</p>
-</blockquote>
-
-<h2 id="如何去爱"><a href="#如何去爱" class="headerlink" title="如何去爱"></a>如何去爱</h2><blockquote><p>爱必须是积极的，不可能什么都不做，能被动的爱，或者凭空想象的爱。</p>
-<p>爱，是通过我们的给，不可避免地会在对方身上唤起某种有生命力的东西。</p>
-<p>爱，是让自己变成更好的自己。</p>
-<p>爱，是对生命以及我们所爱之物生长的积极的关心</p>
-<p>爱，深入了解对方，关心，责任， 尊重，这些都有前提条件，需要你自己先是独立的。</p>
-<p>需要信仰，用一种虔诚坚定的信念去对待每一种感情。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/04/26/卫星影像的数据处理方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/04/26/卫星影像的数据处理方案/" class="post-title-link" itemprop="url">卫星影像的数据处理方案</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-04-26 15:23:50" itemprop="dateCreated datePublished" datetime="2021-04-26T15:23:50+08:00">2021-04-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-04-28 10:47:18" itemprop="dateModified" datetime="2021-04-28T10:47:18+08:00">2021-04-28</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="卫星数据等级和处理环节"><a href="#卫星数据等级和处理环节" class="headerlink" title="卫星数据等级和处理环节"></a>卫星数据等级和处理环节</h2><blockquote><p>卫星数据分级0-4级<br>1.原始卫星按照轨道定时拍摄（编程下任务除外）<br>2.发送数据到地面接收站<br>3.地面接收站，传输数据到OBS（华为对象存储）<br>4.预处理按照星轨，编码器等参数处理为单景 TIF或者是XML<br>5.校准，匀光匀色（AI或者PS），影像镶嵌和裁切（按业务合并单景TIF），降8位色,多光谱（多波段）和全色影像的融合，全色影像保留了空间分辨率，多光谱影像保留了光谱信息。</p>
-<p>6.转换地理坐标系(WGS84)<br>7.切片发布为基础影像瓦片服务（OBS）,通过调度进行分布式，或者K8S编排POD(容器)进行切片<br>8.SAAS对外提供瓦片服务（权限控制,调用频次限流）</p>
-</blockquote>
-
-<p><a href="http://blog.sina.com.cn/s/blog_764b1e9d0102wdfp.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_764b1e9d0102wdfp.html</a></p>
-<p><img src="/2021/04/26/卫星影像的数据处理方案/20210426152831.jpg" alt="alt"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2095,7 +2035,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">125</span>
+                    <span class="site-state-item-count">128</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2220,7 +2160,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">54</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2361,7 +2305,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">62</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
