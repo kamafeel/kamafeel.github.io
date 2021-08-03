@@ -97,14 +97,14 @@
 
 
   <meta name="description" content="共识算法-Raft协议核心：1.选举选举超时：从跟随者到候选人的超时时间（每个节点随机150-300毫秒） 此时间达到（超时），即可为自己投票，并且发送给其余node,其余node如果没有投票，就会vote给发送的node，并且重置自己的选举超时时间 2.变更日志复制一旦形成leader，所有系统的变更都需要走leader,leader复制分发日志变更记录到其余node如果majority nod">
-<meta name="keywords" content="分布式,算法">
+<meta name="keywords" content="分布式,共识算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="共识算法-Raft协议">
 <meta property="og:url" content="https://kamafeel.github.io/2021/08/02/共识算法-Raft协议/index.html">
 <meta property="og:site_name" content="Kamafeel">
 <meta property="og:description" content="共识算法-Raft协议核心：1.选举选举超时：从跟随者到候选人的超时时间（每个节点随机150-300毫秒） 此时间达到（超时），即可为自己投票，并且发送给其余node,其余node如果没有投票，就会vote给发送的node，并且重置自己的选举超时时间 2.变更日志复制一旦形成leader，所有系统的变更都需要走leader,leader复制分发日志变更记录到其余node如果majority nod">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-02T02:12:31.946Z">
+<meta property="og:updated_time" content="2021-08-02T02:15:56.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="共识算法-Raft协议">
 <meta name="twitter:description" content="共识算法-Raft协议核心：1.选举选举超时：从跟随者到候选人的超时时间（每个节点随机150-300毫秒） 此时间达到（超时），即可为自己投票，并且发送给其余node,其余node如果没有投票，就会vote给发送的node，并且重置自己的选举超时时间 2.变更日志复制一旦形成leader，所有系统的变更都需要走leader,leader复制分发日志变更记录到其余node如果majority nod">
@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2021-08-02 09:59:41 / 修改时间：10:12:31" itemprop="dateCreated datePublished" datetime="2021-08-02T09:59:41+08:00">2021-08-02</time>
+              <time title="创建时间：2021-08-02 09:59:41 / 修改时间：10:15:56" itemprop="dateCreated datePublished" datetime="2021-08-02T09:59:41+08:00">2021-08-02</time>
             
 
             
@@ -394,11 +394,13 @@
       
 
       
-        <h2 id="共识算法-Raft协议"><a href="#共识算法-Raft协议" class="headerlink" title="共识算法-Raft协议"></a>共识算法-Raft协议</h2><p>核心：<br>1.选举<br>选举超时：<br>从跟随者到候选人的超时时间（每个节点随机150-300毫秒）</p>
+        <h2 id="共识算法-Raft协议"><a href="#共识算法-Raft协议" class="headerlink" title="共识算法-Raft协议"></a>共识算法-Raft协议</h2><blockquote><p>核心：<br>1.选举<br>选举超时：<br>从跟随者到候选人的超时时间（每个节点随机150-300毫秒）</p>
 <p>此时间达到（超时），即可为自己投票，并且发送给其余node,其余node如果没有投票，就会vote给发送的node，并且重置自己的选举超时时间</p>
 <p>2.变更日志复制<br>一旦形成leader，所有系统的变更都需要走leader,leader复制分发日志变更记录到其余node如果majority node reply is ok,system change 生效并且回复客户端信息</p>
+<p>3.共识<br>多node需要形成共识</p>
 <p>演示说明：</p>
 <p><a href="http://thesecretlivesofdata.com/raft/" target="_blank" rel="noopener">http://thesecretlivesofdata.com/raft/</a></p>
+</blockquote>
 
       
     </div>
@@ -427,7 +429,7 @@
           
             <a href="/tags/分布式/" rel="tag"># 分布式</a>
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/共识算法/" rel="tag"># 共识算法</a>
           
         </div>
       
@@ -449,6 +451,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/08/02/lua使用小结/" rel="prev" title="lua使用小结">
+                lua使用小结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -517,7 +523,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">128</span>
+                    <span class="site-state-item-count">129</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -646,7 +652,15 @@
                     
                       
                     
-                    <span class="site-state-item-count">56</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">60</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -791,7 +805,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">64</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
