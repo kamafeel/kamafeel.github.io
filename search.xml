@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>微服务事务</title>
+      <link href="/2021/08/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BA%8B%E5%8A%A1/"/>
+      <url>/2021/08/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BA%8B%E5%8A%A1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="事务的处理"><a href="#事务的处理" class="headerlink" title="事务的处理"></a>事务的处理</h2><blockquote><p>2PC,3PC 强一致性的缺陷（数据库）<br>TCC 的业务代码侵占<br>本地事务表,MQ事务（柔性最终一致性）<br>seata的运维</p></blockquote><p>分布式事务<br><a href="https://zhuanlan.zhihu.com/p/183753774" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/183753774</a></p><p>seata说明<br><a href="https://juejin.cn/post/6844904001528397831" target="_blank" rel="noopener">https://juejin.cn/post/6844904001528397831</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微服务 </category>
+          
+          <category> 理论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微服务 </tag>
+            
+            <tag> 事务 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>微服务弊端</title>
       <link href="/2021/08/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%8A%E7%AB%AF/"/>
       <url>/2021/08/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%BC%8A%E7%AB%AF/</url>
@@ -1255,9 +1284,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -1687,9 +1716,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
             <tag> 分治 </tag>
             
@@ -1718,9 +1747,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -1886,9 +1915,9 @@
       
         <tags>
             
-            <tag> 数据库 </tag>
-            
             <tag> 事务 </tag>
+            
+            <tag> 数据库 </tag>
             
         </tags>
       
@@ -1915,9 +1944,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -1944,9 +1973,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -1973,9 +2002,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2002,9 +2031,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2060,11 +2089,11 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
             
             <tag> AQS </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2091,9 +2120,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2282,9 +2311,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
             <tag> 分治 </tag>
             

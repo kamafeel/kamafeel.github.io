@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="https://segmentfault.com/a/1190000021497452 https://juejin.im/post/6870288195674718222#heading-5">
-<meta name="keywords" content="springCloud,微服务">
+  <meta name="description" content="事务的处理2PC,3PC 强一致性的缺陷（数据库）TCC 的业务代码侵占本地事务表,MQ事务（柔性最终一致性）seata的运维    分布式事务https://zhuanlan.zhihu.com/p/183753774 seata说明https://juejin.cn/post/6844904001528397831">
+<meta name="keywords" content="微服务,事务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringCloud组件选择">
-<meta property="og:url" content="https://kamafeel.github.io/2020/09/19/SpringCloud组件选择/index.html">
+<meta property="og:title" content="微服务事务">
+<meta property="og:url" content="https://kamafeel.github.io/2021/08/03/微服务事务/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="https://segmentfault.com/a/1190000021497452 https://juejin.im/post/6870288195674718222#heading-5">
+<meta property="og:description" content="事务的处理2PC,3PC 强一致性的缺陷（数据库）TCC 的业务代码侵占本地事务表,MQ事务（柔性最终一致性）seata的运维    分布式事务https://zhuanlan.zhihu.com/p/183753774 seata说明https://juejin.cn/post/6844904001528397831">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://kamafeel.github.io/2020/09/19/SpringCloud组件选择/20200919154030.png">
-<meta property="og:image" content="https://kamafeel.github.io/2020/09/19/SpringCloud组件选择/20200919154112.png">
-<meta property="og:updated_time" content="2020-09-19T07:43:04.354Z">
+<meta property="og:updated_time" content="2021-08-03T03:37:13.451Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SpringCloud组件选择">
-<meta name="twitter:description" content="https://segmentfault.com/a/1190000021497452 https://juejin.im/post/6870288195674718222#heading-5">
-<meta name="twitter:image" content="https://kamafeel.github.io/2020/09/19/SpringCloud组件选择/20200919154030.png">
+<meta name="twitter:title" content="微服务事务">
+<meta name="twitter:description" content="事务的处理2PC,3PC 强一致性的缺陷（数据库）TCC 的业务代码侵占本地事务表,MQ事务（柔性最终一致性）seata的运维    分布式事务https://zhuanlan.zhihu.com/p/183753774 seata说明https://juejin.cn/post/6844904001528397831">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="https://kamafeel.github.io/2020/09/19/SpringCloud组件选择/">
+  <link rel="canonical" href="https://kamafeel.github.io/2021/08/03/微服务事务/">
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>SpringCloud组件选择 | Kamafeel</title>
+  <title>微服务事务 | Kamafeel</title>
   
 
 
@@ -297,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/19/SpringCloud组件选择/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/08/03/微服务事务/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -314,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SpringCloud组件选择
+          <h1 class="post-title" itemprop="name headline">微服务事务
 
               
             
@@ -340,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2020-09-19 15:38:00 / 修改时间：15:43:04" itemprop="dateCreated datePublished" datetime="2020-09-19T15:38:00+08:00">2020-09-19</time>
+              <time title="创建时间：2021-08-03 11:26:42 / 修改时间：11:37:13" itemprop="dateCreated datePublished" datetime="2021-08-03T11:26:42+08:00">2021-08-03</time>
             
 
             
@@ -369,7 +366,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/springCloud/" itemprop="url" rel="index"><span itemprop="name">springCloud</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/理论/" itemprop="url" rel="index"><span itemprop="name">理论</span></a></span>
 
                 
                 
@@ -404,10 +401,12 @@
       
 
       
-        <p><img src="/2020/09/19/SpringCloud组件选择/20200919154030.png" alt="alt"></p>
-<p><img src="/2020/09/19/SpringCloud组件选择/20200919154112.png" alt="alt"></p>
-<p><a href="https://segmentfault.com/a/1190000021497452" target="_blank" rel="noopener">https://segmentfault.com/a/1190000021497452</a></p>
-<p><a href="https://juejin.im/post/6870288195674718222#heading-5" target="_blank" rel="noopener">https://juejin.im/post/6870288195674718222#heading-5</a></p>
+        <h2 id="事务的处理"><a href="#事务的处理" class="headerlink" title="事务的处理"></a>事务的处理</h2><blockquote><p>2PC,3PC 强一致性的缺陷（数据库）<br>TCC 的业务代码侵占<br>本地事务表,MQ事务（柔性最终一致性）<br>seata的运维</p>
+</blockquote>
+
+
+<p>分布式事务<br><a href="https://zhuanlan.zhihu.com/p/183753774" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/183753774</a></p>
+<p>seata说明<br><a href="https://juejin.cn/post/6844904001528397831" target="_blank" rel="noopener">https://juejin.cn/post/6844904001528397831</a></p>
 
       
     </div>
@@ -434,9 +433,9 @@
         
         <div class="post-tags">
           
-            <a href="/tags/springCloud/" rel="tag"># springCloud</a>
-          
             <a href="/tags/微服务/" rel="tag"># 微服务</a>
+          
+            <a href="/tags/事务/" rel="tag"># 事务</a>
           
         </div>
       
@@ -449,8 +448,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/18/DevOps/" rel="next" title="DevOps">
-                <i class="fa fa-chevron-left"></i> DevOps
+              <a href="/2021/08/03/微服务弊端/" rel="next" title="微服务弊端">
+                <i class="fa fa-chevron-left"></i> 微服务弊端
               </a>
             
           </div>
@@ -458,10 +457,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/09/19/JAVA-SPI-和Spring-start/" rel="prev" title="JAVA SPI 和Spring start">
-                JAVA SPI 和Spring start <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,8 +500,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -840,6 +844,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的处理"><span class="nav-number">1.</span> <span class="nav-text">事务的处理</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
