@@ -4,11 +4,102 @@
   
     
     <entry>
+      <title>产品架构-调度产品</title>
+      <link href="/2021/08/05/%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84-%E8%B0%83%E5%BA%A6%E4%BA%A7%E5%93%81/"/>
+      <url>/2021/08/05/%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84-%E8%B0%83%E5%BA%A6%E4%BA%A7%E5%93%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="产品要素"><a href="#产品要素" class="headerlink" title="产品要素"></a>产品要素</h2><blockquote><p>1.server端高可用（分布式计算加分）<br>2.agent(work)端分布式<br>3.日志传输<br>4.任务事件/时间触发算法<br>5.任务关系算法DAG，图<br>6.服务注册(server和work)<br>7.任务信息存储选择<br>8.重做后续/任务共性参数传递</p></blockquote><h2 id="服务端设计"><a href="#服务端设计" class="headerlink" title="服务端设计"></a>服务端设计</h2><blockquote><p>利用zk,nocos做服务端高可用,和server注册;<br>人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走server特殊HTTP接口;</p></blockquote><h2 id="触发设计"><a href="#触发设计" class="headerlink" title="触发设计"></a>触发设计</h2><blockquote><p>时间轮数据结构，负责时间触发任务（或者用quartz）</p><p>事件触发？akka? epoll</p></blockquote><h2 id="agent-work-端设计"><a href="#agent-work-端设计" class="headerlink" title="agent(work)端设计"></a>agent(work)端设计</h2><blockquote><p>利用zk,nocos做服务注册和状态同步;利用kafka或者mq做分布式。</p><p>编写start，kill,tail等脚本，分别启动，杀死，获取日志。</p><p>日志传输，按需执行，利用tail -f100，如果日志存在分布式获取，利用时序数据进行保存或者排序（es等）</p></blockquote><h2 id="任务信息事件关系"><a href="#任务信息事件关系" class="headerlink" title="任务信息事件关系"></a>任务信息事件关系</h2><p>关系的保持，利用DAG算法，或者图数据库保存（快速检索关系）</p><p>利用mongodb保存任务信息。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+          <category> 产品 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 架构 </tag>
+            
+            <tag> 调度 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>函数式接口@FunctionalInterface</title>
+      <link href="/2021/08/05/%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3-FunctionalInterface/"/>
+      <url>/2021/08/05/%E5%87%BD%E6%95%B0%E5%BC%8F%E6%8E%A5%E5%8F%A3-FunctionalInterface/</url>
+      
+        <content type="html"><![CDATA[<h2 id="函数编程-实现匿名内部类的方式"><a href="#函数编程-实现匿名内部类的方式" class="headerlink" title="函数编程,实现匿名内部类的方式"></a>函数编程,实现匿名内部类的方式</h2><p>Runnable 接口均已在JDK1.8后改造。</p><h2 id="项目运用"><a href="#项目运用" class="headerlink" title="项目运用"></a>项目运用</h2><p>有且仅有一个抽象方法”的接口上，表示函数式接口<br>（可以有静态方法，或者default方法）</p><p>在函数编程中，实现匿名写法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JAVA </tag>
+            
+            <tag> FunctionalInterface </tag>
+            
+            <tag> Lambda </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>系统设计-配置文件安全</title>
+      <link href="/2021/08/03/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%89%E5%85%A8/"/>
+      <url>/2021/08/03/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%AE%89%E5%85%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="配置文件信息安全"><a href="#配置文件信息安全" class="headerlink" title="配置文件信息安全"></a>配置文件信息安全</h2><p>配置文件进行加密<br>jasypt-spring-boot-starter</p><p><a href="https://www.cnblogs.com/chengxy-nds/p/15093253.html" target="_blank" rel="noopener">https://www.cnblogs.com/chengxy-nds/p/15093253.html</a></p><p>配置中心<br>nacos 负责核心配置的私域化</p><h2 id="数据库信息脱敏"><a href="#数据库信息脱敏" class="headerlink" title="数据库信息脱敏"></a>数据库信息脱敏</h2><p>偏移和取整<br>平均值<br>加密<br>无效化<br>随机值<br><a href="https://mp.weixin.qq.com/s/_Dgekk1AJsIx0TTlnH6kUA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/_Dgekk1AJsIx0TTlnH6kUA</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+          <category> 安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 架构 </tag>
+            
+            <tag> 安全 </tag>
+            
+            <tag> 配置文件信息安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>微服务事务</title>
       <link href="/2021/08/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BA%8B%E5%8A%A1/"/>
       <url>/2021/08/03/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%BA%8B%E5%8A%A1/</url>
       
-        <content type="html"><![CDATA[<h2 id="事务的处理"><a href="#事务的处理" class="headerlink" title="事务的处理"></a>事务的处理</h2><blockquote><p>2PC,3PC 强一致性的缺陷（数据库）<br>TCC 的业务代码侵占<br>本地事务表,MQ事务（柔性最终一致性）<br>seata的运维</p></blockquote><p>分布式事务<br><a href="https://zhuanlan.zhihu.com/p/183753774" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/183753774</a></p><p>seata说明<br><a href="https://juejin.cn/post/6844904001528397831" target="_blank" rel="noopener">https://juejin.cn/post/6844904001528397831</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="事务的处理"><a href="#事务的处理" class="headerlink" title="事务的处理"></a>事务的处理</h2><blockquote><p>2PC,3PC 强一致性的缺陷（数据库）<br>TCC 的业务代码侵占<br>本地事务表,MQ事务（柔性最终一致性）<br>seata的运维</p></blockquote><p>分布式事务<br><a href="https://zhuanlan.zhihu.com/p/183753774" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/183753774</a></p><p>seata说明<br><a href="https://juejin.cn/post/6844904001528397831" target="_blank" rel="noopener">https://juejin.cn/post/6844904001528397831</a></p><p><a href="https://www.cnblogs.com/chengxy-nds/p/14046856.html" target="_blank" rel="noopener">https://www.cnblogs.com/chengxy-nds/p/14046856.html</a></p>]]></content>
       
       
       <categories>
@@ -147,16 +238,18 @@
     
     
     <entry>
-      <title>系统设计-安全</title>
+      <title>系统设计-密码安全</title>
       <link href="/2021/07/30/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E5%AE%89%E5%85%A8/"/>
       <url>/2021/07/30/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E5%AE%89%E5%85%A8/</url>
       
-        <content type="html"><![CDATA[<h2 id="密码设计"><a href="#密码设计" class="headerlink" title="密码设计"></a>密码设计</h2><p>加盐</p><p><a href="https://www.tomczhen.com/2016/10/10/hashing-security/" target="_blank" rel="noopener">https://www.tomczhen.com/2016/10/10/hashing-security/</a></p><h2 id="密码设计-1"><a href="#密码设计-1" class="headerlink" title="密码设计"></a>密码设计</h2>]]></content>
+        <content type="html"><![CDATA[<h2 id="密码设计"><a href="#密码设计" class="headerlink" title="密码设计"></a>密码设计</h2><p>加盐</p><p><a href="https://www.tomczhen.com/2016/10/10/hashing-security/" target="_blank" rel="noopener">https://www.tomczhen.com/2016/10/10/hashing-security/</a></p>]]></content>
       
       
       <categories>
           
           <category> 架构 </category>
+          
+          <category> 安全 </category>
           
       </categories>
       
@@ -1343,27 +1436,6 @@
     
     
     <entry>
-      <title>this,static,super,final</title>
-      <link href="/2020/09/22/this-static-super-final/"/>
-      <url>/2020/09/22/this-static-super-final/</url>
-      
-        <content type="html"><![CDATA[<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><blockquote><p>用法<br>最基本的用法是，static 可以用于修饰成员变量和成员方法，我们将其称之为静态变量和静态方法，直接通过类名来进行访问。</p><p>当一个事物为static时，就意味着这个域或方法不会与包含它的那个类的任何对象实例关联在一起，所以从未创建某个类的任何对象，也可以调用其static方法或访问其static域。</p><p>变量<br>static变量也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p><p>static成员变量的初始化顺序按照定义的顺序进行初始化。</p></blockquote><h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>只能用在构造器或者方法中，用于获得调用当前的构造器方法的对象引用。可以和任何的对象引用一样来处理这个this对象</p><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>终态</p><p>编译器final修饰的变量 放到寄存器（非共享内存）<br>并发线程安全，程序任何对象的初始化happen-before于程序中任何其他的动作操作行为能够保证不被重排序</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String a = <span class="string">"hello2"</span>;</span><br><span class="line">        <span class="keyword">final</span> String b = <span class="string">"hello"</span>;</span><br><span class="line">        String d = <span class="string">"hello"</span>;</span><br><span class="line">        String c = b + <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 由于b是常量所以编译期，编译器会直接将b替换为其值，并直接拼接成"Hello2"赋值给c，这又叫做“常量优化”</span></span><br><span class="line">        <span class="comment">// 故在编译期就能确定b值</span></span><br><span class="line">        String e = d + <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 由于赋值语句右侧使用的不同类型常量赋值，因此会使用StringBuilder实现字符串拼接</span></span><br><span class="line">        <span class="comment">// 会先调用其append方法最后调用toString方法，而toString方法是new String并返回，即在堆中创建对象</span></span><br><span class="line">        <span class="comment">// 故e的值需要运行时确定</span></span><br><span class="line">        String f = <span class="string">"hello"</span> + <span class="string">"2"</span>;</span><br><span class="line">        <span class="comment">// 而f的赋值语句右侧也都是字面量，或者说常量，同字符串c的解释，故在编译期就能确定f值</span></span><br><span class="line">        <span class="comment">// 故最终的输出结果为：</span></span><br><span class="line">        System.out.println(a == c);<span class="comment">// true</span></span><br><span class="line">        System.out.println(a == e);<span class="comment">// false</span></span><br><span class="line">        System.out.println(a == f);<span class="comment">// true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C:\Users\DELL\Desktop&gt;javap -c Solution.class</span><br><span class="line">Compiled from <span class="string">"Solution.java"</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeetCodeStudy</span>.<span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> LeetCodeStudy.Solution();</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: aload_0</span><br><span class="line">       1: invokespecial #1 // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">       <span class="number">4</span>: <span class="keyword">return</span></span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(java.lang.String[])</span></span>;</span><br><span class="line">    Code:</span><br><span class="line">       0: ldc           #2 // String hello2</span><br><span class="line">       <span class="number">2</span>: astore_1</span><br><span class="line">       3: ldc           #3 // String hello</span><br><span class="line">       <span class="number">5</span>: astore_2</span><br><span class="line">       6: ldc           #3 // String hello</span><br><span class="line">       <span class="number">8</span>: astore_3</span><br><span class="line">       9: ldc           #2 // String hello2</span><br><span class="line">      <span class="number">11</span>: astore        <span class="number">4</span></span><br><span class="line">      13: new           #4 // class java/lang/StringBuilder</span><br><span class="line">      <span class="number">16</span>: dup</span><br><span class="line">      17: invokespecial #5 // Method java/lang/StringBuilder."&lt;init&gt;":()V</span><br><span class="line">      <span class="number">20</span>: aload_3</span><br><span class="line">      21: invokevirtual #6 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line">      <span class="number">24</span>: iconst_2</span><br><span class="line">      25: invokevirtual #7 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;</span><br><span class="line">      28: invokevirtual #8 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span><br><span class="line">      <span class="number">31</span>: astore        <span class="number">5</span></span><br><span class="line">      33: ldc           #2 // String hello2</span><br><span class="line">      <span class="number">35</span>: astore        <span class="number">6</span></span><br><span class="line">      37: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">40</span>: aload_1</span><br><span class="line">      <span class="number">41</span>: aload         <span class="number">4</span></span><br><span class="line">      <span class="number">43</span>: if_acmpne     <span class="number">50</span></span><br><span class="line">      <span class="number">46</span>: iconst_1</span><br><span class="line">      <span class="number">47</span>: goto          <span class="number">51</span></span><br><span class="line">      <span class="number">50</span>: iconst_0</span><br><span class="line">      51: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      54: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">57</span>: aload_1</span><br><span class="line">      <span class="number">58</span>: aload         <span class="number">5</span></span><br><span class="line">      <span class="number">60</span>: if_acmpne     <span class="number">67</span></span><br><span class="line">      <span class="number">63</span>: iconst_1</span><br><span class="line">      <span class="number">64</span>: goto          <span class="number">68</span></span><br><span class="line">      <span class="number">67</span>: iconst_0</span><br><span class="line">      68: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      71: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">74</span>: aload_1</span><br><span class="line">      <span class="number">75</span>: aload         <span class="number">6</span></span><br><span class="line">      <span class="number">77</span>: if_acmpne     <span class="number">84</span></span><br><span class="line">      <span class="number">80</span>: iconst_1</span><br><span class="line">      <span class="number">81</span>: goto          <span class="number">85</span></span><br><span class="line">      <span class="number">84</span>: iconst_0</span><br><span class="line">      85: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      <span class="number">88</span>: <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super是当前对象里面的父对象的引用，使用super来引用父类的某种东西</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> JAVA </category>
-          
-          <category> 开发 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>mybatis-plus基本原理</title>
       <link href="/2020/09/22/Mybatis-plus/"/>
       <url>/2020/09/22/Mybatis-plus/</url>
@@ -1376,6 +1448,27 @@
           <category> 框架 </category>
           
           <category> mybatis-plus </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>this,static,super,final</title>
+      <link href="/2020/09/22/this-static-super-final/"/>
+      <url>/2020/09/22/this-static-super-final/</url>
+      
+        <content type="html"><![CDATA[<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><blockquote><p>用法<br>最基本的用法是，static 可以用于修饰成员变量和成员方法，我们将其称之为静态变量和静态方法，直接通过类名来进行访问。</p><p>当一个事物为static时，就意味着这个域或方法不会与包含它的那个类的任何对象实例关联在一起，所以从未创建某个类的任何对象，也可以调用其static方法或访问其static域。</p><p>变量<br>static变量也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p><p>static成员变量的初始化顺序按照定义的顺序进行初始化。</p></blockquote><h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>只能用在构造器或者方法中，用于获得调用当前的构造器方法的对象引用。可以和任何的对象引用一样来处理这个this对象</p><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>终态</p><p>编译器final修饰的变量 放到寄存器（非共享内存）<br>并发线程安全，程序任何对象的初始化happen-before于程序中任何其他的动作操作行为能够保证不被重排序</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String a = <span class="string">"hello2"</span>;</span><br><span class="line">        <span class="keyword">final</span> String b = <span class="string">"hello"</span>;</span><br><span class="line">        String d = <span class="string">"hello"</span>;</span><br><span class="line">        String c = b + <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 由于b是常量所以编译期，编译器会直接将b替换为其值，并直接拼接成"Hello2"赋值给c，这又叫做“常量优化”</span></span><br><span class="line">        <span class="comment">// 故在编译期就能确定b值</span></span><br><span class="line">        String e = d + <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 由于赋值语句右侧使用的不同类型常量赋值，因此会使用StringBuilder实现字符串拼接</span></span><br><span class="line">        <span class="comment">// 会先调用其append方法最后调用toString方法，而toString方法是new String并返回，即在堆中创建对象</span></span><br><span class="line">        <span class="comment">// 故e的值需要运行时确定</span></span><br><span class="line">        String f = <span class="string">"hello"</span> + <span class="string">"2"</span>;</span><br><span class="line">        <span class="comment">// 而f的赋值语句右侧也都是字面量，或者说常量，同字符串c的解释，故在编译期就能确定f值</span></span><br><span class="line">        <span class="comment">// 故最终的输出结果为：</span></span><br><span class="line">        System.out.println(a == c);<span class="comment">// true</span></span><br><span class="line">        System.out.println(a == e);<span class="comment">// false</span></span><br><span class="line">        System.out.println(a == f);<span class="comment">// true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C:\Users\DELL\Desktop&gt;javap -c Solution.class</span><br><span class="line">Compiled from <span class="string">"Solution.java"</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeetCodeStudy</span>.<span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> LeetCodeStudy.Solution();</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: aload_0</span><br><span class="line">       1: invokespecial #1 // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">       <span class="number">4</span>: <span class="keyword">return</span></span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(java.lang.String[])</span></span>;</span><br><span class="line">    Code:</span><br><span class="line">       0: ldc           #2 // String hello2</span><br><span class="line">       <span class="number">2</span>: astore_1</span><br><span class="line">       3: ldc           #3 // String hello</span><br><span class="line">       <span class="number">5</span>: astore_2</span><br><span class="line">       6: ldc           #3 // String hello</span><br><span class="line">       <span class="number">8</span>: astore_3</span><br><span class="line">       9: ldc           #2 // String hello2</span><br><span class="line">      <span class="number">11</span>: astore        <span class="number">4</span></span><br><span class="line">      13: new           #4 // class java/lang/StringBuilder</span><br><span class="line">      <span class="number">16</span>: dup</span><br><span class="line">      17: invokespecial #5 // Method java/lang/StringBuilder."&lt;init&gt;":()V</span><br><span class="line">      <span class="number">20</span>: aload_3</span><br><span class="line">      21: invokevirtual #6 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line">      <span class="number">24</span>: iconst_2</span><br><span class="line">      25: invokevirtual #7 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;</span><br><span class="line">      28: invokevirtual #8 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span><br><span class="line">      <span class="number">31</span>: astore        <span class="number">5</span></span><br><span class="line">      33: ldc           #2 // String hello2</span><br><span class="line">      <span class="number">35</span>: astore        <span class="number">6</span></span><br><span class="line">      37: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">40</span>: aload_1</span><br><span class="line">      <span class="number">41</span>: aload         <span class="number">4</span></span><br><span class="line">      <span class="number">43</span>: if_acmpne     <span class="number">50</span></span><br><span class="line">      <span class="number">46</span>: iconst_1</span><br><span class="line">      <span class="number">47</span>: goto          <span class="number">51</span></span><br><span class="line">      <span class="number">50</span>: iconst_0</span><br><span class="line">      51: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      54: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">57</span>: aload_1</span><br><span class="line">      <span class="number">58</span>: aload         <span class="number">5</span></span><br><span class="line">      <span class="number">60</span>: if_acmpne     <span class="number">67</span></span><br><span class="line">      <span class="number">63</span>: iconst_1</span><br><span class="line">      <span class="number">64</span>: goto          <span class="number">68</span></span><br><span class="line">      <span class="number">67</span>: iconst_0</span><br><span class="line">      68: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      71: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">74</span>: aload_1</span><br><span class="line">      <span class="number">75</span>: aload         <span class="number">6</span></span><br><span class="line">      <span class="number">77</span>: if_acmpne     <span class="number">84</span></span><br><span class="line">      <span class="number">80</span>: iconst_1</span><br><span class="line">      <span class="number">81</span>: goto          <span class="number">85</span></span><br><span class="line">      <span class="number">84</span>: iconst_0</span><br><span class="line">      85: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      <span class="number">88</span>: <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super是当前对象里面的父对象的引用，使用super来引用父类的某种东西</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> 开发 </category>
           
       </categories>
       
@@ -3031,11 +3124,11 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
@@ -3058,11 +3151,11 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
       
       
       <categories>
