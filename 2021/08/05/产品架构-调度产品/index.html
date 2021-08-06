@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走serve">
+  <meta name="description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件">
 <meta name="keywords" content="架构,调度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="产品架构-调度产品">
 <meta property="og:url" content="https://kamafeel.github.io/2021/08/05/产品架构-调度产品/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走serve">
+<meta property="og:description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-05T08:54:18.392Z">
+<meta property="og:updated_time" content="2021-08-06T07:33:14.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="产品架构-调度产品">
-<meta name="twitter:description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走serve">
+<meta name="twitter:description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件">
 
 
 
@@ -337,12 +337,24 @@
                 
               
 
-              <time title="创建时间：2021-08-05 16:24:18 / 修改时间：16:54:18" itemprop="dateCreated datePublished" datetime="2021-08-05T16:24:18+08:00">2021-08-05</time>
+              <time title="创建时间：2021-08-05 16:24:18" itemprop="dateCreated datePublished" datetime="2021-08-05T16:24:18+08:00">2021-08-05</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-08-06 15:33:14" itemprop="dateModified" datetime="2021-08-06T15:33:14+08:00">2021-08-06</time>
               
             
           </span>
@@ -405,7 +417,7 @@
 </blockquote>
 
 
-<h2 id="服务端设计"><a href="#服务端设计" class="headerlink" title="服务端设计"></a>服务端设计</h2><blockquote><p>利用zk,nocos做服务端高可用,和server注册;<br>人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走server特殊HTTP接口;</p>
+<h2 id="服务端设计"><a href="#服务端设计" class="headerlink" title="服务端设计"></a>服务端设计</h2><blockquote><p>利用zk,nocos做服务端高可用,和server注册;<br>人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件或者kafka;</p>
 </blockquote>
 
 <h2 id="触发设计"><a href="#触发设计" class="headerlink" title="触发设计"></a>触发设计</h2><blockquote><p>时间轮数据结构，负责时间触发任务（或者用quartz）</p>
@@ -469,6 +481,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/08/06/最近很喜欢的一句话/" rel="prev" title="最近很喜欢的一句话">
+                最近很喜欢的一句话 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -537,7 +553,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">133</span>
+                    <span class="site-state-item-count">134</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
