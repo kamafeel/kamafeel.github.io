@@ -290,6 +290,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/07/09/docker-java-时间/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/07/09/docker-java-时间/" class="post-title-link" itemprop="url">docker java 时间</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-07-09 14:45:57 / 修改时间：15:21:52" itemprop="dateCreated datePublished" datetime="2021-07-09T14:45:57+08:00">2021-07-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Docker/" itemprop="url" rel="index"><span itemprop="name">Docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="时区-时间"><a href="#时区-时间" class="headerlink" title="时区/时间"></a>时区/时间</h2><blockquote><p>Dockerfile</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN echo &quot;Asia/Shanghai&quot; &gt; /etc/timezone</span><br></pre></td></tr></table></figure>
+
+
+<p>docker run 增加映射</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-v /etc/localtime:/etc/localtime</span><br></pre></td></tr></table></figure>
+</blockquote>
+
+<h2 id="Dockerfile例子"><a href="#Dockerfile例子" class="headerlink" title="Dockerfile例子"></a>Dockerfile例子</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk</span><br><span class="line">RUN echo &quot;Asia/Shanghai&quot; &gt; /etc/timezone</span><br><span class="line">ADD webuploader.jar .</span><br><span class="line">EXPOSE 18080</span><br><span class="line">ENTRYPOINT [ &quot;java&quot;,&quot;-Djava.security.egd=file:/dev/./urandom&quot;, &quot;-jar&quot;,&quot;-Duser.timezone=GMT+08&quot;, &quot;webuploader.jar&quot; ]</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="mongodb的时区"><a href="#mongodb的时区" class="headerlink" title="mongodb的时区"></a>mongodb的时区</h2><p>注意传字符串 作为参数</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/06/24/Spring-AOP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1925,184 +2097,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/04/22/薛定谔方程和宏观世界/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/04/22/薛定谔方程和宏观世界/" class="post-title-link" itemprop="url">薛定谔方程和宏观世界</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-04-22 13:38:48" itemprop="dateCreated datePublished" datetime="2021-04-22T13:38:48+08:00">2021-04-22</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-04-26 15:31:53" itemprop="dateModified" datetime="2021-04-26T15:31:53+08:00">2021-04-26</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/瞎扯蛋/" itemprop="url" rel="index"><span itemprop="name">瞎扯蛋</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote><p>量子力学基础，薛定谔方程，解释 量子态的多态和 波函数坍塌。</p>
-<p>但这一理论无法放眼到宏观上面来看，宏观由无数的量子,原子组成，本身就形成相互影响。</p>
-<p>由无数原子和量子组成的宏观，已不具备量子力学的原则。</p>
-<p>所以薛定谔的猫的实验，只是牵强附会的把微观量子力学，强套在宏观上面，而没考虑宏观对象内部的量子力学多态已经发生了变化，没有实际价值。</p>
-<p>但可以说明的是，变化存在微观量子态的不确定性，但又会形成宏观的规律性。</p>
-<p>相互影响。相互制约。</p>
-</blockquote>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2149,7 +2143,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">142</span>
+                    <span class="site-state-item-count">143</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2296,7 +2290,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">65</span>
+                      
+                    
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
