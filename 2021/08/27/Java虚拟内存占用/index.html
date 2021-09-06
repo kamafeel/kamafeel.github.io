@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="现象原因排查">
+  <meta name="description" content="现象top命令分析异常情况，其中VIRT偏高。 虚拟内存的相关概念：https://juejin.cn/post/6844903744266584072 top命令相关的说明:https://liam.page/2020/07/17/memory-stat-in-TOP/   原因pmap探究VIRT分配情况，多个连续64M glibc 2.12版本有几个Arena（Anonymous memor">
 <meta name="keywords" content="运维">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java虚拟内存占用">
 <meta property="og:url" content="https://kamafeel.github.io/2021/08/27/Java虚拟内存占用/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="现象原因排查">
+<meta property="og:description" content="现象top命令分析异常情况，其中VIRT偏高。 虚拟内存的相关概念：https://juejin.cn/post/6844903744266584072 top命令相关的说明:https://liam.page/2020/07/17/memory-stat-in-TOP/   原因pmap探究VIRT分配情况，多个连续64M glibc 2.12版本有几个Arena（Anonymous memor">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-27T02:13:26.526Z">
+<meta property="og:updated_time" content="2021-09-02T06:56:00.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java虚拟内存占用">
-<meta name="twitter:description" content="现象原因排查">
+<meta name="twitter:description" content="现象top命令分析异常情况，其中VIRT偏高。 虚拟内存的相关概念：https://juejin.cn/post/6844903744266584072 top命令相关的说明:https://liam.page/2020/07/17/memory-stat-in-TOP/   原因pmap探究VIRT分配情况，多个连续64M glibc 2.12版本有几个Arena（Anonymous memor">
 
 
 
@@ -337,12 +337,24 @@
                 
               
 
-              <time title="创建时间：2021-08-27 10:12:43 / 修改时间：10:13:26" itemprop="dateCreated datePublished" datetime="2021-08-27T10:12:43+08:00">2021-08-27</time>
+              <time title="创建时间：2021-08-27 10:12:43" itemprop="dateCreated datePublished" datetime="2021-08-27T10:12:43+08:00">2021-08-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-09-02 14:56:00" itemprop="dateModified" datetime="2021-09-02T14:56:00+08:00">2021-09-02</time>
               
             
           </span>
@@ -401,7 +413,20 @@
       
 
       
-        <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><h2 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h2>
+        <h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><blockquote><p>top命令分析异常情况，其中VIRT偏高。</p>
+<p>虚拟内存的相关概念：<br><a href="https://juejin.cn/post/6844903744266584072" target="_blank" rel="noopener">https://juejin.cn/post/6844903744266584072</a></p>
+<p>top命令相关的说明:<br><a href="https://liam.page/2020/07/17/memory-stat-in-TOP/" target="_blank" rel="noopener">https://liam.page/2020/07/17/memory-stat-in-TOP/</a></p>
+</blockquote>
+
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><blockquote><p>pmap探究VIRT分配情况，多个连续64M</p>
+<p>glibc 2.12版本有几个Arena（Anonymous memory）内存管理存在BUG</p>
+</blockquote>
+
+<h2 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ldd --version</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>内存分配架构的说明：<br><a href="https://www.cyningsun.com/07-07-2018/memory-allocator-contrasts.html" target="_blank" rel="noopener">https://www.cyningsun.com/07-07-2018/memory-allocator-contrasts.html</a></p>
+<p>问题定位参考：<br><a href="https://www.cnblogs.com/seasonsluo/p/java_virt.html" target="_blank" rel="noopener">https://www.cnblogs.com/seasonsluo/p/java_virt.html</a><br><a href="https://cloud.tencent.com/developer/article/1054839" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1054839</a></p>
+
       
     </div>
 
@@ -521,7 +546,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">145</span>
+                    <span class="site-state-item-count">148</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -853,7 +878,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">82</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">84</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -891,7 +920,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#现象"><span class="nav-number">1.</span> <span class="nav-text">现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排查"><span class="nav-number">3.</span> <span class="nav-text">排查</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#现象"><span class="nav-number">1.</span> <span class="nav-text">现象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排查"><span class="nav-number">3.</span> <span class="nav-text">排查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
