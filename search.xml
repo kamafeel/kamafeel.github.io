@@ -4,6 +4,85 @@
   
     
     <entry>
+      <title>中医辩证</title>
+      <link href="/2021/09/29/%E4%B8%AD%E5%8C%BB%E8%BE%A9%E8%AF%81/"/>
+      <url>/2021/09/29/%E4%B8%AD%E5%8C%BB%E8%BE%A9%E8%AF%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="望"><a href="#望" class="headerlink" title="望"></a>望</h2><p>血有余则怒，不足则恐<br>肝气虚则恐，实则怒<br>舌有裂纹必虚，头晕必虚</p><p>阴虚为常，切不可久用泻药</p><h2 id="合穴"><a href="#合穴" class="headerlink" title="合穴"></a>合穴</h2><p>胃合于三里（足三里），大肠合入于巨虚上廉（足三里下四指），小肠合入于巨虚下廉（足三里下四指），三焦合入于委阳（腘窝外），膀胱合入于委中央（腘窝中），胆合入于阳陵泉</p><h2 id="自我治疗"><a href="#自我治疗" class="headerlink" title="自我治疗"></a>自我治疗</h2><p>阴虚为大部分的情况，基本没有全实的概念。</p><p>液门穴可以治疗大部分阴虚火旺。</p><p>少运动，养阴。</p><h2 id="中医书籍"><a href="#中医书籍" class="headerlink" title="中医书籍"></a>中医书籍</h2><p><a href="https://ctext.org/huangdi-neijing/" target="_blank" rel="noopener">https://ctext.org/huangdi-neijing/</a></p><h2 id="特殊名词翻译、白话解释"><a href="#特殊名词翻译、白话解释" class="headerlink" title="特殊名词翻译、白话解释"></a>特殊名词翻译、白话解释</h2><p><a href="http://www.360doc.com/userhome.aspx?userid=225123&amp;cid=1917" target="_blank" rel="noopener">http://www.360doc.com/userhome.aspx?userid=225123&amp;cid=1917</a><br><a href="http://www.a-hospital.com/w/" target="_blank" rel="noopener">http://www.a-hospital.com/w/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 瞎扯蛋 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 自我诊断 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>工业食品</title>
+      <link href="/2021/09/29/%E5%B7%A5%E4%B8%9A%E9%A3%9F%E5%93%81/"/>
+      <url>/2021/09/29/%E5%B7%A5%E4%B8%9A%E9%A3%9F%E5%93%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前驱"><a href="#前驱" class="headerlink" title="前驱"></a>前驱</h2><p>人越来越多，食物生产需要工业化，工业化逐利，势必有违自然而为之</p><h2 id="自以为是的聪明"><a href="#自以为是的聪明" class="headerlink" title="自以为是的聪明"></a>自以为是的聪明</h2><p>发明各种食品添加剂满足口感，甜味剂，增稠剂，基本属于欺骗口舌而害脾胃。</p><h2 id="食材"><a href="#食材" class="headerlink" title="食材"></a>食材</h2><p>人吃食材，消化转换为能量，符合天地循环规律，是正道。</p><p>而不应该逐口腹之欲，而不应该有违自然规律</p><h2 id="工业食品，慎之"><a href="#工业食品，慎之" class="headerlink" title="工业食品，慎之"></a>工业食品，慎之</h2><p>植物食用油，不一定比动物油好。</p><p>白糖不比甜味剂差</p><p>工作生产的食物，少食</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 瞎扯蛋 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 食物 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>接口幂等性</title>
+      <link href="/2021/09/17/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/"/>
+      <url>/2021/09/17/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[<h2 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h2><p>以相同的请求调用这个接口一次和调用这个接口多次，对系统产生的影响是相同的</p><p>一些涉及，积分变动，金钱变动，订单下单等</p><p>保持一个UUUID为后端进行判断</p><p><a href="https://www.cnblogs.com/54chensongxia/p/12598944.html" target="_blank" rel="noopener">https://www.cnblogs.com/54chensongxia/p/12598944.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+          <category> 安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 架构 </tag>
+            
+            <tag> 设计 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>RSA加解密</title>
       <link href="/2021/09/16/%E5%8A%A0%E8%A7%A3%E5%AF%86/"/>
       <url>/2021/09/16/%E5%8A%A0%E8%A7%A3%E5%AF%86/</url>
@@ -64,7 +143,7 @@
       <link href="/2021/09/13/%E4%B8%AD%E8%A5%BF%E5%8C%BB%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9C%8B%E6%B3%95/"/>
       <url>/2021/09/13/%E4%B8%AD%E8%A5%BF%E5%8C%BB%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9C%8B%E6%B3%95/</url>
       
-        <content type="html"><![CDATA[<h2 id="中西医"><a href="#中西医" class="headerlink" title="中西医"></a>中西医</h2><blockquote><p>西医常说中医没有知识体系支撑，是江湖经验学说。<br>中医常说西医头疼医头，脚疼医脚，不懂宏观概念。</p></blockquote><h2 id="中西医对人体的基础认识"><a href="#中西医对人体的基础认识" class="headerlink" title="中西医对人体的基础认识"></a>中西医对人体的基础认识</h2><blockquote><p>西医：从微观来说，人体由差不多60万亿可见细胞组成，其中又参杂运动力学，生物化学，微电子理论等等等，其中的规律，西医只是管中窥豹，各种化验检测忙得不亦乐乎，但只知其一。</p><p>中医：微观搞不懂，那就抽象起来看，二分，六经，其中易经和伤寒论为核心知识架构。<br>再往后分，也太复杂，无法应对。</p></blockquote><h2 id="已知理论"><a href="#已知理论" class="headerlink" title="已知理论"></a>已知理论</h2><blockquote><p>微观：运动理论，存在量子力学和测不准原则</p><p>宏观：有牛顿力学</p><p>这2种本身就是矛盾的。事物的规律在不同的维度存在完全不同的形态。</p><p>波动学：整个世界都存在着原子波动的理论中，感官看到的大部分都不是其本质，而是变化中的某种形态。生物的生老病死，特定行为，都只是符合原子波动运动轨迹。</p></blockquote><h2 id="人体组成的哲学解释"><a href="#人体组成的哲学解释" class="headerlink" title="人体组成的哲学解释"></a>人体组成的哲学解释</h2><blockquote><p>人体分基本功能原子和灵魂原子组成。相辅相成，满足原子波动论，又以各自形态在不同的时间维度进行展示（年轻，强壮，衰老）。</p></blockquote><h2 id="中医的愚昧"><a href="#中医的愚昧" class="headerlink" title="中医的愚昧"></a>中医的愚昧</h2><blockquote><p>中医，很勇敢，尝试世间各种物质对人体的影响，某些猜对，某些猜错。</p><p>朱砂治理失眠就是损伤麻痹神经，半夏就是麻痹支气管用来止咳。</p><p>中医也缺乏理论持续性，所以发展也大多停滞。<br>加上现在的中医师，真正具备哲学思维，无为而治的人很少。所以最好少去看中医。</p></blockquote><h2 id="中，西医的困惑"><a href="#中，西医的困惑" class="headerlink" title="中，西医的困惑"></a>中，西医的困惑</h2><blockquote><p>西医研究各种元素对人体的影响，开发各种物理化学的治疗手段，大多属于治有病。</p><p>中医治疗未病，调整人体整体状态。</p><p>天赋异禀的问题（基因不好），看你是基因否适应宏观波动对你的振幅影响。</p></blockquote><h2 id="顺应波动影响"><a href="#顺应波动影响" class="headerlink" title="顺应波动影响"></a>顺应波动影响</h2><blockquote><p>减少摄入工业化食物（任何工业化生产的食物，少吃大生命体，多吃小生命体），避免被其局部波动性对你产生极端性影响（炎症，糖尿病）。</p><p>减少超高代谢率，不要长期透支机体能量，避免被带坏节奏，导致波动负面影响。</p><p>减少波动淤阻，喝水，保存体内循环基本正常，经脉通畅（经长一寸多活十年）。</p><p>无为而治，避免庸医伤身。</p><p>有急病积极西医治疗，中医哲学治疗未病。</p><p>调整灵魂原子动力（情绪）和功能原子活力（脾胃），使之内部减少产生嫡，适应整体的物质波动规律。</p><p>顺应天地物质运动规律，尊重某些习俗和风水。</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h2 id="中西医"><a href="#中西医" class="headerlink" title="中西医"></a>中西医</h2><blockquote><p>西医常说中医没有知识体系支撑，是江湖经验学说。<br>中医常说西医头疼医头，脚疼医脚，不懂宏观概念。</p></blockquote><h2 id="中西医对人体的基础认识"><a href="#中西医对人体的基础认识" class="headerlink" title="中西医对人体的基础认识"></a>中西医对人体的基础认识</h2><blockquote><p>西医：从微观来说，人体由差不多60万亿可见细胞组成，其中又参杂运动力学，生物化学，微电子理论等等等，其中的规律，西医只是管中窥豹，各种化验检测忙得不亦乐乎，但只知其一。</p><p>中医：微观搞不懂，那就抽象起来看，二分，六经，其中易经和伤寒论为核心知识架构。<br>再往后分，也太复杂，无法应对。</p></blockquote><h2 id="已知理论"><a href="#已知理论" class="headerlink" title="已知理论"></a>已知理论</h2><blockquote><p>微观：运动理论，存在量子力学和测不准原则</p><p>宏观：有牛顿力学</p><p>这2种本身就是矛盾的。事物的规律在不同的维度存在完全不同的形态。</p><p>波动学：整个世界都存在着原子波动的理论中，感官看到的大部分都不是其本质，而是变化中的某种形态。生物的生老病死，特定行为，都只是符合原子波动运动轨迹。</p></blockquote><h2 id="人体组成的哲学解释"><a href="#人体组成的哲学解释" class="headerlink" title="人体组成的哲学解释"></a>人体组成的哲学解释</h2><blockquote><p>人体分基本功能原子和灵魂原子组成。相辅相成，满足原子波动论，又以各自形态在不同的时间维度进行展示（年轻，强壮，衰老）。</p></blockquote><h2 id="中医的愚昧"><a href="#中医的愚昧" class="headerlink" title="中医的愚昧"></a>中医的愚昧</h2><blockquote><p>中医，很勇敢，尝试世间各种物质对人体的影响，某些猜对，某些猜错。</p><p>朱砂治理失眠就是损伤麻痹神经，半夏就是麻痹支气管用来止咳。</p><p>中医也缺乏理论持续性，所以发展也大多停滞。<br>加上现在的中医师，真正具备哲学思维，无为而治的人很少。所以最好少去看中医。</p></blockquote><h2 id="中，西医的困惑"><a href="#中，西医的困惑" class="headerlink" title="中，西医的困惑"></a>中，西医的困惑</h2><blockquote><p>西医研究各种元素对人体的影响，开发各种物理化学的治疗手段，大多属于治有病。</p><p>中医治疗未病，调整人体整体状态。</p><p>天赋异禀的问题（基因不好），看你是基因否适应宏观波动对你的振幅影响。</p></blockquote><h2 id="顺应波动影响"><a href="#顺应波动影响" class="headerlink" title="顺应波动影响"></a>顺应波动影响</h2><blockquote><p>减少摄入工业化食物（任何工业化生产的食物，少吃大生命体，多吃小生命体），避免被其局部波动性对你产生极端性影响（炎症，糖尿病）。</p><p>减少超高代谢率，不要长期透支机体能量，避免被带坏节奏，导致波动负面影响。</p><p>减少波动淤阻，喝水，保存体内循环基本正常，经脉通畅（经长一寸多活十年）。</p><p>无为而治，避免庸医伤身。</p><p>有急病积极西医治疗，中医哲学治疗未病。</p><p>调整灵魂原子动力（情绪）和功能原子活力（脾胃），使之内部减少产生嫡，适应整体的物质波动规律。</p><p>顺应天地物质运动规律，尊重某些习俗和风水。</p></blockquote><h2 id="国内中医，中药的近况"><a href="#国内中医，中药的近况" class="headerlink" title="国内中医，中药的近况"></a>国内中医，中药的近况</h2><p>国内已无中医，中药更是假货，非产地太多，已无价值。</p><p>唯独可以购买一些出口性质的中成药企业（同仁堂，佛慈。宛西制药，天津中新制药-速效救心丸）自行辩证，调理。</p><p>国内的中医医院，看病早已是西医化（B超，CT，核磁共振）</p><p>另外外科西医是比中医更好的，毋庸置疑。</p><p>中医辩证正确，用药正确，最终是培本固元，依靠自身免疫力。</p>]]></content>
       
       
       <categories>
@@ -498,7 +577,7 @@
       <link href="/2021/08/05/%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84-%E8%B0%83%E5%BA%A6%E4%BA%A7%E5%93%81/"/>
       <url>/2021/08/05/%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84-%E8%B0%83%E5%BA%A6%E4%BA%A7%E5%93%81/</url>
       
-        <content type="html"><![CDATA[<h2 id="产品要素"><a href="#产品要素" class="headerlink" title="产品要素"></a>产品要素</h2><blockquote><p>1.server端高可用（分布式计算加分）<br>2.agent(work)端分布式<br>3.日志传输<br>4.任务事件/时间触发算法<br>5.任务关系算法DAG，图<br>6.服务注册(server和work)<br>7.任务信息存储选择<br>8.重做后续/任务共性参数传递</p></blockquote><h2 id="服务端设计"><a href="#服务端设计" class="headerlink" title="服务端设计"></a>服务端设计</h2><blockquote><p>利用zk,nocos做服务端高可用,和server注册;<br>人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件或者kafka;</p></blockquote><h2 id="触发设计"><a href="#触发设计" class="headerlink" title="触发设计"></a>触发设计</h2><blockquote><p>时间轮数据结构，负责时间触发任务（或者用quartz）</p><p>事件触发？akka? epoll</p></blockquote><h2 id="agent-work-端设计"><a href="#agent-work-端设计" class="headerlink" title="agent(work)端设计"></a>agent(work)端设计</h2><blockquote><p>利用zk,nocos做服务注册和状态同步;利用kafka或者mq做分布式。</p><p>编写start，kill,tail等脚本，分别启动，杀死，获取日志。</p><p>日志传输，按需执行，利用tail -f100，如果日志存在分布式获取，利用时序数据进行保存或者排序（es等）</p></blockquote><h2 id="任务信息事件关系"><a href="#任务信息事件关系" class="headerlink" title="任务信息事件关系"></a>任务信息事件关系</h2><p>关系的保持，利用DAG算法，或者图数据库保存（快速检索关系）</p><p>利用mongodb保存任务信息。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="产品要素"><a href="#产品要素" class="headerlink" title="产品要素"></a>产品要素</h2><blockquote><p>1.server端高可用（分布式计算加分）<br>2.agent(work)端分布式<br>3.日志传输<br>4.任务事件触发/任务时间触发（时间轮算法）<br>5.任务关系算法DAG（图数据库）<br>6.服务注册(server和work)<br>7.任务信息存储选择<br>8.重做后续/任务共性参数传递</p></blockquote><h2 id="服务端设计"><a href="#服务端设计" class="headerlink" title="服务端设计"></a>服务端设计</h2><blockquote><p>利用zk,nocos做服务端高可用,和server注册;<br>人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件或者kafka;</p></blockquote><h2 id="触发设计"><a href="#触发设计" class="headerlink" title="触发设计"></a>触发设计</h2><blockquote><p>时间轮数据结构，负责时间触发任务（或者用quartz）</p><p>事件触发？akka? epoll</p></blockquote><h2 id="server端设计"><a href="#server端设计" class="headerlink" title="server端设计"></a>server端设计</h2><p>如何快速触发（事件，时间（cron,极短执行频率）），如何快速分析任务后续关系。</p><p>如何计算重做后续，批量补跑（等等业务诉求）</p><h2 id="server高可用"><a href="#server高可用" class="headerlink" title="server高可用"></a>server高可用</h2><p>ZK监听实现</p><h2 id="agent-work-端设计"><a href="#agent-work-端设计" class="headerlink" title="agent(work)端设计"></a>agent(work)端设计</h2><blockquote><p>利用zk,nocos做服务注册和状态(运行任务负载，是否正常)同步;利用kafka或者mq做分布式。</p><p>编写start（shell通吃），kill,tail等脚本，分别启动，杀死，获取日志。</p><p>日志传输，按需执行，利用tail -f100，如果日志存在分布式获取，利用时序数据进行保存或者排序（es等）</p></blockquote><h2 id="任务信息事件关系"><a href="#任务信息事件关系" class="headerlink" title="任务信息事件关系"></a>任务信息事件关系</h2><p>关系的保持，利用DAG算法，或者图数据库保存（快速检索关系）</p><p>利用mongodb保存任务基本运行信息。</p><h2 id="任务参数"><a href="#任务参数" class="headerlink" title="任务参数"></a>任务参数</h2><p>参数分全局参数，一般任务启动时，进行传递和设置（KV或者json模式）</p><p>任务间参数传递，利用redis进行中转（发送和获取需要开发不同语言的SDK，Java版本，python版本）（agent端通过server去获取）</p>]]></content>
       
       
       <categories>
@@ -1875,9 +1954,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2307,9 +2386,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
             <tag> 分治 </tag>
             
@@ -2338,9 +2417,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2535,9 +2614,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2564,9 +2643,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2593,9 +2672,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2622,9 +2701,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2680,11 +2759,11 @@
       
         <tags>
             
+            <tag> JAVA </tag>
+            
             <tag> 多线程 </tag>
             
             <tag> AQS </tag>
-            
-            <tag> JAVA </tag>
             
         </tags>
       
@@ -2711,9 +2790,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2902,9 +2981,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
             <tag> 分治 </tag>
             

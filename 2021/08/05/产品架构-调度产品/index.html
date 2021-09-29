@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件">
+  <meta name="description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件触发/任务时间触发（时间轮算法）5.任务关系算法DAG（图数据库）6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任">
 <meta name="keywords" content="架构,调度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="产品架构-调度产品">
 <meta property="og:url" content="https://kamafeel.github.io/2021/08/05/产品架构-调度产品/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件">
+<meta property="og:description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件触发/任务时间触发（时间轮算法）5.任务关系算法DAG（图数据库）6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-06T07:33:14.403Z">
+<meta property="og:updated_time" content="2021-09-27T06:49:07.440Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="产品架构-调度产品">
-<meta name="twitter:description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件/时间触发算法5.任务关系算法DAG，图6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任务群任务触发，走消息中间件">
+<meta name="twitter:description" content="产品要素1.server端高可用（分布式计算加分）2.agent(work)端分布式3.日志传输4.任务事件触发/任务时间触发（时间轮算法）5.任务关系算法DAG（图数据库）6.服务注册(server和work)7.任务信息存储选择8.重做后续/任务共性参数传递    服务端设计利用zk,nocos做服务端高可用,和server注册;人为划分任务集群实现server分布式，分配到不同任务集群，跨任">
 
 
 
@@ -354,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-08-06 15:33:14" itemprop="dateModified" datetime="2021-08-06T15:33:14+08:00">2021-08-06</time>
+                <time title="修改时间：2021-09-27 14:49:07" itemprop="dateModified" datetime="2021-09-27T14:49:07+08:00">2021-09-27</time>
               
             
           </span>
@@ -413,7 +413,7 @@
       
 
       
-        <h2 id="产品要素"><a href="#产品要素" class="headerlink" title="产品要素"></a>产品要素</h2><blockquote><p>1.server端高可用（分布式计算加分）<br>2.agent(work)端分布式<br>3.日志传输<br>4.任务事件/时间触发算法<br>5.任务关系算法DAG，图<br>6.服务注册(server和work)<br>7.任务信息存储选择<br>8.重做后续/任务共性参数传递</p>
+        <h2 id="产品要素"><a href="#产品要素" class="headerlink" title="产品要素"></a>产品要素</h2><blockquote><p>1.server端高可用（分布式计算加分）<br>2.agent(work)端分布式<br>3.日志传输<br>4.任务事件触发/任务时间触发（时间轮算法）<br>5.任务关系算法DAG（图数据库）<br>6.服务注册(server和work)<br>7.任务信息存储选择<br>8.重做后续/任务共性参数传递</p>
 </blockquote>
 
 
@@ -424,13 +424,18 @@
 <p>事件触发？akka? epoll</p>
 </blockquote>
 
-<h2 id="agent-work-端设计"><a href="#agent-work-端设计" class="headerlink" title="agent(work)端设计"></a>agent(work)端设计</h2><blockquote><p>利用zk,nocos做服务注册和状态同步;利用kafka或者mq做分布式。</p>
-<p>编写start，kill,tail等脚本，分别启动，杀死，获取日志。</p>
+<h2 id="server端设计"><a href="#server端设计" class="headerlink" title="server端设计"></a>server端设计</h2><p>如何快速触发（事件，时间（cron,极短执行频率）），如何快速分析任务后续关系。</p>
+<p>如何计算重做后续，批量补跑（等等业务诉求）</p>
+<h2 id="server高可用"><a href="#server高可用" class="headerlink" title="server高可用"></a>server高可用</h2><p>ZK监听实现</p>
+<h2 id="agent-work-端设计"><a href="#agent-work-端设计" class="headerlink" title="agent(work)端设计"></a>agent(work)端设计</h2><blockquote><p>利用zk,nocos做服务注册和状态(运行任务负载，是否正常)同步;利用kafka或者mq做分布式。</p>
+<p>编写start（shell通吃），kill,tail等脚本，分别启动，杀死，获取日志。</p>
 <p>日志传输，按需执行，利用tail -f100，如果日志存在分布式获取，利用时序数据进行保存或者排序（es等）</p>
 </blockquote>
 
 <h2 id="任务信息事件关系"><a href="#任务信息事件关系" class="headerlink" title="任务信息事件关系"></a>任务信息事件关系</h2><p>关系的保持，利用DAG算法，或者图数据库保存（快速检索关系）</p>
-<p>利用mongodb保存任务信息。</p>
+<p>利用mongodb保存任务基本运行信息。</p>
+<h2 id="任务参数"><a href="#任务参数" class="headerlink" title="任务参数"></a>任务参数</h2><p>参数分全局参数，一般任务启动时，进行传递和设置（KV或者json模式）</p>
+<p>任务间参数传递，利用redis进行中转（发送和获取需要开发不同语言的SDK，Java版本，python版本）（agent端通过server去获取）</p>
 
       
     </div>
@@ -553,7 +558,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">151</span>
+                    <span class="site-state-item-count">154</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -895,7 +900,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">87</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">90</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -933,7 +944,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#产品要素"><span class="nav-number">1.</span> <span class="nav-text">产品要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端设计"><span class="nav-number">2.</span> <span class="nav-text">服务端设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发设计"><span class="nav-number">3.</span> <span class="nav-text">触发设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-work-端设计"><span class="nav-number">4.</span> <span class="nav-text">agent(work)端设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务信息事件关系"><span class="nav-number">5.</span> <span class="nav-text">任务信息事件关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#产品要素"><span class="nav-number">1.</span> <span class="nav-text">产品要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务端设计"><span class="nav-number">2.</span> <span class="nav-text">服务端设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发设计"><span class="nav-number">3.</span> <span class="nav-text">触发设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server端设计"><span class="nav-number">4.</span> <span class="nav-text">server端设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#server高可用"><span class="nav-number">5.</span> <span class="nav-text">server高可用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#agent-work-端设计"><span class="nav-number">6.</span> <span class="nav-text">agent(work)端设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务信息事件关系"><span class="nav-number">7.</span> <span class="nav-text">任务信息事件关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#任务参数"><span class="nav-number">8.</span> <span class="nav-text">任务参数</span></a></li></ol></div>
             
 
           </div>
