@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>富兰克林13条建议的感悟</title>
+      <link href="/2021/10/11/%E5%AF%8C%E5%85%B0%E5%85%8B%E6%9E%97%E8%87%AA%E4%BC%A0%E7%9A%84%E6%84%9F%E6%82%9F/"/>
+      <url>/2021/10/11/%E5%AF%8C%E5%85%B0%E5%85%8B%E6%9E%97%E8%87%AA%E4%BC%A0%E7%9A%84%E6%84%9F%E6%82%9F/</url>
+      
+        <content type="html"><![CDATA[<h2 id="关于健康的-–自律"><a href="#关于健康的-–自律" class="headerlink" title="关于健康的 –自律"></a>关于健康的 –自律</h2><p>节制：食不过饱，饮不过量。</p><p>贞节：仅为健康或生育的目的进行房事。爱惜身体。</p><h2 id="关于时间安排-–专"><a href="#关于时间安排-–专" class="headerlink" title="关于时间安排 –专"></a>关于时间安排 –专</h2><p>缄默：只说对人对己有益的话，避免闲聊。<br>勤勉：不要浪费时间，只做有用的事情，戒除一切不必要的行为。<br>平静：不要被琐事、普通或者不可避免的事所扰。</p><h2 id="关于内心的修行-–善"><a href="#关于内心的修行-–善" class="headerlink" title="关于内心的修行 –善"></a>关于内心的修行 –善</h2><p>谦虚：向苏格拉底和耶稣学习。<br>正义：不做伤害别人的事情，做有益的事情是你的责任。<br>诚恳：不要恶意欺骗人，思想纯洁公正，讲话也是如此。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 瞎扯蛋 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 感悟 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>中医辩证</title>
       <link href="/2021/09/29/%E4%B8%AD%E5%8C%BB%E8%BE%A9%E8%AF%81/"/>
       <url>/2021/09/29/%E4%B8%AD%E5%8C%BB%E8%BE%A9%E8%AF%81/</url>
@@ -3701,11 +3726,11 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
       
       
       <categories>
@@ -3728,11 +3753,11 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
