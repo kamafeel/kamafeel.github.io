@@ -8,7 +8,7 @@
       <link href="/2021/09/29/%E4%B8%AD%E5%8C%BB%E8%BE%A9%E8%AF%81/"/>
       <url>/2021/09/29/%E4%B8%AD%E5%8C%BB%E8%BE%A9%E8%AF%81/</url>
       
-        <content type="html"><![CDATA[<h2 id="望"><a href="#望" class="headerlink" title="望"></a>望</h2><p>舌有裂纹必虚，头晕必虚<br>脸色晦暗，带灰，肝肾阴虚居多</p><h2 id="合穴"><a href="#合穴" class="headerlink" title="合穴"></a>合穴</h2><p>胃合于三里（足三里），大肠合入于巨虚上廉（足三里下四指），小肠合入于巨虚下廉（足三里下四指），三焦合入于委阳（腘窝外），膀胱合入于委中央（腘窝中），胆合入于阳陵泉</p><h2 id="阴阳"><a href="#阴阳" class="headerlink" title="阴阳"></a>阴阳</h2><p>血有余则怒，不足则恐<br>肝气虚则恐，实则怒<br>阴虚为常，切不可久用泻药</p><h2 id="自我治疗"><a href="#自我治疗" class="headerlink" title="自我治疗"></a>自我治疗</h2><p>阴虚为大部分的情况，基本没有全实的概念。</p><p>液门穴可以治疗大部分阴虚火旺。</p><p>动生阳，静生阴，不可偏执。</p><p>艾过度，生邪火，枯骨髓，血脉凝涩</p><p>阴峻补，需注意以面腻脾胃，生虚火。</p><h2 id="中医书籍"><a href="#中医书籍" class="headerlink" title="中医书籍"></a>中医书籍</h2><p><a href="https://ctext.org/huangdi-neijing/" target="_blank" rel="noopener">https://ctext.org/huangdi-neijing/</a></p><h2 id="特殊名词翻译、白话解释"><a href="#特殊名词翻译、白话解释" class="headerlink" title="特殊名词翻译、白话解释"></a>特殊名词翻译、白话解释</h2><p><a href="http://www.360doc.com/userhome.aspx?userid=225123&amp;cid=1917" target="_blank" rel="noopener">http://www.360doc.com/userhome.aspx?userid=225123&amp;cid=1917</a><br><a href="http://www.a-hospital.com/w/" target="_blank" rel="noopener">http://www.a-hospital.com/w/</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="望"><a href="#望" class="headerlink" title="望"></a>望</h2><p>舌有裂纹必虚，头晕必虚<br>脸色晦暗，带灰，肝肾阴虚居多</p><h2 id="合穴"><a href="#合穴" class="headerlink" title="合穴"></a>合穴</h2><p>胃合于三里（足三里），大肠合入于巨虚上廉（足三里下四指），小肠合入于巨虚下廉（足三里下四指），三焦合入于委阳（腘窝外），膀胱合入于委中央（腘窝中），胆合入于阳陵泉</p><h2 id="阴阳"><a href="#阴阳" class="headerlink" title="阴阳"></a>阴阳</h2><p>血有余则怒，不足则恐<br>肝气虚则恐，实则怒<br>阴虚为常，切不可久用泻药</p><h2 id="自我治疗"><a href="#自我治疗" class="headerlink" title="自我治疗"></a>自我治疗</h2><p>阴虚为大部分的情况，基本没有全实的概念。</p><p>液门穴可以治疗大部分阴虚火旺。</p><p>动生阳，静生阴，不可偏执。</p><p>艾过度，生邪火，枯骨髓，血脉凝涩</p><p>阴峻补，需注意以面腻脾胃，生虚火。</p><h2 id="中医书籍"><a href="#中医书籍" class="headerlink" title="中医书籍"></a>中医书籍</h2><p><a href="https://ctext.org/huangdi-neijing/" target="_blank" rel="noopener">https://ctext.org/huangdi-neijing/</a></p><h2 id="特殊名词翻译、白话解释"><a href="#特殊名词翻译、白话解释" class="headerlink" title="特殊名词翻译、白话解释"></a>特殊名词翻译、白话解释</h2><p><a href="http://www.360doc.com/userhome.aspx?userid=225123&amp;cid=1917" target="_blank" rel="noopener">http://www.360doc.com/userhome.aspx?userid=225123&amp;cid=1917</a><br><a href="http://www.a-hospital.com/w/" target="_blank" rel="noopener">http://www.a-hospital.com/w/</a></p><h2 id="中医，哲学，布道"><a href="#中医，哲学，布道" class="headerlink" title="中医，哲学，布道"></a>中医，哲学，布道</h2><p><a href="http://www.360doc.com/content/17/0804/10/36531518_676550161.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/17/0804/10/36531518_676550161.shtml</a></p>]]></content>
       
       
       <categories>
@@ -2013,27 +2013,6 @@
     
     
     <entry>
-      <title>mybatis-plus基本原理</title>
-      <link href="/2020/09/22/Mybatis-plus/"/>
-      <url>/2020/09/22/Mybatis-plus/</url>
-      
-        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 框架 </category>
-          
-          <category> mybatis-plus </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>this,static,super,final</title>
       <link href="/2020/09/22/this-static-super-final/"/>
       <url>/2020/09/22/this-static-super-final/</url>
@@ -2046,6 +2025,27 @@
           <category> JAVA </category>
           
           <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis-plus基本原理</title>
+      <link href="/2020/09/22/Mybatis-plus/"/>
+      <url>/2020/09/22/Mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+          <category> mybatis-plus </category>
           
       </categories>
       
