@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>订单系统架构</title>
+      <link href="/2021/10/12/%E8%AE%A2%E5%8D%95%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+      <url>/2021/10/12/%E8%AE%A2%E5%8D%95%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/</url>
+      
+        <content type="html"><![CDATA[<h2 id="订单核心2要素"><a href="#订单核心2要素" class="headerlink" title="订单核心2要素"></a>订单核心2要素</h2><p>下单<br>查询</p><h2 id="订单核心领域"><a href="#订单核心领域" class="headerlink" title="订单核心领域"></a>订单核心领域</h2><p>产品/服务<br>用户<br>商家<br>促销<br>支付<br>交付模式（物流，在线服务）<br>风控</p><h2 id="下单"><a href="#下单" class="headerlink" title="下单"></a>下单</h2><p>订单信息的获取<br>订单状态的MQ异步通知<br>订单领域的DDD设计</p><p>能异步的地方最好异步，注意最终一致性事务，幂等性</p><h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><p>网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等）</p><p>分库分表(mycat,Sharding-JDBC)，需要考虑数据分布均匀，取模ID最好和用户相匹配</p><p>ES 提供全文检索查询（倒排索引），考虑ES的查询方式，非SQL模式</p><h2 id="参考API"><a href="#参考API" class="headerlink" title="参考API"></a>参考API</h2><p>美团订单API<br><a href="https://developer.waimai.meituan.com/home/doc/food/6" target="_blank" rel="noopener">https://developer.waimai.meituan.com/home/doc/food/6</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+          <category> 模块 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 架构 </tag>
+            
+            <tag> 订单 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>择偶的去伪存真</title>
       <link href="/2021/10/11/%E6%8B%A9%E5%81%B6%E7%9A%84%E5%8E%BB%E4%BC%AA%E5%AD%98%E7%9C%9F/"/>
       <url>/2021/10/11/%E6%8B%A9%E5%81%B6%E7%9A%84%E5%8E%BB%E4%BC%AA%E5%AD%98%E7%9C%9F/</url>
@@ -2004,9 +2033,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2063,27 +2092,6 @@
     
     
     <entry>
-      <title>mybatis-plus基本原理</title>
-      <link href="/2020/09/22/Mybatis-plus/"/>
-      <url>/2020/09/22/Mybatis-plus/</url>
-      
-        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 框架 </category>
-          
-          <category> mybatis-plus </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>this,static,super,final</title>
       <link href="/2020/09/22/this-static-super-final/"/>
       <url>/2020/09/22/this-static-super-final/</url>
@@ -2096,6 +2104,27 @@
           <category> JAVA </category>
           
           <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis-plus基本原理</title>
+      <link href="/2020/09/22/Mybatis-plus/"/>
+      <url>/2020/09/22/Mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+          <category> mybatis-plus </category>
           
       </categories>
       
@@ -2436,9 +2465,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
             <tag> 分治 </tag>
             
@@ -2467,9 +2496,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2664,9 +2693,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2693,9 +2722,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2722,9 +2751,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2751,9 +2780,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2809,11 +2838,11 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
             
             <tag> AQS </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2840,9 +2869,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -3031,9 +3060,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
             <tag> 分治 </tag>
             
@@ -3751,11 +3780,11 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
       
       
       <categories>
@@ -3778,11 +3807,11 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
