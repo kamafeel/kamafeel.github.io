@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="订单核心2要素下单查询 订单核心领域产品/服务用户商家促销支付交付模式（物流，在线服务）风控 下单订单信息的获取订单状态的MQ异步通知订单领域的DDD设计 能异步的地方最好异步，注意最终一致性事务，幂等性 查询网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等） 分库分表(mycat,Sharding-JDBC)，需要考虑数据分布均匀，取模ID最好">
+  <meta name="description" content="订单核心2要素下单查询 订单核心领域产品/服务用户商家促销支付交付模式（物流，在线服务）风控 下单订单信息的获取** 订单流程引擎，处理策略 （状态机）订单状态的MQ异步通知订单领域的DDD设计 能异步的地方最好异步，注意最终一致性事务，幂等性 查询网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等） 分库分表(mycat,Sharding-JDB">
 <meta name="keywords" content="架构,订单">
 <meta property="og:type" content="article">
 <meta property="og:title" content="订单系统架构">
 <meta property="og:url" content="https://kamafeel.github.io/2021/10/12/订单系统架构/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="订单核心2要素下单查询 订单核心领域产品/服务用户商家促销支付交付模式（物流，在线服务）风控 下单订单信息的获取订单状态的MQ异步通知订单领域的DDD设计 能异步的地方最好异步，注意最终一致性事务，幂等性 查询网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等） 分库分表(mycat,Sharding-JDBC)，需要考虑数据分布均匀，取模ID最好">
+<meta property="og:description" content="订单核心2要素下单查询 订单核心领域产品/服务用户商家促销支付交付模式（物流，在线服务）风控 下单订单信息的获取** 订单流程引擎，处理策略 （状态机）订单状态的MQ异步通知订单领域的DDD设计 能异步的地方最好异步，注意最终一致性事务，幂等性 查询网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等） 分库分表(mycat,Sharding-JDB">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-10-12T09:17:55.333Z">
+<meta property="og:updated_time" content="2021-10-12T09:59:56.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="订单系统架构">
-<meta name="twitter:description" content="订单核心2要素下单查询 订单核心领域产品/服务用户商家促销支付交付模式（物流，在线服务）风控 下单订单信息的获取订单状态的MQ异步通知订单领域的DDD设计 能异步的地方最好异步，注意最终一致性事务，幂等性 查询网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等） 分库分表(mycat,Sharding-JDBC)，需要考虑数据分布均匀，取模ID最好">
+<meta name="twitter:description" content="订单核心2要素下单查询 订单核心领域产品/服务用户商家促销支付交付模式（物流，在线服务）风控 下单订单信息的获取** 订单流程引擎，处理策略 （状态机）订单状态的MQ异步通知订单领域的DDD设计 能异步的地方最好异步，注意最终一致性事务，幂等性 查询网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等） 分库分表(mycat,Sharding-JDB">
 
 
 
@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2021-10-12 17:05:20 / 修改时间：17:17:55" itemprop="dateCreated datePublished" datetime="2021-10-12T17:05:20+08:00">2021-10-12</time>
+              <time title="创建时间：2021-10-12 17:05:20 / 修改时间：17:59:56" itemprop="dateCreated datePublished" datetime="2021-10-12T17:05:20+08:00">2021-10-12</time>
             
 
             
@@ -403,7 +403,7 @@
       
         <h2 id="订单核心2要素"><a href="#订单核心2要素" class="headerlink" title="订单核心2要素"></a>订单核心2要素</h2><p>下单<br>查询</p>
 <h2 id="订单核心领域"><a href="#订单核心领域" class="headerlink" title="订单核心领域"></a>订单核心领域</h2><p>产品/服务<br>用户<br>商家<br>促销<br>支付<br>交付模式（物流，在线服务）<br>风控</p>
-<h2 id="下单"><a href="#下单" class="headerlink" title="下单"></a>下单</h2><p>订单信息的获取<br>订单状态的MQ异步通知<br>订单领域的DDD设计</p>
+<h2 id="下单"><a href="#下单" class="headerlink" title="下单"></a>下单</h2><p>订单信息的获取<br>** 订单流程引擎，处理策略 （状态机）<br>订单状态的MQ异步通知<br>订单领域的DDD设计</p>
 <p>能异步的地方最好异步，注意最终一致性事务，幂等性</p>
 <h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><p>网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等）</p>
 <p>分库分表(mycat,Sharding-JDBC)，需要考虑数据分布均匀，取模ID最好和用户相匹配</p>
@@ -459,6 +459,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/10/13/kafka基本说明/" rel="prev" title="kafka基本说明">
+                kafka基本说明 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -527,7 +531,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">157</span>
+                    <span class="site-state-item-count">159</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -680,7 +684,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">68</span>
+                      
+                    
+                    <span class="site-state-item-count">69</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -881,7 +887,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">92</span>
+                      
+                    
+                    <span class="site-state-item-count">93</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
