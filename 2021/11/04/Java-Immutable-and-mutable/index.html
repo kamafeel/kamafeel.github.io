@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="不可变对象 用途1.在实例化时存在校验，不希望后续属性再次被修改（逃避校验）2.存在多线程使用场景，不希望此代码运行对对象进行修改（事件对象，HTTPclient参数）   可变对象 用途DTO类，被快速GC    使用技巧12345678@SuperBuilder@Builder@Getter/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/比如 Dateprivate fi">
+  <meta name="description" content="不可变对象 用途1.在实例化时存在校验，不希望后续属性再次被修改（逃避校验）2.存在多线程使用场景，不希望此代码运行对对象进行修改（事件对象，HTTPclient参数）   可变对象 用途DTO类，被快速GC    使用技巧12345678910@SuperBuilder@Builder@Getter/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/比如 Dateprivate">
 <meta name="keywords" content="JAVA,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Immutable and mutable">
 <meta property="og:url" content="https://kamafeel.github.io/2021/11/04/Java-Immutable-and-mutable/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="不可变对象 用途1.在实例化时存在校验，不希望后续属性再次被修改（逃避校验）2.存在多线程使用场景，不希望此代码运行对对象进行修改（事件对象，HTTPclient参数）   可变对象 用途DTO类，被快速GC    使用技巧12345678@SuperBuilder@Builder@Getter/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/比如 Dateprivate fi">
+<meta property="og:description" content="不可变对象 用途1.在实例化时存在校验，不希望后续属性再次被修改（逃避校验）2.存在多线程使用场景，不希望此代码运行对对象进行修改（事件对象，HTTPclient参数）   可变对象 用途DTO类，被快速GC    使用技巧12345678910@SuperBuilder@Builder@Getter/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/比如 Dateprivate">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-11-04T02:30:42.008Z">
+<meta property="og:updated_time" content="2021-11-04T03:23:15.533Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Immutable and mutable">
-<meta name="twitter:description" content="不可变对象 用途1.在实例化时存在校验，不希望后续属性再次被修改（逃避校验）2.存在多线程使用场景，不希望此代码运行对对象进行修改（事件对象，HTTPclient参数）   可变对象 用途DTO类，被快速GC    使用技巧12345678@SuperBuilder@Builder@Getter/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/比如 Dateprivate fi">
+<meta name="twitter:description" content="不可变对象 用途1.在实例化时存在校验，不希望后续属性再次被修改（逃避校验）2.存在多线程使用场景，不希望此代码运行对对象进行修改（事件对象，HTTPclient参数）   可变对象 用途DTO类，被快速GC    使用技巧12345678910@SuperBuilder@Builder@Getter/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/比如 Dateprivate">
 
 
 
@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2021-11-04 10:21:38 / 修改时间：10:30:42" itemprop="dateCreated datePublished" datetime="2021-11-04T10:21:38+08:00">2021-11-04</time>
+              <time title="创建时间：2021-11-04 10:21:38 / 修改时间：11:23:15" itemprop="dateCreated datePublished" datetime="2021-11-04T10:21:38+08:00">2021-11-04</time>
             
 
             
@@ -408,7 +408,7 @@
 </blockquote>
 
 
-<h2 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@SuperBuilder</span><br><span class="line">@Builder</span><br><span class="line">@Getter</span><br><span class="line"></span><br><span class="line">/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/</span><br><span class="line">比如 Date</span><br><span class="line">private final </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SuperBuilder</span><br><span class="line">@Builder</span><br><span class="line">@Getter</span><br><span class="line"></span><br><span class="line">/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/</span><br><span class="line">比如 Date</span><br><span class="line">private final </span><br><span class="line"></span><br><span class="line">Guava Collection之Immutable类</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://juejin.cn/post/6844903586661400590" target="_blank" rel="noopener">https://juejin.cn/post/6844903586661400590</a><br><a href="https://www.cnblogs.com/shoshana-kong/p/10822759.html" target="_blank" rel="noopener">https://www.cnblogs.com/shoshana-kong/p/10822759.html</a><br><a href="https://www.codenong.com/32989562/" target="_blank" rel="noopener">https://www.codenong.com/32989562/</a></p>
@@ -462,6 +462,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/11/11/spring骚操作-1-FactoryBean/" rel="prev" title="spring骚操作-1-FactoryBean">
+                spring骚操作-1-FactoryBean <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -530,7 +534,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">160</span>
+                    <span class="site-state-item-count">161</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

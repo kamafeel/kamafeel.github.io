@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>spring骚操作-1-FactoryBean</title>
+      <link href="/2021/11/11/spring%E9%AA%9A%E6%93%8D%E4%BD%9C-1-FactoryBean/"/>
+      <url>/2021/11/11/spring%E9%AA%9A%E6%93%8D%E4%BD%9C-1-FactoryBean/</url>
+      
+        <content type="html"><![CDATA[<p>##用途##</p><blockquote><p>创建复杂对象：<br>1.需要更加配置文件。</p><p>2.spring运行环节期间创建对象。</p><p>3.符合spring设计理念</p></blockquote><p>##例子##<br>EhCacheFactoryBean</p><p>MybatisSqlSessionFactoryBean</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Spring </category>
+          
+          <category> 开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Spring </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java Immutable and mutable</title>
       <link href="/2021/11/04/Java-Immutable-and-mutable/"/>
       <url>/2021/11/04/Java-Immutable-and-mutable/</url>
       
-        <content type="html"><![CDATA[<h2 id="不可变对象-用途"><a href="#不可变对象-用途" class="headerlink" title="不可变对象 用途"></a>不可变对象 用途</h2><blockquote><p>1.在实例化时存在校验，不希望后续属性再次被修改（逃避校验）<br>2.存在多线程使用场景，不希望此代码运行对对象进行修改（事件对象，HTTPclient参数）</p></blockquote><h2 id="可变对象-用途"><a href="#可变对象-用途" class="headerlink" title="可变对象 用途"></a>可变对象 用途</h2><blockquote><p>DTO类，被快速GC</p></blockquote><h2 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@SuperBuilder</span><br><span class="line">@Builder</span><br><span class="line">@Getter</span><br><span class="line"></span><br><span class="line">/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/</span><br><span class="line">比如 Date</span><br><span class="line">private final </span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://juejin.cn/post/6844903586661400590" target="_blank" rel="noopener">https://juejin.cn/post/6844903586661400590</a><br><a href="https://www.cnblogs.com/shoshana-kong/p/10822759.html" target="_blank" rel="noopener">https://www.cnblogs.com/shoshana-kong/p/10822759.html</a><br><a href="https://www.codenong.com/32989562/" target="_blank" rel="noopener">https://www.codenong.com/32989562/</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="不可变对象-用途"><a href="#不可变对象-用途" class="headerlink" title="不可变对象 用途"></a>不可变对象 用途</h2><blockquote><p>1.在实例化时存在校验，不希望后续属性再次被修改（逃避校验）<br>2.存在多线程使用场景，不希望此代码运行对对象进行修改（事件对象，HTTPclient参数）</p></blockquote><h2 id="可变对象-用途"><a href="#可变对象-用途" class="headerlink" title="可变对象 用途"></a>可变对象 用途</h2><blockquote><p>DTO类，被快速GC</p></blockquote><h2 id="使用技巧"><a href="#使用技巧" class="headerlink" title="使用技巧"></a>使用技巧</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@SuperBuilder</span><br><span class="line">@Builder</span><br><span class="line">@Getter</span><br><span class="line"></span><br><span class="line">/** 此处只能避免不被修改引用，但是还是可以修改引用对象的值 **/</span><br><span class="line">比如 Date</span><br><span class="line">private final </span><br><span class="line"></span><br><span class="line">Guava Collection之Immutable类</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://juejin.cn/post/6844903586661400590" target="_blank" rel="noopener">https://juejin.cn/post/6844903586661400590</a><br><a href="https://www.cnblogs.com/shoshana-kong/p/10822759.html" target="_blank" rel="noopener">https://www.cnblogs.com/shoshana-kong/p/10822759.html</a><br><a href="https://www.codenong.com/32989562/" target="_blank" rel="noopener">https://www.codenong.com/32989562/</a></p>]]></content>
       
       
       <categories>
@@ -2118,9 +2145,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2363,9 +2390,9 @@
       
       <categories>
           
-          <category> JAVA </category>
-          
           <category> Spring </category>
+          
+          <category> JAVA </category>
           
           <category> 开发 </category>
           
@@ -2550,9 +2577,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
             <tag> 分治 </tag>
             
@@ -2581,9 +2608,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2778,9 +2805,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2807,9 +2834,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2836,9 +2863,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2865,9 +2892,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2923,11 +2950,11 @@
       
         <tags>
             
+            <tag> JAVA </tag>
+            
             <tag> 多线程 </tag>
             
             <tag> AQS </tag>
-            
-            <tag> JAVA </tag>
             
         </tags>
       
@@ -2954,9 +2981,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -3145,9 +3172,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
             <tag> 分治 </tag>
             
