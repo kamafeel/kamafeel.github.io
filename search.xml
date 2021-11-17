@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>DDD工程落地辅助</title>
+      <link href="/2021/11/17/DDD%E5%B7%A5%E7%A8%8B%E8%90%BD%E5%9C%B0%E8%BE%85%E5%8A%A9/"/>
+      <url>/2021/11/17/DDD%E5%B7%A5%E7%A8%8B%E8%90%BD%E5%9C%B0%E8%BE%85%E5%8A%A9/</url>
+      
+        <content type="html"><![CDATA[<h2 id="架构选择"><a href="#架构选择" class="headerlink" title="架构选择"></a>架构选择</h2><p>COLA框架，搭建分层模型</p><h2 id="聚合根设计"><a href="#聚合根设计" class="headerlink" title="聚合根设计"></a>聚合根设计</h2><blockquote><p>如何聚合根：<br>1)生命周期一致<br>2)问题域一致性<br>3)场景频率一致性<br>4)聚合内的元素尽可能少</p></blockquote><h2 id="控制边界"><a href="#控制边界" class="headerlink" title="控制边界"></a>控制边界</h2><blockquote><p>如何割断值对象<br>1)引入Id值对象<br>2)使用ORM框架的LazyFetch机制（注意生命周期范围）<br>3)引入Supplier的get延迟机制</p></blockquote><h2 id="实体和值对象的创建-查询"><a href="#实体和值对象的创建-查询" class="headerlink" title="实体和值对象的创建,查询"></a>实体和值对象的创建,查询</h2><blockquote><p>实体的创建最好走工厂模式/builder模式</p><p>实体的变更需要走唯一gateway/Repository模式</p><p>实体的查询走CQRS模式，注重效率即可</p><p>值对象的变更,查询随意，不受约束。</p></blockquote><h2 id="实体对象的持久化"><a href="#实体对象的持久化" class="headerlink" title="实体对象的持久化"></a>实体对象的持久化</h2><p>使用mongodb文档型数据库<br>使用聚合根快照概念<br><a href="https://github.com/meixuesong/aggregate-persistence" target="_blank" rel="noopener">https://github.com/meixuesong/aggregate-persistence</a></p><h2 id="LINK"><a href="#LINK" class="headerlink" title="LINK"></a>LINK</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247503833&idx=1&sn=d103844943ef2ce81eadd77664a6ac84&chksm=e92af2d6de5d7bc072a16f04d2eb15afd9f3d9d085818901345901bc6f67841747071c78889e&mpshare=1&scene=1&srcid=1117apoiUxlPQGYsMhAjB3L6&sharer_sharetime=1637114884293&sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&key=bcca9004de07f2d9ea0029f6d4fd7e4e2cd15ecfca135628ce2815e910f6e0e5c815a0d2c05d4448da0f537d30c3f741e07d4bb0c2bc020274fe69689036c678b1a67c3c8c00da2342d4df4d835ef555c43129ef4d3c62deffce7fed0460cbd6b08f60f16155a9d9fe369415441773ddeca39927a93a1202ee64380edca719b2&ascene=1&uin=OTM4NTY4MzU%3D&devicetype=Windows+10&version=62060844&lang=zh_CN&exportkey=Abg59yCBS4dVa7lUHHEySnQ%3D&pass_ticket=mxk%2FEa9Sff76MaFalsSx5JYeiSimROUbxBnC7%2FOvQGvs6cXCIB%2B9jRjSm5%2B70Biz&wx_header=0" title="阿里DDD" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&amp;mid=2247503833&amp;idx=1&amp;sn=d103844943ef2ce81eadd77664a6ac84&amp;chksm=e92af2d6de5d7bc072a16f04d2eb15afd9f3d9d085818901345901bc6f67841747071c78889e&amp;mpshare=1&amp;scene=1&amp;srcid=1117apoiUxlPQGYsMhAjB3L6&amp;sharer_sharetime=1637114884293&amp;sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&amp;key=bcca9004de07f2d9ea0029f6d4fd7e4e2cd15ecfca135628ce2815e910f6e0e5c815a0d2c05d4448da0f537d30c3f741e07d4bb0c2bc020274fe69689036c678b1a67c3c8c00da2342d4df4d835ef555c43129ef4d3c62deffce7fed0460cbd6b08f60f16155a9d9fe369415441773ddeca39927a93a1202ee64380edca719b2&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=Abg59yCBS4dVa7lUHHEySnQ%3D&amp;pass_ticket=mxk%2FEa9Sff76MaFalsSx5JYeiSimROUbxBnC7%2FOvQGvs6cXCIB%2B9jRjSm5%2B70Biz&amp;wx_header=0</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微服务 </category>
+          
+          <category> DDD </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 架构 </tag>
+            
+            <tag> DDD </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>spring骚操作-1-FactoryBean</title>
       <link href="/2021/11/11/spring%E9%AA%9A%E6%93%8D%E4%BD%9C-1-FactoryBean/"/>
       <url>/2021/11/11/spring%E9%AA%9A%E6%93%8D%E4%BD%9C-1-FactoryBean/</url>
@@ -2145,9 +2174,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2390,9 +2419,9 @@
       
       <categories>
           
-          <category> Spring </category>
-          
           <category> JAVA </category>
+          
+          <category> Spring </category>
           
           <category> 开发 </category>
           
@@ -2577,9 +2606,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
             <tag> 分治 </tag>
             
@@ -2608,9 +2637,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2805,9 +2834,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2834,9 +2863,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2863,9 +2892,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2892,9 +2921,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2950,11 +2979,11 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
             
             <tag> AQS </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -2981,9 +3010,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
         </tags>
       
@@ -3172,9 +3201,9 @@
       
         <tags>
             
-            <tag> JAVA </tag>
-            
             <tag> 多线程 </tag>
+            
+            <tag> JAVA </tag>
             
             <tag> 分治 </tag>
             
@@ -3892,11 +3921,11 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
@@ -3919,11 +3948,11 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
       
       
       <categories>
