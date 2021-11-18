@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Kamafeel">
 <meta property="og:description" content="架构选择COLA框架，搭建分层模型 聚合根设计如何聚合根：1)生命周期一致2)问题域一致性3)场景频率一致性4)聚合内的元素尽可能少    控制边界如何割断值对象1)引入Id值对象2)使用ORM框架的LazyFetch机制（注意生命周期范围）3)引入Supplier的get延迟机制   实体和值对象的创建,查询实体的创建最好走工厂模式/builder模式 实体的变更需要走唯一gateway/Rep">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-11-17T03:08:09.315Z">
+<meta property="og:updated_time" content="2021-11-17T12:07:37.829Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DDD工程落地辅助">
 <meta name="twitter:description" content="架构选择COLA框架，搭建分层模型 聚合根设计如何聚合根：1)生命周期一致2)问题域一致性3)场景频率一致性4)聚合内的元素尽可能少    控制边界如何割断值对象1)引入Id值对象2)使用ORM框架的LazyFetch机制（注意生命周期范围）3)引入Supplier的get延迟机制   实体和值对象的创建,查询实体的创建最好走工厂模式/builder模式 实体的变更需要走唯一gateway/Rep">
@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2021-11-17 10:03:52 / 修改时间：11:08:09" itemprop="dateCreated datePublished" datetime="2021-11-17T10:03:52+08:00">2021-11-17</time>
+              <time title="创建时间：2021-11-17 10:03:52 / 修改时间：20:07:37" itemprop="dateCreated datePublished" datetime="2021-11-17T10:03:52+08:00">2021-11-17</time>
             
 
             
@@ -416,7 +416,10 @@
 </blockquote>
 
 <h2 id="实体对象的持久化"><a href="#实体对象的持久化" class="headerlink" title="实体对象的持久化"></a>实体对象的持久化</h2><p>使用mongodb文档型数据库<br>使用聚合根快照概念<br><a href="https://github.com/meixuesong/aggregate-persistence" target="_blank" rel="noopener">https://github.com/meixuesong/aggregate-persistence</a></p>
-<h2 id="LINK"><a href="#LINK" class="headerlink" title="LINK"></a>LINK</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247503833&idx=1&sn=d103844943ef2ce81eadd77664a6ac84&chksm=e92af2d6de5d7bc072a16f04d2eb15afd9f3d9d085818901345901bc6f67841747071c78889e&mpshare=1&scene=1&srcid=1117apoiUxlPQGYsMhAjB3L6&sharer_sharetime=1637114884293&sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&key=bcca9004de07f2d9ea0029f6d4fd7e4e2cd15ecfca135628ce2815e910f6e0e5c815a0d2c05d4448da0f537d30c3f741e07d4bb0c2bc020274fe69689036c678b1a67c3c8c00da2342d4df4d835ef555c43129ef4d3c62deffce7fed0460cbd6b08f60f16155a9d9fe369415441773ddeca39927a93a1202ee64380edca719b2&ascene=1&uin=OTM4NTY4MzU%3D&devicetype=Windows+10&version=62060844&lang=zh_CN&exportkey=Abg59yCBS4dVa7lUHHEySnQ%3D&pass_ticket=mxk%2FEa9Sff76MaFalsSx5JYeiSimROUbxBnC7%2FOvQGvs6cXCIB%2B9jRjSm5%2B70Biz&wx_header=0" title="阿里DDD" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&amp;mid=2247503833&amp;idx=1&amp;sn=d103844943ef2ce81eadd77664a6ac84&amp;chksm=e92af2d6de5d7bc072a16f04d2eb15afd9f3d9d085818901345901bc6f67841747071c78889e&amp;mpshare=1&amp;scene=1&amp;srcid=1117apoiUxlPQGYsMhAjB3L6&amp;sharer_sharetime=1637114884293&amp;sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&amp;key=bcca9004de07f2d9ea0029f6d4fd7e4e2cd15ecfca135628ce2815e910f6e0e5c815a0d2c05d4448da0f537d30c3f741e07d4bb0c2bc020274fe69689036c678b1a67c3c8c00da2342d4df4d835ef555c43129ef4d3c62deffce7fed0460cbd6b08f60f16155a9d9fe369415441773ddeca39927a93a1202ee64380edca719b2&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=Abg59yCBS4dVa7lUHHEySnQ%3D&amp;pass_ticket=mxk%2FEa9Sff76MaFalsSx5JYeiSimROUbxBnC7%2FOvQGvs6cXCIB%2B9jRjSm5%2B70Biz&amp;wx_header=0</a></p>
+<h2 id="领域对象的业务逻辑-怎么放"><a href="#领域对象的业务逻辑-怎么放" class="headerlink" title="领域对象的业务逻辑 怎么放"></a>领域对象的业务逻辑 怎么放</h2><p>不要把任何东西注射到你的领域实体中，没有服务，没有仓储（实体里面放最基本逻辑）</p>
+<p>Domain Service 是用来放不适宜再某个聚合根内的业务逻辑</p>
+<p>App Service 做事件或者业务信息</p>
+<h2 id="LINK"><a href="#LINK" class="headerlink" title="LINK"></a>LINK</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247503833&idx=1&sn=d103844943ef2ce81eadd77664a6ac84&chksm=e92af2d6de5d7bc072a16f04d2eb15afd9f3d9d085818901345901bc6f67841747071c78889e&mpshare=1&scene=1&srcid=1117apoiUxlPQGYsMhAjB3L6&sharer_sharetime=1637114884293&sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&key=bcca9004de07f2d9ea0029f6d4fd7e4e2cd15ecfca135628ce2815e910f6e0e5c815a0d2c05d4448da0f537d30c3f741e07d4bb0c2bc020274fe69689036c678b1a67c3c8c00da2342d4df4d835ef555c43129ef4d3c62deffce7fed0460cbd6b08f60f16155a9d9fe369415441773ddeca39927a93a1202ee64380edca719b2&ascene=1&uin=OTM4NTY4MzU%3D&devicetype=Windows+10&version=62060844&lang=zh_CN&exportkey=Abg59yCBS4dVa7lUHHEySnQ%3D&pass_ticket=mxk%2FEa9Sff76MaFalsSx5JYeiSimROUbxBnC7%2FOvQGvs6cXCIB%2B9jRjSm5%2B70Biz&wx_header=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&amp;mid=2247503833&amp;idx=1&amp;sn=d103844943ef2ce81eadd77664a6ac84&amp;chksm=e92af2d6de5d7bc072a16f04d2eb15afd9f3d9d085818901345901bc6f67841747071c78889e&amp;mpshare=1&amp;scene=1&amp;srcid=1117apoiUxlPQGYsMhAjB3L6&amp;sharer_sharetime=1637114884293&amp;sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&amp;key=bcca9004de07f2d9ea0029f6d4fd7e4e2cd15ecfca135628ce2815e910f6e0e5c815a0d2c05d4448da0f537d30c3f741e07d4bb0c2bc020274fe69689036c678b1a67c3c8c00da2342d4df4d835ef555c43129ef4d3c62deffce7fed0460cbd6b08f60f16155a9d9fe369415441773ddeca39927a93a1202ee64380edca719b2&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=Abg59yCBS4dVa7lUHHEySnQ%3D&amp;pass_ticket=mxk%2FEa9Sff76MaFalsSx5JYeiSimROUbxBnC7%2FOvQGvs6cXCIB%2B9jRjSm5%2B70Biz&amp;wx_header=0</a></p>
 
       
     </div>
@@ -467,6 +470,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/11/17/DDD持久化/" rel="prev" title="DDD持久化">
+                DDD持久化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -535,7 +542,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">162</span>
+                    <span class="site-state-item-count">163</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -662,35 +669,7 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">69</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -895,7 +874,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">94</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">99</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -933,7 +922,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#架构选择"><span class="nav-number">1.</span> <span class="nav-text">架构选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合根设计"><span class="nav-number">2.</span> <span class="nav-text">聚合根设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制边界"><span class="nav-number">3.</span> <span class="nav-text">控制边界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体和值对象的创建-查询"><span class="nav-number">4.</span> <span class="nav-text">实体和值对象的创建,查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体对象的持久化"><span class="nav-number">5.</span> <span class="nav-text">实体对象的持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LINK"><span class="nav-number">6.</span> <span class="nav-text">LINK</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#架构选择"><span class="nav-number">1.</span> <span class="nav-text">架构选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚合根设计"><span class="nav-number">2.</span> <span class="nav-text">聚合根设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制边界"><span class="nav-number">3.</span> <span class="nav-text">控制边界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体和值对象的创建-查询"><span class="nav-number">4.</span> <span class="nav-text">实体和值对象的创建,查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实体对象的持久化"><span class="nav-number">5.</span> <span class="nav-text">实体对象的持久化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#领域对象的业务逻辑-怎么放"><span class="nav-number">6.</span> <span class="nav-text">领域对象的业务逻辑 怎么放</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LINK"><span class="nav-number">7.</span> <span class="nav-text">LINK</span></a></li></ol></div>
             
 
           </div>
