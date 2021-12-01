@@ -96,17 +96,18 @@
 
 
 
-  <meta name="description" content="静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。 JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。 动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$Enhanc">
+  <meta name="description" content="使用场景对目标进行功能扩展，但是不修改目标本身   招式-静态代理无太多实际加载 招式-动态代理1.JDK InvocationHandler 模式被代理对象必须是接口，动态代理生成的类为 com.sun.proxy.$Proxy4核心实现InvocationHandler 2.Spring AOP 切面模式-推荐支持jdk模式和cglib模式（不需要一定是接口） 提供Aspect相关注解，方便方">
+<meta name="keywords" content="代理设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式-代理">
 <meta property="og:url" content="https://kamafeel.github.io/2020/06/04/设计模式-代理/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。 JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。 动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$Enhanc">
+<meta property="og:description" content="使用场景对目标进行功能扩展，但是不修改目标本身   招式-静态代理无太多实际加载 招式-动态代理1.JDK InvocationHandler 模式被代理对象必须是接口，动态代理生成的类为 com.sun.proxy.$Proxy4核心实现InvocationHandler 2.Spring AOP 切面模式-推荐支持jdk模式和cglib模式（不需要一定是接口） 提供Aspect相关注解，方便方">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-09T02:06:17.856Z">
+<meta property="og:updated_time" content="2021-12-01T02:29:28.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式-代理">
-<meta name="twitter:description" content="静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。 JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。 动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$Enhanc">
+<meta name="twitter:description" content="使用场景对目标进行功能扩展，但是不修改目标本身   招式-静态代理无太多实际加载 招式-动态代理1.JDK InvocationHandler 模式被代理对象必须是接口，动态代理生成的类为 com.sun.proxy.$Proxy4核心实现InvocationHandler 2.Spring AOP 切面模式-推荐支持jdk模式和cglib模式（不需要一定是接口） 提供Aspect相关注解，方便方">
 
 
 
@@ -353,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-09 10:06:17" itemprop="dateModified" datetime="2020-06-09T10:06:17+08:00">2020-06-09</time>
+                <time title="修改时间：2021-12-01 10:29:28" itemprop="dateModified" datetime="2021-12-01T10:29:28+08:00">2021-12-01</time>
               
             
           </span>
@@ -405,12 +406,18 @@
       
 
       
-        <p>静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。</p>
-<p>JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。</p>
-<p>动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$EnhancerByCGLIB$$552188b6。</p>
-<p>静态代理在编译时产生class字节码文件，可以直接使用，效率高。</p>
-<p>动态代理必须实现InvocationHandler接口，通过反射代理方法，比较消耗系统性能，但可以减少代理类的数量，使用更灵活。</p>
-<p>cglib代理无需实现接口，通过生成类字节码实现代理，比反射稍快，不存在性能问题，但cglib会继承目标对象，需要重写方法，所以目标对象不能为final类。</p>
+        <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>对目标进行功能扩展，但是不修改目标本身</p>
+</blockquote>
+
+<h2 id="招式-静态代理"><a href="#招式-静态代理" class="headerlink" title="招式-静态代理"></a>招式-静态代理</h2><p>无太多实际加载</p>
+<h2 id="招式-动态代理"><a href="#招式-动态代理" class="headerlink" title="招式-动态代理"></a>招式-动态代理</h2><blockquote><p>1.JDK InvocationHandler 模式<br>被代理对象必须是接口，<br>动态代理生成的类为 com.sun.proxy.$Proxy4<br>核心实现InvocationHandler</p>
+<p>2.Spring AOP 切面模式-推荐<br>支持jdk模式和cglib模式（不需要一定是接口）</p>
+<p>提供Aspect相关注解，方便方法代理加强</p>
+</blockquote>
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&mid=2650417780&idx=1&sn=a4076a47b2fc6800a8e10528a0ac1dd7&chksm=8396e26cb4e16b7a93828b1cef4eaedf1b3df8bbc9a9ddee2368d927c71369ffcf115fdddc0a&scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650417780&amp;idx=1&amp;sn=a4076a47b2fc6800a8e10528a0ac1dd7&amp;chksm=8396e26cb4e16b7a93828b1cef4eaedf1b3df8bbc9a9ddee2368d927c71369ffcf115fdddc0a&amp;scene=21#wechat_redirect</a></p>
+<p><a href="https://bugstack.cn/md/develop/design-pattern/2020-06-16-%E9%87%8D%E5%AD%A6%20Java%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8A%E5%AE%9E%E6%88%98%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E3%80%8B.html" target="_blank" rel="noopener">https://bugstack.cn/md/develop/design-pattern/2020-06-16-%E9%87%8D%E5%AD%A6%20Java%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8A%E5%AE%9E%E6%88%98%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E3%80%8B.html</a></p>
 
       
     </div>
@@ -432,6 +439,15 @@
 
     <footer class="post-footer">
       
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/代理设计模式/" rel="tag"># 代理设计模式</a>
+          
+        </div>
+      
 
       
       
@@ -441,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/06/04/设计模式-装饰/" rel="next" title="设计模式-装饰">
-                <i class="fa fa-chevron-left"></i> 设计模式-装饰
+              <a href="/2020/06/04/设计模式-策略/" rel="next" title="设计模式-策略">
+                <i class="fa fa-chevron-left"></i> 设计模式-策略
               </a>
             
           </div>
@@ -497,8 +513,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -857,7 +882,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">100</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">105</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -884,6 +919,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">1.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#招式-静态代理"><span class="nav-number">2.</span> <span class="nav-text">招式-静态代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#招式-动态代理"><span class="nav-number">3.</span> <span class="nav-text">招式-动态代理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

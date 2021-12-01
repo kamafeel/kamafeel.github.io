@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>设计模式-管道</title>
+      <link href="/2021/12/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%A1%E9%81%93/"/>
+      <url>/2021/12/01/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AE%A1%E9%81%93/</url>
+      
+        <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>处理步骤组合，存在灵活多变</p></blockquote><h2 id="类似"><a href="#类似" class="headerlink" title="类似"></a>类似</h2><blockquote><p>责任链</p></blockquote><h2 id="招式"><a href="#招式" class="headerlink" title="招式"></a>招式</h2><p>定义context上下文，<br>处理context的handler接口</p><p>定义一个Executor执行一个List顺序的责任链</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&mid=2650413430&idx=1&sn=32c89ea3222d341bf3014854f69fd239&chksm=8396d16eb4e1587838f99a6859668a3588b0762155c1a13872d3f419efa3f75c5a532d7d38fe&scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650413430&amp;idx=1&amp;sn=32c89ea3222d341bf3014854f69fd239&amp;chksm=8396d16eb4e1587838f99a6859668a3588b0762155c1a13872d3f419efa3f75c5a532d7d38fe&amp;scene=21#wechat_redirect</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 设计模式 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 管道设计模式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>好代码编写原则</title>
       <link href="/2021/11/23/%E5%A5%BD%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%E5%8E%9F%E5%88%99/"/>
       <url>/2021/11/23/%E5%A5%BD%E4%BB%A3%E7%A0%81%E7%BC%96%E5%86%99%E5%8E%9F%E5%88%99/</url>
@@ -3544,7 +3569,7 @@
       <link href="/2020/06/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A8%A1%E6%9D%BF/"/>
       <url>/2020/06/05/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E6%A8%A1%E6%9D%BF/</url>
       
-        <content type="html"><![CDATA[<p>定义算法骨架结构</p><p>一些步骤的具体处理，落地到子类处理。</p><p>简单例子：</p><p>冲泡咖啡，茶，都需要烧水。</p><p>最新可以用 Java8 接口默认方法代替</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>具备相同的步骤，但是步骤细节存在部分差异</p></blockquote><h2 id="和策略区别"><a href="#和策略区别" class="headerlink" title="和策略区别"></a>和策略区别</h2><blockquote><p>策略关注多种策略（广度），模板同种策略（相同流程）</p></blockquote><h2 id="招式"><a href="#招式" class="headerlink" title="招式"></a>招式</h2><p>定义一个interface,定义所有步骤的defaut方法<br>定义一个abstract,定义步骤执行的模板方法</p><p>下面子类，执行实现差异性步骤方法。</p><p>额外工厂类，定义如何选择子类。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&mid=2650425722&idx=1&sn=c08418f767ee4c70331d311776c53a89&chksm=83968162b4e10874eeb119ef807bd2670cab90f73f3ee13d7146a1f535937aa311bbe958643e&scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650425722&amp;idx=1&amp;sn=c08418f767ee4c70331d311776c53a89&amp;chksm=83968162b4e10874eeb119ef807bd2670cab90f73f3ee13d7146a1f535937aa311bbe958643e&amp;scene=21#wechat_redirect</a></p>]]></content>
       
       
       <categories>
@@ -3553,6 +3578,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 模板设计模式 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3609,7 +3640,7 @@
       <link href="/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86/"/>
       <url>/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E4%BB%A3%E7%90%86/</url>
       
-        <content type="html"><![CDATA[<p>静态代理实现较简单，只要代理对象对目标对象进行包装，即可实现增强功能，但静态代理只能为一个目标对象服务，如果目标对象过多，则会产生很多代理类。</p><p>JDK动态代理需要目标对象实现业务接口，代理类只需实现InvocationHandler接口。</p><p>动态代理生成的类为 lass com.sun.proxy.$Proxy4，cglib代理生成的类为class com.cglib.UserDao$$EnhancerByCGLIB$$552188b6。</p><p>静态代理在编译时产生class字节码文件，可以直接使用，效率高。</p><p>动态代理必须实现InvocationHandler接口，通过反射代理方法，比较消耗系统性能，但可以减少代理类的数量，使用更灵活。</p><p>cglib代理无需实现接口，通过生成类字节码实现代理，比反射稍快，不存在性能问题，但cglib会继承目标对象，需要重写方法，所以目标对象不能为final类。</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>对目标进行功能扩展，但是不修改目标本身</p></blockquote><h2 id="招式-静态代理"><a href="#招式-静态代理" class="headerlink" title="招式-静态代理"></a>招式-静态代理</h2><p>无太多实际加载</p><h2 id="招式-动态代理"><a href="#招式-动态代理" class="headerlink" title="招式-动态代理"></a>招式-动态代理</h2><blockquote><p>1.JDK InvocationHandler 模式<br>被代理对象必须是接口，<br>动态代理生成的类为 com.sun.proxy.$Proxy4<br>核心实现InvocationHandler</p><p>2.Spring AOP 切面模式-推荐<br>支持jdk模式和cglib模式（不需要一定是接口）</p><p>提供Aspect相关注解，方便方法代理加强</p></blockquote><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&mid=2650417780&idx=1&sn=a4076a47b2fc6800a8e10528a0ac1dd7&chksm=8396e26cb4e16b7a93828b1cef4eaedf1b3df8bbc9a9ddee2368d927c71369ffcf115fdddc0a&scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650417780&amp;idx=1&amp;sn=a4076a47b2fc6800a8e10528a0ac1dd7&amp;chksm=8396e26cb4e16b7a93828b1cef4eaedf1b3df8bbc9a9ddee2368d927c71369ffcf115fdddc0a&amp;scene=21#wechat_redirect</a></p><p><a href="https://bugstack.cn/md/develop/design-pattern/2020-06-16-%E9%87%8D%E5%AD%A6%20Java%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8A%E5%AE%9E%E6%88%98%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E3%80%8B.html" target="_blank" rel="noopener">https://bugstack.cn/md/develop/design-pattern/2020-06-16-%E9%87%8D%E5%AD%A6%20Java%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E3%80%8A%E5%AE%9E%E6%88%98%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E3%80%8B.html</a></p>]]></content>
       
       
       <categories>
@@ -3619,24 +3650,11 @@
       </categories>
       
       
-    </entry>
-    
-    
-    
-    <entry>
-      <title>设计模式-装饰</title>
-      <link href="/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0/"/>
-      <url>/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E8%A3%85%E9%A5%B0/</url>
-      
-        <content type="html"><![CDATA[<p>1.突出的是运行期增加行为，这和继承是不同的，继承是在编译期增加行为</p><p>方式：</p><p>定义一个共同接口<br>1.定义一个实现此接口的具体对象<br>2.定义一个抽象类，依赖接口，并且依赖接口实现对象<br>3.实现此抽象类，并且添加具体装饰方法</p><p>装饰者，被装饰者，都需要实现同一个接口</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 设计模式 </category>
-          
-      </categories>
-      
+        <tags>
+            
+            <tag> 代理设计模式 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3647,7 +3665,7 @@
       <link href="/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5/"/>
       <url>/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E7%AD%96%E7%95%A5/</url>
       
-        <content type="html"><![CDATA[<p>1.避免写过多if else, 更面向对象oo</p><p>2.符合开闭原则，只需要增加策略</p><p>3.客户端决定使用何种策略</p><p>实现方式:<br>实现同一接口，Context改变策略对象，得到不同的策略实现</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>1.避免写过多if else, 更面向对象oo</p><p>2.符合开闭原则，只需要增加策略</p><p>3.客户端决定使用何种策略</p></blockquote><h2 id="招式"><a href="#招式" class="headerlink" title="招式"></a>招式</h2><p>实现同一接口，Context改变策略对象，得到不同的策略实现</p>]]></content>
       
       
       <categories>
@@ -3656,6 +3674,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 策略设计模式 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -3666,7 +3690,7 @@
       <link href="/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B/"/>
       <url>/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%8D%95%E4%BE%8B/</url>
       
-        <content type="html"><![CDATA[<p>用途：减少NEW对象的内存占用</p><p>方式：</p><ol><li><p>利用Enum 实例化一次，并且线程安全。</p></li><li><p>2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)</p></li><li><p>Spring bean的默认是单例模式</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>用途：减少NEW对象的内存占用</p><h2 id="招式"><a href="#招式" class="headerlink" title="招式"></a>招式</h2><blockquote><ol><li><p>利用Enum 实例化一次，并且线程安全。</p></li><li><p>2次锁+volatile (禁止重排序，避免NEW和分配内存地址，顺序不是预期，导致NULL异常)</p></li><li><p>Spring bean的默认是单例模式</p></li></ol></blockquote>]]></content>
       
       
       <categories>
@@ -3685,7 +3709,7 @@
       <link href="/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82/"/>
       <url>/2020/06/04/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-%E5%B7%A5%E5%8E%82/</url>
       
-        <content type="html"><![CDATA[<p>1.简单工厂<br>客户端解耦，NEW的操作不在放在客户端</p><p>比如日志框架的版本改变。</p><p>2.工厂模式</p><p>满足开闭原则（开发模块开发，关闭直接修改）</p><p>一个标准接口<br>使用接口的类被注入，或者set 从而实例化此对象</p><p>3.抽象工厂</p><p>需要多个东西实例化，多个组合相互无关系，但是又约束。</p><p>增加一个产品很麻烦</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>屏蔽内部复杂，符合迪米特法则（最少知道原则）</p></blockquote><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>根据标识（string,emum），创建相关对象（一组实现相同接口对象）</p><h2 id="招式"><a href="#招式" class="headerlink" title="招式"></a>招式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class StrategyFactory&lt;T, S extends Strategy&lt;T&gt;&gt;</span><br><span class="line">        implements InitializingBean, ApplicationContextAware &#123;</span><br><span class="line"></span><br><span class="line">    private final Class&lt;S&gt; strategyType;</span><br><span class="line"></span><br><span class="line">    private Map&lt;T, S&gt; strategyMap;</span><br><span class="line"></span><br><span class="line">    private ApplicationContext appContext;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 创建一个策略工厂</span><br><span class="line">     * </span><br><span class="line">     * @param strategyType 策略的类型</span><br><span class="line">     */</span><br><span class="line">    public StrategyFactory(Class&lt;S&gt; strategyType) &#123;</span><br><span class="line">        this.strategyType = strategyType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 根据策略 id 获得对应的策略的 Bean</span><br><span class="line">     *</span><br><span class="line">     * @param id 策略 id</span><br><span class="line">     * @return 策略的 Bean</span><br><span class="line">     */</span><br><span class="line">    public S getStrategy(T id) &#123;</span><br><span class="line">        return strategyMap.get(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void afterPropertiesSet() &#123;</span><br><span class="line">        // 获取 Spring 容器中，所有 S 类型的 Bean</span><br><span class="line">        Collection&lt;S&gt; strategies = appContext.getBeansOfType(strategyType).values();</span><br><span class="line"></span><br><span class="line">        strategyMap = Maps.newHashMapWithExpectedSize(strategies.size());</span><br><span class="line"></span><br><span class="line">        // 将 所有 S 类型的 Bean 放入到 strategyMap 中</span><br><span class="line">        for (final S strategy : strategies) &#123;</span><br><span class="line">            T id = strategy.getId();</span><br><span class="line"></span><br><span class="line">            strategyMap.put(id, strategy);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException &#123;</span><br><span class="line">        appContext = applicationContext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&mid=2650432631&idx=1&sn=fd90b80b2fe566b6f04a67fc18f156aa&chksm=8396ac6fb4e125799c6b2329fdb67727e1da3949a4c2f4a879e80f1d83591fcea2744b76f124&mpshare=1&scene=1&srcid=1130XXmPwschNyomtGkEQPvb&sharer_sharetime=1638251225567&sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&key=e659f3596625ecf27da3dfe12c21b9d0ab6196d90c93ebd6ef0350cb39e85d5011980f9e404c8ecf9ce2e4ba183c8a94a82716f1099b5f0c8c3a4de3f07c4e40273037b1c31be2a76d1e0df599df7ec50ab616eb1ef6695785f2a86cb365c7faf4fe997e6766db9b15d6699660d287de1f345b09229df6149d0d55ad4833baf1&ascene=1&uin=OTM4NTY4MzU%3D&devicetype=Windows+10&version=62060844&lang=zh_CN&exportkey=AYClbodKvloqPXREo8WM3Kc%3D&pass_ticket=E2HAxmlxE49N%2BHNKlcaaoJaZhFVYW1ALfzpBQFpFc5eS5fsfcMcK3nX%2BMTgMxZGA&wx_header=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650432631&amp;idx=1&amp;sn=fd90b80b2fe566b6f04a67fc18f156aa&amp;chksm=8396ac6fb4e125799c6b2329fdb67727e1da3949a4c2f4a879e80f1d83591fcea2744b76f124&amp;mpshare=1&amp;scene=1&amp;srcid=1130XXmPwschNyomtGkEQPvb&amp;sharer_sharetime=1638251225567&amp;sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&amp;key=e659f3596625ecf27da3dfe12c21b9d0ab6196d90c93ebd6ef0350cb39e85d5011980f9e404c8ecf9ce2e4ba183c8a94a82716f1099b5f0c8c3a4de3f07c4e40273037b1c31be2a76d1e0df599df7ec50ab616eb1ef6695785f2a86cb365c7faf4fe997e6766db9b15d6699660d287de1f345b09229df6149d0d55ad4833baf1&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AYClbodKvloqPXREo8WM3Kc%3D&amp;pass_ticket=E2HAxmlxE49N%2BHNKlcaaoJaZhFVYW1ALfzpBQFpFc5eS5fsfcMcK3nX%2BMTgMxZGA&amp;wx_header=0</a></p>]]></content>
       
       
       <categories>
@@ -3694,6 +3718,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 工厂设计模式 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -4009,18 +4039,18 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
           
-          <category> JVM </category>
+          <category> JAVA </category>
           
-          <category> 参数 </category>
+          <category> 运维 </category>
           
       </categories>
       
@@ -4036,18 +4066,18 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JVM </category>
           
-          <category> 运维 </category>
+          <category> 参数 </category>
           
       </categories>
       
