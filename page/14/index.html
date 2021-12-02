@@ -290,6 +290,385 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/11/java_Metaspace/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/11/java_Metaspace/" class="post-title-link" itemprop="url">JVM Metaspace</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-11 21:00:15" itemprop="dateCreated datePublished" datetime="2020-09-11T21:00:15+08:00">2020-09-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-18 18:14:47" itemprop="dateModified" datetime="2020-09-18T18:14:47+08:00">2020-09-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/调优/" itemprop="url" rel="index"><span itemprop="name">调优</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>Java 8 彻底将永久代 (PermGen) 移除出了 HotSpot JVM，将其原有的数据迁移至 Java Heap 或 Metaspace。这一篇文章我们来总结一下Metaspace（元空间）的特性。如有错误，敬请指出，谢谢~</p>
+<p>引言：永久代为什么被移出HotSpot JVM了？<br>在 HotSpot JVM 中，永久代中用于存放类和方法的元数据以及常量池，比如Class和Method。每当一个类初次被加载的时候，它的元数据都会放到永久代中。</p>
+<p>永久代是有大小限制的，因此如果加载的类太多，很有可能导致永久代内存溢出，即万恶的 java.lang.OutOfMemoryError: PermGen ，为此我们不得不对虚拟机做调优。</p>
+<p>那么，Java 8 中 PermGen 为什么被移出 HotSpot JVM 了？我总结了两个主要原因（详见：JEP 122: Remove the Permanent Generation）：</p>
+<p>由于 PermGen 内存经常会溢出，引发恼人的 java.lang.OutOfMemoryError: PermGen，因此 JVM 的开发者希望这一块内存可以更灵活地被管理，不要再经常出现这样的 OOM<br>移除 PermGen 可以促进 HotSpot JVM 与 JRockit VM 的融合，因为 JRockit 没有永久代。<br>根据上面的各种原因，PermGen 最终被移除，方法区移至 Metaspace，字符串常量移至 Java Heap。</p>
+<p>探秘元空间<br>由于 Metaspace 的资料比较少，这里主要是依据Oracle官方的Java虚拟机规范及Oracle Blog里的几篇文章来总结的。</p>
+<p>首先，Metaspace（元空间）是哪一块区域？官方的解释是：</p>
+<blockquote>
+<p>In JDK 8, classes metadata is now stored in the native heap and this space is called Metaspace.</p>
+</blockquote>
+<p>也就是说，JDK 8 开始把类的元数据放到本地堆内存(native heap)中，这一块区域就叫 Metaspace，中文名叫元空间。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/09/11/java_Metaspace/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/07/16/mysql配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/07/16/mysql配置/" class="post-title-link" itemprop="url">mysql配置</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-07-16 09:51:26" itemprop="dateCreated datePublished" datetime="2020-07-16T09:51:26+08:00">2020-07-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-11-18 15:01:04" itemprop="dateModified" datetime="2021-11-18T15:01:04+08:00">2021-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>whereis mysql</p>
+<p>which mysql</p>
+<p>mysql –help|grep ‘my.cnf’</p>
+<p>locate my.cnf</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/06/09/坐/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1725,377 +2104,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/06/04/设计模式-工厂/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/06/04/设计模式-工厂/" class="post-title-link" itemprop="url">设计模式-工厂</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-06-04 11:27:42" itemprop="dateCreated datePublished" datetime="2020-06-04T11:27:42+08:00">2020-06-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-12-01 14:49:54" itemprop="dateModified" datetime="2021-12-01T14:49:54+08:00">2021-12-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>屏蔽内部复杂，符合迪米特法则（最少知道原则）</p>
-</blockquote>
-
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>根据标识（string,emum），创建相关对象（一组实现相同接口对象）</p>
-<h2 id="招式"><a href="#招式" class="headerlink" title="招式"></a>招式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class StrategyFactory&lt;T, S extends Strategy&lt;T&gt;&gt;</span><br><span class="line">        implements InitializingBean, ApplicationContextAware &#123;</span><br><span class="line"></span><br><span class="line">    private final Class&lt;S&gt; strategyType;</span><br><span class="line"></span><br><span class="line">    private Map&lt;T, S&gt; strategyMap;</span><br><span class="line"></span><br><span class="line">    private ApplicationContext appContext;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 创建一个策略工厂</span><br><span class="line">     * </span><br><span class="line">     * @param strategyType 策略的类型</span><br><span class="line">     */</span><br><span class="line">    public StrategyFactory(Class&lt;S&gt; strategyType) &#123;</span><br><span class="line">        this.strategyType = strategyType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 根据策略 id 获得对应的策略的 Bean</span><br><span class="line">     *</span><br><span class="line">     * @param id 策略 id</span><br><span class="line">     * @return 策略的 Bean</span><br><span class="line">     */</span><br><span class="line">    public S getStrategy(T id) &#123;</span><br><span class="line">        return strategyMap.get(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void afterPropertiesSet() &#123;</span><br><span class="line">        // 获取 Spring 容器中，所有 S 类型的 Bean</span><br><span class="line">        Collection&lt;S&gt; strategies = appContext.getBeansOfType(strategyType).values();</span><br><span class="line"></span><br><span class="line">        strategyMap = Maps.newHashMapWithExpectedSize(strategies.size());</span><br><span class="line"></span><br><span class="line">        // 将 所有 S 类型的 Bean 放入到 strategyMap 中</span><br><span class="line">        for (final S strategy : strategies) &#123;</span><br><span class="line">            T id = strategy.getId();</span><br><span class="line"></span><br><span class="line">            strategyMap.put(id, strategy);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException &#123;</span><br><span class="line">        appContext = applicationContext;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&mid=2650432631&idx=1&sn=fd90b80b2fe566b6f04a67fc18f156aa&chksm=8396ac6fb4e125799c6b2329fdb67727e1da3949a4c2f4a879e80f1d83591fcea2744b76f124&mpshare=1&scene=1&srcid=1130XXmPwschNyomtGkEQPvb&sharer_sharetime=1638251225567&sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&key=e659f3596625ecf27da3dfe12c21b9d0ab6196d90c93ebd6ef0350cb39e85d5011980f9e404c8ecf9ce2e4ba183c8a94a82716f1099b5f0c8c3a4de3f07c4e40273037b1c31be2a76d1e0df599df7ec50ab616eb1ef6695785f2a86cb365c7faf4fe997e6766db9b15d6699660d287de1f345b09229df6149d0d55ad4833baf1&ascene=1&uin=OTM4NTY4MzU%3D&devicetype=Windows+10&version=62060844&lang=zh_CN&exportkey=AYClbodKvloqPXREo8WM3Kc%3D&pass_ticket=E2HAxmlxE49N%2BHNKlcaaoJaZhFVYW1ALfzpBQFpFc5eS5fsfcMcK3nX%2BMTgMxZGA&wx_header=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650432631&amp;idx=1&amp;sn=fd90b80b2fe566b6f04a67fc18f156aa&amp;chksm=8396ac6fb4e125799c6b2329fdb67727e1da3949a4c2f4a879e80f1d83591fcea2744b76f124&amp;mpshare=1&amp;scene=1&amp;srcid=1130XXmPwschNyomtGkEQPvb&amp;sharer_sharetime=1638251225567&amp;sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&amp;key=e659f3596625ecf27da3dfe12c21b9d0ab6196d90c93ebd6ef0350cb39e85d5011980f9e404c8ecf9ce2e4ba183c8a94a82716f1099b5f0c8c3a4de3f07c4e40273037b1c31be2a76d1e0df599df7ec50ab616eb1ef6695785f2a86cb365c7faf4fe997e6766db9b15d6699660d287de1f345b09229df6149d0d55ad4833baf1&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AYClbodKvloqPXREo8WM3Kc%3D&amp;pass_ticket=E2HAxmlxE49N%2BHNKlcaaoJaZhFVYW1ALfzpBQFpFc5eS5fsfcMcK3nX%2BMTgMxZGA&amp;wx_header=0</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/04/28/mysql-分页和数据量/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/04/28/mysql-分页和数据量/" class="post-title-link" itemprop="url">mysql 分页和数据量</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-04-28 15:18:01" itemprop="dateCreated datePublished" datetime="2020-04-28T15:18:01+08:00">2020-04-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-11-18 15:01:14" itemprop="dateModified" datetime="2021-11-18T15:01:14+08:00">2021-11-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>select id,title from collect limit 0,10;
-select id,title from collect limit 1000,10;
-select id,title from collect limit 90000,10;
-select id from collect order by id limit 90000,10; -走主键索引 
-select id,title from collect where id&gt;=(select id from collect order by id limit 90000,1) limit 10;  -走主键索引 
-
-带查询条件
-select id from collect where vtype=1 order by id limit 90000,10; 
-create idx_search(vtype,id)
-
-select id ,title from collect where vtype=1 limit 90000,10;--慢</code></pre><p>如果对于有where 条件，又想走索引用limit的，必须设计一个索引，将where 放第一位，limit用到的主键放第2位，而且只能select 主键</p>
-<p>最终办法 用IN 查询主键，会走索引<br>select * from collect where id in (9000,12,50,7000); </p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2142,7 +2150,7 @@ select id ,title from collect where vtype=1 limit 90000,10;--慢</code></pre><p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">165</span>
+                    <span class="site-state-item-count">167</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
