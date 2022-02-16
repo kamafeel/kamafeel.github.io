@@ -290,6 +290,723 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/18/JAVA多线程锁/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/18/JAVA多线程锁/" class="post-title-link" itemprop="url">JAVA多线程锁</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-18 10:52:35 / 修改时间：11:06:11" itemprop="dateCreated datePublished" datetime="2020-09-18T10:52:35+08:00">2020-09-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">并发特性</th>
+<th align="left">其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">synchronized</td>
+<td align="left">JVM层面上实现，JDK1.6后不比ReentrantLock差</td>
+<td align="left">不要考虑加锁,释放锁,竞争不太频繁</td>
+</tr>
+<tr>
+<td align="left">ReentrantLock、ReentrantReadWriteLock</td>
+<td align="left">对象层面的锁定</td>
+<td align="left">锁定一定会被释放，就必须将unLock()放到finally{},根据场景使用</td>
+</tr>
+<tr>
+<td align="left">StampedLock</td>
+<td align="left">读多写少,很适合</td>
+<td align="left">是不可重入锁，不能在一个线程中反复获取同一个锁    ,根据场景使用</td>
+</tr>
+</tbody></table>
+<h2 id="StampedLock使用说明"><a href="#StampedLock使用说明" class="headerlink" title="StampedLock使用说明"></a>StampedLock使用说明</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Point</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> StampedLock stampedLock = <span class="keyword">new</span> StampedLock();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> x;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> y;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">(<span class="keyword">double</span> deltaX, <span class="keyword">double</span> deltaY)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> stamp = stampedLock.writeLock(); <span class="comment">// 获取写锁</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            x += deltaX;</span><br><span class="line">            y += deltaY;</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            stampedLock.unlockWrite(stamp); <span class="comment">// 释放写锁</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">distanceFromOrigin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> stamp = stampedLock.tryOptimisticRead(); <span class="comment">// 获得一个乐观读锁</span></span><br><span class="line">        <span class="comment">// 注意下面两行代码不是原子操作</span></span><br><span class="line">        <span class="comment">// 假设x,y = (100,200)</span></span><br><span class="line">        <span class="keyword">double</span> currentX = x;</span><br><span class="line">        <span class="comment">// 此处已读取到x=100，但x,y可能被写线程修改为(300,400)</span></span><br><span class="line">        <span class="keyword">double</span> currentY = y;</span><br><span class="line">        <span class="comment">// 此处已读取到y，如果没有写入，读取是正确的(100,200)</span></span><br><span class="line">        <span class="comment">// 如果有写入，读取是错误的(100,400)</span></span><br><span class="line">        <span class="keyword">if</span> (!stampedLock.validate(stamp)) &#123; <span class="comment">// 检查乐观读锁后是否有其他写锁发生</span></span><br><span class="line">			<span class="comment">//如果在读取过程中有写入，版本号会发生变化，验证将失败。在失败的时候，我们再通过获取悲观读锁再次读取</span></span><br><span class="line">            stamp = stampedLock.readLock(); <span class="comment">// 获取一个悲观读锁</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                currentX = x;</span><br><span class="line">                currentY = y;</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                stampedLock.unlockRead(stamp); <span class="comment">// 释放悲观读锁</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Math.sqrt(currentX * currentX + currentY * currentY);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1309138673991714" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1252599548343744/1309138673991714</a></p>
+<p><a href="https://www.pdai.tech/md/java/java8/java8-stampedlock.html" target="_blank" rel="noopener">https://www.pdai.tech/md/java/java8/java8-stampedlock.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/17/MongoDB开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/17/MongoDB开发/" class="post-title-link" itemprop="url">MongoDB开发</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-17 21:01:16" itemprop="dateCreated datePublished" datetime="2020-09-17T21:01:16+08:00">2020-09-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-08-02 14:39:06" itemprop="dateModified" datetime="2021-08-02T14:39:06+08:00">2021-08-02</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/mongodb/" itemprop="url" rel="index"><span itemprop="name">mongodb</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/17/PostgreSQL开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/17/PostgreSQL开发/" class="post-title-link" itemprop="url">PostgreSQL开发</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-17 19:28:39 / 修改时间：19:29:51" itemprop="dateCreated datePublished" datetime="2020-09-17T19:28:39+08:00">2020-09-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/PostgreSQL/" itemprop="url" rel="index"><span itemprop="name">PostgreSQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.cnblogs.com/houzheng/p/12951923.html" target="_blank" rel="noopener">https://www.cnblogs.com/houzheng/p/12951923.html</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/17/MYSQL-VS-PostgreSQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/17/MYSQL-VS-PostgreSQL/" class="post-title-link" itemprop="url">MYSQL VS PostgreSQL</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-17 16:56:19 / 修改时间：19:30:12" itemprop="dateCreated datePublished" datetime="2020-09-17T16:56:19+08:00">2020-09-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/PostgreSQL/" itemprop="url" rel="index"><span itemprop="name">PostgreSQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote><p>PostgreSQL在处理海量数据集，复杂查询和读写操作时速度更快。<br>MySQL使用只读命令的速度更快<br>PostgreSQL自带集群,已经比较好<br>PostgreSQL的插件真的很多,很牛逼<br>GIS之类,请选择PostgreSQL<br>如果需要从Oracle切换,选择PostgreSQL<br>如果一般运用,选择MYSQL</p>
+<p>MYSQL8+ PostgreSQL10+ 功能基本无差别<br>窗口函数,WITH表达式,申明式分区,全文检索</p>
+</blockquote>
+
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>PostgreSQL 区分大小写</p>
+<p><a href="https://www.jianshu.com/p/1c8b4bb02eec?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/1c8b4bb02eec?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
+<p><a href="https://github.com/digoal/blog" target="_blank" rel="noopener">https://github.com/digoal/blog</a></p>
+<p><a href="https://developer.aliyun.com/article/98539" target="_blank" rel="noopener">https://developer.aliyun.com/article/98539</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/17/MYSQL优化建议/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1448,845 +2165,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/15/并发容器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/15/并发容器/" class="post-title-link" itemprop="url">并发容器</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-15 20:47:11" itemprop="dateCreated datePublished" datetime="2020-09-15T20:47:11+08:00">2020-09-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-09-16 17:02:59" itemprop="dateModified" datetime="2020-09-16T17:02:59+08:00">2020-09-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">并发特性</th>
-<th align="left">其他</th>
-<th align="left">网页</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">ConcurrentHashMap</td>
-<td align="left">CAS synchronzied volatile  保证内存可见性</td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">CopyOnWriteArrayList</td>
-<td align="left">CopyOnWrite （COW）ReentrantLock控制写独占锁,volatile修饰唯一数据结构数组,依据happen before写对读可见</td>
-<td align="left">内存写时，有2个对象,避免GC 存在延迟</td>
-<td align="left"><a href="https://juejin.im/post/6844903602436374541" target="_blank" rel="noopener">https://juejin.im/post/6844903602436374541</a></td>
-</tr>
-<tr>
-<td align="left">ConcurrentLinkedQueue</td>
-<td align="left">CAS volatile</td>
-<td align="left">链表作为其数据结构</td>
-<td align="left">tail 和 head 是延迟更新</td>
-</tr>
-<tr>
-<td align="left">ThreadLocal</td>
-<td align="left">空间换时间</td>
-<td align="left">threadLocal 有可能存在内存泄漏 remove</td>
-<td align="left">和锁一样（加锁,释放锁），使用后必须remove</td>
-</tr>
-<tr>
-<td align="left">BlockingQueue</td>
-<td align="left"></td>
-<td align="left">ArrayBlockingQueue, DelayQueue, LinkedBlockingDeque, LinkedBlockingQueue, LinkedTransferQueue, PriorityBlockingQueue, SynchronousQueue</td>
-<td align="left">阻塞</td>
-</tr>
-<tr>
-<td align="left">ArrayBlockingQueue 与 LinkedBlockingQueue</td>
-<td align="left">condition ReentrantLock</td>
-<td align="left">LinkedBlockingQueue插入和删除采用2个condition,ArrayBlockingQueue只使用一个</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>ConcurrentLinkedQueue head指针和 tail指针<br><img src="/2020/09/15/并发容器/20200916104316.png" alt="alt"></p>
-<h2 id="ThreadLocal-内存泄露"><a href="#ThreadLocal-内存泄露" class="headerlink" title="ThreadLocal 内存泄露"></a>ThreadLocal 内存泄露</h2><p><img src="/2020/09/15/并发容器/20200916112056.png" alt="alt"><br>threadLocal外部强引用被置为null 会被GC，但是entry就存在key为null，这样对应的value无法被GC，导致内存泄露。</p>
-<p>SimpleDateFormat里面的Calendar操作高并发会出现SET,Clear的问题，Servlet, @Controller, @Service成员变量同样也存在(可以使用@Scope(value = “prototype”)解决)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalDemo</span> </span>&#123;</span><br><span class="line">   	<span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;SimpleDateFormat&gt; sdf = <span class="keyword">new</span> ThreadLocal&lt;&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ExecutorService executorService = Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &amp;lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">        executorService.submit(<span class="keyword">new</span> DateUtil(<span class="string">"2019-11-25 09:00:"</span> + i % <span class="number">60</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DateUtil</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String date;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DateUtil</span><span class="params">(String date)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.date = date;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (sdf.get() == <span class="keyword">null</span>) &#123;</span><br><span class="line">            sdf.set(<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>));</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Date date = sdf.get().parse(<span class="keyword">this</span>.date);</span><br><span class="line">                System.out.println(date);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/15/AQS-ConditionObject/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/15/AQS-ConditionObject/" class="post-title-link" itemprop="url">AQS.ConditionObject</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-15 20:30:29 / 修改时间：20:33:57" itemprop="dateCreated datePublished" datetime="2020-09-15T20:30:29+08:00">2020-09-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ConditionObject 数据结构<br><img src="/2020/09/15/AQS-ConditionObject/20200915202400.png" alt="alt"></p>
-<h2 id="signal"><a href="#signal" class="headerlink" title="signal"></a>signal</h2><p>调用condition的signal或者signalAll方法可以将等待队列中等待时间最长的节点移动到同步队列中</p>
-<h2 id="await"><a href="#await" class="headerlink" title="await"></a>await</h2><p>当调用condition.await()方法后会使得当前获取lock的线程进入到等待队列，如果该线程能够从await()方法返回的话一定是该线程获取了与condition相关联的lock。</p>
-<p><img src="/2020/09/15/AQS-ConditionObject/20200915203239.png" alt="alt"></p>
-<p>线程awaitThread先通过lock.lock()方法获取锁成功后调用了condition.await(释放锁)方法进入等待队列，而另一个线程signalThread通过lock.lock()方法获取锁成功后调用了condition.signal或者signalAll方法，使得线程awaitThread能够有机会移入到同步队列中，当其他线程释放lock后使得线程awaitThread能够有机会获取lock，从而使得线程awaitThread能够从await方法中退出执行后续操作。如果awaitThread获取lock失败会直接进入到同步队列</p>
-<ul>
-<li><a href="https://blog.csdn.net/SEU_Calvin/article/details/70211712" target="_blank" rel="noopener">https://blog.csdn.net/SEU_Calvin/article/details/70211712</a></li>
-<li><a href="https://juejin.im/post/6844903602419400718" target="_blank" rel="noopener">https://juejin.im/post/6844903602419400718</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/15/AbstractQueuedSynchronizer-AQS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/15/AbstractQueuedSynchronizer-AQS/" class="post-title-link" itemprop="url">AbstractQueuedSynchronizer(AQS)</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-15 18:29:52" itemprop="dateCreated datePublished" datetime="2020-09-15T18:29:52+08:00">2020-09-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-09-16 17:03:46" itemprop="dateModified" datetime="2020-09-16T17:03:46+08:00">2020-09-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>AbstractQueuedSynchronizer,简称AQS。AQS是一个用来构建锁和同步器的框架。</p>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>核心成员变量</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> state;<span class="comment">//共享变量，使用volatile修饰保证线程可见性</span></span><br></pre></td></tr></table></figure>
-
-<p>核心代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">acquire</span><span class="params">(<span class="keyword">int</span> arg)</span> </span>&#123;</span><br><span class="line">	<span class="comment">//先看同步状态是否获取成功，如果成功则方法结束返回</span></span><br><span class="line">	<span class="comment">//若失败则先调用addWaiter()方法再调用acquireQueued()方法</span></span><br><span class="line">       <span class="keyword">if</span> (!tryAcquire(arg) &amp;&amp;</span><br><span class="line">           acquireQueued(addWaiter(Node.EXCLUSIVE), arg))</span><br><span class="line">           selfInterrupt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/09/15/AbstractQueuedSynchronizer-AQS/20200915195039.png" alt="alt"></p>
-<p><img src="/2020/09/15/AbstractQueuedSynchronizer-AQS/1024555-20170717114859238-311670115.png" alt="alt"><br>双端双向链表</p>
-<p>AQS维护一个共享资源state，通过内置的FIFO来完成获取资源线程的排队工作。（这个内置的同步队列称为”CLH”队列）。该队列由一个一个的Node结点组成，每个Node结点维护一个prev引用和next引用，分别指向自己的前驱和后继结点。AQS维护两个指针，分别指向队列头部head和尾部tail。</p>
-<p>当线程获取资源失败（比如tryAcquire时试图设置state状态失败），会被构造成一个结点加入CLH队列中，同时当前线程会被阻塞在队列中（通过LockSupport.park实现，其实是等待态）。当持有同步状态的线程释放同步状态时，会唤醒后继结点，然后此结点线程继续加入到对同步状态的争夺中</p>
-<ol>
-<li>独占式<br>tryAcquire tryRelease</li>
-<li>共享式<br>tryAcquireShared tryReleaseShared</li>
-</ol>
-<p>ReentrantLock（独占式,默认非公平锁效率更高,减少线程上下文切换；使用Condition可以更进一步细粒度控制挂起和唤醒），Semaphore，其他的诸如ReentrantReadWriteLock（写 独占式；读 共享式），SynchronousQueue，FutureTask等等皆是基于AQS。</p>
-<p>LockSupport；Unsafe 实现</p>
-<ul>
-<li><a href="https://www.cnblogs.com/chengxiao/p/7141160.html" target="_blank" rel="noopener">https://www.cnblogs.com/chengxiao/p/7141160.html</a></li>
-<li><a href="https://juejin.im/post/6844903601538596877" target="_blank" rel="noopener">https://juejin.im/post/6844903601538596877</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/15/线程阻塞方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/15/线程阻塞方式/" class="post-title-link" itemprop="url">线程阻塞方式</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-15 18:02:01" itemprop="dateCreated datePublished" datetime="2020-09-15T18:02:01+08:00">2020-09-15</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-09-16 17:04:16" itemprop="dateModified" datetime="2020-09-16T17:04:16+08:00">2020-09-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">释放锁</th>
-<th align="left">面对对象</th>
-<th align="left">必须要做</th>
-<th align="left">特性</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Thread.sleep</td>
-<td align="left">否</td>
-<td align="left">仅当前Thread</td>
-<td align="left">必须指定休眠时间；处理InterruptedException</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">Object.wait</td>
-<td align="left">是</td>
-<td align="left">针对对象</td>
-<td align="left">必须先获得对象锁 <code>synchronized (waitObject){waitObject.wait(); }</code></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">LockSupport.park</td>
-<td align="left">否</td>
-<td align="left">针对Thread</td>
-<td align="left">会相应InterruptedException,不需要刻意处理</td>
-<td align="left">LockSupport.park(Object blocker) jstack命令监控</td>
-</tr>
-<tr>
-<td align="left">Condition.await</td>
-<td align="left">是</td>
-<td align="left">针对Thread</td>
-<td align="left">/</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<p>虽然LockSuport可以指定monitor的object对象，但和object.wait()，两者的阻塞队列并不交叉。object.notifyAll()不能唤醒LockSupport的阻塞Thread</p>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>kill有-9和-15两种参数，默认是-15。如果是-15参数，系统就发送一个关闭信号给进程，然后等待进程关闭。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Thread waitThread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               System.out.println(<span class="string">"thread begin"</span>);</span><br><span class="line"></span><br><span class="line">               <span class="comment">//等待获取许可</span></span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   Thread.sleep(<span class="number">1000000</span>);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="comment">//输出thread over.true</span></span><br><span class="line">               System.out.println(<span class="string">"thread over."</span> + Thread.currentThread().isInterrupted());</span><br><span class="line"></span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line">       waitThread.start();</span><br><span class="line">       <span class="comment">//绑定钩子</span></span><br><span class="line">       Runtime.getRuntime().addShutdownHook(<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   waitThread.interrupt();</span><br><span class="line">                   waitThread.join();</span><br><span class="line">               &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                   e.printStackTrace();</span><br><span class="line">               &#125;</span><br><span class="line">               System.out.println(<span class="string">"shutdown success"</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;));</span><br></pre></td></tr></table></figure>
-
-<h2 id="线程中断"><a href="#线程中断" class="headerlink" title="线程中断"></a>线程中断</h2><p>首先，一个线程不应该由其他线程来强制中断或停止，而是应该由线程自己自行停止。所以，Thread.stop, Thread.suspend, Thread.resume 都已经被废弃了。而 Thread.interrupt 的作用其实也不是中断线程，而是「通知线程应该中断了」，具体到底中断还是继续运行，应该由被通知的线程自己处理。具体来说，当对一个线程，调用 interrupt() 时，① 如果线程处于被阻塞状态（例如处于sleep, wait, join 等状态），那么线程将立即退出被阻塞状态，并抛出一个InterruptedException异常。仅此而已。② 如果线程处于正常活动状态，那么会将该线程的中断标志设置为 true，仅此而已。被设置中断标志的线程将继续正常运行，不受影响。interrupt() 并不能真正的中断线程，需要被调用的线程自己进行配合才行。也就是说，一个线程如果有被中断的需求，那么就可以这样做。</p>
-<p>-① 在正常运行任务时，经常检查本线程的中断标志位，如果被设置了中断标志就自行停止线程。<br>-② 在调用阻塞方法时正确处理InterruptedException异常。（例如，catch异常后就结束线程。）</p>
-<pre><code>Thread thread = new Thread(() -&gt; {
-while (!Thread.interrupted()) {
-    // do more work.
-}
-});
-thread.start();
-
-// 一段时间以后
-thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()清除标志位是为了下次继续检测标志位。如果一个线程被设置中断标志后，选择结束线程那么自然不存在下次的问题，而如果一个线程被设置中断标识后，进行了一些处理后选择继续进行任务，而且这个任务也是需要被中断的，那么当然需要清除标志位了。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2333,7 +2211,7 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">171</span>
+                    <span class="site-state-item-count">175</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2697,7 +2575,13 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                     
                       
                     
-                    <span class="site-state-item-count">110</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">113</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

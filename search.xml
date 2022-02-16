@@ -4,6 +4,98 @@
   
     
     <entry>
+      <title>kafka并发方案</title>
+      <link href="/2022/02/11/kafka%E5%B9%B6%E5%8F%91%E6%96%B9%E6%A1%88/"/>
+      <url>/2022/02/11/kafka%E5%B9%B6%E5%8F%91%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>dockerFile的创建策略</title>
+      <link href="/2022/01/13/dockerFile%E7%9A%84%E5%88%9B%E5%BB%BA%E7%AD%96%E7%95%A5/"/>
+      <url>/2022/01/13/dockerFile%E7%9A%84%E5%88%9B%E5%BB%BA%E7%AD%96%E7%95%A5/</url>
+      
+        <content type="html"><![CDATA[<h2 id="容量小是核心要素"><a href="#容量小是核心要素" class="headerlink" title="容量小是核心要素"></a>容量小是核心要素</h2><h2 id="层的概念"><a href="#层的概念" class="headerlink" title="层的概念"></a>层的概念</h2><h2 id="alpine-slim的选择"><a href="#alpine-slim的选择" class="headerlink" title="alpine,slim的选择"></a>alpine,slim的选择</h2><p><a href="http://dockerone.com/article/10354" target="_blank" rel="noopener">http://dockerone.com/article/10354</a></p><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p><a href="https://yeasy.gitbook.io/docker_practice/image/dockerfile" target="_blank" rel="noopener">https://yeasy.gitbook.io/docker_practice/image/dockerfile</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DockerFile </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>docker私有仓库搭建</title>
+      <link href="/2022/01/13/docker%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/"/>
+      <url>/2022/01/13/docker%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="nexus"><a href="#nexus" class="headerlink" title="nexus"></a>nexus</h2><p>nexus负责下载缺失的镜像</p><h2 id="harbor"><a href="#harbor" class="headerlink" title="harbor"></a>harbor</h2><p>harbor负责管理包</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Docker </tag>
+            
+            <tag> 仓库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos磁盘分配挂载</title>
+      <link href="/2022/01/12/centos%E7%A3%81%E7%9B%98%E5%88%86%E9%85%8D%E6%8C%82%E8%BD%BD/"/>
+      <url>/2022/01/12/centos%E7%A3%81%E7%9B%98%E5%88%86%E9%85%8D%E6%8C%82%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<h2 id="把磁盘分区"><a href="#把磁盘分区" class="headerlink" title="把磁盘分区"></a>把磁盘分区</h2><blockquote><p>fdisk -l #查看情况<br>fdisk  /dev/sda</p></blockquote><h2 id="分区信息同步分区表"><a href="#分区信息同步分区表" class="headerlink" title="分区信息同步分区表"></a>分区信息同步分区表</h2><p>partprobe</p><h2 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h2><p>mkfs –type=ext3 /dev/sda3</p><h2 id="挂盘"><a href="#挂盘" class="headerlink" title="挂盘"></a>挂盘</h2><p>mount  /dev/sda3 /docker</p><h2 id="重启挂盘"><a href="#重启挂盘" class="headerlink" title="重启挂盘"></a>重启挂盘</h2><p>vi /etc/fstab</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/apacat/article/details/95926148" target="_blank" rel="noopener">https://blog.csdn.net/apacat/article/details/95926148</a><br><a href="https://blog.csdn.net/sugarbliss/article/details/107033034" target="_blank" rel="noopener">https://blog.csdn.net/sugarbliss/article/details/107033034</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 运维 </tag>
+            
+            <tag> centos7 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CPU架构</title>
       <link href="/2022/01/10/CPU%E6%9E%B6%E6%9E%84/"/>
       <url>/2022/01/10/CPU%E6%9E%B6%E6%9E%84/</url>
@@ -4220,18 +4312,18 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JVM </category>
           
-          <category> 运维 </category>
+          <category> 参数 </category>
           
       </categories>
       
@@ -4247,18 +4339,18 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
           
-          <category> JVM </category>
+          <category> JAVA </category>
           
-          <category> 参数 </category>
+          <category> 运维 </category>
           
       </categories>
       
