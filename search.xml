@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>maven仓库mirror与repositories关系</title>
+      <link href="/2022/02/23/maven%E4%BB%93%E5%BA%93mirror%E4%B8%8Erepositories%E5%85%B3%E7%B3%BB/"/>
+      <url>/2022/02/23/maven%E4%BB%93%E5%BA%93mirror%E4%B8%8Erepositories%E5%85%B3%E7%B3%BB/</url>
+      
+        <content type="html"><![CDATA[<h2 id="获取镜像链路"><a href="#获取镜像链路" class="headerlink" title="获取镜像链路"></a>获取镜像链路</h2><blockquote><p>1.pom.xml里的repository集合–&gt;settings.xml里找mirrors<br>2.if(repository的id和mirror的mirrorOf的值相同) –&gt;该mirror替代该repository<br>3.else 使用其本身</p></blockquote><p>bwt:repositories中默认包含了中央仓库central</p><p><img src="/2022/02/23/maven仓库mirror与repositories关系/14376689-985629e8cd5f6087.webp" alt="alt"></p><h2 id="mirrorOf类型含义"><a href="#mirrorOf类型含义" class="headerlink" title="mirrorOf类型含义"></a>mirrorOf类型含义</h2><table><thead><tr><th align="left">mirrorOf规则</th><th align="right">作用</th></tr></thead><tbody><tr><td align="left">*</td><td align="right">匹配所有，所有内容都从镜像拉取</td></tr><tr><td align="left">external:*</td><td align="right">除了本地缓存的所有从镜像仓库拉取</td></tr><tr><td align="left">central</td><td align="right">覆盖默认的仓库</td></tr><tr><td align="left">repo1,repo2</td><td align="right">匹配仓库repo1和repo2,使用逗号分割多个远程仓库</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> maven </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> maven </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>kafka并发方案</title>
       <link href="/2022/02/11/kafka%E5%B9%B6%E5%8F%91%E6%96%B9%E6%A1%88/"/>
       <url>/2022/02/11/kafka%E5%B9%B6%E5%8F%91%E6%96%B9%E6%A1%88/</url>
@@ -1896,11 +1921,11 @@
     
     
     <entry>
-      <title>docker安装前</title>
+      <title>docker安装</title>
       <link href="/2020/12/10/docker%E5%AE%89%E8%A3%85%E5%89%8D/"/>
       <url>/2020/12/10/docker%E5%AE%89%E8%A3%85%E5%89%8D/</url>
       
-        <content type="html"><![CDATA[<h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>systemctl stop firewalld.service<br>systemctl disable firewalld.service </p><h2 id="关闭-swap"><a href="#关闭-swap" class="headerlink" title="关闭 swap"></a>关闭 swap</h2><p>swapoff -a &amp;&amp; sed -i ‘/ swap / s/^/#/‘  /etc/fstab</p><p>##关闭SElinux功能 ##<br>vi /etc/selinux/config<br>将文件中的SELINUX=enforcing改为SELINUX=disabled</p><h2 id="修改docker镜像为国内的"><a href="#修改docker镜像为国内的" class="headerlink" title="修改docker镜像为国内的"></a>修改docker镜像为国内的</h2><p>/etc/docker/daemon.json<br>{ “registry-mirrors”: [“<a href="https://docker.mirrors.ustc.edu.cn&quot;]" target="_blank" rel="noopener">https://docker.mirrors.ustc.edu.cn&quot;]</a><br>}</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>systemctl stop firewalld.service<br>systemctl disable firewalld.service </p><h2 id="关闭-swap"><a href="#关闭-swap" class="headerlink" title="关闭 swap"></a>关闭 swap</h2><p>swapoff -a &amp;&amp; sed -i ‘/ swap / s/^/#/‘  /etc/fstab</p><p>##关闭SElinux功能 ##<br>vi /etc/selinux/config<br>将文件中的SELINUX=enforcing改为SELINUX=disabled</p><h2 id="调整系统限制"><a href="#调整系统限制" class="headerlink" title="调整系统限制"></a>调整系统限制</h2><p>vim /etc/security/limits.conf</p><ul><li>soft    nofile         1024000</li><li>hard    nofile         1024000</li><li>soft    memlock        unlimited</li><li>hard    memlock        unlimited<br>root             soft    nofile         1024000<br>root             hard    nofile         1024000<br>root             soft    memlock        unlimited</li></ul><h2 id="修改docker镜像为国内的"><a href="#修改docker镜像为国内的" class="headerlink" title="修改docker镜像为国内的"></a>修改docker镜像为国内的</h2><p>/etc/docker/daemon.json</p><p>{    “data-root”: “/docker”,<br>    “registry-mirrors”: [“<a href="https://we7bfy29.mirror.aliyuncs.com&quot;]" target="_blank" rel="noopener">https://we7bfy29.mirror.aliyuncs.com&quot;]</a><br>}</p>]]></content>
       
       
       <categories>
@@ -2574,27 +2599,6 @@
     
     
     <entry>
-      <title>mybatis-plus基本原理</title>
-      <link href="/2020/09/22/Mybatis-plus/"/>
-      <url>/2020/09/22/Mybatis-plus/</url>
-      
-        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 框架 </category>
-          
-          <category> mybatis-plus </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>this,static,super,final</title>
       <link href="/2020/09/22/this-static-super-final/"/>
       <url>/2020/09/22/this-static-super-final/</url>
@@ -2607,6 +2611,27 @@
           <category> JAVA </category>
           
           <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis-plus基本原理</title>
+      <link href="/2020/09/22/Mybatis-plus/"/>
+      <url>/2020/09/22/Mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+          <category> mybatis-plus </category>
           
       </categories>
       
@@ -3534,7 +3559,7 @@
       <link href="/2020/09/14/parallelStream/"/>
       <url>/2020/09/14/parallelStream/</url>
       
-        <content type="html"><![CDATA[<h2 id="parallelStream"><a href="#parallelStream" class="headerlink" title="parallelStream"></a>parallelStream</h2><p>底层由ForkJoinPool.commonPool 线程池创建的线程进行运行。</p><p><strong>并行流内部使用了默认的ForkJoinPool（7.2节会进一步讲到分支/合并框架），它默认的线程数量就是你的处理器数量，这个值是由Runtime.getRuntime().available- Processors()得到的。 但是你可以通过系统属性java.util.concurrent.ForkJoinPool.common. parallelism来改变线程池大小，如下所示： System.setProperty(“java.util.concurrent.ForkJoinPool.common.parallelism”,”12”); 这是一个全局设置，因此它将影响代码中所有的并行流。反过来说，目前还无法专为某个 并行流指定这个值。一般而言，让ForkJoinPool的大小等于处理器数量是个不错的默认值， 除非你有很好的理由，否则我们强烈建议你不要修改它。</strong></p><pre><code>// 设置全局并行流并发线程数System.setProperty(&quot;java.util.concurrent.ForkJoinPool.common.parallelism&quot;, &quot;12&quot;);System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12System.setProperty(&quot;java.util.concurrent.ForkJoinPool.common.parallelism&quot;, &quot;20&quot;);System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code></pre><p>多个parallelStream之间默认使用的是同一个线程池，所以IO操作尽量不要放进parallelStream中，否则会阻塞其他parallelStream<br>使用并行流的时候是无法保证元素的顺序的</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="parallelStream内部逻辑"><a href="#parallelStream内部逻辑" class="headerlink" title="parallelStream内部逻辑"></a>parallelStream内部逻辑</h2><p>底层由ForkJoinPool.commonPool 线程池创建的线程进行运行。</p><p><strong>并行流内部使用了默认的ForkJoinPool（7.2节会进一步讲到分支/合并框架），它默认的线程数量就是你的处理器数量，这个值是由Runtime.getRuntime().available- Processors()得到的。 但是你可以通过系统属性java.util.concurrent.ForkJoinPool.common. parallelism来改变线程池大小，如下所示： System.setProperty(“java.util.concurrent.ForkJoinPool.common.parallelism”,”12”); 这是一个全局设置，因此它将影响代码中所有的并行流。反过来说，目前还无法专为某个 并行流指定这个值。一般而言，让ForkJoinPool的大小等于处理器数量是个不错的默认值， 除非你有很好的理由，否则我们强烈建议你不要修改它。</strong></p><pre><code>// 设置全局并行流并发线程数System.setProperty(&quot;java.util.concurrent.ForkJoinPool.common.parallelism&quot;, &quot;12&quot;);System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12System.setProperty(&quot;java.util.concurrent.ForkJoinPool.common.parallelism&quot;, &quot;20&quot;);System.out.println(ForkJoinPool.getCommonPoolParallelism());// 输出 12</code></pre><h2 id="与Fork-Join线程池关系"><a href="#与Fork-Join线程池关系" class="headerlink" title="与Fork-Join线程池关系"></a>与Fork-Join线程池关系</h2><h2 id="反面案例"><a href="#反面案例" class="headerlink" title="反面案例"></a>反面案例</h2><blockquote><p>1.多个parallelStream之间默认使用的是同一个线程池，所以IO操作尽量不要放进parallelStream中，否则会阻塞其他parallelStream<br>使用并行流的时候是无法保证元素的顺序的</p><p>2.本身线程数有限，不要用于应对高并发接口</p></blockquote><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://cloud.tencent.com/developer/article/1544929" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1544929</a></p>]]></content>
       
       
       <categories>
@@ -3617,7 +3642,7 @@
       <link href="/2020/09/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%A3%E5%88%97%E8%A1%A8/"/>
       <url>/2020/09/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%95%A3%E5%88%97%E8%A1%A8/</url>
       
-        <content type="html"><![CDATA[<h2 id="乘积值"><a href="#乘积值" class="headerlink" title="乘积值"></a>乘积值</h2><p><code>public int hashCode() {    int h = hash;    if (h == 0 &amp;&amp; value.length &gt; 0) {        char val[] = value;        for (int i = 0; i &lt; value.length; i++) {            h = 31 * h + val[i];        }        hash = h;    }    return h;}</code></p><p>获取hashCode 31作为乘积值，原因是减少Hash碰撞概率</p><h2 id="扰动函数"><a href="#扰动函数" class="headerlink" title="扰动函数"></a>扰动函数</h2><p><code>static final int hash(Object key) {    int h;    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);}</code></p><p>(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)。把哈希值右移16位，也就正好是自己长度的一半，之后与原哈希值做异或运算，这样就混合了原哈希值中的高位和低位，增大了随机性</p><h2 id="初始化容量和负载因子"><a href="#初始化容量和负载因子" class="headerlink" title="初始化容量和负载因子"></a>初始化容量和负载因子</h2><p>散列数组需要一个2的倍数的长度，因为只有2的倍数在减1的时候，才会出现01111这样的值</p><p><code>static final int tableSizeFor(int cap) {    int n = cap - 1;    n |= n &gt;&gt;&gt; 1;    n |= n &gt;&gt;&gt; 2;    n |= n &gt;&gt;&gt; 4;    n |= n &gt;&gt;&gt; 8;    n |= n &gt;&gt;&gt; 16;    return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;    }</code></p><p>如果传入奇数的初始容量,最终会转换为最临近的2的倍数的二进制</p><h2 id="扩容元素"><a href="#扩容元素" class="headerlink" title="扩容元素"></a>扩容元素</h2><p>原哈希值与扩容新增出来的长度16，进行&amp;运算，如果值等于0，则下标位置不变。如果不为0，那么新的位置则是原来位置上加16</p><h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>特别注意HashMap Key存放对象，需要重写hashcode和equal方法<br>JAVA8之后，HashMap的Value链表容量超过8，是改为红黑树，减少查询的时间复杂度O（logn）</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="日常注意"><a href="#日常注意" class="headerlink" title="日常注意"></a>日常注意</h2><blockquote><p>hashMap的扩容存在大量rehash，注意如果知道需存放容量，一次性设置初始容量。<br>避免16的反复扩容</p><p>加载因子0.75属于泊松分布，没特殊必要不要骚改。</p></blockquote><h2 id="乘积值"><a href="#乘积值" class="headerlink" title="乘积值"></a>乘积值</h2><p><code>public int hashCode() {    int h = hash;    if (h == 0 &amp;&amp; value.length &gt; 0) {        char val[] = value;        for (int i = 0; i &lt; value.length; i++) {            h = 31 * h + val[i];        }        hash = h;    }    return h;}</code></p><p>获取hashCode 31作为乘积值，原因是减少Hash碰撞概率</p><h2 id="扰动函数"><a href="#扰动函数" class="headerlink" title="扰动函数"></a>扰动函数</h2><p><code>static final int hash(Object key) {    int h;    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);}</code></p><p>(h = key.hashCode()) ^ (h &gt;&gt;&gt; 16)。把哈希值右移16位，也就正好是自己长度的一半，之后与原哈希值做异或运算，这样就混合了原哈希值中的高位和低位，增大了随机性</p><h2 id="初始化容量和负载因子"><a href="#初始化容量和负载因子" class="headerlink" title="初始化容量和负载因子"></a>初始化容量和负载因子</h2><p>散列数组需要一个2的倍数的长度，因为只有2的倍数在减1的时候，才会出现01111这样的值</p><p><code>static final int tableSizeFor(int cap) {    int n = cap - 1;    n |= n &gt;&gt;&gt; 1;    n |= n &gt;&gt;&gt; 2;    n |= n &gt;&gt;&gt; 4;    n |= n &gt;&gt;&gt; 8;    n |= n &gt;&gt;&gt; 16;    return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;    }</code></p><p>如果传入奇数的初始容量,最终会转换为最临近的2的倍数的二进制</p><h2 id="扩容元素"><a href="#扩容元素" class="headerlink" title="扩容元素"></a>扩容元素</h2><p>原哈希值与扩容新增出来的长度16，进行&amp;运算，如果值等于0，则下标位置不变。如果不为0，那么新的位置则是原来位置上加16</p><h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>特别注意HashMap Key存放对象，需要重写hashcode和equal方法<br>JAVA8之后，HashMap的Value链表容量超过8，是改为红黑树，减少查询的时间复杂度O（logn）</p><table><thead><tr><th align="left">类别</th><th align="right">key value为null</th></tr></thead><tbody><tr><td align="left">hashMap</td><td align="right">支持</td></tr><tr><td align="left">ConcurrentSkipListMap</td><td align="right">不支持</td></tr><tr><td align="left">ConcurrentHashMap</td><td align="right">不支持</td></tr><tr><td align="left">HashTable</td><td align="right">不支持</td></tr><tr><td align="left">linkedhashMap</td><td align="right">支持</td></tr><tr><td align="left">treeMap</td><td align="right">key不支持,value支持</td></tr></tbody></table><p>为null存在二义性,无法边变是找不到，还是缺失value为null</p><p>Collections.synchronizedMap勉强实现同步,key value又可以为null</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/ecdf00e33b98" target="_blank" rel="noopener">https://www.jianshu.com/p/ecdf00e33b98</a><br><a href="https://www.cnblogs.com/xinzhao/p/5644175.html" target="_blank" rel="noopener">https://www.cnblogs.com/xinzhao/p/5644175.html</a><br><a href="https://cloud.tencent.com/developer/article/1690271" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1690271</a></p>]]></content>
       
       
       <categories>
@@ -3630,6 +3655,8 @@
         <tags>
             
             <tag> HashMap </tag>
+            
+            <tag> HashTable </tag>
             
         </tags>
       
@@ -3667,7 +3694,7 @@
       <link href="/2020/09/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/"/>
       <url>/2020/09/12/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E9%93%BE%E8%A1%A8/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="CopyOnWriteArrayList-多线程安全实现机制和弊端"><a href="#CopyOnWriteArrayList-多线程安全实现机制和弊端" class="headerlink" title="CopyOnWriteArrayList 多线程安全实现机制和弊端"></a>CopyOnWriteArrayList 多线程安全实现机制和弊端</h2><blockquote><p>CopyOnWriteArrayList使用了一种叫写时复制的方法，当有新元素添加到CopyOnWriteArrayList时，先从原有的数组中拷贝一份出来，然后在新的数组做写操作，写完之后，再将原来的数组引用指向到新数组。</p><p>当有新元素加入的时候，如下图，创建新数组，并往新数组中加入一个新元素,这个时候，array这个引用仍然是指向原数组的。</p></blockquote><p><img src="/2020/09/12/数据结构-链表/20220228144317.png" alt="alt"></p><h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h2><p>contains 参数为对象，注意是否需要重写equals</p>]]></content>
       
       
       <categories>
@@ -3680,6 +3707,12 @@
         <tags>
             
             <tag> 链表 </tag>
+            
+            <tag> List </tag>
+            
+            <tag> ArrayList </tag>
+            
+            <tag> CopyOnWriteArrayList </tag>
             
         </tags>
       

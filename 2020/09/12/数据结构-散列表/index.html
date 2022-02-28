@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="乘积值public int hashCode() {     int h = hash;     if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) {         char val[] = value;         for (int i = 0; i &amp;lt; value.length; i++) {             h = 31 * h + v">
-<meta name="keywords" content="HashMap">
+  <meta name="description" content="日常注意hashMap的扩容存在大量rehash，注意如果知道需存放容量，一次性设置初始容量。避免16的反复扩容 加载因子0.75属于泊松分布，没特殊必要不要骚改。   乘积值public int hashCode() {     int h = hash;     if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) {         char val[] =">
+<meta name="keywords" content="HashMap,HashTable">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构-散列表">
 <meta property="og:url" content="https://kamafeel.github.io/2020/09/12/数据结构-散列表/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="乘积值public int hashCode() {     int h = hash;     if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) {         char val[] = value;         for (int i = 0; i &amp;lt; value.length; i++) {             h = 31 * h + v">
+<meta property="og:description" content="日常注意hashMap的扩容存在大量rehash，注意如果知道需存放容量，一次性设置初始容量。避免16的反复扩容 加载因子0.75属于泊松分布，没特殊必要不要骚改。   乘积值public int hashCode() {     int h = hash;     if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) {         char val[] =">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-11-18T06:50:13.573Z">
+<meta property="og:updated_time" content="2022-02-28T02:56:08.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构-散列表">
-<meta name="twitter:description" content="乘积值public int hashCode() {     int h = hash;     if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) {         char val[] = value;         for (int i = 0; i &amp;lt; value.length; i++) {             h = 31 * h + v">
+<meta name="twitter:description" content="日常注意hashMap的扩容存在大量rehash，注意如果知道需存放容量，一次性设置初始容量。避免16的反复扩容 加载因子0.75属于泊松分布，没特殊必要不要骚改。   乘积值public int hashCode() {     int h = hash;     if (h == 0 &amp;amp;&amp;amp; value.length &amp;gt; 0) {         char val[] =">
 
 
 
@@ -354,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-11-18 14:50:13" itemprop="dateModified" datetime="2021-11-18T14:50:13+08:00">2021-11-18</time>
+                <time title="修改时间：2022-02-28 10:56:08" itemprop="dateModified" datetime="2022-02-28T10:56:08+08:00">2022-02-28</time>
               
             
           </span>
@@ -406,7 +406,11 @@
       
 
       
-        <h2 id="乘积值"><a href="#乘积值" class="headerlink" title="乘积值"></a>乘积值</h2><p><code>public int hashCode() {
+        <h2 id="日常注意"><a href="#日常注意" class="headerlink" title="日常注意"></a>日常注意</h2><blockquote><p>hashMap的扩容存在大量rehash，注意如果知道需存放容量，一次性设置初始容量。<br>避免16的反复扩容</p>
+<p>加载因子0.75属于泊松分布，没特殊必要不要骚改。</p>
+</blockquote>
+
+<h2 id="乘积值"><a href="#乘积值" class="headerlink" title="乘积值"></a>乘积值</h2><p><code>public int hashCode() {
     int h = hash;
     if (h == 0 &amp;&amp; value.length &gt; 0) {
         char val[] = value;
@@ -436,6 +440,41 @@
 <p>如果传入奇数的初始容量,最终会转换为最临近的2的倍数的二进制</p>
 <h2 id="扩容元素"><a href="#扩容元素" class="headerlink" title="扩容元素"></a>扩容元素</h2><p>原哈希值与扩容新增出来的长度16，进行&amp;运算，如果值等于0，则下标位置不变。如果不为0，那么新的位置则是原来位置上加16</p>
 <h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>特别注意HashMap Key存放对象，需要重写hashcode和equal方法<br>JAVA8之后，HashMap的Value链表容量超过8，是改为红黑树，减少查询的时间复杂度O（logn）</p>
+<table>
+<thead>
+<tr>
+<th align="left">类别</th>
+<th align="right">key value为null</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">hashMap</td>
+<td align="right">支持</td>
+</tr>
+<tr>
+<td align="left">ConcurrentSkipListMap</td>
+<td align="right">不支持</td>
+</tr>
+<tr>
+<td align="left">ConcurrentHashMap</td>
+<td align="right">不支持</td>
+</tr>
+<tr>
+<td align="left">HashTable</td>
+<td align="right">不支持</td>
+</tr>
+<tr>
+<td align="left">linkedhashMap</td>
+<td align="right">支持</td>
+</tr>
+<tr>
+<td align="left">treeMap</td>
+<td align="right">key不支持,value支持</td>
+</tr>
+</tbody></table>
+<p>为null存在二义性,无法边变是找不到，还是缺失value为null</p>
+<p>Collections.synchronizedMap勉强实现同步,key value又可以为null</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.jianshu.com/p/ecdf00e33b98" target="_blank" rel="noopener">https://www.jianshu.com/p/ecdf00e33b98</a><br><a href="https://www.cnblogs.com/xinzhao/p/5644175.html" target="_blank" rel="noopener">https://www.cnblogs.com/xinzhao/p/5644175.html</a><br><a href="https://cloud.tencent.com/developer/article/1690271" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1690271</a></p>
 
       
     </div>
@@ -463,6 +502,8 @@
         <div class="post-tags">
           
             <a href="/tags/HashMap/" rel="tag"># HashMap</a>
+          
+            <a href="/tags/HashTable/" rel="tag"># HashTable</a>
           
         </div>
       
@@ -556,7 +597,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">175</span>
+                    <span class="site-state-item-count">176</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -683,7 +724,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -926,7 +969,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">113</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">118</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -964,7 +1017,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#乘积值"><span class="nav-number">1.</span> <span class="nav-text">乘积值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扰动函数"><span class="nav-number">2.</span> <span class="nav-text">扰动函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化容量和负载因子"><span class="nav-number">3.</span> <span class="nav-text">初始化容量和负载因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩容元素"><span class="nav-number">4.</span> <span class="nav-text">扩容元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题外话"><span class="nav-number">5.</span> <span class="nav-text">题外话</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#日常注意"><span class="nav-number">1.</span> <span class="nav-text">日常注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#乘积值"><span class="nav-number">2.</span> <span class="nav-text">乘积值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扰动函数"><span class="nav-number">3.</span> <span class="nav-text">扰动函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化容量和负载因子"><span class="nav-number">4.</span> <span class="nav-text">初始化容量和负载因子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩容元素"><span class="nav-number">5.</span> <span class="nav-text">扩容元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题外话"><span class="nav-number">6.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">7.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>

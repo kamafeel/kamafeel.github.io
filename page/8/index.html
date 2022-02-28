@@ -290,6 +290,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/02/05/JIT介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/02/05/JIT介绍/" class="post-title-link" itemprop="url">JIT介绍</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-02-05 11:42:10" itemprop="dateCreated datePublished" datetime="2021-02-05T11:42:10+08:00">2021-02-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-11-18 15:04:26" itemprop="dateModified" datetime="2021-11-18T15:04:26+08:00">2021-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/基础/" itemprop="url" rel="index"><span itemprop="name">基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>Just-in-time compilation<br>JIT编译器在程序启动后运行，然后将代码（通常称为字节码或某种VM指令）即时（或称为即时）编译为通常更快的形式，通常是主机CPU的本机指令系统</p>
+<p>JVM 举例：<br>现在基于JVM的脚本语言也不少 比如Scala、Groovy或者Jython 他们与Java文件一样 最终都会被编译成class文件 而class被虚拟机装载后 会以解释模式运行一段时间 当发觉某些代码运行比较频繁(一种描述 关于代码被优化的原因有很多 调用次数只是其中一个) 则会对这些代码进行本地化 也就是JIT。</p>
+<p>Hotspot 名字的来源里面也有说明</p>
+<p><img src="/2021/02/05/JIT介绍/fc2d6adee7cfd35cd691b0a419dcd1a2_1440w.png" alt="alt"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/12/10/docker安装前/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -310,7 +493,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2020/12/10/docker安装前/" class="post-title-link" itemprop="url">docker安装前</a>
+                <a href="/2020/12/10/docker安装前/" class="post-title-link" itemprop="url">docker安装</a>
               
             
           </h1>
@@ -352,7 +535,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-12-16 10:22:01" itemprop="dateModified" datetime="2020-12-16T10:22:01+08:00">2020-12-16</time>
+                <time title="修改时间：2022-02-16 14:43:12" itemprop="dateModified" datetime="2022-02-16T14:43:12+08:00">2022-02-16</time>
               
             
           </span>
@@ -409,8 +592,16 @@
             <h2 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h2><p>systemctl stop firewalld.service<br>systemctl disable firewalld.service </p>
 <h2 id="关闭-swap"><a href="#关闭-swap" class="headerlink" title="关闭 swap"></a>关闭 swap</h2><p>swapoff -a &amp;&amp; sed -i ‘/ swap / s/^/#/‘  /etc/fstab</p>
 <p>##关闭SElinux功能 ##<br>vi /etc/selinux/config<br>将文件中的SELINUX=enforcing改为SELINUX=disabled</p>
-<h2 id="修改docker镜像为国内的"><a href="#修改docker镜像为国内的" class="headerlink" title="修改docker镜像为国内的"></a>修改docker镜像为国内的</h2><p>/etc/docker/daemon.json<br>{ 
-“registry-mirrors”: [“<a href="https://docker.mirrors.ustc.edu.cn&quot;]" target="_blank" rel="noopener">https://docker.mirrors.ustc.edu.cn&quot;]</a><br>}</p>
+<h2 id="调整系统限制"><a href="#调整系统限制" class="headerlink" title="调整系统限制"></a>调整系统限制</h2><p>vim /etc/security/limits.conf</p>
+<ul>
+<li>soft    nofile         1024000</li>
+<li>hard    nofile         1024000</li>
+<li>soft    memlock        unlimited</li>
+<li>hard    memlock        unlimited<br>root             soft    nofile         1024000<br>root             hard    nofile         1024000<br>root             soft    memlock        unlimited</li>
+</ul>
+<h2 id="修改docker镜像为国内的"><a href="#修改docker镜像为国内的" class="headerlink" title="修改docker镜像为国内的"></a>修改docker镜像为国内的</h2><p>/etc/docker/daemon.json</p>
+<p>{
+    “data-root”: “/docker”,<br>    “registry-mirrors”: [“<a href="https://we7bfy29.mirror.aliyuncs.com&quot;]" target="_blank" rel="noopener">https://we7bfy29.mirror.aliyuncs.com&quot;]</a><br>}</p>
 
           
         
@@ -1868,170 +2059,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/26/待升级技能清单/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/10/26/待升级技能清单/" class="post-title-link" itemprop="url">待升级技能清单</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-10-26 17:23:18 / 修改时间：17:25:53" itemprop="dateCreated datePublished" datetime="2020-10-26T17:23:18+08:00">2020-10-26</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/瞎扯蛋/" itemprop="url" rel="index"><span itemprop="name">瞎扯蛋</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="画图的："><a href="#画图的：" class="headerlink" title="画图的："></a>画图的：</h2><p>enterprise architect UML,时序图</p>
-<p>visio(备选)</p>
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><p>Word<br>PPT</p>
-<h2 id="HOW"><a href="#HOW" class="headerlink" title="HOW"></a>HOW</h2><p>参考现有物，模仿，GOOGLE</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2078,7 +2105,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">175</span>
+                    <span class="site-state-item-count">176</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2205,7 +2232,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2448,7 +2477,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">113</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">118</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
