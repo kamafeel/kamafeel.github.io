@@ -290,6 +290,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/10/12/订单系统架构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/10/12/订单系统架构/" class="post-title-link" itemprop="url">订单系统架构</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-10-12 17:05:20" itemprop="dateCreated datePublished" datetime="2021-10-12T17:05:20+08:00">2021-10-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-11-18 14:39:13" itemprop="dateModified" datetime="2021-11-18T14:39:13+08:00">2021-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/产品/" itemprop="url" rel="index"><span itemprop="name">产品</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="订单核心2要素"><a href="#订单核心2要素" class="headerlink" title="订单核心2要素"></a>订单核心2要素</h2><p>下单<br>查询</p>
+<h2 id="订单核心领域"><a href="#订单核心领域" class="headerlink" title="订单核心领域"></a>订单核心领域</h2><p>产品/服务<br>用户<br>商家<br>促销<br>支付<br>交付模式（物流，在线服务）<br>风控</p>
+<h2 id="下单"><a href="#下单" class="headerlink" title="下单"></a>下单</h2><p>订单信息的获取<br>** 订单流程引擎，处理策略 （状态机）<br>订单状态的MQ异步通知<br>订单领域的DDD设计</p>
+<p>能异步的地方最好异步，注意最终一致性事务，幂等性</p>
+<h2 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h2><p>网关（Kong+ Konga ui,spring gateway）导流（根据参数，header信息等）</p>
+<p>分库分表(mycat,Sharding-JDBC)，需要考虑数据分布均匀，取模ID最好和用户相匹配</p>
+<p>ES 提供全文检索查询（倒排索引），考虑ES的查询方式，非SQL模式</p>
+<h2 id="参考API"><a href="#参考API" class="headerlink" title="参考API"></a>参考API</h2><p>美团订单API<br><a href="https://developer.waimai.meituan.com/home/doc/food/6" target="_blank" rel="noopener">https://developer.waimai.meituan.com/home/doc/food/6</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/10/11/择偶的去伪存真/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1943,174 +2130,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/09/06/Java-Serializable/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/09/06/Java-Serializable/" class="post-title-link" itemprop="url">Java Serializable</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-09-06 15:46:49 / 修改时间：15:47:52" itemprop="dateCreated datePublished" datetime="2021-09-06T15:46:49+08:00">2021-09-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://juejin.cn/post/6844903872272547848" target="_blank" rel="noopener">https://juejin.cn/post/6844903872272547848</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2284,9 +2303,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">56</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
