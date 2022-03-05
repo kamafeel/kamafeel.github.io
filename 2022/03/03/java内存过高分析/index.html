@@ -96,18 +96,17 @@
 
 
 
-  <meta name="description" content="一.随机数当您登录时，它挂起或花费超过一分钟获得响应。如果你的服务器在linux操作系统上，这里的罪魁祸首是SecureRandom generateSeed（）。它使用/dev/random生成种子。但是/dev/random是一个阻塞数字生成器，如果它没有足够的随机数据提供，它就一直等，这迫使JVM等待。键盘和鼠标输入以及磁盘活动可以产生所需的随机性或熵。但在一个服务器缺乏这样的活动，可能会出">
-<meta name="keywords" content="运维">
+  <meta name="description" content="步骤如下1.top                &amp;gt;&amp;gt; 观察占用CPU或者MEN（内存）使用情况最高的进程,记录PID; 2.top -p PID     &amp;gt;&amp;gt; 观察该PID对应进程的占用情况,   shift + h        &amp;gt;&amp;gt; 开启线程显示，观察CPU/Men占用较高的线程有哪些，记录对应TID； 3.jstack PID &amp;gt; jstack.t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java莫名其妙的慢">
-<meta property="og:url" content="https://kamafeel.github.io/2020/10/13/Java莫名其妙的慢/index.html">
+<meta property="og:title" content="java内存过高分析">
+<meta property="og:url" content="https://kamafeel.github.io/2022/03/03/java内存过高分析/index.html">
 <meta property="og:site_name" content="Kamafeel">
-<meta property="og:description" content="一.随机数当您登录时，它挂起或花费超过一分钟获得响应。如果你的服务器在linux操作系统上，这里的罪魁祸首是SecureRandom generateSeed（）。它使用/dev/random生成种子。但是/dev/random是一个阻塞数字生成器，如果它没有足够的随机数据提供，它就一直等，这迫使JVM等待。键盘和鼠标输入以及磁盘活动可以产生所需的随机性或熵。但在一个服务器缺乏这样的活动，可能会出">
+<meta property="og:description" content="步骤如下1.top                &amp;gt;&amp;gt; 观察占用CPU或者MEN（内存）使用情况最高的进程,记录PID; 2.top -p PID     &amp;gt;&amp;gt; 观察该PID对应进程的占用情况,   shift + h        &amp;gt;&amp;gt; 开启线程显示，观察CPU/Men占用较高的线程有哪些，记录对应TID； 3.jstack PID &amp;gt; jstack.t">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2021-08-26T08:25:26.072Z">
+<meta property="og:updated_time" content="2022-03-03T10:39:32.187Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java莫名其妙的慢">
-<meta name="twitter:description" content="一.随机数当您登录时，它挂起或花费超过一分钟获得响应。如果你的服务器在linux操作系统上，这里的罪魁祸首是SecureRandom generateSeed（）。它使用/dev/random生成种子。但是/dev/random是一个阻塞数字生成器，如果它没有足够的随机数据提供，它就一直等，这迫使JVM等待。键盘和鼠标输入以及磁盘活动可以产生所需的随机性或熵。但在一个服务器缺乏这样的活动，可能会出">
+<meta name="twitter:title" content="java内存过高分析">
+<meta name="twitter:description" content="步骤如下1.top                &amp;gt;&amp;gt; 观察占用CPU或者MEN（内存）使用情况最高的进程,记录PID; 2.top -p PID     &amp;gt;&amp;gt; 观察该PID对应进程的占用情况,   shift + h        &amp;gt;&amp;gt; 开启线程显示，观察CPU/Men占用较高的线程有哪些，记录对应TID； 3.jstack PID &amp;gt; jstack.t">
 
 
 
@@ -115,7 +114,7 @@
 
   
   
-  <link rel="canonical" href="https://kamafeel.github.io/2020/10/13/Java莫名其妙的慢/">
+  <link rel="canonical" href="https://kamafeel.github.io/2022/03/03/java内存过高分析/">
 
 
 
@@ -125,7 +124,7 @@
   };
 </script>
 
-  <title>Java莫名其妙的慢 | Kamafeel</title>
+  <title>java内存过高分析 | Kamafeel</title>
   
 
 
@@ -294,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/10/13/Java莫名其妙的慢/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/03/java内存过高分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -311,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java莫名其妙的慢
+          <h1 class="post-title" itemprop="name headline">java内存过高分析
 
               
             
@@ -337,53 +336,16 @@
                 
               
 
-              <time title="创建时间：2020-10-13 21:35:21" itemprop="dateCreated datePublished" datetime="2020-10-13T21:35:21+08:00">2020-10-13</time>
+              <time title="创建时间：2022-03-03 18:39:07 / 修改时间：18:39:32" itemprop="dateCreated datePublished" datetime="2022-03-03T18:39:07+08:00">2022-03-03</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-08-26 16:25:26" itemprop="dateModified" datetime="2021-08-26T16:25:26+08:00">2021-08-26</time>
               
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/运维/" itemprop="url" rel="index"><span itemprop="name">运维</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -413,29 +375,16 @@
       
 
       
-        <h2 id="一-随机数"><a href="#一-随机数" class="headerlink" title="一.随机数"></a>一.随机数</h2><blockquote><p>当您登录时，它挂起或花费超过一分钟获得响应。如果你的服务器在linux操作系统上，这里的罪魁祸首是SecureRandom generateSeed（）。它使用/dev/random生成种子。但是/dev/random是一个阻塞数字生成器，如果它没有足够的随机数据提供，它就一直等，这迫使JVM等待。键盘和鼠标输入以及磁盘活动可以产生所需的随机性或熵。但在一个服务器缺乏这样的活动，可能会出现问题</p>
-</blockquote>
+        <h2 id="步骤如下"><a href="#步骤如下" class="headerlink" title="步骤如下"></a>步骤如下</h2><p>1.top                &gt;&gt; 观察占用CPU或者MEN（内存）使用情况最高的进程,记录PID;</p>
+<p>2.top -p PID     &gt;&gt; 观察该PID对应进程的占用情况,<br>   shift + h        &gt;&gt; 开启线程显示，观察CPU/Men占用较高的线程有哪些，记录对应TID；</p>
+<p>3.jstack PID &gt; jstack.txt   &gt;&gt; 查看该线程的堆栈信息</p>
+<p>4.printf “%x\n” TID   &gt;&gt; 将线程对应PID转为 16进制数（TID16）；</p>
+<p>5.cat jstack.txt | grep TID16    &gt;&gt; 查看当前占用内存高的线程具体在做什么操作，分析原因</p>
+<p>6.jmap -histo:live PID   &gt;&gt; 查看当前堆内存中存在哪些存活对象</p>
+<ol start="7">
+<li>jstat -gcutil PID 1000 3  &gt;&gt; 查看gc情况</li>
+</ol>
 
-
-<blockquote><p>当熵池为空时，来自/dev/random的读操作将被阻塞，直到熵池收集到足够的环境噪声数据。这么做的目的是成为一个密码安全的伪随机数发生器，熵池要有尽可能大的输出。对于生成高质量的加密密钥或者是需要长期保护的场景，一定要这么做</p>
-</blockquote>
-
-<p><a href="https://blog.csdn.net/a9529lty/article/details/76976105" target="_blank" rel="noopener">https://blog.csdn.net/a9529lty/article/details/76976105</a></p>
-<p>java启动建议带的参数</p>
-<blockquote><p>java ${JAVA_OPTS} -noverify -XX:+AlwaysPreTouch -Djava.security.egd=file:/dev/./urandom -cp /app/resources/:/app/classes/:/app/libs/* “com.**.go”</p>
-</blockquote>
-
-<p>-noverify<br>关闭检验bytecode，就是为了提高性能</p>
-<p>AlwaysPreTouch<br>jdk8 慎用,极大降低java启动速度</p>
-<p>Djava.security.egd=file:/dev/./urandom<br>伪随机数，不使用熵池信息</p>
-<p>Java -cp /app/resources/:/app/classes/:/app/libs/*</p>
-<p><a href="https://www.jianshu.com/p/a8356d03ac8f" target="_blank" rel="noopener">https://www.jianshu.com/p/a8356d03ac8f</a></p>
-<h2 id="二-网关配置错误"><a href="#二-网关配置错误" class="headerlink" title="二.网关配置错误"></a>二.网关配置错误</h2><p>/etc/hosts 是否配置正确,是否配置本机IP，本机机器名</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@xxx ~]# ps -ef | grep &apos;apache-tomcat-7.0.69&apos; | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs jstack &gt;&gt; 1218dump.txt</span><br></pre></td></tr></table></figure>
-
-<p>IPV4 IPV6的配置<br>hosts高速缓存</p>
-<p>在命令行输入 “hostname” 查看自己的hostname，复制；<br>输入“sudo vim /etc/hosts”，进入编辑；<br>将12.0.0.1和::1 后的值改为自己的hostname，保存退出。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&quot;localhost-startStop-1&quot; #12 daemon prio=5 os_prio=0 tid=0x00007f69a4002800 nid=0x1746 runnable [0x00007f69d96c2000]</span><br><span class="line">   java.lang.Thread.State: RUNNABLE</span><br><span class="line">    at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)</span><br><span class="line">    at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)</span><br><span class="line">    at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)</span><br><span class="line">    at java.net.InetAddress.getLocalHost(InetAddress.java:1500)</span><br><span class="line">    - locked &lt;0x00000000c574e990&gt; (a java.lang.Object)</span><br><span class="line">    at sun.management.VMManagementImpl.getVmId(VMManagementImpl.java:140)</span><br><span class="line">    at sun.management.RuntimeImpl.getName(RuntimeImpl.java:59)</span><br><span class="line">    at org.springframework.boot.ApplicationPid.getPid(ApplicationPid.java:46)</span><br><span class="line">    at org.springframework.boot.ApplicationPid.&lt;init&gt;(ApplicationPid.java:37)</span><br><span class="line">    at org.springframework.boot.logging.LoggingSystemProperties.apply(LoggingSystemProperties.java:59)</span><br><span class="line">    at org.springframework.boot.logging.LoggingSystemProperties.apply(LoggingSystemProperties.java:48)</span><br><span class="line">    at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:270)</span><br><span class="line">    at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:239)</span><br><span class="line">    at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:212)</span><br><span class="line">    at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)</span><br><span class="line">    at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)</span><br><span class="line">    at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)</span><br><span class="line">    at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:73)</span><br><span class="line">    at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)</span><br><span class="line">    at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:336)</span><br><span class="line">    at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)</span><br><span class="line">    at org.springframework.boot.web.support.SpringBootServletInitializer.run(SpringBootServletInitializer.java:151)</span><br><span class="line">    at org.springframework.boot.web.support.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:131)</span><br><span class="line">    at org.springframework.boot.web.support.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:86)</span><br><span class="line">    at org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:169)</span><br><span class="line">    at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5573)</span><br><span class="line">    - locked &lt;0x00000000c4f2d5d0&gt; (a org.apache.catalina.core.StandardContext)</span><br><span class="line">    at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:147)</span><br><span class="line">    - locked &lt;0x00000000c4f2d5d0&gt; (a org.apache.catalina.core.StandardContext)</span><br><span class="line">    at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:899)</span><br><span class="line">    at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:875)</span><br><span class="line">    at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:652)</span><br><span class="line">    at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:1092)</span><br><span class="line">    at org.apache.catalina.startup.HostConfig$DeployWar.run(HostConfig.java:1984)</span><br><span class="line">    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</span><br><span class="line">    at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</span><br><span class="line">    at java.lang.Thread.run(Thread.java:745)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -456,15 +405,6 @@
 
     <footer class="post-footer">
       
-        
-          
-        
-        <div class="post-tags">
-          
-            <a href="/tags/运维/" rel="tag"># 运维</a>
-          
-        </div>
-      
 
       
       
@@ -474,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/09/29/需求分析/" rel="next" title="需求分析">
-                <i class="fa fa-chevron-left"></i> 需求分析
+              <a href="/2022/03/03/docker-compose使用/" rel="next" title="docker-compose使用">
+                <i class="fa fa-chevron-left"></i> docker-compose使用
               </a>
             
           </div>
@@ -484,8 +424,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/10/13/ES超时的坑/" rel="prev" title="ES超时的坑">
-                ES超时的坑 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/03/04/读写分离几种实现方式/" rel="prev" title="读写分离几种实现方式">
+                读写分离几种实现方式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -555,7 +495,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">177</span>
+                    <span class="site-state-item-count">179</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -975,7 +915,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-随机数"><span class="nav-number">1.</span> <span class="nav-text">一.随机数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二-网关配置错误"><span class="nav-number">2.</span> <span class="nav-text">二.网关配置错误</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤如下"><span class="nav-number">1.</span> <span class="nav-text">步骤如下</span></a></li></ol></div>
             
 
           </div>

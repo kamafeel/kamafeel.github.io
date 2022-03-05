@@ -4,6 +4,32 @@
   
     
     <entry>
+      <title>读写分离几种实现方式</title>
+      <link href="/2022/03/04/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/"/>
+      <url>/2022/03/04/%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java内存过高分析</title>
+      <link href="/2022/03/03/java%E5%86%85%E5%AD%98%E8%BF%87%E9%AB%98%E5%88%86%E6%9E%90/"/>
+      <url>/2022/03/03/java%E5%86%85%E5%AD%98%E8%BF%87%E9%AB%98%E5%88%86%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="步骤如下"><a href="#步骤如下" class="headerlink" title="步骤如下"></a>步骤如下</h2><p>1.top                &gt;&gt; 观察占用CPU或者MEN（内存）使用情况最高的进程,记录PID;</p><p>2.top -p PID     &gt;&gt; 观察该PID对应进程的占用情况,<br>   shift + h        &gt;&gt; 开启线程显示，观察CPU/Men占用较高的线程有哪些，记录对应TID；</p><p>3.jstack PID &gt; jstack.txt   &gt;&gt; 查看该线程的堆栈信息</p><p>4.printf “%x\n” TID   &gt;&gt; 将线程对应PID转为 16进制数（TID16）；</p><p>5.cat jstack.txt | grep TID16    &gt;&gt; 查看当前占用内存高的线程具体在做什么操作，分析原因</p><p>6.jmap -histo:live PID   &gt;&gt; 查看当前堆内存中存在哪些存活对象</p><ol start="7"><li>jstat -gcutil PID 1000 3  &gt;&gt; 查看gc情况</li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>docker-compose使用</title>
       <link href="/2022/03/03/docker-compose%E4%BD%BF%E7%94%A8/"/>
       <url>/2022/03/03/docker-compose%E4%BD%BF%E7%94%A8/</url>
@@ -544,7 +570,7 @@
       <link href="/2021/10/13/kafka%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
       <url>/2021/10/13/kafka%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</url>
       
-        <content type="html"><![CDATA[<h2 id="2-8版本前"><a href="#2-8版本前" class="headerlink" title="2.8版本前"></a>2.8版本前</h2><p>kafka:2.13-2.6.3 前面为scala版本后面为kafka版本</p><p>一定确定,kafka服务端版本和客户端版本，和zk的关系</p><p>参考：<a href="https://zhuanlan.zhihu.com/p/359573455" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/359573455</a></p><p>相对稳定版本：2.6.1 +</p><h2 id="docker-部署脚本"><a href="#docker-部署脚本" class="headerlink" title="docker 部署脚本"></a>docker 部署脚本</h2><p>ZK部署</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name zookeeper-zq \</span><br><span class="line">--restart always \</span><br><span class="line">-p 2182:2181 -p 2888:2888 -p 3888:3888 \</span><br><span class="line">-v /docker/zookeeper_zq/conf:/conf \</span><br><span class="line">-v /docker/zookeeper_zq/data:/data \</span><br><span class="line">-v /docker/zookeeper_zq/datalog:/datalog \</span><br><span class="line">-v /etc/localtime:/etc/localtime \</span><br><span class="line">zookeeper:3.6</span><br></pre></td></tr></table></figure><p>kafka部署</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -p 9094:9094 -e KAFKA_BROKER_ID=0 \</span><br><span class="line">-e KAFKA_ZOOKEEPER_CONNECT=192.168.30.199:2182 -e KAFKA_ADVERTISED_LISTENERS=INSIDE://192.168.30.199:9092,OUTSIDE://192.168.30.199:9094 \</span><br><span class="line">-e KAFKA_LISTENERS=INSIDE://0.0.0.0:9092,OUTSIDE://0.0.0.0:9094 -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT \</span><br><span class="line">-e KAFKA_INTER_BROKER_LISTENER_NAME=INSIDE -e KAFKA_LOG_DIRS=/kafka/logs -e TZ=&quot;Asia/Shanghai&quot; \</span><br><span class="line">-v /docker/kafka/logs:/kafka/logs -t wurstmeister/kafka:2.13-2.6.3</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p>KAFKA_ZOOKEEPER_CONNECT 参数后面不要加路径，避免众多kafka工具不支持自定义路径。</p></blockquote><h2 id="配套观察工具"><a href="#配套观察工具" class="headerlink" title="配套观察工具"></a>配套观察工具</h2><p>kafka-eagle</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.codeleading.com/article/36874712175/" target="_blank" rel="noopener">https://www.codeleading.com/article/36874712175/</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="2-8版本前"><a href="#2-8版本前" class="headerlink" title="2.8版本前"></a>2.8版本前</h2><p>kafka:2.13-2.6.3 前面为scala版本后面为kafka版本</p><p>一定确定,kafka服务端版本和客户端版本，和zk的关系</p><p>参考：<a href="https://zhuanlan.zhihu.com/p/359573455" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/359573455</a></p><p>相对稳定版本：2.6.1 +</p><h2 id="docker-部署脚本"><a href="#docker-部署脚本" class="headerlink" title="docker 部署脚本"></a>docker 部署脚本</h2><p>强烈建议docker compose部署，非以下模式</p><p>ZK部署</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name zookeeper-zq \</span><br><span class="line">--restart always \</span><br><span class="line">-p 2182:2181 -p 2888:2888 -p 3888:3888 \</span><br><span class="line">-v /docker/zookeeper_zq/conf:/conf \</span><br><span class="line">-v /docker/zookeeper_zq/data:/data \</span><br><span class="line">-v /docker/zookeeper_zq/datalog:/datalog \</span><br><span class="line">-v /etc/localtime:/etc/localtime \</span><br><span class="line">zookeeper:3.6</span><br></pre></td></tr></table></figure><p>kafka部署</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run  -d --name kafka -p 9092:9092 -p 9094:9094 -e KAFKA_BROKER_ID=0 \</span><br><span class="line">-e KAFKA_ZOOKEEPER_CONNECT=192.168.30.199:2182 -e KAFKA_ADVERTISED_LISTENERS=INSIDE://192.168.30.199:9092,OUTSIDE://192.168.30.199:9094 \</span><br><span class="line">-e KAFKA_LISTENERS=INSIDE://0.0.0.0:9092,OUTSIDE://0.0.0.0:9094 -e KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT \</span><br><span class="line">-e KAFKA_INTER_BROKER_LISTENER_NAME=INSIDE -e KAFKA_LOG_DIRS=/kafka/logs -e TZ=&quot;Asia/Shanghai&quot; \</span><br><span class="line">-v /docker/kafka/logs:/kafka/logs -t wurstmeister/kafka:2.13-2.6.3</span><br><span class="line"></span><br></pre></td></tr></table></figure><blockquote><p>KAFKA_ZOOKEEPER_CONNECT 参数后面不要加路径，避免众多kafka工具不支持自定义路径。</p></blockquote><h2 id="配套观察工具"><a href="#配套观察工具" class="headerlink" title="配套观察工具"></a>配套观察工具</h2><p>kafka-eagle</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.codeleading.com/article/36874712175/" target="_blank" rel="noopener">https://www.codeleading.com/article/36874712175/</a></p>]]></content>
       
       
       <categories>
@@ -1384,9 +1410,9 @@
             
             <tag> lua </tag>
             
-            <tag> redis </tag>
-            
             <tag> nginx </tag>
+            
+            <tag> redis </tag>
             
             <tag> openresty </tag>
             
@@ -2543,10 +2569,10 @@
     
     <entry>
       <title>Java莫名其妙的慢</title>
-      <link href="/2020/10/13/Java%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E6%85%A2/"/>
-      <url>/2020/10/13/Java%E8%8E%AB%E5%90%8D%E5%85%B6%E5%A6%99%E7%9A%84%E6%85%A2/</url>
+      <link href="/2020/10/13/Java%E5%90%AF%E5%8A%A8%E7%BC%93%E6%85%A2/"/>
+      <url>/2020/10/13/Java%E5%90%AF%E5%8A%A8%E7%BC%93%E6%85%A2/</url>
       
-        <content type="html"><![CDATA[<h2 id="一-随机数"><a href="#一-随机数" class="headerlink" title="一.随机数"></a>一.随机数</h2><blockquote><p>当您登录时，它挂起或花费超过一分钟获得响应。如果你的服务器在linux操作系统上，这里的罪魁祸首是SecureRandom generateSeed（）。它使用/dev/random生成种子。但是/dev/random是一个阻塞数字生成器，如果它没有足够的随机数据提供，它就一直等，这迫使JVM等待。键盘和鼠标输入以及磁盘活动可以产生所需的随机性或熵。但在一个服务器缺乏这样的活动，可能会出现问题</p></blockquote><blockquote><p>当熵池为空时，来自/dev/random的读操作将被阻塞，直到熵池收集到足够的环境噪声数据。这么做的目的是成为一个密码安全的伪随机数发生器，熵池要有尽可能大的输出。对于生成高质量的加密密钥或者是需要长期保护的场景，一定要这么做</p></blockquote><p><a href="https://blog.csdn.net/a9529lty/article/details/76976105" target="_blank" rel="noopener">https://blog.csdn.net/a9529lty/article/details/76976105</a></p><p>java启动建议带的参数</p><blockquote><p>java ${JAVA_OPTS} -noverify -XX:+AlwaysPreTouch -Djava.security.egd=file:/dev/./urandom -cp /app/resources/:/app/classes/:/app/libs/* “com.**.go”</p></blockquote><p>-noverify<br>关闭检验bytecode，就是为了提高性能</p><p>AlwaysPreTouch<br>jdk8 慎用,极大降低java启动速度</p><p>Djava.security.egd=file:/dev/./urandom<br>伪随机数，不使用熵池信息</p><p>Java -cp /app/resources/:/app/classes/:/app/libs/*</p><p><a href="https://www.jianshu.com/p/a8356d03ac8f" target="_blank" rel="noopener">https://www.jianshu.com/p/a8356d03ac8f</a></p><h2 id="二-网关配置错误"><a href="#二-网关配置错误" class="headerlink" title="二.网关配置错误"></a>二.网关配置错误</h2><p>/etc/hosts 是否配置正确,是否配置本机IP，本机机器名</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@xxx ~]# ps -ef | grep &apos;apache-tomcat-7.0.69&apos; | grep -v grep | awk &apos;&#123;print $2&#125;&apos; | xargs jstack &gt;&gt; 1218dump.txt</span><br></pre></td></tr></table></figure><p>IPV4 IPV6的配置<br>hosts高速缓存</p><p>在命令行输入 “hostname” 查看自己的hostname，复制；<br>输入“sudo vim /etc/hosts”，进入编辑；<br>将12.0.0.1和::1 后的值改为自己的hostname，保存退出。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&quot;localhost-startStop-1&quot; #12 daemon prio=5 os_prio=0 tid=0x00007f69a4002800 nid=0x1746 runnable [0x00007f69d96c2000]</span><br><span class="line">   java.lang.Thread.State: RUNNABLE</span><br><span class="line">    at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)</span><br><span class="line">    at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:928)</span><br><span class="line">    at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1323)</span><br><span class="line">    at java.net.InetAddress.getLocalHost(InetAddress.java:1500)</span><br><span class="line">    - locked &lt;0x00000000c574e990&gt; (a java.lang.Object)</span><br><span class="line">    at sun.management.VMManagementImpl.getVmId(VMManagementImpl.java:140)</span><br><span class="line">    at sun.management.RuntimeImpl.getName(RuntimeImpl.java:59)</span><br><span class="line">    at org.springframework.boot.ApplicationPid.getPid(ApplicationPid.java:46)</span><br><span class="line">    at org.springframework.boot.ApplicationPid.&lt;init&gt;(ApplicationPid.java:37)</span><br><span class="line">    at org.springframework.boot.logging.LoggingSystemProperties.apply(LoggingSystemProperties.java:59)</span><br><span class="line">    at org.springframework.boot.logging.LoggingSystemProperties.apply(LoggingSystemProperties.java:48)</span><br><span class="line">    at org.springframework.boot.logging.LoggingApplicationListener.initialize(LoggingApplicationListener.java:270)</span><br><span class="line">    at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEnvironmentPreparedEvent(LoggingApplicationListener.java:239)</span><br><span class="line">    at org.springframework.boot.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:212)</span><br><span class="line">    at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:167)</span><br><span class="line">    at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139)</span><br><span class="line">    at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:122)</span><br><span class="line">    at org.springframework.boot.context.event.EventPublishingRunListener.environmentPrepared(EventPublishingRunListener.java:73)</span><br><span class="line">    at org.springframework.boot.SpringApplicationRunListeners.environmentPrepared(SpringApplicationRunListeners.java:54)</span><br><span class="line">    at org.springframework.boot.SpringApplication.prepareEnvironment(SpringApplication.java:336)</span><br><span class="line">    at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)</span><br><span class="line">    at org.springframework.boot.web.support.SpringBootServletInitializer.run(SpringBootServletInitializer.java:151)</span><br><span class="line">    at org.springframework.boot.web.support.SpringBootServletInitializer.createRootApplicationContext(SpringBootServletInitializer.java:131)</span><br><span class="line">    at org.springframework.boot.web.support.SpringBootServletInitializer.onStartup(SpringBootServletInitializer.java:86)</span><br><span class="line">    at org.springframework.web.SpringServletContainerInitializer.onStartup(SpringServletContainerInitializer.java:169)</span><br><span class="line">    at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5573)</span><br><span class="line">    - locked &lt;0x00000000c4f2d5d0&gt; (a org.apache.catalina.core.StandardContext)</span><br><span class="line">    at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:147)</span><br><span class="line">    - locked &lt;0x00000000c4f2d5d0&gt; (a org.apache.catalina.core.StandardContext)</span><br><span class="line">    at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:899)</span><br><span class="line">    at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:875)</span><br><span class="line">    at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:652)</span><br><span class="line">    at org.apache.catalina.startup.HostConfig.deployWAR(HostConfig.java:1092)</span><br><span class="line">    at org.apache.catalina.startup.HostConfig$DeployWar.run(HostConfig.java:1984)</span><br><span class="line">    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</span><br><span class="line">    at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)</span><br><span class="line">    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</span><br><span class="line">    at java.lang.Thread.run(Thread.java:745)</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><blockquote><p>file:/dev/random方法是阻塞的,如果嫡池为空<br>file:/dev/urandom </p><p>启动参数加上<br>-Djava.security.egd=file:/dev/./urandom</p><p>或者直接修改</p><p>$JAVA_HOME/jre/lib/security/java.security</p></blockquote><p><a href="https://hongjiang.info/jvm-random-and-entropy-source/" target="_blank" rel="noopener">https://hongjiang.info/jvm-random-and-entropy-source/</a></p><h2 id="网关配置错误"><a href="#网关配置错误" class="headerlink" title="网关配置错误"></a>网关配置错误</h2><p>/etc/hosts 是否配置正确,是否配置本机IP，本机机器名</p><h2 id="磁盘性能"><a href="#磁盘性能" class="headerlink" title="磁盘性能"></a>磁盘性能</h2><p>dd if=/dev/zero of=sun.txt bs=1M count=1<br>多次测试，观察磁盘速度是否存在速度下降。</p><h2 id="jstack分析线程堆栈信息"><a href="#jstack分析线程堆栈信息" class="headerlink" title="jstack分析线程堆栈信息"></a>jstack分析线程堆栈信息</h2><p>jstack -l PID</p><p>如果发现没任何日志输出，CPU占用不高，分析查看线程阻塞的原因。</p>]]></content>
       
       
       <categories>
@@ -2673,27 +2699,6 @@
     
     
     <entry>
-      <title>mybatis-plus基本原理</title>
-      <link href="/2020/09/22/Mybatis-plus/"/>
-      <url>/2020/09/22/Mybatis-plus/</url>
-      
-        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 框架 </category>
-          
-          <category> mybatis-plus </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>this,static,super,final</title>
       <link href="/2020/09/22/this-static-super-final/"/>
       <url>/2020/09/22/this-static-super-final/</url>
@@ -2706,6 +2711,27 @@
           <category> JAVA </category>
           
           <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis-plus基本原理</title>
+      <link href="/2020/09/22/Mybatis-plus/"/>
+      <url>/2020/09/22/Mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 框架 </category>
+          
+          <category> mybatis-plus </category>
           
       </categories>
       
@@ -4526,9 +4552,9 @@
             
             <tag> lua </tag>
             
-            <tag> redis </tag>
-            
             <tag> nginx </tag>
+            
+            <tag> redis </tag>
             
         </tags>
       
