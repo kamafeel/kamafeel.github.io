@@ -290,6 +290,192 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/11/17/DDD工程落地辅助/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2021/11/17/DDD工程落地辅助/" class="post-title-link" itemprop="url">DDD工程落地辅助</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2021-11-17 10:03:52 / 修改时间：20:07:37" itemprop="dateCreated datePublished" datetime="2021-11-17T10:03:52+08:00">2021-11-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/DDD/" itemprop="url" rel="index"><span itemprop="name">DDD</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="架构选择"><a href="#架构选择" class="headerlink" title="架构选择"></a>架构选择</h2><p>COLA框架，搭建分层模型</p>
+<h2 id="聚合根设计"><a href="#聚合根设计" class="headerlink" title="聚合根设计"></a>聚合根设计</h2><blockquote><p>如何聚合根：<br>1)生命周期一致<br>2)问题域一致性<br>3)场景频率一致性<br>4)聚合内的元素尽可能少</p>
+</blockquote>
+
+
+<h2 id="控制边界"><a href="#控制边界" class="headerlink" title="控制边界"></a>控制边界</h2><blockquote><p>如何割断值对象<br>1)引入Id值对象<br>2)使用ORM框架的LazyFetch机制（注意生命周期范围）<br>3)引入Supplier的get延迟机制</p>
+</blockquote>
+
+<h2 id="实体和值对象的创建-查询"><a href="#实体和值对象的创建-查询" class="headerlink" title="实体和值对象的创建,查询"></a>实体和值对象的创建,查询</h2><blockquote><p>实体的创建最好走工厂模式/builder模式</p>
+<p>实体的变更需要走唯一gateway/Repository模式</p>
+<p>实体的查询走CQRS模式，注重效率即可</p>
+<p>值对象的变更,查询随意，不受约束。</p>
+</blockquote>
+
+<h2 id="实体对象的持久化"><a href="#实体对象的持久化" class="headerlink" title="实体对象的持久化"></a>实体对象的持久化</h2><p>使用mongodb文档型数据库<br>使用聚合根快照概念<br><a href="https://github.com/meixuesong/aggregate-persistence" target="_blank" rel="noopener">https://github.com/meixuesong/aggregate-persistence</a></p>
+<h2 id="领域对象的业务逻辑-怎么放"><a href="#领域对象的业务逻辑-怎么放" class="headerlink" title="领域对象的业务逻辑 怎么放"></a>领域对象的业务逻辑 怎么放</h2><p>不要把任何东西注射到你的领域实体中，没有服务，没有仓储（实体里面放最基本逻辑）</p>
+<p>Domain Service 是用来放不适宜再某个聚合根内的业务逻辑</p>
+<p>App Service 做事件或者业务信息</p>
+<h2 id="LINK"><a href="#LINK" class="headerlink" title="LINK"></a>LINK</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247503833&idx=1&sn=d103844943ef2ce81eadd77664a6ac84&chksm=e92af2d6de5d7bc072a16f04d2eb15afd9f3d9d085818901345901bc6f67841747071c78889e&mpshare=1&scene=1&srcid=1117apoiUxlPQGYsMhAjB3L6&sharer_sharetime=1637114884293&sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&key=bcca9004de07f2d9ea0029f6d4fd7e4e2cd15ecfca135628ce2815e910f6e0e5c815a0d2c05d4448da0f537d30c3f741e07d4bb0c2bc020274fe69689036c678b1a67c3c8c00da2342d4df4d835ef555c43129ef4d3c62deffce7fed0460cbd6b08f60f16155a9d9fe369415441773ddeca39927a93a1202ee64380edca719b2&ascene=1&uin=OTM4NTY4MzU%3D&devicetype=Windows+10&version=62060844&lang=zh_CN&exportkey=Abg59yCBS4dVa7lUHHEySnQ%3D&pass_ticket=mxk%2FEa9Sff76MaFalsSx5JYeiSimROUbxBnC7%2FOvQGvs6cXCIB%2B9jRjSm5%2B70Biz&wx_header=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&amp;mid=2247503833&amp;idx=1&amp;sn=d103844943ef2ce81eadd77664a6ac84&amp;chksm=e92af2d6de5d7bc072a16f04d2eb15afd9f3d9d085818901345901bc6f67841747071c78889e&amp;mpshare=1&amp;scene=1&amp;srcid=1117apoiUxlPQGYsMhAjB3L6&amp;sharer_sharetime=1637114884293&amp;sharer_shareid=21878bc7924c790b0c0f03ef06b36d15&amp;key=bcca9004de07f2d9ea0029f6d4fd7e4e2cd15ecfca135628ce2815e910f6e0e5c815a0d2c05d4448da0f537d30c3f741e07d4bb0c2bc020274fe69689036c678b1a67c3c8c00da2342d4df4d835ef555c43129ef4d3c62deffce7fed0460cbd6b08f60f16155a9d9fe369415441773ddeca39927a93a1202ee64380edca719b2&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=Abg59yCBS4dVa7lUHHEySnQ%3D&amp;pass_ticket=mxk%2FEa9Sff76MaFalsSx5JYeiSimROUbxBnC7%2FOvQGvs6cXCIB%2B9jRjSm5%2B70Biz&amp;wx_header=0</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/11/11/spring骚操作-1-FactoryBean/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1931,182 +2117,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/09/17/接口幂等性/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/09/17/接口幂等性/" class="post-title-link" itemprop="url">接口幂等性</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-09-17 19:35:33 / 修改时间：19:40:45" itemprop="dateCreated datePublished" datetime="2021-09-17T19:35:33+08:00">2021-09-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/安全/" itemprop="url" rel="index"><span itemprop="name">安全</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h2><p>以相同的请求调用这个接口一次和调用这个接口多次，对系统产生的影响是相同的</p>
-<p>一些涉及，积分变动，金钱变动，订单下单等</p>
-<p>保持一个UUUID为后端进行判断</p>
-<p><a href="https://www.cnblogs.com/54chensongxia/p/12598944.html" target="_blank" rel="noopener">https://www.cnblogs.com/54chensongxia/p/12598944.html</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2148,7 +2163,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">180</span>
+                    <span class="site-state-item-count">181</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2273,9 +2288,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2530,7 +2543,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">119</span>
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

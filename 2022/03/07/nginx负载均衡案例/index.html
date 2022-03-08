@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Kamafeel">
 <meta property="og:description" content="负载均衡 注重点非80端口做反向代理 需要特别注意：proxy_set_header Host $host:$server_port; nginx接收到浏览器请求后修改请求头中的host信息，然后再把请求转发给后端真实服务节点，服务节点响应后把返回信息传送给nginx，而由于nginx是使用的非80端口做代理，后端服务节点却依然以为nginx是80端口，所以响应信息没有正确的返回给nginx的非8">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-03-07T07:48:32.530Z">
+<meta property="og:updated_time" content="2022-03-07T07:50:24.138Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx负载均衡案例">
 <meta name="twitter:description" content="负载均衡 注重点非80端口做反向代理 需要特别注意：proxy_set_header Host $host:$server_port; nginx接收到浏览器请求后修改请求头中的host信息，然后再把请求转发给后端真实服务节点，服务节点响应后把返回信息传送给nginx，而由于nginx是使用的非80端口做代理，后端服务节点却依然以为nginx是80端口，所以响应信息没有正确的返回给nginx的非8">
@@ -337,7 +337,7 @@
                 
               
 
-              <time title="创建时间：2022-03-07 14:28:41 / 修改时间：15:48:32" itemprop="dateCreated datePublished" datetime="2022-03-07T14:28:41+08:00">2022-03-07</time>
+              <time title="创建时间：2022-03-07 14:28:41 / 修改时间：15:50:24" itemprop="dateCreated datePublished" datetime="2022-03-07T14:28:41+08:00">2022-03-07</time>
             
 
             
@@ -414,6 +414,7 @@
 <h2 id="负载均衡-重试策略-陷阱"><a href="#负载均衡-重试策略-陷阱" class="headerlink" title="负载均衡 重试策略 陷阱"></a>负载均衡 重试策略 陷阱</h2><p>重试策略涉及核心流量转发，配置不当可出现以下（不限）：</p>
 <p>1.订单重复提交<br>2.恶意攻击导致no live upstreams<br>3.业务正常耗时被当成超时</p>
 <p><a href="https://zhuanlan.zhihu.com/p/127959800" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/127959800</a></p>
+<h2 id="其余参考"><a href="#其余参考" class="headerlink" title="其余参考"></a>其余参考</h2><p><a href="https://developer.51cto.com/article/619538.html" target="_blank" rel="noopener">https://developer.51cto.com/article/619538.html</a></p>
 
       
     </div>
@@ -462,6 +463,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/03/08/大数据处理分析产品架构/" rel="prev" title="大数据处理分析产品架构">
+                大数据处理分析产品架构 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -530,7 +535,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">180</span>
+                    <span class="site-state-item-count">181</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -655,9 +660,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -912,7 +915,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">119</span>
+                      
+                    
+                    <span class="site-state-item-count">120</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -950,7 +955,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡-注重点"><span class="nav-number">1.</span> <span class="nav-text">负载均衡 注重点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡-策略"><span class="nav-number">2.</span> <span class="nav-text">负载均衡 策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">3.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#websocket"><span class="nav-number">4.</span> <span class="nav-text">websocket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡-重试策略-陷阱"><span class="nav-number">5.</span> <span class="nav-text">负载均衡 重试策略 陷阱</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡-注重点"><span class="nav-number">1.</span> <span class="nav-text">负载均衡 注重点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡-策略"><span class="nav-number">2.</span> <span class="nav-text">负载均衡 策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考代码"><span class="nav-number">3.</span> <span class="nav-text">参考代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#websocket"><span class="nav-number">4.</span> <span class="nav-text">websocket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#负载均衡-重试策略-陷阱"><span class="nav-number">5.</span> <span class="nav-text">负载均衡 重试策略 陷阱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其余参考"><span class="nav-number">6.</span> <span class="nav-text">其余参考</span></a></li></ol></div>
             
 
           </div>

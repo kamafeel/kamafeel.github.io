@@ -4,11 +4,40 @@
   
     
     <entry>
+      <title>大数据处理分析产品架构</title>
+      <link href="/2022/03/08/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%88%86%E6%9E%90%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84/"/>
+      <url>/2022/03/08/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E5%88%86%E6%9E%90%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84/</url>
+      
+        <content type="html"><![CDATA[<h2 id="大数据组件"><a href="#大数据组件" class="headerlink" title="大数据组件"></a>大数据组件</h2><p>大数据相关组件，技术快，技术栈变化快。但最终都会落地到SQL。</p><p><img src="/2022/03/08/大数据处理分析产品架构/59aea5f884a4867d8de50a0be63c791c.webp" alt="alt"></p><p><a href="https://bigdata.djbook.top/" target="_blank" rel="noopener">https://bigdata.djbook.top/</a></p><h2 id="3种产品模式"><a href="#3种产品模式" class="headerlink" title="3种产品模式"></a>3种产品模式</h2><p>1.各类数据处理由各类数据库完成。<br>数据传输通过hdfs或者对象存储，数据转换通过datax，清洗，加工任由数据库编写SQL完成。</p><p>2.深度绑定spark,flink<br>作为批处理和流处理的，计算引擎。数据交互通过spark组件，flink组件。</p><p>3.星环，WeDataSphere之类<br>在大数据层中间，加上一层，上层统一SQL开发，屏蔽底层细节。</p><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><p>1.技术栈能力低，能满足大数据初级用户。产品不能形成门槛。</p><p>2.需要针对spark,flink深度绑定，开发人员昂贵，一荣俱荣模式。</p><p>3.产品门槛高，需要对大数据组件深度二次开发，引入中间层增加复杂度。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+          <category> 产品 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 架构 </tag>
+            
+            <tag> 大数据 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>nginx负载均衡案例</title>
       <link href="/2022/03/07/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%A1%88%E4%BE%8B/"/>
       <url>/2022/03/07/nginx%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E6%A1%88%E4%BE%8B/</url>
       
-        <content type="html"><![CDATA[<h2 id="负载均衡-注重点"><a href="#负载均衡-注重点" class="headerlink" title="负载均衡 注重点"></a>负载均衡 注重点</h2><p>非80端口做反向代理</p><p>需要特别注意：proxy_set_header Host $host:$server_port;</p><blockquote><p>nginx接收到浏览器请求后修改请求头中的host信息，然后再把请求转发给后端真实服务节点，服务节点响应后把返回信息传送给nginx，而由于nginx是使用的非80端口做代理，后端服务节点却依然以为nginx是80端口，所以响应信息没有正确的返回给nginx的非80端口。</p></blockquote><h2 id="负载均衡-策略"><a href="#负载均衡-策略" class="headerlink" title="负载均衡 策略"></a>负载均衡 策略</h2><p>p_hash 会尽量保障Session的统一性</p><p><a href="https://www.cnblogs.com/yanggb/p/10895326.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanggb/p/10895326.html</a></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">upstream tomcat_server &#123;</span><br><span class="line">   ip_hash;</span><br><span class="line">   server 192.168.30.199:8080 max_fails=3 fail_timeout=40s;</span><br><span class="line">   server 192.168.30.199:18080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    &apos;&apos; close;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       81;</span><br><span class="line">    server_name  pdi.pk;</span><br><span class="line">    client_max_body_size 500M;</span><br><span class="line">   </span><br><span class="line">    location /pdi &#123;</span><br><span class="line">proxy_pass http://tomcat_server;</span><br><span class="line">proxy_set_header Host $host:$server_port;</span><br><span class="line">proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">proxy_set_header Connection $connection_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h2><p><a href="https://www.xncoding.com/2018/03/12/fullstack/nginx-websocket.html" target="_blank" rel="noopener">https://www.xncoding.com/2018/03/12/fullstack/nginx-websocket.html</a></p><h2 id="负载均衡-重试策略-陷阱"><a href="#负载均衡-重试策略-陷阱" class="headerlink" title="负载均衡 重试策略 陷阱"></a>负载均衡 重试策略 陷阱</h2><p>重试策略涉及核心流量转发，配置不当可出现以下（不限）：</p><p>1.订单重复提交<br>2.恶意攻击导致no live upstreams<br>3.业务正常耗时被当成超时</p><p><a href="https://zhuanlan.zhihu.com/p/127959800" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/127959800</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="负载均衡-注重点"><a href="#负载均衡-注重点" class="headerlink" title="负载均衡 注重点"></a>负载均衡 注重点</h2><p>非80端口做反向代理</p><p>需要特别注意：proxy_set_header Host $host:$server_port;</p><blockquote><p>nginx接收到浏览器请求后修改请求头中的host信息，然后再把请求转发给后端真实服务节点，服务节点响应后把返回信息传送给nginx，而由于nginx是使用的非80端口做代理，后端服务节点却依然以为nginx是80端口，所以响应信息没有正确的返回给nginx的非80端口。</p></blockquote><h2 id="负载均衡-策略"><a href="#负载均衡-策略" class="headerlink" title="负载均衡 策略"></a>负载均衡 策略</h2><p>p_hash 会尽量保障Session的统一性</p><p><a href="https://www.cnblogs.com/yanggb/p/10895326.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanggb/p/10895326.html</a></p><h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">upstream tomcat_server &#123;</span><br><span class="line">   ip_hash;</span><br><span class="line">   server 192.168.30.199:8080 max_fails=3 fail_timeout=40s;</span><br><span class="line">   server 192.168.30.199:18080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    &apos;&apos; close;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       81;</span><br><span class="line">    server_name  pdi.pk;</span><br><span class="line">    client_max_body_size 500M;</span><br><span class="line">   </span><br><span class="line">    location /pdi &#123;</span><br><span class="line">proxy_pass http://tomcat_server;</span><br><span class="line">proxy_set_header Host $host:$server_port;</span><br><span class="line">proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">proxy_set_header Connection $connection_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h2><p><a href="https://www.xncoding.com/2018/03/12/fullstack/nginx-websocket.html" target="_blank" rel="noopener">https://www.xncoding.com/2018/03/12/fullstack/nginx-websocket.html</a></p><h2 id="负载均衡-重试策略-陷阱"><a href="#负载均衡-重试策略-陷阱" class="headerlink" title="负载均衡 重试策略 陷阱"></a>负载均衡 重试策略 陷阱</h2><p>重试策略涉及核心流量转发，配置不当可出现以下（不限）：</p><p>1.订单重复提交<br>2.恶意攻击导致no live upstreams<br>3.业务正常耗时被当成超时</p><p><a href="https://zhuanlan.zhihu.com/p/127959800" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/127959800</a></p><h2 id="其余参考"><a href="#其余参考" class="headerlink" title="其余参考"></a>其余参考</h2><p><a href="https://developer.51cto.com/article/619538.html" target="_blank" rel="noopener">https://developer.51cto.com/article/619538.html</a></p>]]></content>
       
       
       <categories>
@@ -1461,7 +1490,7 @@
           
           <category> 微服务 </category>
           
-          <category> 基础 </category>
+          <category> 理论 </category>
           
       </categories>
       
@@ -1972,7 +2001,7 @@
       
       <categories>
           
-          <category> 框架 </category>
+          <category> 开源框架 </category>
           
           <category> powerjob </category>
           
@@ -2471,7 +2500,7 @@
           
           <category> JAVA </category>
           
-          <category> 开发 </category>
+          <category> 并发 </category>
           
       </categories>
       
@@ -2726,27 +2755,6 @@
     
     
     <entry>
-      <title>mybatis-plus基本原理</title>
-      <link href="/2020/09/22/Mybatis-plus/"/>
-      <url>/2020/09/22/Mybatis-plus/</url>
-      
-        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 框架 </category>
-          
-          <category> mybatis-plus </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>this,static,super,final</title>
       <link href="/2020/09/22/this-static-super-final/"/>
       <url>/2020/09/22/this-static-super-final/</url>
@@ -2759,6 +2767,27 @@
           <category> JAVA </category>
           
           <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis-plus基本原理</title>
+      <link href="/2020/09/22/Mybatis-plus/"/>
+      <url>/2020/09/22/Mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开源框架 </category>
+          
+          <category> mybatis-plus </category>
           
       </categories>
       
@@ -2969,7 +2998,7 @@
       <link href="/2020/09/18/DevOps/"/>
       <url>/2020/09/18/DevOps/</url>
       
-        <content type="html"><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><blockquote><p>DevOps 一词的来自于 Development 和 Operations 的组合，突出重视软件开发人员和运维人员的沟通合作，通过自动化流程来使得软件构建、测试、发布更加快捷、频繁和可靠。</p><p>CI，Continuous Integration，为持续集成。即在代码构建过程中持续地进行代码的集成、构建、以及自动化测试等；有了 CI 工具，我们可以在代码提交的过程中通过单元测试等尽早地发现引入的错误；<br>CD，Continuous Deployment，为持续交付。在代码构建完毕后，可以方便地将新版本部署上线，这样有利于快速迭代并交付产品。</p><p>Jenkins用于持续集成，而Gitlab CI / CD用于代码协作和版本控制</p></blockquote><p><img src="/2020/09/18/DevOps/circle.png" alt="alt"></p><blockquote><p>常见的开发模型</p><p>瀑布式开发 – 骗钱的,半天看不到货<br>敏捷开发 – 先这样,后面再说,几哈操上去<br>DevOps – 利用工具链加速开发,迭代,发布</p></blockquote><p><a href="http://jartto.wang/2018/11/30/about-devops/" target="_blank" rel="noopener">http://jartto.wang/2018/11/30/about-devops/</a></p><h2 id="比较实际的工具链"><a href="#比较实际的工具链" class="headerlink" title="比较实际的工具链"></a>比较实际的工具链</h2><p><img src="/2020/09/18/DevOps/aHR0cHM6Ly9naXRlZS5jb20vY2hpbWVoL2ppbS1sZnMvcmF3L21hc3Rlci9waWMvZGV2b3BzLXRvb2xjaGFpbi1pY29uLnBuZw.png" alt="alt"></p><p><a href="https://blog.csdn.net/hjmhz/article/details/106789674" target="_blank" rel="noopener">https://blog.csdn.net/hjmhz/article/details/106789674</a></p><p><a href="https://www.infoq.cn/article/wNOeM38OZVc1ITeB9bwU" target="_blank" rel="noopener">https://www.infoq.cn/article/wNOeM38OZVc1ITeB9bwU</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><blockquote><p>DevOps 一词的来自于 Development 和 Operations 的组合，突出重视软件开发人员和运维人员的沟通合作，通过自动化流程来使得软件构建、测试、发布更加快捷、频繁和可靠。</p><p>CI，Continuous Integration，为持续集成。即在代码构建过程中持续地进行代码的集成、构建、以及自动化测试等；有了 CI 工具，我们可以在代码提交的过程中通过单元测试等尽早地发现引入的错误；<br>CD，Continuous Deployment，为持续交付。在代码构建完毕后，可以方便地将新版本部署上线，这样有利于快速迭代并交付产品。</p><p>Jenkins用于持续集成，而Gitlab CI / CD用于代码协作和版本控制</p></blockquote><p><img src="/2020/09/18/DevOps/circle.png" alt="alt"></p><blockquote><p>常见的开发模型</p><p>瀑布式开发 – 严格按照步骤，沉淀太多的文档，读写文档都存在极大成本，客户参与度低。<br>敏捷开发 – 先这样,后面再说,几哈操上去，利用禅道或者jira快速迭代，客户参与度高。（Scrum）<br>DevOps – 利用工具链加速开发,迭代,发布， 强调开发和运维之间的关系，降低时效成本。（CI/CD）</p></blockquote><p><a href="http://jartto.wang/2018/11/30/about-devops/" target="_blank" rel="noopener">http://jartto.wang/2018/11/30/about-devops/</a></p><h2 id="比较实际的工具链"><a href="#比较实际的工具链" class="headerlink" title="比较实际的工具链"></a>比较实际的工具链</h2><p><img src="/2020/09/18/DevOps/aHR0cHM6Ly9naXRlZS5jb20vY2hpbWVoL2ppbS1sZnMvcmF3L21hc3Rlci9waWMvZGV2b3BzLXRvb2xjaGFpbi1pY29uLnBuZw.png" alt="alt"></p><p><a href="https://blog.csdn.net/hjmhz/article/details/106789674" target="_blank" rel="noopener">https://blog.csdn.net/hjmhz/article/details/106789674</a></p><p><a href="https://www.infoq.cn/article/wNOeM38OZVc1ITeB9bwU" target="_blank" rel="noopener">https://www.infoq.cn/article/wNOeM38OZVc1ITeB9bwU</a></p>]]></content>
       
       
       <categories>
@@ -4430,7 +4459,7 @@
       <link href="/2020/03/24/Tomcat-Caused-by-java-util-zip-ZipException-error-in-opening-zip-file/"/>
       <url>/2020/03/24/Tomcat-Caused-by-java-util-zip-ZipException-error-in-opening-zip-file/</url>
       
-        <content type="html"><![CDATA[<p>linux:</p><p>for j in $(find /path/to/lib -name ‘*.jar’); do jar -tvf $j &gt; /dev/null 2&gt;&1; [ “$?” -ne 0 ] &amp;&amp; echo “$j jar is broken”; done</p><p>windows:</p><p><img src="/2020/03/24/Tomcat-Caused-by-java-util-zip-ZipException-error-in-opening-zip-file/20200324105437.png" alt="header"></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="居然有jar是坏的，明白吗？"><a href="#居然有jar是坏的，明白吗？" class="headerlink" title="居然有jar是坏的，明白吗？"></a>居然有jar是坏的，明白吗？</h2><p>linux:</p><p>for j in $(find /path/to/lib -name ‘*.jar’); do jar -tvf $j &gt; /dev/null 2&gt;&1; [ “$?” -ne 0 ] &amp;&amp; echo “$j jar is broken”; done</p><p>windows:</p><p><img src="/2020/03/24/Tomcat-Caused-by-java-util-zip-ZipException-error-in-opening-zip-file/20200324105437.png" alt="header"></p>]]></content>
       
       
       <categories>
@@ -4474,18 +4503,18 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
           
-          <category> JVM </category>
+          <category> JAVA </category>
           
-          <category> 参数 </category>
+          <category> 运维 </category>
           
       </categories>
       
@@ -4501,18 +4530,18 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JVM </category>
           
-          <category> 运维 </category>
+          <category> 参数 </category>
           
       </categories>
       
@@ -4730,7 +4759,7 @@
       
       <categories>
           
-          <category> 框架 </category>
+          <category> 开源框架 </category>
           
           <category> dubbo </category>
           
