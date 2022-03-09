@@ -4,6 +4,85 @@
   
     
     <entry>
+      <title>spring cloud gateway限流</title>
+      <link href="/2022/03/09/spring-cloud-gateway%E9%99%90%E6%B5%81/"/>
+      <url>/2022/03/09/spring-cloud-gateway%E9%99%90%E6%B5%81/</url>
+      
+        <content type="html"><![CDATA[<h2 id="限流算法"><a href="#限流算法" class="headerlink" title="限流算法"></a>限流算法</h2><p>令牌，漏桶，滑动窗</p><h2 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h2><p>核心还是实现Filter接口<br>官方已经自带redis限流(lua实现)，单机限流。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/javastack/p/15337244.html" target="_blank" rel="noopener">https://www.cnblogs.com/javastack/p/15337244.html</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微服务 </category>
+          
+          <category> 理论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 微服务 </tag>
+            
+            <tag> 限流 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>K8S组件-ingress</title>
+      <link href="/2022/03/09/K8S%E7%BB%84%E4%BB%B6-ingress/"/>
+      <url>/2022/03/09/K8S%E7%BB%84%E4%BB%B6-ingress/</url>
+      
+        <content type="html"><![CDATA[<h2 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a>核心价值</h2><p>集群内部，对外的统一出口<br>可以做路由，限流，负载均衡等</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>基本概念<br><a href="https://kubernetes.io/zh/docs/concepts/services-networking/ingress/" target="_blank" rel="noopener">https://kubernetes.io/zh/docs/concepts/services-networking/ingress/</a></p><p>限流配置:<br><a href="https://www.modb.pro/db/214722" target="_blank" rel="noopener">https://www.modb.pro/db/214722</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> K8S </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> K8S </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>K8S组件-API Server</title>
+      <link href="/2022/03/09/K8S%E7%BB%84%E4%BB%B6-API-Server/"/>
+      <url>/2022/03/09/K8S%E7%BB%84%E4%BB%B6-API-Server/</url>
+      
+        <content type="html"><![CDATA[<h2 id="核心作用"><a href="#核心作用" class="headerlink" title="核心作用"></a>核心作用</h2><p>K8S对外接口,响应声明等一切交互。</p><h2 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h2><p>一般不需要,此API一般内网访问<br><a href="https://qingwave.github.io/k8s-rate-limit/#%E8%83%8C%E6%99%AF" target="_blank" rel="noopener">https://qingwave.github.io/k8s-rate-limit/#%E8%83%8C%E6%99%AF</a></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.huweihuang.com/article/kubernetes/core-principle/kubernetes-core-principle-api-server/" target="_blank" rel="noopener">https://www.huweihuang.com/article/kubernetes/core-principle/kubernetes-core-principle-api-server/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> K8S </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> K8S </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>大数据分析产品架构</title>
       <link href="/2022/03/08/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84/"/>
       <url>/2022/03/08/%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%BA%A7%E5%93%81%E6%9E%B6%E6%9E%84/</url>
@@ -2755,27 +2834,6 @@
     
     
     <entry>
-      <title>mybatis-plus基本原理</title>
-      <link href="/2020/09/22/Mybatis-plus/"/>
-      <url>/2020/09/22/Mybatis-plus/</url>
-      
-        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 开源框架 </category>
-          
-          <category> mybatis-plus </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>this,static,super,final</title>
       <link href="/2020/09/22/this-static-super-final/"/>
       <url>/2020/09/22/this-static-super-final/</url>
@@ -2788,6 +2846,27 @@
           <category> JAVA </category>
           
           <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis-plus基本原理</title>
+      <link href="/2020/09/22/Mybatis-plus/"/>
+      <url>/2020/09/22/Mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开源框架 </category>
+          
+          <category> mybatis-plus </category>
           
       </categories>
       
