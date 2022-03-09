@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>网关三剑客-APISIX</title>
+      <link href="/2022/03/09/%E7%BD%91%E5%85%B3%E4%B8%89%E5%89%91%E5%AE%A2-APISIX/"/>
+      <url>/2022/03/09/%E7%BD%91%E5%85%B3%E4%B8%89%E5%89%91%E5%AE%A2-APISIX/</url>
+      
+        <content type="html"><![CDATA[<h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p>一般场景openresty+lua足够<br><a href="https://moonbingbing.gitbooks.io/openresty-best-practices/content/" target="_blank" rel="noopener">https://moonbingbing.gitbooks.io/openresty-best-practices/content/</a></p><p>喜欢要个API编排界面，KONG</p><p>需要很云原生 APISIX<br><a href="https://www.apiseven.com/zh/blog/why-we-need-Apache-APISIX" target="_blank" rel="noopener">https://www.apiseven.com/zh/blog/why-we-need-Apache-APISIX</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+          <category> 基础层 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网关 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>spring cloud gateway限流</title>
       <link href="/2022/03/09/spring-cloud-gateway%E9%99%90%E6%B5%81/"/>
       <url>/2022/03/09/spring-cloud-gateway%E9%99%90%E6%B5%81/</url>
@@ -3020,9 +3047,9 @@
       
       <categories>
           
-          <category> JAVA </category>
-          
           <category> Spring </category>
+          
+          <category> JAVA </category>
           
           <category> 开发 </category>
           
