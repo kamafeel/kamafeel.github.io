@@ -1174,7 +1174,7 @@
       <link href="/2021/09/06/spring-Aware%E6%8E%A5%E5%8F%A3/"/>
       <url>/2021/09/06/spring-Aware%E6%8E%A5%E5%8F%A3/</url>
       
-        <content type="html"><![CDATA[<h2 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h2><blockquote><p>BeanFactoryAware、EnvironmentAware、ResourceLoaderAware、ImportAware、BeanNameAware、ApplicationContextAware</p><p> 实现XXXAware接口的Bean，那么通过实现的setXXX方法就可以获取到XXX组件对象</p></blockquote><h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="https://juejin.cn/post/6844903894317809671" target="_blank" rel="noopener">https://juejin.cn/post/6844903894317809671</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h2><blockquote><p>BeanFactoryAware、EnvironmentAware、ResourceLoaderAware、ImportAware、BeanNameAware、ApplicationContextAware</p><p> 实现XXXAware接口的Bean，那么通过实现的setXXX方法就可以获取到XXX组件对象</p></blockquote><h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>某些类(Utils,static) 等spring无法注入的，使用Aware接口获取相关东西</p><h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><p><a href="https://juejin.cn/post/6844903894317809671" target="_blank" rel="noopener">https://juejin.cn/post/6844903894317809671</a></p>]]></content>
       
       
       <categories>
