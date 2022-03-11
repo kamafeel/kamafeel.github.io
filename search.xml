@@ -4,6 +4,93 @@
   
     
     <entry>
+      <title>DDD-事件溯源</title>
+      <link href="/2022/03/11/DDD-%E4%BA%8B%E4%BB%B6%E6%BA%AF%E6%BA%90/"/>
+      <url>/2022/03/11/DDD-%E4%BA%8B%E4%BB%B6%E6%BA%AF%E6%BA%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a>核心价值</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微服务 </category>
+          
+          <category> DDD </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DDD </tag>
+            
+            <tag> 微服务 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>3种数据库查询引擎</title>
+      <link href="/2022/03/11/3%E7%A7%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E8%AF%A2%E5%BC%95%E6%93%8E/"/>
+      <url>/2022/03/11/3%E7%A7%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9F%A5%E8%AF%A2%E5%BC%95%E6%93%8E/</url>
+      
+        <content type="html"><![CDATA[<h2 id="迭代模型-火山模型（Iterator-Model）"><a href="#迭代模型-火山模型（Iterator-Model）" class="headerlink" title="迭代模型/火山模型（Iterator Model）"></a>迭代模型/火山模型（Iterator Model）</h2><p>又称 Volcano Model 或者 Pipeline Model<br>每一种操作抽象为一个 Operator，将整个 SQL 构建成一个 Operator 树，查询树自顶向下的调用next()接口，数据则自底向上的被拉取处理</p><p>一次pull一条,调用次数太多，CPU执行效率低下。</p><p>相关数据库：SQLite、MongoDB、Impala、DB2、SQLServer、Greenplum、PostgreSQL、Oracle、MySQL</p><h2 id="物化模型（Materialization-Model）"><a href="#物化模型（Materialization-Model）" class="headerlink" title="物化模型（Materialization Model）"></a>物化模型（Materialization Model）</h2><p>同上，批量拉取，但是数据集不能太多。</p><p>##向量化/批处理模型（Vectorized / Batch Model）##</p><p>每次调用 next() 函数会返回一批的元组（tuples）</p><p>相关数据库：Presto、snowflake、SQLServer、Amazon Redshift，Spark 2.x，hive(ORC 格式来存储数据，将 hive.vectorized.execution.enabled 参数设置为 true)</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.modb.pro/db/45265" target="_blank" rel="noopener">https://www.modb.pro/db/45265</a></p><h2 id="物化视图"><a href="#物化视图" class="headerlink" title="物化视图"></a>物化视图</h2><p>这个概念，只是把视图（只保存SQL）进行了计算和数据物化</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+          <category> 基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 查询引擎 </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>分布式链路追踪</title>
+      <link href="/2022/03/09/%E5%88%86%E5%B8%83%E5%BC%8F%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/"/>
+      <url>/2022/03/09/%E5%88%86%E5%B8%83%E5%BC%8F%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="SleuthZipkin"><a href="#SleuthZipkin" class="headerlink" title="SleuthZipkin"></a>SleuthZipkin</h2><h2 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h2><p>Trace 整个微服务调用树关系<br>Span 树的叶子</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/cy0628/p/15195918.html" target="_blank" rel="noopener">https://www.cnblogs.com/cy0628/p/15195918.html</a><br><a href="https://juejin.cn/post/6844903761438048269" target="_blank" rel="noopener">https://juejin.cn/post/6844903761438048269</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微服务 </category>
+          
+          <category> 理论 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 限流 </tag>
+            
+            <tag> 分布式链路 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>7层网络协议</title>
       <link href="/2022/03/09/7%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
       <url>/2022/03/09/7%E5%B1%82%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</url>
@@ -630,9 +717,9 @@
       
         <tags>
             
-            <tag> 架构 </tag>
-            
             <tag> DDD </tag>
+            
+            <tag> 架构 </tag>
             
         </tags>
       
@@ -659,9 +746,9 @@
       
         <tags>
             
-            <tag> 架构 </tag>
-            
             <tag> DDD </tag>
+            
+            <tag> 架构 </tag>
             
         </tags>
       
@@ -2114,9 +2201,9 @@
       
         <tags>
             
-            <tag> 架构 </tag>
-            
             <tag> DDD </tag>
+            
+            <tag> 架构 </tag>
             
         </tags>
       
@@ -2888,27 +2975,6 @@
     
     
     <entry>
-      <title>this,static,super,final</title>
-      <link href="/2020/09/22/this-static-super-final/"/>
-      <url>/2020/09/22/this-static-super-final/</url>
-      
-        <content type="html"><![CDATA[<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><blockquote><p>用法<br>最基本的用法是，static 可以用于修饰成员变量和成员方法，我们将其称之为静态变量和静态方法，直接通过类名来进行访问。</p><p>当一个事物为static时，就意味着这个域或方法不会与包含它的那个类的任何对象实例关联在一起，所以从未创建某个类的任何对象，也可以调用其static方法或访问其static域。</p><p>变量<br>static变量也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p><p>static成员变量的初始化顺序按照定义的顺序进行初始化。</p></blockquote><h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>只能用在构造器或者方法中，用于获得调用当前的构造器方法的对象引用。可以和任何的对象引用一样来处理这个this对象</p><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>终态</p><p>编译器final修饰的变量 放到寄存器（非共享内存）<br>并发线程安全，程序任何对象的初始化happen-before于程序中任何其他的动作操作行为能够保证不被重排序</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String a = <span class="string">"hello2"</span>;</span><br><span class="line">        <span class="keyword">final</span> String b = <span class="string">"hello"</span>;</span><br><span class="line">        String d = <span class="string">"hello"</span>;</span><br><span class="line">        String c = b + <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 由于b是常量所以编译期，编译器会直接将b替换为其值，并直接拼接成"Hello2"赋值给c，这又叫做“常量优化”</span></span><br><span class="line">        <span class="comment">// 故在编译期就能确定b值</span></span><br><span class="line">        String e = d + <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 由于赋值语句右侧使用的不同类型常量赋值，因此会使用StringBuilder实现字符串拼接</span></span><br><span class="line">        <span class="comment">// 会先调用其append方法最后调用toString方法，而toString方法是new String并返回，即在堆中创建对象</span></span><br><span class="line">        <span class="comment">// 故e的值需要运行时确定</span></span><br><span class="line">        String f = <span class="string">"hello"</span> + <span class="string">"2"</span>;</span><br><span class="line">        <span class="comment">// 而f的赋值语句右侧也都是字面量，或者说常量，同字符串c的解释，故在编译期就能确定f值</span></span><br><span class="line">        <span class="comment">// 故最终的输出结果为：</span></span><br><span class="line">        System.out.println(a == c);<span class="comment">// true</span></span><br><span class="line">        System.out.println(a == e);<span class="comment">// false</span></span><br><span class="line">        System.out.println(a == f);<span class="comment">// true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C:\Users\DELL\Desktop&gt;javap -c Solution.class</span><br><span class="line">Compiled from <span class="string">"Solution.java"</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeetCodeStudy</span>.<span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> LeetCodeStudy.Solution();</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: aload_0</span><br><span class="line">       1: invokespecial #1 // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">       <span class="number">4</span>: <span class="keyword">return</span></span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(java.lang.String[])</span></span>;</span><br><span class="line">    Code:</span><br><span class="line">       0: ldc           #2 // String hello2</span><br><span class="line">       <span class="number">2</span>: astore_1</span><br><span class="line">       3: ldc           #3 // String hello</span><br><span class="line">       <span class="number">5</span>: astore_2</span><br><span class="line">       6: ldc           #3 // String hello</span><br><span class="line">       <span class="number">8</span>: astore_3</span><br><span class="line">       9: ldc           #2 // String hello2</span><br><span class="line">      <span class="number">11</span>: astore        <span class="number">4</span></span><br><span class="line">      13: new           #4 // class java/lang/StringBuilder</span><br><span class="line">      <span class="number">16</span>: dup</span><br><span class="line">      17: invokespecial #5 // Method java/lang/StringBuilder."&lt;init&gt;":()V</span><br><span class="line">      <span class="number">20</span>: aload_3</span><br><span class="line">      21: invokevirtual #6 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line">      <span class="number">24</span>: iconst_2</span><br><span class="line">      25: invokevirtual #7 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;</span><br><span class="line">      28: invokevirtual #8 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span><br><span class="line">      <span class="number">31</span>: astore        <span class="number">5</span></span><br><span class="line">      33: ldc           #2 // String hello2</span><br><span class="line">      <span class="number">35</span>: astore        <span class="number">6</span></span><br><span class="line">      37: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">40</span>: aload_1</span><br><span class="line">      <span class="number">41</span>: aload         <span class="number">4</span></span><br><span class="line">      <span class="number">43</span>: if_acmpne     <span class="number">50</span></span><br><span class="line">      <span class="number">46</span>: iconst_1</span><br><span class="line">      <span class="number">47</span>: goto          <span class="number">51</span></span><br><span class="line">      <span class="number">50</span>: iconst_0</span><br><span class="line">      51: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      54: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">57</span>: aload_1</span><br><span class="line">      <span class="number">58</span>: aload         <span class="number">5</span></span><br><span class="line">      <span class="number">60</span>: if_acmpne     <span class="number">67</span></span><br><span class="line">      <span class="number">63</span>: iconst_1</span><br><span class="line">      <span class="number">64</span>: goto          <span class="number">68</span></span><br><span class="line">      <span class="number">67</span>: iconst_0</span><br><span class="line">      68: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      71: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">74</span>: aload_1</span><br><span class="line">      <span class="number">75</span>: aload         <span class="number">6</span></span><br><span class="line">      <span class="number">77</span>: if_acmpne     <span class="number">84</span></span><br><span class="line">      <span class="number">80</span>: iconst_1</span><br><span class="line">      <span class="number">81</span>: goto          <span class="number">85</span></span><br><span class="line">      <span class="number">84</span>: iconst_0</span><br><span class="line">      85: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      <span class="number">88</span>: <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super是当前对象里面的父对象的引用，使用super来引用父类的某种东西</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> JAVA </category>
-          
-          <category> 开发 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>mybatis-plus基本原理</title>
       <link href="/2020/09/22/Mybatis-plus/"/>
       <url>/2020/09/22/Mybatis-plus/</url>
@@ -2921,6 +2987,27 @@
           <category> 开源框架 </category>
           
           <category> mybatis-plus </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>this,static,super,final</title>
+      <link href="/2020/09/22/this-static-super-final/"/>
+      <url>/2020/09/22/this-static-super-final/</url>
+      
+        <content type="html"><![CDATA[<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><blockquote><p>用法<br>最基本的用法是，static 可以用于修饰成员变量和成员方法，我们将其称之为静态变量和静态方法，直接通过类名来进行访问。</p><p>当一个事物为static时，就意味着这个域或方法不会与包含它的那个类的任何对象实例关联在一起，所以从未创建某个类的任何对象，也可以调用其static方法或访问其static域。</p><p>变量<br>static变量也称作静态变量，静态变量和非静态变量的区别是：静态变量被所有的对象所共享，在内存中只有一个副本，它当且仅当在类初次加载时会被初始化。而非静态变量是对象所拥有的，在创建对象的时候被初始化，存在多个副本，各个对象拥有的副本互不影响。</p><p>static成员变量的初始化顺序按照定义的顺序进行初始化。</p></blockquote><h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2><p>只能用在构造器或者方法中，用于获得调用当前的构造器方法的对象引用。可以和任何的对象引用一样来处理这个this对象</p><h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>终态</p><p>编译器final修饰的变量 放到寄存器（非共享内存）<br>并发线程安全，程序任何对象的初始化happen-before于程序中任何其他的动作操作行为能够保证不被重排序</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String a = <span class="string">"hello2"</span>;</span><br><span class="line">        <span class="keyword">final</span> String b = <span class="string">"hello"</span>;</span><br><span class="line">        String d = <span class="string">"hello"</span>;</span><br><span class="line">        String c = b + <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 由于b是常量所以编译期，编译器会直接将b替换为其值，并直接拼接成"Hello2"赋值给c，这又叫做“常量优化”</span></span><br><span class="line">        <span class="comment">// 故在编译期就能确定b值</span></span><br><span class="line">        String e = d + <span class="number">2</span>;</span><br><span class="line">        <span class="comment">// 由于赋值语句右侧使用的不同类型常量赋值，因此会使用StringBuilder实现字符串拼接</span></span><br><span class="line">        <span class="comment">// 会先调用其append方法最后调用toString方法，而toString方法是new String并返回，即在堆中创建对象</span></span><br><span class="line">        <span class="comment">// 故e的值需要运行时确定</span></span><br><span class="line">        String f = <span class="string">"hello"</span> + <span class="string">"2"</span>;</span><br><span class="line">        <span class="comment">// 而f的赋值语句右侧也都是字面量，或者说常量，同字符串c的解释，故在编译期就能确定f值</span></span><br><span class="line">        <span class="comment">// 故最终的输出结果为：</span></span><br><span class="line">        System.out.println(a == c);<span class="comment">// true</span></span><br><span class="line">        System.out.println(a == e);<span class="comment">// false</span></span><br><span class="line">        System.out.println(a == f);<span class="comment">// true</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C:\Users\DELL\Desktop&gt;javap -c Solution.class</span><br><span class="line">Compiled from <span class="string">"Solution.java"</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LeetCodeStudy</span>.<span class="title">Solution</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> LeetCodeStudy.Solution();</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: aload_0</span><br><span class="line">       1: invokespecial #1 // Method java/lang/Object."&lt;init&gt;":()V</span><br><span class="line">       <span class="number">4</span>: <span class="keyword">return</span></span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(java.lang.String[])</span></span>;</span><br><span class="line">    Code:</span><br><span class="line">       0: ldc           #2 // String hello2</span><br><span class="line">       <span class="number">2</span>: astore_1</span><br><span class="line">       3: ldc           #3 // String hello</span><br><span class="line">       <span class="number">5</span>: astore_2</span><br><span class="line">       6: ldc           #3 // String hello</span><br><span class="line">       <span class="number">8</span>: astore_3</span><br><span class="line">       9: ldc           #2 // String hello2</span><br><span class="line">      <span class="number">11</span>: astore        <span class="number">4</span></span><br><span class="line">      13: new           #4 // class java/lang/StringBuilder</span><br><span class="line">      <span class="number">16</span>: dup</span><br><span class="line">      17: invokespecial #5 // Method java/lang/StringBuilder."&lt;init&gt;":()V</span><br><span class="line">      <span class="number">20</span>: aload_3</span><br><span class="line">      21: invokevirtual #6 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span><br><span class="line">      <span class="number">24</span>: iconst_2</span><br><span class="line">      25: invokevirtual #7 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;</span><br><span class="line">      28: invokevirtual #8 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span><br><span class="line">      <span class="number">31</span>: astore        <span class="number">5</span></span><br><span class="line">      33: ldc           #2 // String hello2</span><br><span class="line">      <span class="number">35</span>: astore        <span class="number">6</span></span><br><span class="line">      37: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">40</span>: aload_1</span><br><span class="line">      <span class="number">41</span>: aload         <span class="number">4</span></span><br><span class="line">      <span class="number">43</span>: if_acmpne     <span class="number">50</span></span><br><span class="line">      <span class="number">46</span>: iconst_1</span><br><span class="line">      <span class="number">47</span>: goto          <span class="number">51</span></span><br><span class="line">      <span class="number">50</span>: iconst_0</span><br><span class="line">      51: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      54: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">57</span>: aload_1</span><br><span class="line">      <span class="number">58</span>: aload         <span class="number">5</span></span><br><span class="line">      <span class="number">60</span>: if_acmpne     <span class="number">67</span></span><br><span class="line">      <span class="number">63</span>: iconst_1</span><br><span class="line">      <span class="number">64</span>: goto          <span class="number">68</span></span><br><span class="line">      <span class="number">67</span>: iconst_0</span><br><span class="line">      68: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      71: getstatic     #9 // Field java/lang/System.out:Ljava/io/PrintStream;</span><br><span class="line">      <span class="number">74</span>: aload_1</span><br><span class="line">      <span class="number">75</span>: aload         <span class="number">6</span></span><br><span class="line">      <span class="number">77</span>: if_acmpne     <span class="number">84</span></span><br><span class="line">      <span class="number">80</span>: iconst_1</span><br><span class="line">      <span class="number">81</span>: goto          <span class="number">85</span></span><br><span class="line">      <span class="number">84</span>: iconst_0</span><br><span class="line">      85: invokevirtual #10 // Method java/io/PrintStream.println:(Z)V</span><br><span class="line">      <span class="number">88</span>: <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super是当前对象里面的父对象的引用，使用super来引用父类的某种东西</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> 开发 </category>
           
       </categories>
       
@@ -3116,9 +3203,9 @@
       
         <tags>
             
-            <tag> springCloud </tag>
-            
             <tag> 微服务 </tag>
+            
+            <tag> springCloud </tag>
             
         </tags>
       
@@ -3464,9 +3551,9 @@
       
         <tags>
             
-            <tag> 事务 </tag>
-            
             <tag> 数据库 </tag>
+            
+            <tag> 事务 </tag>
             
         </tags>
       
@@ -4636,18 +4723,18 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JVM </category>
           
-          <category> 运维 </category>
+          <category> 参数 </category>
           
       </categories>
       
@@ -4663,18 +4750,18 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
           
-          <category> JVM </category>
+          <category> JAVA </category>
           
-          <category> 参数 </category>
+          <category> 运维 </category>
           
       </categories>
       
