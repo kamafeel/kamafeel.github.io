@@ -4,11 +4,40 @@
   
     
     <entry>
+      <title>DDD-可靠消息</title>
+      <link href="/2022/03/15/DDD-%E5%8F%AF%E9%9D%A0%E6%B6%88%E6%81%AF/"/>
+      <url>/2022/03/15/DDD-%E5%8F%AF%E9%9D%A0%E6%B6%88%E6%81%AF/</url>
+      
+        <content type="html"><![CDATA[<h2 id="消息发送端"><a href="#消息发送端" class="headerlink" title="消息发送端"></a>消息发送端</h2><p>1.生成消息唯一幂等ID -&gt;存储消息参数</p><p>2.在本服务内实现监听(JPA entity postPersist),更新实体物化视图。</p><p>3.–&gt;异步投递到MQ–&gt;更新是否投递标致为true</p><p>4.如果投递MQ失败，重试机制。</p><h2 id="消息接受端"><a href="#消息接受端" class="headerlink" title="消息接受端"></a>消息接受端</h2><p>1.存储消息参数和消息的幂等ID，为后续幂等做判断依据。</p><p>2.判断消息里面的sequenceNumber（事件序列）和本地实体聚合的事件处理记录的对比，只消费差异值为 1 的事件 （保障事件顺序一致性）<br>（如果本地实体聚合的事件处理记表量大，可以使用分表等技术）<br> (可以使用kafka分区技术，提高消息处理并发量)<br>2.处理消息–&gt;回写MQ的 ACK</p><p>3.如果失败放失败队列</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微服务 </category>
+          
+          <category> DDD </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DDD </tag>
+            
+            <tag> 微服务 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>DDD-事件溯源</title>
       <link href="/2022/03/11/DDD-%E4%BA%8B%E4%BB%B6%E6%BA%AF%E6%BA%90/"/>
       <url>/2022/03/11/DDD-%E4%BA%8B%E4%BB%B6%E6%BA%AF%E6%BA%90/</url>
       
-        <content type="html"><![CDATA[<h2 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a>核心价值</h2>]]></content>
+        <content type="html"><![CDATA[<h2 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a>核心价值</h2><p>1.减少并发冲突<br>2.记录每个操作细节<br>3.解耦领域数据模型与业务消息领域数据（四色模型-消息）</p><h2 id="实施方案"><a href="#实施方案" class="headerlink" title="实施方案"></a>实施方案</h2><p>1.记录事件信息,一定保障（顺序写，时序性，带版本戳，消息ID的生成,微服务节点的无状态化,和ID生成器的workId如何配合）<br>2.配合CQRS使用，实体最新状态使用”物化视图”(可以定时生成快照,避免全量重播事件，可以使用异步模式)<br>3.消费事件的服务，需要注意幂等<br>4.事件解耦后的最终一致性（后续章节描述）<br>5.事件的消费，一般放到领域aggregate中,以实现领域逻辑内聚。（当然具体逻辑可以使用gateway接口，在infrastructure具体实现）<br>事件消费也可以使用状态机，提示领域逻辑的可视化。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@CommandHandler</span><br><span class="line">public ContractAggregate(CreateContractCommand command, MetaData metaData, UIDGenerator generator) &#123;</span><br><span class="line">    if (null == command.getIdentifier()) &#123;</span><br><span class="line">        command.setIdentifier(generator.getId());</span><br><span class="line">    &#125;</span><br><span class="line">    AggregateLifecycle.apply(new ContractCreatedEvent(command.getIdentifier(), command.getName(), command.getPartyA(), command.getPartyB()), metaData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="框架支持"><a href="#框架支持" class="headerlink" title="框架支持"></a>框架支持</h2><p>Java Axon 框架<br>实体快照，储存事件，事件重试/升级，事件溯源(fetch拉事件)</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://soooban.github.io/2019/06/10/Event-Sourcing-And-CQRS/" target="_blank" rel="noopener">http://soooban.github.io/2019/06/10/Event-Sourcing-And-CQRS/</a></p><h2 id="引申问题"><a href="#引申问题" class="headerlink" title="引申问题"></a>引申问题</h2><p>实现可靠消息，参加后续文章</p>]]></content>
       
       
       <categories>
@@ -1413,11 +1442,11 @@
     
     
     <entry>
-      <title>字符编码</title>
+      <title>字符和编码</title>
       <link href="/2021/08/12/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/"/>
       <url>/2021/08/12/%E5%AD%97%E7%AC%A6%E7%BC%96%E7%A0%81/</url>
       
-        <content type="html"><![CDATA[<h2 id="为什么要编码"><a href="#为什么要编码" class="headerlink" title="为什么要编码"></a>为什么要编码</h2><blockquote><p>你看到的中文，英文，韩文，只是视觉概念，计算机只认1和0 的高低电位</p></blockquote><h2 id="编码的历史"><a href="#编码的历史" class="headerlink" title="编码的历史"></a>编码的历史</h2><blockquote><p>1.ASCII编码<br>最古老的标准，老美的标准（HTTP/1.1）其中的header就是使用此编码<br>映射的数量极少，占用空间少</p><p>2.中文的<br>GB2312 GBK GB18030-2000 通通可以忽略都是历史产物。</p><p>3.国际化标准<br>UTF-8 Unicode 组织定义的涵盖全球所有字符集的编码库<br>英文使用8位（即一个字节），中文使用24为（三个字节）来编码。</p><p>4.转换<br>各类编码的转换都需要UTF-8进行中转</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<h2 id="为什么要编码"><a href="#为什么要编码" class="headerlink" title="为什么要编码"></a>为什么要编码</h2><blockquote><p>你看到的中文，英文，韩文，只是视觉概念，计算机只认1和0 的高低电位</p></blockquote><h2 id="编码的历史"><a href="#编码的历史" class="headerlink" title="编码的历史"></a>编码的历史</h2><blockquote><p>1.ASCII编码<br>最古老的标准，老美的标准（HTTP/1.1）其中的header就是使用此编码<br>映射的数量极少，占用空间少</p><p>2.中文的<br>GB2312 GBK GB18030-2000 通通可以忽略都是历史产物。</p><p>3.国际化标准<br>UTF-8 Unicode 组织定义的涵盖全球所有字符集的编码库<br>英文使用8位（即一个字节），中文使用24为（三个字节）来编码。</p><p>4.转换<br>各类编码的转换都需要UTF-8进行中转</p></blockquote><h2 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h2><blockquote><p>Unicode是字符集，描述所有语言和0101的映射关系。</p><p>utf8是对Unicode字符集的编码方式，就是能压缩一些存储空间，比如对于英文文本和ASCII编码一样，中文占用3个字符。</p><p>utf8mb4 主要是扩展utf-8的4位存储（表情），但是会导致部分表索引过长</p></blockquote>]]></content>
       
       
       <categories>
@@ -2916,9 +2945,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -2975,27 +3004,6 @@
     
     
     <entry>
-      <title>mybatis-plus基本原理</title>
-      <link href="/2020/09/22/Mybatis-plus/"/>
-      <url>/2020/09/22/Mybatis-plus/</url>
-      
-        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 开源框架 </category>
-          
-          <category> mybatis-plus </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>this,static,super,final</title>
       <link href="/2020/09/22/this-static-super-final/"/>
       <url>/2020/09/22/this-static-super-final/</url>
@@ -3008,6 +3016,27 @@
           <category> JAVA </category>
           
           <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis-plus基本原理</title>
+      <link href="/2020/09/22/Mybatis-plus/"/>
+      <url>/2020/09/22/Mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开源框架 </category>
+          
+          <category> mybatis-plus </category>
           
       </categories>
       
@@ -3350,9 +3379,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
             <tag> 分治 </tag>
             
@@ -3381,9 +3410,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -3580,9 +3609,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -3609,9 +3638,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -3638,9 +3667,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -3667,9 +3696,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -3725,11 +3754,11 @@
       
         <tags>
             
+            <tag> JAVA </tag>
+            
             <tag> 多线程 </tag>
             
             <tag> AQS </tag>
-            
-            <tag> JAVA </tag>
             
         </tags>
       
@@ -3756,9 +3785,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -3949,9 +3978,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 多线程 </tag>
             
             <tag> 分治 </tag>
             
@@ -4723,18 +4752,18 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
           
-          <category> JVM </category>
+          <category> JAVA </category>
           
-          <category> 参数 </category>
+          <category> 运维 </category>
           
       </categories>
       
@@ -4750,18 +4779,18 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JVM </category>
           
-          <category> 运维 </category>
+          <category> 参数 </category>
           
       </categories>
       

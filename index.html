@@ -290,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/11/DDD-事件溯源/">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/15/DDD-可靠消息/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Kamafeel">
@@ -310,7 +310,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2022/03/11/DDD-事件溯源/" class="post-title-link" itemprop="url">DDD-事件溯源</a>
+                <a href="/2022/03/15/DDD-可靠消息/" class="post-title-link" itemprop="url">DDD-可靠消息</a>
               
             
           </h1>
@@ -335,7 +335,7 @@
                 
               
 
-              <time title="创建时间：2022-03-11 11:18:12 / 修改时间：11:30:06" itemprop="dateCreated datePublished" datetime="2022-03-11T11:18:12+08:00">2022-03-11</time>
+              <time title="创建时间：2022-03-15 17:35:01 / 修改时间：18:35:35" itemprop="dateCreated datePublished" datetime="2022-03-15T17:35:01+08:00">2022-03-15</time>
             
 
             
@@ -401,7 +401,201 @@
       
         
           
-            <h2 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a>核心价值</h2>
+            <h2 id="消息发送端"><a href="#消息发送端" class="headerlink" title="消息发送端"></a>消息发送端</h2><p>1.生成消息唯一幂等ID -&gt;存储消息参数</p>
+<p>2.在本服务内实现监听(JPA entity postPersist),更新实体物化视图。</p>
+<p>3.–&gt;异步投递到MQ–&gt;更新是否投递标致为true</p>
+<p>4.如果投递MQ失败，重试机制。</p>
+<h2 id="消息接受端"><a href="#消息接受端" class="headerlink" title="消息接受端"></a>消息接受端</h2><p>1.存储消息参数和消息的幂等ID，为后续幂等做判断依据。</p>
+<p>2.判断消息里面的sequenceNumber（事件序列）和本地实体聚合的事件处理记录的对比，只消费差异值为 1 的事件 （保障事件顺序一致性）<br>（如果本地实体聚合的事件处理记表量大，可以使用分表等技术）<br> (可以使用kafka分区技术，提高消息处理并发量)<br>2.处理消息–&gt;回写MQ的 ACK</p>
+<p>3.如果失败放失败队列</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/11/DDD-事件溯源/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/03/11/DDD-事件溯源/" class="post-title-link" itemprop="url">DDD-事件溯源</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-03-11 11:18:12" itemprop="dateCreated datePublished" datetime="2022-03-11T11:18:12+08:00">2022-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2022-03-15 17:33:29" itemprop="dateModified" datetime="2022-03-15T17:33:29+08:00">2022-03-15</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/DDD/" itemprop="url" rel="index"><span itemprop="name">DDD</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a>核心价值</h2><p>1.减少并发冲突<br>2.记录每个操作细节<br>3.解耦领域数据模型与业务消息领域数据（四色模型-消息）</p>
+<h2 id="实施方案"><a href="#实施方案" class="headerlink" title="实施方案"></a>实施方案</h2><p>1.记录事件信息,一定保障（顺序写，时序性，带版本戳，消息ID的生成,微服务节点的无状态化,和ID生成器的workId如何配合）<br>2.配合CQRS使用，实体最新状态使用”物化视图”(可以定时生成快照,避免全量重播事件，可以使用异步模式)<br>3.消费事件的服务，需要注意幂等<br>4.事件解耦后的最终一致性（后续章节描述）<br>5.事件的消费，一般放到领域aggregate中,以实现领域逻辑内聚。（当然具体逻辑可以使用gateway接口，在infrastructure具体实现）<br>事件消费也可以使用状态机，提示领域逻辑的可视化。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@CommandHandler</span><br><span class="line">public ContractAggregate(CreateContractCommand command, MetaData metaData, UIDGenerator generator) &#123;</span><br><span class="line">    if (null == command.getIdentifier()) &#123;</span><br><span class="line">        command.setIdentifier(generator.getId());</span><br><span class="line">    &#125;</span><br><span class="line">    AggregateLifecycle.apply(new ContractCreatedEvent(command.getIdentifier(), command.getName(), command.getPartyA(), command.getPartyB()), metaData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="框架支持"><a href="#框架支持" class="headerlink" title="框架支持"></a>框架支持</h2><p>Java Axon 框架<br>实体快照，储存事件，事件重试/升级，事件溯源(fetch拉事件)</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://soooban.github.io/2019/06/10/Event-Sourcing-And-CQRS/" target="_blank" rel="noopener">http://soooban.github.io/2019/06/10/Event-Sourcing-And-CQRS/</a></p>
+<h2 id="引申问题"><a href="#引申问题" class="headerlink" title="引申问题"></a>引申问题</h2><p>实现可靠消息，参加后续文章</p>
+
           
         
       
@@ -1803,187 +1997,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/07/nginx负载均衡案例/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2022/03/07/nginx负载均衡案例/" class="post-title-link" itemprop="url">nginx负载均衡案例</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2022-03-07 14:28:41 / 修改时间：15:50:24" itemprop="dateCreated datePublished" datetime="2022-03-07T14:28:41+08:00">2022-03-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/nginx/" itemprop="url" rel="index"><span itemprop="name">nginx</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="负载均衡-注重点"><a href="#负载均衡-注重点" class="headerlink" title="负载均衡 注重点"></a>负载均衡 注重点</h2><p>非80端口做反向代理</p>
-<p>需要特别注意：proxy_set_header Host $host:$server_port;</p>
-<blockquote><p>nginx接收到浏览器请求后修改请求头中的host信息，然后再把请求转发给后端真实服务节点，服务节点响应后把返回信息传送给nginx，而由于nginx是使用的非80端口做代理，后端服务节点却依然以为nginx是80端口，所以响应信息没有正确的返回给nginx的非80端口。</p>
-</blockquote>
-
-<h2 id="负载均衡-策略"><a href="#负载均衡-策略" class="headerlink" title="负载均衡 策略"></a>负载均衡 策略</h2><p>p_hash 会尽量保障Session的统一性</p>
-<p><a href="https://www.cnblogs.com/yanggb/p/10895326.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanggb/p/10895326.html</a></p>
-<h2 id="参考代码"><a href="#参考代码" class="headerlink" title="参考代码"></a>参考代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">upstream tomcat_server &#123;</span><br><span class="line">   ip_hash;</span><br><span class="line">   server 192.168.30.199:8080 max_fails=3 fail_timeout=40s;</span><br><span class="line">   server 192.168.30.199:18080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">    default upgrade;</span><br><span class="line">    &apos;&apos; close;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       81;</span><br><span class="line">    server_name  pdi.pk;</span><br><span class="line">    client_max_body_size 500M;</span><br><span class="line">   </span><br><span class="line">    location /pdi &#123;</span><br><span class="line">	proxy_pass http://tomcat_server;</span><br><span class="line">	proxy_set_header Host $host:$server_port;</span><br><span class="line">	proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">	proxy_set_header Connection $connection_upgrade;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h2><p><a href="https://www.xncoding.com/2018/03/12/fullstack/nginx-websocket.html" target="_blank" rel="noopener">https://www.xncoding.com/2018/03/12/fullstack/nginx-websocket.html</a></p>
-<h2 id="负载均衡-重试策略-陷阱"><a href="#负载均衡-重试策略-陷阱" class="headerlink" title="负载均衡 重试策略 陷阱"></a>负载均衡 重试策略 陷阱</h2><p>重试策略涉及核心流量转发，配置不当可出现以下（不限）：</p>
-<p>1.订单重复提交<br>2.恶意攻击导致no live upstreams<br>3.业务正常耗时被当成超时</p>
-<p><a href="https://zhuanlan.zhihu.com/p/127959800" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/127959800</a></p>
-<h2 id="其余参考"><a href="#其余参考" class="headerlink" title="其余参考"></a>其余参考</h2><p><a href="https://developer.51cto.com/article/619538.html" target="_blank" rel="noopener">https://developer.51cto.com/article/619538.html</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2030,7 +2043,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">189</span>
+                    <span class="site-state-item-count">190</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
