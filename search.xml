@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>DDD-分布式一致性</title>
+      <link href="/2022/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/"/>
+      <url>/2022/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 微服务 </category>
+          
+          <category> DDD </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> DDD </tag>
+            
+            <tag> 微服务 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>国产数据库适配</title>
+      <link href="/2022/03/18/%E5%9B%BD%E4%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%82%E9%85%8D/"/>
+      <url>/2022/03/18/%E5%9B%BD%E4%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%82%E9%85%8D/</url>
+      
+        <content type="html"><![CDATA[<h2 id="jdbc"><a href="#jdbc" class="headerlink" title="jdbc"></a>jdbc</h2><p>神通数据库不支持jdbc指定模式名，达梦时间计算语法和MYSQL存在区别</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#DM7</span><br><span class="line">jdbc.driverClassName=dm.jdbc.driver.DmDriver</span><br><span class="line">orm.databasePlatform=org.hibernate.dialect.DmDialect</span><br><span class="line">db.url=jdbc:dm://192.168.40.147:5236?schema=PDI&amp;useUnicode=true&amp;characterEncoding=UTF-8</span><br><span class="line"></span><br><span class="line">##shentong7</span><br><span class="line">jdbc.driverClassName=com.oscar.Driver</span><br><span class="line">orm.databasePlatform=org.hibernate.dialect.OscarDialect</span><br><span class="line">db.url=jdbc:oscar://192.168.30.179:2003/OSRDB?useUnicode=true&amp;characterEncoding=UTF-8</span><br></pre></td></tr></table></figure><h2 id="JPA方言"><a href="#JPA方言" class="headerlink" title="JPA方言"></a>JPA方言</h2><p>Dm7JdbcDriver18.jar<br>DmDialect-for-hibernate5.3.jar</p><p>oscarHibernate54.jar<br>oscarJDBC8.jar</p><p>包名说明：<br>18，8为jdk1.8编译<br>Hibernate（54，5.3） 一般适配Hibernate5.3-5.4方言</p><h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><p>用官方数据迁移工具</p><h2 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h2><p>用官方客户端</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+          <category> 国产数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 达梦 </tag>
+            
+            <tag> 神通 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>perl处理文本例子</title>
       <link href="/2022/03/16/perl%E5%A4%84%E7%90%86%E6%96%87%E6%9C%AC%E4%BE%8B%E5%AD%90/"/>
       <url>/2022/03/16/perl%E5%A4%84%E7%90%86%E6%96%87%E6%9C%AC%E4%BE%8B%E5%AD%90/</url>
@@ -1056,7 +1114,7 @@
     
     
     <entry>
-      <title>接口幂等性</title>
+      <title>DDD-接口幂等性</title>
       <link href="/2021/09/17/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/"/>
       <url>/2021/09/17/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/</url>
       
@@ -1065,18 +1123,18 @@
       
       <categories>
           
-          <category> 架构 </category>
+          <category> 微服务 </category>
           
-          <category> 安全 </category>
+          <category> DDD </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 架构 </tag>
+            <tag> DDD </tag>
             
-            <tag> 设计 </tag>
+            <tag> 微服务 </tag>
             
         </tags>
       
@@ -4777,18 +4835,18 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JVM </category>
           
-          <category> 运维 </category>
+          <category> 参数 </category>
           
       </categories>
       
@@ -4804,18 +4862,18 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
           
-          <category> JVM </category>
+          <category> JAVA </category>
           
-          <category> 参数 </category>
+          <category> 运维 </category>
           
       </categories>
       
