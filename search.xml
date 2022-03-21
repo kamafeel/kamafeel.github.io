@@ -1118,7 +1118,7 @@
       <link href="/2021/09/17/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/"/>
       <url>/2021/09/17/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7/</url>
       
-        <content type="html"><![CDATA[<h2 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h2><p>以相同的请求调用这个接口一次和调用这个接口多次，对系统产生的影响是相同的</p><p>一些涉及，积分变动，金钱变动，订单下单等</p><p>保持一个UUUID为后端进行判断</p><p><a href="https://www.cnblogs.com/54chensongxia/p/12598944.html" target="_blank" rel="noopener">https://www.cnblogs.com/54chensongxia/p/12598944.html</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h2><p>以相同的请求调用这个接口一次和调用这个接口多次（重试机制），对系统产生的影响是相同的；<br>查询接口基本都是幂等；</p><h2 id="方案-前端"><a href="#方案-前端" class="headerlink" title="方案(前端)"></a>方案(前端)</h2><p>1.提交按钮置灰<br>2.前端在下单页面生成token(可以前端生成,或者后端提供)<br>3.前端保存一个未确认订单的订单内部表。</p><h2 id="方案-后端"><a href="#方案-后端" class="headerlink" title="方案(后端)"></a>方案(后端)</h2><p>1.保存幂等ID和对于的参数(redis或者去重表(主键去重,唯一索引))<br>2.状态机判断当前状态和下一步状态的边界范围(需要再次校验幂等ID对应的参数，是否和服务端保存的参数一直,避免被利用检测漏洞)<br>3.乐观锁判断<br>4.主动扫描重复订单，反向通知前端</p><h2 id="幂等判断-在哪一层"><a href="#幂等判断-在哪一层" class="headerlink" title="幂等判断 在哪一层"></a>幂等判断 在哪一层</h2><blockquote><p>第一层：APP、H5、PC</p><p>第二层：负载均衡设备(Nginx)</p><p>第三层：网关层(GateWay)</p><p>第四层：业务层(Service)</p><p>第五层：持久层(ORM)</p><p>第六层：数据库层(DB)</p></blockquote><p>建议在第四层，或者第二层</p><h2 id="kafka消息的幂等"><a href="#kafka消息的幂等" class="headerlink" title="kafka消息的幂等"></a>kafka消息的幂等</h2><p>TODO。。。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://juejin.cn/post/6954979098569637896" target="_blank" rel="noopener">https://juejin.cn/post/6954979098569637896</a><br><a href="https://www.cnblogs.com/yaochunhui/p/13993175.html" target="_blank" rel="noopener">https://www.cnblogs.com/yaochunhui/p/13993175.html</a><br><a href="https://www.cnblogs.com/54chensongxia/p/12598944.html" target="_blank" rel="noopener">https://www.cnblogs.com/54chensongxia/p/12598944.html</a></p>]]></content>
       
       
       <categories>
@@ -3087,27 +3087,6 @@
     
     
     <entry>
-      <title>mybatis-plus基本原理</title>
-      <link href="/2020/09/22/Mybatis-plus/"/>
-      <url>/2020/09/22/Mybatis-plus/</url>
-      
-        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 开源框架 </category>
-          
-          <category> mybatis-plus </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>this,static,super,final</title>
       <link href="/2020/09/22/this-static-super-final/"/>
       <url>/2020/09/22/this-static-super-final/</url>
@@ -3120,6 +3099,27 @@
           <category> JAVA </category>
           
           <category> 开发 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis-plus基本原理</title>
+      <link href="/2020/09/22/Mybatis-plus/"/>
+      <url>/2020/09/22/Mybatis-plus/</url>
+      
+        <content type="html"><![CDATA[<p>Wrapper 灵活</p><p>MybatisMapperProxy 代理执行</p><p>MybatisMapperMethod 核心转换方法</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开源框架 </category>
+          
+          <category> mybatis-plus </category>
           
       </categories>
       
@@ -4835,18 +4835,18 @@
     
     
     <entry>
-      <title>JVM参数调优</title>
-      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
+      <title>tomcat JVM 调优</title>
+      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
       
       
       <categories>
           
-          <category> JVM </category>
+          <category> JAVA </category>
           
-          <category> 参数 </category>
+          <category> 运维 </category>
           
       </categories>
       
@@ -4862,18 +4862,18 @@
     
     
     <entry>
-      <title>tomcat JVM 调优</title>
-      <link href="/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/"/>
-      <url>/2019/11/26/tomcat-JVM-%E8%B0%83%E4%BC%98/</url>
+      <title>JVM参数调优</title>
+      <link href="/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/"/>
+      <url>/2019/11/26/JVM%E5%8F%82%E6%95%B0%E8%B0%83%E4%BC%98/</url>
       
-        <content type="html"><![CDATA[<h1 id="如果是启动命令，则设置jvm-监控端口"><a href="#如果是启动命令，则设置jvm-监控端口" class="headerlink" title="如果是启动命令，则设置jvm 监控端口"></a>如果是启动命令，则设置jvm 监控端口</h1><p>if [ $1 = start ] ; then</p><pre><code># 设置内存，最大2048MJAVA_OPTS=&quot;$JAVA_OPTS -Djava.awt.headless=true -Dfile.encoding=UTF-8 -server -Xms6144m -Xmx6144m -XX:NewSize=512m -XX:MaxNewSize=512m -XX:PermSize=512m -XX:MaxPermSize=512m&quot;;# 设置jmx 是否通过ssl 连接JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.ssl=false&quot;# 设置rmi 远程连接ip 地址JAVA_OPTS=&quot;$JAVA_OPTS -Djava.rmi.server.hostname=10.115.88.125&quot;# 设置jmx 远程连接端口号JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.port=7777&quot;# 设置jmx 远程连接是否需要用户认证,即用户名和密码JAVA_OPTS=&quot;$JAVA_OPTS -Dcom.sun.management.jmxremote.authenticate=false&quot;</code></pre><p>fi</p>]]></content>
+        <content type="html"><![CDATA[<blockquote><blockquote><p>-XX:+AlwaysPreTouch</p></blockquote><p>JVM就会先访问所有分配给它的内存,让操作系统把内存真正的分配给JVM.后续JVM就可以顺畅的访问内存了</p><blockquote><p> -XX:AutoBoxCacheMax=20000</p></blockquote><p>JAVA进程启动的时候,会加载rt.jar这个核心包的,rt.jar包里的Integer自然也是被加载到JVM中,Integer里面有一个IntegerCache缓存</p><blockquote><p> -Xss去调整JVM栈的大小</p></blockquote><p>调整栈的深度,注意递归经常会超过默认深度</p><blockquote><p>-Djava.security.egd=file:/dev/./urandom</p></blockquote><p>随机数导致启动慢</p></blockquote><h2 id="常用参数参考"><a href="#常用参数参考" class="headerlink" title="常用参数参考"></a>常用参数参考</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">java -Duser.timezone=GMT+8 -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=6008 -Xmx2048m -XX:ParallelGCThreads=4 -XX:Conc</span><br><span class="line">GCThreads=4 -Djava.util.concurrent.ForkJoinPool.common.parallelism=4 -XX:CICompilerCount=3 -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:</span><br><span class="line">MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar  **.jar</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> JVM </category>
           
-          <category> 运维 </category>
+          <category> 参数 </category>
           
       </categories>
       
