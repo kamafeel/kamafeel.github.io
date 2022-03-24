@@ -96,15 +96,18 @@
 
 
 
-  <meta name="keywords" content="DDD,微服务">
+  <meta name="description" content="实现要素接口幂等性（分布式存在重试机制） 内部状态管控（状态机） 异常推进模式(重试，查询对端状态) 流水型数据（进出接口留存为单据,微服务调用链） 最终对账（分析微服务对应的db，业务数据是否一致,实时/离线对账） 实现方案2PC,3PCTCC（客户端 需要实现try, confirm, cancel 三个接口，侵入太大）可靠消息最终一致性（利用rocketmq的prepare，confirm,">
+<meta name="keywords" content="DDD,微服务">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DDD-分布式一致性">
 <meta property="og:url" content="https://kamafeel.github.io/2022/03/18/分布式一致性/index.html">
 <meta property="og:site_name" content="Kamafeel">
+<meta property="og:description" content="实现要素接口幂等性（分布式存在重试机制） 内部状态管控（状态机） 异常推进模式(重试，查询对端状态) 流水型数据（进出接口留存为单据,微服务调用链） 最终对账（分析微服务对应的db，业务数据是否一致,实时/离线对账） 实现方案2PC,3PCTCC（客户端 需要实现try, confirm, cancel 三个接口，侵入太大）可靠消息最终一致性（利用rocketmq的prepare，confirm,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2022-03-21T07:16:13.314Z">
+<meta property="og:updated_time" content="2022-03-24T06:20:34.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DDD-分布式一致性">
+<meta name="twitter:description" content="实现要素接口幂等性（分布式存在重试机制） 内部状态管控（状态机） 异常推进模式(重试，查询对端状态) 流水型数据（进出接口留存为单据,微服务调用链） 最终对账（分析微服务对应的db，业务数据是否一致,实时/离线对账） 实现方案2PC,3PCTCC（客户端 需要实现try, confirm, cancel 三个接口，侵入太大）可靠消息最终一致性（利用rocketmq的prepare，confirm,">
 
 
 
@@ -351,7 +354,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2022-03-21 15:16:13" itemprop="dateModified" datetime="2022-03-21T15:16:13+08:00">2022-03-21</time>
+                <time title="修改时间：2022-03-24 14:20:34" itemprop="dateModified" datetime="2022-03-24T14:20:34+08:00">2022-03-24</time>
               
             
           </span>
@@ -410,7 +413,20 @@
       
 
       
-        
+        <h2 id="实现要素"><a href="#实现要素" class="headerlink" title="实现要素"></a>实现要素</h2><p>接口幂等性（分布式存在重试机制）</p>
+<p>内部状态管控（状态机）</p>
+<p>异常推进模式(重试，查询对端状态)</p>
+<p>流水型数据（进出接口留存为单据,微服务调用链）</p>
+<p>最终对账（分析微服务对应的db，业务数据是否一致,实时/离线对账）</p>
+<h2 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h2><p>2PC,3PC<br>TCC（客户端 需要实现try, confirm, cancel 三个接口，侵入太大）<br>可靠消息最终一致性（利用rocketmq的prepare，confirm,死信消息机制实现）<br>本地消息表（利用本地数据库事务,一般业务均可以使用）<br>最大努力通知（一般适用于调用第三方支付成功后，回调本地业务模块），不断重试</p>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>seata （AT、TCC、SAGA、XA）<br>性能消耗较大，存在全局锁，和undoSQL的生成</p>
+<h2 id="相关协议"><a href="#相关协议" class="headerlink" title="相关协议"></a>相关协议</h2><p>XA 分布式事务协议，数据库原生支持(mysql5.7+,db2,oracle)</p>
+<h2 id="基于事件溯源的分布式事务"><a href="#基于事件溯源的分布式事务" class="headerlink" title="基于事件溯源的分布式事务"></a>基于事件溯源的分布式事务</h2><p>利用事件溯源DDD模式，消费端不停重试，当无法成功，发消息到TM进行事务回滚，TM分析消息链，反向调用上游服务，进去消息回溯</p>
+<p>上游重新生成，回退消息序列的，实体物化视图。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xiaomi-info.github.io/2020/01/02/distributed-transaction/" target="_blank" rel="noopener">https://xiaomi-info.github.io/2020/01/02/distributed-transaction/</a></p>
+<p><a href="https://segmentfault.com/a/1190000039910621" target="_blank" rel="noopener">https://segmentfault.com/a/1190000039910621</a><br><a href="https://www.infoq.cn/article/8bu33kusyj6p-waaoelt" target="_blank" rel="noopener">https://www.infoq.cn/article/8bu33kusyj6p-waaoelt</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650454838&amp;idx=1&amp;sn=b4626ad3db1e5b13b27387a0b6cf9c8f&amp;chksm=8396732eb4e1fa389b8d623311571a959c31d93a1d7ce2e2ab0d6b3582e42bc167cea8b93cb2&amp;mpshare=1&amp;scene=1&amp;srcid=0321KVLkIjhgMKWius8yNRlq&amp;sharer_sharetime=1647856913742&amp;sharer_shareid=0f5daba1c53304b790c473ce7b5b4b10&amp;key=0b1431e25a2ba464217d69b0c3a69369fb2e749ed5794a4e3efbd31cfd6c6c91b2858955730f7d8a3940086f169f519edd613d3a701f8ee3d7a636b52ff3ae8e08fdd5b67a04cf73c89f560c7b9143fc5b79f3b65dc53234dbf96ecba0d382eee6703b5946fdb43b76b0550a5f0d3fceacc7c67d69f1fc5f319f26c82f9f8165&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AT7dyAUBsQpgjdVY3kive0s%3D&amp;acctmode=0&amp;pass_ticket=gPnUzsTHhOsokjn3q9eNRh2cwjCEQG3GnX5vxMnzgNqmQFLo6ziAqYul3cPyoUEa&amp;wx_header=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650454838&amp;idx=1&amp;sn=b4626ad3db1e5b13b27387a0b6cf9c8f&amp;chksm=8396732eb4e1fa389b8d623311571a959c31d93a1d7ce2e2ab0d6b3582e42bc167cea8b93cb2&amp;mpshare=1&amp;scene=1&amp;srcid=0321KVLkIjhgMKWius8yNRlq&amp;sharer_sharetime=1647856913742&amp;sharer_shareid=0f5daba1c53304b790c473ce7b5b4b10&amp;key=0b1431e25a2ba464217d69b0c3a69369fb2e749ed5794a4e3efbd31cfd6c6c91b2858955730f7d8a3940086f169f519edd613d3a701f8ee3d7a636b52ff3ae8e08fdd5b67a04cf73c89f560c7b9143fc5b79f3b65dc53234dbf96ecba0d382eee6703b5946fdb43b76b0550a5f0d3fceacc7c67d69f1fc5f319f26c82f9f8165&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AT7dyAUBsQpgjdVY3kive0s%3D&amp;acctmode=0&amp;pass_ticket=gPnUzsTHhOsokjn3q9eNRh2cwjCEQG3GnX5vxMnzgNqmQFLo6ziAqYul3cPyoUEa&amp;wx_header=0</a></p>
+
       
     </div>
 
@@ -461,6 +477,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2022/03/23/查找jar包内容/" rel="prev" title="查找jar包内容">
+                查找jar包内容 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -503,8 +523,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -519,7 +548,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">193</span>
+                    <span class="site-state-item-count">194</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -646,7 +675,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -942,6 +973,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现要素"><span class="nav-number">1.</span> <span class="nav-text">实现要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现方案"><span class="nav-number">2.</span> <span class="nav-text">实现方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#框架"><span class="nav-number">3.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关协议"><span class="nav-number">4.</span> <span class="nav-text">相关协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于事件溯源的分布式事务"><span class="nav-number">5.</span> <span class="nav-text">基于事件溯源的分布式事务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

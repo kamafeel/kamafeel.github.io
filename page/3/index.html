@@ -290,6 +290,190 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/02/11/kafka并发方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/02/11/kafka并发方案/" class="post-title-link" itemprop="url">kafka并发方案</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-02-11 16:26:54" itemprop="dateCreated datePublished" datetime="2022-02-11T16:26:54+08:00">2022-02-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2022-03-06 12:16:12" itemprop="dateModified" datetime="2022-03-06T12:16:12+08:00">2022-03-06</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/Kafka/" itemprop="url" rel="index"><span itemprop="name">Kafka</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="topic分区"><a href="#topic分区" class="headerlink" title="topic分区"></a>topic分区</h2><p>topic分区主要是让消息分摊到broker,提高消息吞吐量</p>
+<h2 id="KafkaConsumer"><a href="#KafkaConsumer" class="headerlink" title="KafkaConsumer"></a>KafkaConsumer</h2><p>启动多个Consumer，将会去连不通的分区的数据。</p>
+<h2 id="批量收消息"><a href="#批量收消息" class="headerlink" title="批量收消息"></a>批量收消息</h2><p>批量拉取消息，然后交给线程池/多线程处理。</p>
+<p>中间用一个LinkedBlockingQueue(queue都行)，作为管道。</p>
+<p>采用线程池，需要考虑批量拉取消息和线程处理速度的关系。避免线程池溢出</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/01/13/dockerFile的创建策略/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1825,175 +2009,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2021/12/01/设计模式-管道/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2021/12/01/设计模式-管道/" class="post-title-link" itemprop="url">设计模式-管道</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2021-12-01 17:26:17 / 修改时间：17:35:10" itemprop="dateCreated datePublished" datetime="2021-12-01T17:26:17+08:00">2021-12-01</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/设计模式/" itemprop="url" rel="index"><span itemprop="name">设计模式</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><blockquote><p>处理步骤组合，存在灵活多变</p>
-</blockquote>
-
-<h2 id="类似"><a href="#类似" class="headerlink" title="类似"></a>类似</h2><blockquote><p>责任链</p>
-</blockquote>
-
-<h2 id="招式"><a href="#招式" class="headerlink" title="招式"></a>招式</h2><p>定义context上下文，<br>处理context的handler接口</p>
-<p>定义一个Executor执行一个List顺序的责任链</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&mid=2650413430&idx=1&sn=32c89ea3222d341bf3014854f69fd239&chksm=8396d16eb4e1587838f99a6859668a3588b0762155c1a13872d3f419efa3f75c5a532d7d38fe&scene=21#wechat_redirect" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650413430&amp;idx=1&amp;sn=32c89ea3222d341bf3014854f69fd239&amp;chksm=8396d16eb4e1587838f99a6859668a3588b0762155c1a13872d3f419efa3f75c5a532d7d38fe&amp;scene=21#wechat_redirect</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2040,7 +2055,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">193</span>
+                    <span class="site-state-item-count">194</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2167,7 +2182,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">55</span>
+                      
+                    
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
