@@ -4,6 +4,114 @@
   
     
     <entry>
+      <title>web容器UnderTow</title>
+      <link href="/2022/03/25/web%E5%AE%B9%E5%99%A8UnderTow/"/>
+      <url>/2022/03/25/web%E5%AE%B9%E5%99%A8UnderTow/</url>
+      
+        <content type="html"><![CDATA[<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>基于Java XNIO，底层使用NIO（ByteBuffer）<br>Worker单元分：IO 线程池(evernLoop机制)；Worker 线程池（处理阻塞的业务）</p><p>需要注意设置：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  undertow:</span><br><span class="line">    worker-threads: 200</span><br></pre></td></tr></table></figure><h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>Jetty ,Tomcat 主要是庞杂（性能,直接内存使用）<br>reactor-netty（不好调试，回调写法，工程师不多）<br>Undertow 轻量设计</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.helloworld.net/special/xtmylk/8793514997" target="_blank" rel="noopener">https://www.helloworld.net/special/xtmylk/8793514997</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 中间件 </category>
+          
+          <category> UnderTow </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>缓存一致性协议MESI</title>
+      <link href="/2022/03/24/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AEMESI/"/>
+      <url>/2022/03/24/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AEMESI/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>缓存一致性协议，CPU多核缓存，主存</p><h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>M 修改<br>E 独享、互斥 (Exclusive)<br>S 共享 (Shared)<br>I 无效 (Invalid)</p><h2 id="伪共享"><a href="#伪共享" class="headerlink" title="伪共享"></a>伪共享</h2><p>Cache Line 缓存行通常是 64 字节<br>根据：<br>时间局部性（Temporal Locality）：如果一个信息项正在被访问，那么在近期它很可能还会被再次访问<br>空间局部性（Spatial Locality）：如果一个存储器的位置被引用，那么将来他附近的位置也会被引用</p><p>Cache Line加载是连续的一段</p><p>Java避免伪共享，补齐参数为64字节</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//jdk1.8新方法</span><br><span class="line">   //添加vm options参数  -XX:-RestrictContended</span><br><span class="line">   @sun.misc.Contended</span><br><span class="line">   public final static class VolatileLong3 &#123;</span><br><span class="line">       public volatile long value = 0L;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/yanlong300/p/8986041.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanlong300/p/8986041.html</a><br><a href="https://juejin.cn/post/6934528318888738824" target="_blank" rel="noopener">https://juejin.cn/post/6934528318888738824</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 架构 </category>
+          
+          <category> 基础层 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Pagecache和Buffercache</title>
+      <link href="/2022/03/24/Pagecache%E5%92%8CBuffercache/"/>
+      <url>/2022/03/24/Pagecache%E5%92%8CBuffercache/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Epoll说明和应用</title>
+      <link href="/2022/03/24/Epoll%E8%AF%B4%E6%98%8E%E5%92%8C%E5%BA%94%E7%94%A8/"/>
+      <url>/2022/03/24/Epoll%E8%AF%B4%E6%98%8E%E5%92%8C%E5%BA%94%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LRU缓存机制</title>
+      <link href="/2022/03/24/LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/"/>
+      <url>/2022/03/24/LRU%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LongAdder</title>
+      <link href="/2022/03/24/LongAdder/"/>
+      <url>/2022/03/24/LongAdder/</url>
+      
+        <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>AtomicLong 只对一个 Long 值进行 CAS 操作。而 LongAdder 是针对 Cell 数组的某个 Cell 进行 CAS 操作 ，把线程的名字的 hash 值，作为 Cell 数组的下标，然后对 Cell[i] 的 long 进行 CAS 操作。简单粗暴的分散了高并发下的竞争压力</p><h2 id="内核"><a href="#内核" class="headerlink" title="内核"></a>内核</h2><p>cell对象使用@sun.misc.Contended避免伪共享</p><p>升级竞争的解决方案</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xilidou.com/2018/11/27/LongAdder/" target="_blank" rel="noopener">https://xilidou.com/2018/11/27/LongAdder/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> 并发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 并发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>查找jar包内容</title>
       <link href="/2022/03/23/%E6%9F%A5%E6%89%BEjar%E5%8C%85%E5%86%85%E5%AE%B9/"/>
       <url>/2022/03/23/%E6%9F%A5%E6%89%BEjar%E5%8C%85%E5%86%85%E5%AE%B9/</url>
@@ -33,7 +141,7 @@
       <link href="/2022/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/"/>
       <url>/2022/03/18/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7/</url>
       
-        <content type="html"><![CDATA[<h2 id="分布式一致性"><a href="#分布式一致性" class="headerlink" title="分布式一致性"></a>分布式一致性</h2><p>不要局限于数据库事务，也可能是业务事务，俗称长事务</p><h2 id="实现要素"><a href="#实现要素" class="headerlink" title="实现要素"></a>实现要素</h2><p>接口幂等性（分布式存在重试机制）</p><p>内部状态管控（状态机）</p><p>异常推进模式(重试，查询对端状态)</p><p>流水型数据（进出接口留存为单据,微服务调用链）</p><p>最终对账（分析微服务对应的db，业务数据是否一致,实时/离线对账）</p><h2 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h2><p>2PC,3PC<br>TCC（客户端 需要实现try, confirm, cancel 三个接口，侵入太大）<br>可靠消息最终一致性（利用rocketmq的prepare，confirm,死信消息机制实现）<br>本地消息表（利用本地数据库事务,一般业务均可以使用）<br>最大努力通知（一般适用于调用第三方支付成功后，回调本地业务模块），不断重试</p><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>seata （AT、TCC、SAGA、XA）<br>性能消耗较大，存在全局锁，和undoSQL的生成</p><h2 id="相关协议"><a href="#相关协议" class="headerlink" title="相关协议"></a>相关协议</h2><p>XA 分布式事务协议，数据库原生支持(mysql5.7+,db2,oracle)</p><h2 id="基于事件溯源的分布式事务"><a href="#基于事件溯源的分布式事务" class="headerlink" title="基于事件溯源的分布式事务"></a>基于事件溯源的分布式事务</h2><p>利用事件溯源DDD模式，消费端不停重试，当无法成功，发消息到TM进行事务回滚，TM分析消息链，反向调用上游服务，进去消息回溯</p><p>上游重新生成，回退消息序列的，实体物化视图。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xiaomi-info.github.io/2020/01/02/distributed-transaction/" target="_blank" rel="noopener">https://xiaomi-info.github.io/2020/01/02/distributed-transaction/</a></p><p><a href="https://segmentfault.com/a/1190000039910621" target="_blank" rel="noopener">https://segmentfault.com/a/1190000039910621</a><br><a href="https://www.infoq.cn/article/8bu33kusyj6p-waaoelt" target="_blank" rel="noopener">https://www.infoq.cn/article/8bu33kusyj6p-waaoelt</a></p><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650454838&amp;idx=1&amp;sn=b4626ad3db1e5b13b27387a0b6cf9c8f&amp;chksm=8396732eb4e1fa389b8d623311571a959c31d93a1d7ce2e2ab0d6b3582e42bc167cea8b93cb2&amp;mpshare=1&amp;scene=1&amp;srcid=0321KVLkIjhgMKWius8yNRlq&amp;sharer_sharetime=1647856913742&amp;sharer_shareid=0f5daba1c53304b790c473ce7b5b4b10&amp;key=0b1431e25a2ba464217d69b0c3a69369fb2e749ed5794a4e3efbd31cfd6c6c91b2858955730f7d8a3940086f169f519edd613d3a701f8ee3d7a636b52ff3ae8e08fdd5b67a04cf73c89f560c7b9143fc5b79f3b65dc53234dbf96ecba0d382eee6703b5946fdb43b76b0550a5f0d3fceacc7c67d69f1fc5f319f26c82f9f8165&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AT7dyAUBsQpgjdVY3kive0s%3D&amp;acctmode=0&amp;pass_ticket=gPnUzsTHhOsokjn3q9eNRh2cwjCEQG3GnX5vxMnzgNqmQFLo6ziAqYul3cPyoUEa&amp;wx_header=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650454838&amp;idx=1&amp;sn=b4626ad3db1e5b13b27387a0b6cf9c8f&amp;chksm=8396732eb4e1fa389b8d623311571a959c31d93a1d7ce2e2ab0d6b3582e42bc167cea8b93cb2&amp;mpshare=1&amp;scene=1&amp;srcid=0321KVLkIjhgMKWius8yNRlq&amp;sharer_sharetime=1647856913742&amp;sharer_shareid=0f5daba1c53304b790c473ce7b5b4b10&amp;key=0b1431e25a2ba464217d69b0c3a69369fb2e749ed5794a4e3efbd31cfd6c6c91b2858955730f7d8a3940086f169f519edd613d3a701f8ee3d7a636b52ff3ae8e08fdd5b67a04cf73c89f560c7b9143fc5b79f3b65dc53234dbf96ecba0d382eee6703b5946fdb43b76b0550a5f0d3fceacc7c67d69f1fc5f319f26c82f9f8165&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AT7dyAUBsQpgjdVY3kive0s%3D&amp;acctmode=0&amp;pass_ticket=gPnUzsTHhOsokjn3q9eNRh2cwjCEQG3GnX5vxMnzgNqmQFLo6ziAqYul3cPyoUEa&amp;wx_header=0</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="分布式一致性"><a href="#分布式一致性" class="headerlink" title="分布式一致性"></a>分布式一致性</h2><p>不要局限于数据库事务，也可能是业务事务，俗称长事务</p><h2 id="实现要素"><a href="#实现要素" class="headerlink" title="实现要素"></a>实现要素</h2><p>接口幂等性（分布式存在重试机制）</p><p>内部状态管控（状态机）</p><p>异常推进模式(重试，查询对端状态)</p><p>流水型数据（进出接口留存为单据,微服务调用链）</p><p>最终对账（分析微服务对应的db，业务数据是否一致,实时/离线对账）</p><p>空回滚<br>悬挂</p><h2 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h2><p>2PC,3PC<br>TCC（客户端 需要实现try, confirm, cancel 三个接口，侵入太大）<br>可靠消息最终一致性（利用rocketmq的prepare，confirm,死信消息机制实现）<br>本地消息表（利用本地数据库事务,一般业务均可以使用）<br>最大努力通知（一般适用于调用第三方支付成功后，回调本地业务模块），不断重试</p><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>seata （AT、TCC、SAGA、XA）<br>性能消耗较大，存在全局锁，和undoSQL的生成</p><h2 id="相关协议"><a href="#相关协议" class="headerlink" title="相关协议"></a>相关协议</h2><p>XA 分布式事务协议，数据库原生支持(mysql5.7+,db2,oracle)</p><h2 id="基于事件溯源的分布式事务"><a href="#基于事件溯源的分布式事务" class="headerlink" title="基于事件溯源的分布式事务"></a>基于事件溯源的分布式事务</h2><p>利用事件溯源DDD模式，消费端不停重试，当无法成功，发消息到TM进行事务回滚，TM分析消息链，反向调用上游服务，进去消息回溯</p><p>上游重新生成，回退消息序列的，实体物化视图。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xiaomi-info.github.io/2020/01/02/distributed-transaction/" target="_blank" rel="noopener">https://xiaomi-info.github.io/2020/01/02/distributed-transaction/</a></p><p><a href="https://segmentfault.com/a/1190000039910621" target="_blank" rel="noopener">https://segmentfault.com/a/1190000039910621</a><br><a href="https://www.infoq.cn/article/8bu33kusyj6p-waaoelt" target="_blank" rel="noopener">https://www.infoq.cn/article/8bu33kusyj6p-waaoelt</a></p><p><a href="https://segmentfault.com/a/1190000040321750" target="_blank" rel="noopener">https://segmentfault.com/a/1190000040321750</a></p><p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650454838&amp;idx=1&amp;sn=b4626ad3db1e5b13b27387a0b6cf9c8f&amp;chksm=8396732eb4e1fa389b8d623311571a959c31d93a1d7ce2e2ab0d6b3582e42bc167cea8b93cb2&amp;mpshare=1&amp;scene=1&amp;srcid=0321KVLkIjhgMKWius8yNRlq&amp;sharer_sharetime=1647856913742&amp;sharer_shareid=0f5daba1c53304b790c473ce7b5b4b10&amp;key=0b1431e25a2ba464217d69b0c3a69369fb2e749ed5794a4e3efbd31cfd6c6c91b2858955730f7d8a3940086f169f519edd613d3a701f8ee3d7a636b52ff3ae8e08fdd5b67a04cf73c89f560c7b9143fc5b79f3b65dc53234dbf96ecba0d382eee6703b5946fdb43b76b0550a5f0d3fceacc7c67d69f1fc5f319f26c82f9f8165&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AT7dyAUBsQpgjdVY3kive0s%3D&amp;acctmode=0&amp;pass_ticket=gPnUzsTHhOsokjn3q9eNRh2cwjCEQG3GnX5vxMnzgNqmQFLo6ziAqYul3cPyoUEa&amp;wx_header=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650454838&amp;idx=1&amp;sn=b4626ad3db1e5b13b27387a0b6cf9c8f&amp;chksm=8396732eb4e1fa389b8d623311571a959c31d93a1d7ce2e2ab0d6b3582e42bc167cea8b93cb2&amp;mpshare=1&amp;scene=1&amp;srcid=0321KVLkIjhgMKWius8yNRlq&amp;sharer_sharetime=1647856913742&amp;sharer_shareid=0f5daba1c53304b790c473ce7b5b4b10&amp;key=0b1431e25a2ba464217d69b0c3a69369fb2e749ed5794a4e3efbd31cfd6c6c91b2858955730f7d8a3940086f169f519edd613d3a701f8ee3d7a636b52ff3ae8e08fdd5b67a04cf73c89f560c7b9143fc5b79f3b65dc53234dbf96ecba0d382eee6703b5946fdb43b76b0550a5f0d3fceacc7c67d69f1fc5f319f26c82f9f8165&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AT7dyAUBsQpgjdVY3kive0s%3D&amp;acctmode=0&amp;pass_ticket=gPnUzsTHhOsokjn3q9eNRh2cwjCEQG3GnX5vxMnzgNqmQFLo6ziAqYul3cPyoUEa&amp;wx_header=0</a></p>]]></content>
       
       
       <categories>
@@ -62,7 +170,7 @@
       <link href="/2022/03/18/%E5%9B%BD%E4%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%82%E9%85%8D/"/>
       <url>/2022/03/18/%E5%9B%BD%E4%BA%A7%E6%95%B0%E6%8D%AE%E5%BA%93%E9%80%82%E9%85%8D/</url>
       
-        <content type="html"><![CDATA[<h2 id="jdbc"><a href="#jdbc" class="headerlink" title="jdbc"></a>jdbc</h2><p>神通数据库不支持jdbc指定模式名，达梦时间计算语法和MYSQL存在区别</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#DM7</span><br><span class="line">jdbc.driverClassName=dm.jdbc.driver.DmDriver</span><br><span class="line">orm.databasePlatform=org.hibernate.dialect.DmDialect</span><br><span class="line">db.url=jdbc:dm://192.168.40.147:5236?schema=PDI&amp;useUnicode=true&amp;characterEncoding=UTF-8</span><br><span class="line"></span><br><span class="line">##shentong7</span><br><span class="line">jdbc.driverClassName=com.oscar.Driver</span><br><span class="line">orm.databasePlatform=org.hibernate.dialect.OscarDialect</span><br><span class="line">db.url=jdbc:oscar://192.168.30.179:2003/OSRDB?useUnicode=true&amp;characterEncoding=UTF-8</span><br></pre></td></tr></table></figure><h2 id="JPA方言"><a href="#JPA方言" class="headerlink" title="JPA方言"></a>JPA方言</h2><p>Dm7JdbcDriver18.jar<br>DmDialect-for-hibernate5.3.jar</p><p>oscarHibernate54.jar<br>oscarJDBC8.jar</p><p>包名说明：<br>18，8为jdk1.8编译<br>Hibernate（54，5.3） 一般适配Hibernate5.3-5.4方言</p><h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><p>用官方数据迁移工具</p><h2 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h2><p>用官方客户端</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="jdbc"><a href="#jdbc" class="headerlink" title="jdbc"></a>jdbc</h2><p>神通数据库不支持jdbc指定模式名，达梦时间计算语法和MYSQL存在区别</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#DM7</span><br><span class="line">jdbc.driverClassName=dm.jdbc.driver.DmDriver</span><br><span class="line">orm.databasePlatform=org.hibernate.dialect.DmDialect</span><br><span class="line">db.url=jdbc:dm://192.168.40.147:5236?schema=PDI&amp;useUnicode=true&amp;characterEncoding=UTF-8</span><br><span class="line"></span><br><span class="line">##shentong7</span><br><span class="line">jdbc.driverClassName=com.oscar.Driver</span><br><span class="line">orm.databasePlatform=org.hibernate.dialect.OscarDialect</span><br><span class="line">db.url=jdbc:oscar://192.168.30.179:2003/OSRDB?useUnicode=true&amp;characterEncoding=UTF-8</span><br></pre></td></tr></table></figure><h2 id="JPA方言"><a href="#JPA方言" class="headerlink" title="JPA方言"></a>JPA方言</h2><p>Dm7JdbcDriver18.jar<br>DmDialect-for-hibernate5.3.jar</p><p>oscarHibernate54.jar<br>oscarJDBC8.jar</p><p>注意看jar容量，避免驱动错误</p><p><img src="/2022/03/18/国产数据库适配/20220324173638.png" alt="alt"></p><p>包名说明：<br>18，8为jdk1.8编译<br>Hibernate（54，5.3） 一般适配Hibernate5.3-5.4方言</p><h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><p>用官方数据迁移工具</p><h2 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h2><p>用官方客户端</p>]]></content>
       
       
       <categories>

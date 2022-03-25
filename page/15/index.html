@@ -290,6 +290,1179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/17/MYSQL优化建议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/17/MYSQL优化建议/" class="post-title-link" itemprop="url">MYSQL优化建议</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-17 15:45:46" itemprop="dateCreated datePublished" datetime="2020-09-17T15:45:46+08:00">2020-09-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-11-18 15:00:37" itemprop="dateModified" datetime="2021-11-18T15:00:37+08:00">2021-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h2><blockquote><p>函数的参数，否则无法使用索引<br>多个列作为条件进行查询时，多列索引,比单列索引性能更高<br>like %字段名 会使索引失效</p>
+</blockquote>
+
+<p>建立多列索引的顺序,注意数据分散：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> staff_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> staff_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> customer_id)/<span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> customer_id_selectivity,</span><br><span class="line"><span class="keyword">COUNT</span>(*)</span><br><span class="line"><span class="keyword">FROM</span> payment;</span><br></pre></td></tr></table></figure>
+
+<p>对于 BLOB、TEXT 和 VARCHAR 类型的列，必须使用前缀索引<br><a href="https://juejin.im/post/6844904200254521351" target="_blank" rel="noopener">https://juejin.im/post/6844904200254521351</a></p>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><blockquote><p>1.多使用Explain看SQL执行计划，核心目的，减少返回数量。</p>
+<p>2.切分大查询</p>
+<p>3.如非必要,不要使用外键（性能要求不高,业务要求严谨可以考虑）</p>
+<p>外键等于把数据的一致性事务实现，全部交给数据库服务器完成<br>增，删，改影响性能,加大锁表概率,或者死锁</p>
+<p>char(n)<br>gbk 2<br>utf8 3<br>utf8mb4 4</p>
+<p>Emoji表情使用utf8mb4</p>
+</blockquote>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/17/Java内存模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/17/Java内存模型/" class="post-title-link" itemprop="url">Java内存模型</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-17 10:38:20" itemprop="dateCreated datePublished" datetime="2020-09-17T10:38:20+08:00">2020-09-17</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2022-02-28 15:03:11" itemprop="dateModified" datetime="2022-02-28T15:03:11+08:00">2022-02-28</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/基础/" itemprop="url" rel="index"><span itemprop="name">基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote><p>Java Memory Model and Thread Specification<br>JMM是和线程相关的规范,JMM主要解决多线程环境下，线程之间的通信。</p>
+</blockquote>
+
+<p>多线程环境下，CPU Cache和主内存之间数据不一致问题。<br><img src="/2020/09/17/Java内存模型/3662680330-5e268264c7b95_articlex.png" alt="alt"></p>
+<p>JMM的角色：</p>
+<blockquote><p>JMM管理的程序变量，主要是指在对象实例字段、静态字段、构成数组字段的元素等，不包括<strong>方法参数、方法局部变量等保存在栈里的变量</strong>，因为栈本身就是线程私有的，并不存在线程一致性问题</p>
+</blockquote>
+
+<p><img src="/2020/09/17/Java内存模型/3353129696-5e2718ce1bbdc_articlex.png" alt="alt"></p>
+<h2 id="指令重排（Reordering）"><a href="#指令重排（Reordering）" class="headerlink" title="指令重排（Reordering）"></a>指令重排（Reordering）</h2><blockquote><p>编译器指令的重排<br>编译器在不改变单线程程序语义的前提下，可以重新调整语句的执行顺序 </p>
+<p>处理器指令级并行的重排<br>现代处理器采用了指令级并行技术来将多条指令重叠执行。如果不存在数据依赖性，处理器可以改变语句对应机器指令的执行顺序 </p>
+<p>内存系统的重排<br>由于处理器使用缓存和读/写缓冲区，这使得主内存和工作内存间的数据加载和存储操作看上去可能是在乱序执行的</p>
+</blockquote>
+
+<p>JMM的编译器重排序规则会禁止volatile变量、synchronized、final等特定指令的编译器重排序</p>
+<h2 id="Happens-before规则"><a href="#Happens-before规则" class="headerlink" title="Happens-before规则"></a>Happens-before规则</h2><blockquote><p>程序顺序规则：一个线程中的每个操作，happens-before于该线程中的任意后续操作。<br>监视器锁规则：对一个锁的解锁，happens-before于随后对这个锁的加锁。<br>volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。<br>传递性：如果A happens-before B，且B happens-before C，那么A happens-before C。<br>start()规则：如果线程A执行操作ThreadB.start()（启动线程B），那么A线程的ThreadB.start()操作happens-before于线程B中的任意操作。<br>join()规则：如果线程A执行操作ThreadB.join()并成功返回，那么线程B中的任意操作happens-before于线程A从ThreadB.join()操作成功返回。<br>程序中断规则：对线程interrupted()方法的调用先行于被中断线程的代码检测到中断时间的发生。<br>对象finalize规则：一个对象的初始化完成（构造函数执行结束）先行于发生它的finalize()方法的开始。</p>
+</blockquote>
+
+
+<h2 id="顺序一致性的解决方案："><a href="#顺序一致性的解决方案：" class="headerlink" title="顺序一致性的解决方案："></a>顺序一致性的解决方案：</h2><blockquote><p>volatile变量<br>注意变量+1这种,非原子操作,属于read,load,use,需要自行使用synchronized/Reentrantlock进行同步,或者直接使用tomicInteger之类的。</p>
+<p>synchronized关键字</p>
+<p>final关键字</p>
+</blockquote>
+
+<p><a href="https://segmentfault.com/a/1190000021637869" target="_blank" rel="noopener">https://segmentfault.com/a/1190000021637869</a></p>
+<p><a href="http://www.jiangxinlingdu.com/concurrent/2019/02/16/java-memory-model.html" target="_blank" rel="noopener">http://www.jiangxinlingdu.com/concurrent/2019/02/16/java-memory-model.html</a></p>
+<h2 id="堆heap-和-栈stack"><a href="#堆heap-和-栈stack" class="headerlink" title="堆heap  和 栈stack"></a>堆heap  和 栈stack</h2><p><img src="/2020/09/17/Java内存模型/20200921204649.png" alt="alt"></p>
+<p>注意stack会出现StackOverflowError<br>线程栈的空间大小-Xss 默认是1M</p>
+<p>单纯是增加 -Xss 一般都没用 需要检查是否存在递归无限调用,导致线程栈空间不足</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/16/数据库事务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/16/数据库事务/" class="post-title-link" itemprop="url">数据库事务</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-16 16:20:04" itemprop="dateCreated datePublished" datetime="2020-09-16T16:20:04+08:00">2020-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2021-11-18 14:53:01" itemprop="dateModified" datetime="2021-11-18T14:53:01+08:00">2021-11-18</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/基础/" itemprop="url" rel="index"><span itemprop="name">基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h2><p><strong>未提交读（READ UNCOMMITTED）</strong></p>
+<p>事务中的修改，即使没有提交，对其他事务也是可见的。</p>
+<p><strong>提交读（READ COMMITTED）</strong></p>
+<p>一个事务只能读取已经提交的事务所做的修改。换句话说，一个事务所做的修改在提交之前对其他事务是不可见的。</p>
+<p><strong>可重复读（REPEATABLE READ）</strong></p>
+<p>保证在同一个事务中多次读取同样数据的结果是一样的。</p>
+<p><strong>可串行化（SERIALIZABLE）</strong></p>
+<p>强制事务串行执行。需要加锁实现，而其它隔离级别通常不需要。</p>
+<p><strong>不可重复读,幻读</strong><br>不可重复读重点在于update和delete，而幻读的重点在于insert。<br>解决办法,select * from test where id=1 for update;(加锁)</p>
+<p>主流数据库基本都使用 Multi-version Concurrency Control (MVCC) 控制事务。</p>
+<p>PostgreSQL(事务回滚迅速),Oracle 提交读<br>MYSQL 可重复读</p>
+<ul>
+<li><a href="https://segmentfault.com/a/1190000016566788" target="_blank" rel="noopener">https://segmentfault.com/a/1190000016566788</a></li>
+<li><a href="https://juejin.im/post/6844903911623491592#heading-8" target="_blank" rel="noopener">https://juejin.im/post/6844903911623491592#heading-8</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/16/多线程工具包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/16/多线程工具包/" class="post-title-link" itemprop="url">多线程工具包</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-16 15:41:13" itemprop="dateCreated datePublished" datetime="2020-09-16T15:41:13+08:00">2020-09-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-17 11:42:47" itemprop="dateModified" datetime="2020-09-17T11:42:47+08:00">2020-09-17</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">并发特性</th>
+<th align="left">其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">CountDownLatch</td>
+<td align="left">一般用于某个线程 A 等待若干个其他线程执行完任务之后，它才执行</td>
+<td align="left">不可复用</td>
+</tr>
+<tr>
+<td align="left">CyclicBarrier</td>
+<td align="left">般用于一组线程互相等待至某个状态，然后这一组线程再同时执行</td>
+<td align="left">可复用;方法更多</td>
+</tr>
+<tr>
+<td align="left">Semaphore</td>
+<td align="left">流控（资源并发控制）</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Exchanger</td>
+<td align="left">用于线程间协作的工具类，用于两个线程间能够交换</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Phaser</td>
+<td align="left">移相器 线程之前的动作协调,同步</td>
+<td align="left">很灵活,底层非AQS,内部实现比较复杂</td>
+</tr>
+</tbody></table>
+<h2 id="Phaser"><a href="#Phaser" class="headerlink" title="Phaser"></a>Phaser</h2><p><img src="/2020/09/16/多线程工具包/bnsdtwsg1u.png" alt="alt"></p>
+<blockquote><p>Phaser的灵活性主要体现在在构造函数时不需要强制指定目前有多少参与协作的线程，可以在运行时动态改变。</p>
+<p>register()//添加一个新的注册者<br>bulkRegister(int parties)//添加指定数量的多个注册者<br>arrive()// 到达栅栏点直接执行，无须等待其他的线程<br>arriveAndAwaitAdvance()//到达栅栏点，必须等待其他所有注册者到达<br>arriveAndDeregister()//到达栅栏点，注销自己无须等待其他的注册者到达<br>onAdvance(int phase, int registeredParties)//多个线程达到注册点之后，会调用该方法。</p>
+</blockquote>
+
+<p>（1）替代CountDownLatch实现一次性的共享锁例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">runTasks</span><span class="params">(List&lt;Runnable&gt; tasks)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">final</span> Phaser phaser = <span class="keyword">new</span> Phaser(<span class="number">1</span>); <span class="comment">// "1" to register self</span></span><br><span class="line">   <span class="comment">// create and start threads</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">final</span> Runnable task : tasks) &#123;</span><br><span class="line">     phaser.register();</span><br><span class="line">     <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         phaser.arriveAndAwaitAdvance(); <span class="comment">// await all creation</span></span><br><span class="line">         task.run();</span><br><span class="line">       &#125;</span><br><span class="line">     &#125;.start();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">// allow threads to start and deregister self</span></span><br><span class="line">   phaser.arriveAndDeregister();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）模拟CyclicBarrier的例子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> concurrent.tools.phaser;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Phaser;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Administrator on 2018/8/27.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhaserDemo5</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Phaser phaser=<span class="keyword">new</span> Phaser()&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">onAdvance</span><span class="params">(<span class="keyword">int</span> phase, <span class="keyword">int</span> registeredParties)</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"=================step-"</span>+phase+<span class="string">"==================="</span>+registeredParties);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">super</span>.onAdvance(phase, registeredParties);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        Bus bus1=<span class="keyword">new</span> Bus(phaser,<span class="string">"小张"</span>);</span><br><span class="line">        Bus bus2=<span class="keyword">new</span> Bus(phaser,<span class="string">"小李"</span>);</span><br><span class="line">        Bus bus3=<span class="keyword">new</span> Bus(phaser,<span class="string">"小王"</span>);</span><br><span class="line"></span><br><span class="line">        bus1.start();</span><br><span class="line">        bus2.start();</span><br><span class="line">        bus3.start();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        System.out.println(phaser.getRegisteredParties());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bus</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> Phaser phaser;</span><br><span class="line">        <span class="keyword">private</span> Random random;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(Phaser phaser,String name)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.phaser=phaser;</span><br><span class="line">            setName(name);</span><br><span class="line">            random=<span class="keyword">new</span> Random();</span><br><span class="line">            phaser.register();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">trip</span><span class="params">(<span class="keyword">int</span> sleepRange,String cityName)</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="keyword">this</span>.getName()+<span class="string">" 准备去"</span>+cityName+<span class="string">"...."</span>);</span><br><span class="line">            <span class="keyword">int</span> sleep=random.nextInt(sleepRange);</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(sleep);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="keyword">this</span>.getName()+<span class="string">" 达到"</span>+cityName+<span class="string">"...... "</span>);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.getName().equals(<span class="string">"小王1"</span>))&#123; <span class="comment">//  测试掉队的情况</span></span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    TimeUnit.SECONDS.sleep(<span class="number">7</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                phaser.arriveAndDeregister();</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                phaser.arriveAndAwaitAdvance();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> s=random.nextInt(<span class="number">3</span>);</span><br><span class="line">                TimeUnit.SECONDS.sleep(s);</span><br><span class="line">                System.out.println(<span class="keyword">this</span>.getName()+<span class="string">"  准备好了，旅行路线=北京=&gt;上海=&gt;杭州 "</span>);</span><br><span class="line">                phaser.arriveAndAwaitAdvance();<span class="comment">// 等待所有的汽车准备好</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            trip(<span class="number">5</span>,<span class="string">"北京"</span>);</span><br><span class="line">            trip(<span class="number">5</span>,<span class="string">"上海"</span>);</span><br><span class="line">            trip(<span class="number">3</span>,<span class="string">"杭州"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/16/atomic包/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/16/atomic包/" class="post-title-link" itemprop="url">atomic包</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-16 15:32:10 / 修改时间：16:57:41" itemprop="dateCreated datePublished" datetime="2020-09-16T15:32:10+08:00">2020-09-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>AtomicIntegeFieldUpdater：原子更新整型字段类；</li>
+<li>AtomicLongFieldUpdater：原子更新长整型字段类；</li>
+<li>AtomicStampedReference：原子更新引用类型，这种更新方式会带有版本号。而为什么在更新的时候会带有版本号，是为了解决 CAS 的 ABA 问题；</li>
+</ul>
+<p>实列：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AtomicDemo</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> AtomicIntegerFieldUpdater updater = AtomicIntegerFieldUpdater.newUpdater(User.class,<span class="string">"age"</span>);</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	    User user = <span class="keyword">new</span> User(<span class="string">"a"</span>, <span class="number">1</span>);</span><br><span class="line">	    <span class="keyword">int</span> oldValue = updater.getAndAdd(user, <span class="number">5</span>);</span><br><span class="line">	    System.out.println(oldValue);</span><br><span class="line">	    System.out.println(updater.get(user));</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String userName;</span><br><span class="line">    <span class="keyword">public</span> **<span class="keyword">volatile</span>** <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String userName, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.userName = userName;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"User&#123;"</span> +</span><br><span class="line">                <span class="string">"userName='"</span> + userName + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age="</span> + age +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/16/线程池/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/09/16/线程池/" class="post-title-link" itemprop="url">线程池</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-09-16 15:16:45 / 修改时间：15:20:01" itemprop="dateCreated datePublished" datetime="2020-09-16T15:16:45+08:00">2020-09-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/2020/09/16/线程池/20200916151721.png" alt="alt"></p>
+<p>execute 方法执行逻辑有这样几种情况：</p>
+<ol>
+<li>如果当前运行的线程少于 corePoolSize，则会创建新的线程来执行新的任务；</li>
+<li>如果运行的线程个数等于或者大于 corePoolSize，则会将提交的任务存放到阻塞队列 workQueue 中；</li>
+<li>如果当前 workQueue 队列已满的话，则会创建新的线程来执行任务；</li>
+<li>如果线程个数已经超过了 maximumPoolSize，则会使用饱和策略 RejectedExecutionHandler 来进行处理。</li>
+</ol>
+<p>CPU 密集型<br>Ncpu+1</p>
+<p>IO密集型<br>2xNcpu</p>
+<p>Runtime.getRuntime().availableProcessors()</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/15/并发容器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1114,1163 +2287,6 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/MYSQL数据库死锁/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/MYSQL数据库死锁/" class="post-title-link" itemprop="url">MYSQL数据库死锁</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 17:56:51" itemprop="dateCreated datePublished" datetime="2020-09-14T17:56:51+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-11-18 15:00:55" itemprop="dateModified" datetime="2021-11-18T15:00:55+08:00">2021-11-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>排它锁（Exclusive Locks，即X锁）其他的事务不能对它读取和修改</li>
-</ul>
-<ul>
-<li>共享锁（Share Locks，即S锁）数据对象可以被其他事务读取，但不能修改</li>
-</ul>
-<p>死锁的第一种情况</p>
-<p>一个用户A 访问表A(锁住了表A),然后又访问表B；另一个用户B 访问表B(锁住了表B)，然后企图访问表A；这时用户A由于用户B已经锁住表B，它必须等待用户B释放表B才能继续，同样用户B要等用户A释放表A才能继续，这就死锁就产生了。</p>
-<p>解决方法：</p>
-<p>这种死锁比较常见，是由于程序的BUG产生的，除了调整的程序的逻辑没有其它的办法。仔细分析程序的逻辑，对于数据库的多表操作时，尽量按照相同的顺序进 行处理，尽量避免同时锁定两个资源，如操作A和B两张表时，总是按先A后B的顺序处理， 必须同时锁定两个资源时，要保证在任何时刻都应该按照相同的顺序来锁定资源。</p>
-<p>死锁的第二种情况</p>
-<p>用户A查询一条纪录，然后修改该条纪录；这时用户B修改该条纪录，这时用户A的事务里锁的性质由查询的共享锁企图上升到独占锁，而用户B里的独占锁由于A 有共享锁存在所以必须等A释放掉共享锁，而A由于B的独占锁而无法上升的独占锁也就不可能释放共享锁，于是出现了死锁。这种死锁比较隐蔽，但在稍大点的项 目中经常发生。如在某项目中，页面上的按钮点击后，没有使按钮立刻失效，使得用户会多次快速点击同一按钮，这样同一段代码对数据库同一条记录进行多次操 作，很容易就出现这种死锁的情况。</p>
-<p>解决方法：</p>
-<p>1、对于按钮等控件，点击后使其立刻失效，不让用户重复点击，避免对同时对同一条记录操作。<br>2、使用<strong>乐观锁进行控制。乐观锁大多是基于数据版本（Version）记录机制实现</strong>。即为数据增加一个版本标识，在基于数据库表的版本解决方案中，一般是 通过为数据库表增加一个“version”字段来实现。读取出数据时，将此版本号一同读出，之后更新时，对此版本号加一。此时，将提交数据的版本数据与数 据库表对应记录的当前版本信息进行比对，如果提交的数据版本号大于数据库表当前版本号，则予以更新，否则认为是过期数据。乐观锁机制避免了长事务中的数据 库加锁开销（用户A和用户B操作过程中，都没有对数据库数据加锁），大大提升了大并发量下的系统整体性能表现。Hibernate 在其数据访问引擎中内置了乐观锁实现。需要注意的是，由于乐观锁机制是在我们的系统中实现，来自外部系统的用户更新操作不受我们系统的控制，因此可能会造 成脏数据被更新到数据库中。<br>3、使用悲观锁进行控制。悲观锁大多数情况下依靠数据库的锁机制实现，如Oracle的Select … for update语句，以保证操作最大程度的独占性。但随之而来的就是数据库性能的大量开销，特别是对长事务而言，这样的开销往往无法承受。如一个金融系统， 当某个操作员读取用户的数据，并在读出的用户数据的基础上进行修改时（如更改用户账户余额），如果采用悲观锁机制，也就意味着整个操作过程中（从操作员读 出数据、开始修改直至提交修改结果的全过程，甚至还包括操作员中途去煮咖啡的时间），数据库记录始终处于加锁状态，可以想见，如果面对成百上千个并发，这 样的情况将导致灾难性的后果。所以，采用悲观锁进行控制时一定要考虑清楚。</p>
-<p>死锁的第三种情况</p>
-<p>如果在事务中执行了一条不满足条件的update语句，则执行全表扫描，把行级锁上升为表级锁，多个这样的事务执行后，就很容易产生死锁和阻塞。类似的情 况还有当表中的数据量非常庞大而索引建的过少或不合适的时候，使得经常发生全表扫描，最终应用系统会越来越慢，最终发生阻塞或死锁。</p>
-<p>解决方法：</p>
-<p>SQL语句中不要使用太复杂的关联多表的查询；使用“执行计划”对SQL语句进行分析，对于有全表扫描的SQL语句，建立相应的索引进行优化。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/数据库三范式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/数据库三范式/" class="post-title-link" itemprop="url">数据库三范式</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 15:31:13" itemprop="dateCreated datePublished" datetime="2020-09-14T15:31:13+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-11-18 14:53:53" itemprop="dateModified" datetime="2021-11-18T14:53:53+08:00">2021-11-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/基础/" itemprop="url" rel="index"><span itemprop="name">基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>第一范式：数据表中的每一列（每个字段）必须是不可拆分的最小单元，也就是确保每一列的原子性；<strong>（用字段存JSON结构，是一种很操蛋的事情）</strong></li>
-<li>第二范式（2NF）：满足1NF后，要求表中的所有列，都必须依赖于主键，而不能有任何一列与主键没有关系，也就是说一个表只描述一件事情；<strong>（外键基本不会用）</strong></li>
-<li>第三范式：必须先满足第二范式（2NF），要求：表中的每一列只与主键直接相关而不是间接相关，（表中的每一列只能依赖于主键）；<strong>(总会建一些冗余字段)</strong></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/MySQL数据结构/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/MySQL数据结构/" class="post-title-link" itemprop="url">MySQL数据结构</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 15:19:01" itemprop="dateCreated datePublished" datetime="2020-09-14T15:19:01+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-11-18 15:00:47" itemprop="dateModified" datetime="2021-11-18T15:00:47+08:00">2021-11-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/MYSQL/" itemprop="url" rel="index"><span itemprop="name">MYSQL</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
-<li>InnoDB 聚簇索引 数据和索引B+树存储在一起</li>
-</ul>
-<blockquote>
-<p>InnoDB的数据文件本身要按主键聚集，所以InnoDB要求表必须有主键（MyISAM可以没有），如果没有显式指定，则MySQL系统会自动选择一个可以唯一标识数据记录的列作为主键，如果不存在这种列，则MySQL自动为InnoDB表生成一个隐含字段作为主键，这个字段长度为6个字节，类型为长整形</p>
-</blockquote>
-<ul>
-<li>MyISM 非聚簇索引 主键B+树在叶子节点存储指向真正数据行的指针，而非主键</li>
-</ul>
-<p><img src="/2020/09/14/MySQL数据结构/20141025120025957.png" alt="alt"></p>
-<ul>
-<li>辅助索引B+树中检索Name，到达其叶子节点获取对应的主键</li>
-</ul>
-<ul>
-<li>使用主键在主索引B+树种再执行一次B+树检索操作，最终到达叶子节点即可获取整行数据</li>
-</ul>
-<p>储存主键ID而不直接存储地址值，这样避免行移动或者数据页分裂时辅助索引的维护工作。</p>
-<p><img src="/2020/09/14/MySQL数据结构/20141025103804500.png" alt="alt"><br>Page结构 InnoDB存储的最基本构件（最小单位）<br>InnoDB最大64TB的存储容量（16Kib * 2^32 = 64Tib）</p>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>如果数据不更改，使用MyISM性能也不错，但是数据一点不变，为什么不用redis呢？</p>
-<p>MYSQL8 各方面超越5.7  如果新选择不要考虑5.7</p>
-<blockquote>
-<p>窗口函数</p>
-<p>多线程各方面性能</p>
-<p>降序索引 DESC</p>
-</blockquote>
-<p>主键不要使用uuid之类的，索引树的特性而要分裂、调整节点，十分低效。<br>辅助索引占用更多的空间，因为辅助索引保存主键的值。</p>
-<p>自适应哈希索引(Adaptive Hash Index, AHI) 有一些触发条件创建</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/ElasticSearch-0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/ElasticSearch-0/" class="post-title-link" itemprop="url">ElasticSearch</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 11:12:13" itemprop="dateCreated datePublished" datetime="2020-09-14T11:12:13+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2021-08-02 14:29:01" itemprop="dateModified" datetime="2021-08-02T14:29:01+08:00">2021-08-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/ES/" itemprop="url" rel="index"><span itemprop="name">ES</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>日志分析、时序分析、全文检索,大数据的一些聚合查询</p>
-<h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>底层 Lucene 高效的信息检索,利用倒排索引,存储使用LSM数据模型</p>
-<p><img src="/2020/09/14/ElasticSearch-0/dp_index.jpg" alt="alt"><br><img src="/2020/09/14/ElasticSearch-0/m.jpg" alt="alt"><br><img src="/2020/09/14/ElasticSearch-0/lsm_tree.png" alt="alt"></p>
-<h2 id="ES-读"><a href="#ES-读" class="headerlink" title="ES 读"></a>ES 读</h2><p>Elasticsearch查询的时候需要查询所有Shard</p>
-<h2 id="ES-写"><a href="#ES-写" class="headerlink" title="ES 写"></a>ES 写</h2><p><img src="/2020/09/14/ElasticSearch-0/w.png" alt="alt"></p>
-<h2 id="内存模型"><a href="#内存模型" class="headerlink" title="内存模型"></a>内存模型</h2><p>FST 倒排索引 占据了绝大部分堆内内存（优化到堆外存储）<br><img src="/2020/09/14/ElasticSearch-0/fst.png" alt="alt"></p>
-<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>Lucene 没有更新的概念。ES 并不适合高频率更新文档操作,会导致效率极低。<br>插入数据如果带ID，也会导致类UPDATE操作，效率降低至少1倍。</p>
-<h2 id="各类资料"><a href="#各类资料" class="headerlink" title="各类资料"></a>各类资料</h2><p>各个版本基本描述文档：<br><a href="https://www.elastic.co/guide/en/elasticsearch/reference/6.5/getting-started.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/6.5/getting-started.html</a></p>
-<p>文档汇总：<br><a href="https://www.elastic.co/guide/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/index.html</a></p>
-<p>官方中文：<br><a href="https://www.elastic.co/guide/cn/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/cn/index.html</a></p>
-<p>JavaAPI<br><a href="https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/client/java-api/current/index.html</a></p>
-<p>JAVA 客户端API<br><a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.5/java-rest-high-put-template.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/client/java-rest/6.5/java-rest-high-put-template.html</a></p>
-<p>底层进阶：<br><a href="https://cloud.tencent.com/developer/article/1626250" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1626250</a><br><a href="https://cloud.tencent.com/developer/column/2428" target="_blank" rel="noopener">https://cloud.tencent.com/developer/column/2428</a></p>
-<p>日常阅读：<br><a href="https://elasticsearch.cn/article/" target="_blank" rel="noopener">https://elasticsearch.cn/article/</a></p>
-<p>plugin 模式开发<br><a href="https://www.cnblogs.com/wangnanhui/articles/10413066.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangnanhui/articles/10413066.html</a><br><a href="https://github.com/wangnanhui/elastic-plugin-test" target="_blank" rel="noopener">https://github.com/wangnanhui/elastic-plugin-test</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/Spring-Bean添加启动逻辑/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/Spring-Bean添加启动逻辑/" class="post-title-link" itemprop="url">Spring Bean添加启动逻辑</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 09:34:55" itemprop="dateCreated datePublished" datetime="2020-09-14T09:34:55+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-09-16 17:05:00" itemprop="dateModified" datetime="2020-09-16T17:05:00+08:00">2020-09-16</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Spring/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>Spring启动时执行逻辑：</li>
-<li>Javax的@PostConstruct</li>
-<li>InitializingBean</li>
-<li>ApplicationListener</li>
-<li>@Bean和initMethod</li>
-<li>Spring Boot为CommanLineRunner</li>
-<li>Spring Boot ApplicationRunner</li>
-</ul>
-<p>启动顺序：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Scope</span>(value = <span class="string">"prototype"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AllStrategiesExampleBean</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOG </span><br><span class="line">  = Logger.getLogger(AllStrategiesExampleBean.class);</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AllStrategiesExampleBean</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"Constructor"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"InitializingBean"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="meta">@PostConstruct</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postConstruct</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"PostConstruct"</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">LOG.info(<span class="string">"init-method"</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - Constructor</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - PostConstruct</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - InitializingBean</span><br><span class="line">[main] INFO o.b.startup.AllStrategiesExampleBean - init-method</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2020/09/14/Try括号代码逻辑/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/09/14/Try括号代码逻辑/" class="post-title-link" itemprop="url">Try括号代码逻辑</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-09-14 09:30:46" itemprop="dateCreated datePublished" datetime="2020-09-14T09:30:46+08:00">2020-09-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-09-18 18:20:21" itemprop="dateModified" datetime="2020-09-18T18:20:21+08:00">2020-09-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> (</span><br><span class="line">    InputStream fis = <span class="keyword">new</span> FileInputStream(source);</span><br><span class="line">    OutputStream fos = <span class="keyword">new</span> FileOutputStream(target)</span><br><span class="line"> )&#123;</span><br><span class="line">    <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">8192</span>];</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">while</span> ((i = fis.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">        fos.write(buf, <span class="number">0</span>, i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<ul>
-<li>try括号内的资源会在try语句结束后自动释放，前提是这些可关闭的资源必须实现 java.lang.AutoCloseable 接口。</li>
-<li>InputStream 和OutputStream 父类中一定实现了AutoCloseable接口</li>
-<li>ThreadLocal 作为属性 放到一个实现java.lang.AutoCloseable 接口类里，实现自动清理</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2317,7 +2333,7 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">194</span>
+                    <span class="site-state-item-count">200</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2446,7 +2462,9 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                     
                       
                     
-                    <span class="site-state-item-count">56</span>
+                      
+                    
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2715,7 +2733,9 @@ thread.interrupt();</code></pre><p>具体到你的问题，Thread.interrupted()�
                     
                       
                     
-                    <span class="site-state-item-count">126</span>
+                      
+                    
+                    <span class="site-state-item-count">127</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

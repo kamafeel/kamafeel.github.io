@@ -290,6 +290,964 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/25/web容器UnderTow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/03/25/web容器UnderTow/" class="post-title-link" itemprop="url">web容器UnderTow</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-03-25 18:00:09 / 修改时间：18:54:44" itemprop="dateCreated datePublished" datetime="2022-03-25T18:00:09+08:00">2022-03-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/中间件/UnderTow/" itemprop="url" rel="index"><span itemprop="name">UnderTow</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p>基于Java XNIO，底层使用NIO（ByteBuffer）<br>Worker单元分：IO 线程池(evernLoop机制)；Worker 线程池（处理阻塞的业务）</p>
+<p>需要注意设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  undertow:</span><br><span class="line">    worker-threads: 200</span><br></pre></td></tr></table></figure>
+
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>Jetty ,Tomcat 主要是庞杂（性能,直接内存使用）<br>reactor-netty（不好调试，回调写法，工程师不多）<br>Undertow 轻量设计</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.helloworld.net/special/xtmylk/8793514997" target="_blank" rel="noopener">https://www.helloworld.net/special/xtmylk/8793514997</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/24/缓存一致性协议MESI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/03/24/缓存一致性协议MESI/" class="post-title-link" itemprop="url">缓存一致性协议MESI</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-03-24 18:03:13" itemprop="dateCreated datePublished" datetime="2022-03-24T18:03:13+08:00">2022-03-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2022-03-25 11:46:18" itemprop="dateModified" datetime="2022-03-25T11:46:18+08:00">2022-03-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/基础层/" itemprop="url" rel="index"><span itemprop="name">基础层</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>缓存一致性协议，CPU多核缓存，主存</p>
+<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>M 修改<br>E 独享、互斥 (Exclusive)<br>S 共享 (Shared)<br>I 无效 (Invalid)</p>
+<h2 id="伪共享"><a href="#伪共享" class="headerlink" title="伪共享"></a>伪共享</h2><p>Cache Line 缓存行通常是 64 字节<br>根据：<br>时间局部性（Temporal Locality）：如果一个信息项正在被访问，那么在近期它很可能还会被再次访问<br>空间局部性（Spatial Locality）：如果一个存储器的位置被引用，那么将来他附近的位置也会被引用</p>
+<p>Cache Line加载是连续的一段</p>
+<p>Java避免伪共享，补齐参数为64字节</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//jdk1.8新方法</span><br><span class="line">   //添加vm options参数  -XX:-RestrictContended</span><br><span class="line">   @sun.misc.Contended</span><br><span class="line">   public final static class VolatileLong3 &#123;</span><br><span class="line">       public volatile long value = 0L;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/yanlong300/p/8986041.html" target="_blank" rel="noopener">https://www.cnblogs.com/yanlong300/p/8986041.html</a><br><a href="https://juejin.cn/post/6934528318888738824" target="_blank" rel="noopener">https://juejin.cn/post/6934528318888738824</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/24/Pagecache和Buffercache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/03/24/Pagecache和Buffercache/" class="post-title-link" itemprop="url">Pagecache和Buffercache</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-03-24 17:33:53" itemprop="dateCreated datePublished" datetime="2022-03-24T17:33:53+08:00">2022-03-24</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/24/Epoll说明和应用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/03/24/Epoll说明和应用/" class="post-title-link" itemprop="url">Epoll说明和应用</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-03-24 17:31:59" itemprop="dateCreated datePublished" datetime="2022-03-24T17:31:59+08:00">2022-03-24</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/24/LRU缓存机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/03/24/LRU缓存机制/" class="post-title-link" itemprop="url">LRU缓存机制</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-03-24 17:31:23" itemprop="dateCreated datePublished" datetime="2022-03-24T17:31:23+08:00">2022-03-24</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/24/LongAdder/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kamafeel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kamafeel">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2022/03/24/LongAdder/" class="post-title-link" itemprop="url">LongAdder</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2022-03-24 17:30:54" itemprop="dateCreated datePublished" datetime="2022-03-24T17:30:54+08:00">2022-03-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2022-03-25 15:05:57" itemprop="dateModified" datetime="2022-03-25T15:05:57+08:00">2022-03-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/" itemprop="url" rel="index"><span itemprop="name">JAVA</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JAVA/并发/" itemprop="url" rel="index"><span itemprop="name">并发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>AtomicLong 只对一个 Long 值进行 CAS 操作。而 LongAdder 是针对 Cell 数组的某个 Cell 进行 CAS 操作 ，把线程的名字的 hash 值，作为 Cell 数组的下标，然后对 Cell[i] 的 long 进行 CAS 操作。简单粗暴的分散了高并发下的竞争压力</p>
+<h2 id="内核"><a href="#内核" class="headerlink" title="内核"></a>内核</h2><p>cell对象使用@sun.misc.Contended避免伪共享</p>
+<p>升级竞争的解决方案</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xilidou.com/2018/11/27/LongAdder/" target="_blank" rel="noopener">https://xilidou.com/2018/11/27/LongAdder/</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/23/查找jar包内容/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -513,7 +1471,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2022-03-24 14:22:38" itemprop="dateModified" datetime="2022-03-24T14:22:38+08:00">2022-03-24</time>
+                <time title="修改时间：2022-03-24 16:16:44" itemprop="dateModified" datetime="2022-03-24T16:16:44+08:00">2022-03-24</time>
               
             
           </span>
@@ -580,6 +1538,7 @@
 <p>异常推进模式(重试，查询对端状态)</p>
 <p>流水型数据（进出接口留存为单据,微服务调用链）</p>
 <p>最终对账（分析微服务对应的db，业务数据是否一致,实时/离线对账）</p>
+<p>空回滚<br>悬挂</p>
 <h2 id="实现方案"><a href="#实现方案" class="headerlink" title="实现方案"></a>实现方案</h2><p>2PC,3PC<br>TCC（客户端 需要实现try, confirm, cancel 三个接口，侵入太大）<br>可靠消息最终一致性（利用rocketmq的prepare，confirm,死信消息机制实现）<br>本地消息表（利用本地数据库事务,一般业务均可以使用）<br>最大努力通知（一般适用于调用第三方支付成功后，回调本地业务模块），不断重试</p>
 <h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>seata （AT、TCC、SAGA、XA）<br>性能消耗较大，存在全局锁，和undoSQL的生成</p>
 <h2 id="相关协议"><a href="#相关协议" class="headerlink" title="相关协议"></a>相关协议</h2><p>XA 分布式事务协议，数据库原生支持(mysql5.7+,db2,oracle)</p>
@@ -587,6 +1546,7 @@
 <p>上游重新生成，回退消息序列的，实体物化视图。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://xiaomi-info.github.io/2020/01/02/distributed-transaction/" target="_blank" rel="noopener">https://xiaomi-info.github.io/2020/01/02/distributed-transaction/</a></p>
 <p><a href="https://segmentfault.com/a/1190000039910621" target="_blank" rel="noopener">https://segmentfault.com/a/1190000039910621</a><br><a href="https://www.infoq.cn/article/8bu33kusyj6p-waaoelt" target="_blank" rel="noopener">https://www.infoq.cn/article/8bu33kusyj6p-waaoelt</a></p>
+<p><a href="https://segmentfault.com/a/1190000040321750" target="_blank" rel="noopener">https://segmentfault.com/a/1190000040321750</a></p>
 <p><a href="https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650454838&amp;idx=1&amp;sn=b4626ad3db1e5b13b27387a0b6cf9c8f&amp;chksm=8396732eb4e1fa389b8d623311571a959c31d93a1d7ce2e2ab0d6b3582e42bc167cea8b93cb2&amp;mpshare=1&amp;scene=1&amp;srcid=0321KVLkIjhgMKWius8yNRlq&amp;sharer_sharetime=1647856913742&amp;sharer_shareid=0f5daba1c53304b790c473ce7b5b4b10&amp;key=0b1431e25a2ba464217d69b0c3a69369fb2e749ed5794a4e3efbd31cfd6c6c91b2858955730f7d8a3940086f169f519edd613d3a701f8ee3d7a636b52ff3ae8e08fdd5b67a04cf73c89f560c7b9143fc5b79f3b65dc53234dbf96ecba0d382eee6703b5946fdb43b76b0550a5f0d3fceacc7c67d69f1fc5f319f26c82f9f8165&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AT7dyAUBsQpgjdVY3kive0s%3D&amp;acctmode=0&amp;pass_ticket=gPnUzsTHhOsokjn3q9eNRh2cwjCEQG3GnX5vxMnzgNqmQFLo6ziAqYul3cPyoUEa&amp;wx_header=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAxNDEwNjk5OQ==&amp;mid=2650454838&amp;idx=1&amp;sn=b4626ad3db1e5b13b27387a0b6cf9c8f&amp;chksm=8396732eb4e1fa389b8d623311571a959c31d93a1d7ce2e2ab0d6b3582e42bc167cea8b93cb2&amp;mpshare=1&amp;scene=1&amp;srcid=0321KVLkIjhgMKWius8yNRlq&amp;sharer_sharetime=1647856913742&amp;sharer_shareid=0f5daba1c53304b790c473ce7b5b4b10&amp;key=0b1431e25a2ba464217d69b0c3a69369fb2e749ed5794a4e3efbd31cfd6c6c91b2858955730f7d8a3940086f169f519edd613d3a701f8ee3d7a636b52ff3ae8e08fdd5b67a04cf73c89f560c7b9143fc5b79f3b65dc53234dbf96ecba0d382eee6703b5946fdb43b76b0550a5f0d3fceacc7c67d69f1fc5f319f26c82f9f8165&amp;ascene=1&amp;uin=OTM4NTY4MzU%3D&amp;devicetype=Windows+10&amp;version=62060844&amp;lang=zh_CN&amp;exportkey=AT7dyAUBsQpgjdVY3kive0s%3D&amp;acctmode=0&amp;pass_ticket=gPnUzsTHhOsokjn3q9eNRh2cwjCEQG3GnX5vxMnzgNqmQFLo6ziAqYul3cPyoUEa&amp;wx_header=0</a></p>
 
           
@@ -689,12 +1649,24 @@
                 
               
 
-              <time title="创建时间：2022-03-18 15:57:57 / 修改时间：16:54:13" itemprop="dateCreated datePublished" datetime="2022-03-18T15:57:57+08:00">2022-03-18</time>
+              <time title="创建时间：2022-03-18 15:57:57" itemprop="dateCreated datePublished" datetime="2022-03-18T15:57:57+08:00">2022-03-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2022-03-24 17:40:27" itemprop="dateModified" datetime="2022-03-24T17:40:27+08:00">2022-03-24</time>
               
             
           </span>
@@ -761,6 +1733,8 @@
 
 <h2 id="JPA方言"><a href="#JPA方言" class="headerlink" title="JPA方言"></a>JPA方言</h2><p>Dm7JdbcDriver18.jar<br>DmDialect-for-hibernate5.3.jar</p>
 <p>oscarHibernate54.jar<br>oscarJDBC8.jar</p>
+<p>注意看jar容量，避免驱动错误</p>
+<p><img src="/2022/03/18/国产数据库适配/20220324173638.png" alt="alt"></p>
 <p>包名说明：<br>18，8为jdk1.8编译<br>Hibernate（54，5.3） 一般适配Hibernate5.3-5.4方言</p>
 <h2 id="数据迁移"><a href="#数据迁移" class="headerlink" title="数据迁移"></a>数据迁移</h2><p>用官方数据迁移工具</p>
 <h2 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h2><p>用官方客户端</p>
@@ -971,1056 +1945,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/15/DDD-可靠消息/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2022/03/15/DDD-可靠消息/" class="post-title-link" itemprop="url">DDD-可靠消息</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2022-03-15 17:35:01 / 修改时间：18:38:55" itemprop="dateCreated datePublished" datetime="2022-03-15T17:35:01+08:00">2022-03-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/DDD/" itemprop="url" rel="index"><span itemprop="name">DDD</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="消息发送端"><a href="#消息发送端" class="headerlink" title="消息发送端"></a>消息发送端</h2><p>1.生成消息唯一幂等ID -&gt;存储消息参数</p>
-<p>2.在本服务内实现监听(JPA entity postPersist),更新实体物化视图。</p>
-<p>3.–&gt;异步投递到MQ–&gt;更新是否投递标致为true</p>
-<p>4.如果投递MQ失败，重试机制。</p>
-<p>5.定期扫描投递标致为false的数据，再次发送</p>
-<h2 id="消息接受端"><a href="#消息接受端" class="headerlink" title="消息接受端"></a>消息接受端</h2><p>1.存储消息参数和消息的幂等ID，为后续幂等做判断依据。</p>
-<p>2.判断消息里面的sequenceNumber（事件序列）和本地实体聚合的事件处理记录的对比，只消费差异值为 1 的事件 （保障事件顺序一致性）<br>（如果本地实体聚合的事件处理记表量大，可以使用分表等技术）<br> (可以使用kafka分区技术，提高消息处理并发量)<br>2.处理消息–&gt;回写MQ的 ACK</p>
-<p>3.如果失败放失败队列deadLetterQueueName</p>
-<p>4.定时任务/或者重启时，处理这个DLQ里面的消息</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/11/DDD-事件溯源/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2022/03/11/DDD-事件溯源/" class="post-title-link" itemprop="url">DDD-事件溯源</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2022-03-11 11:18:12" itemprop="dateCreated datePublished" datetime="2022-03-11T11:18:12+08:00">2022-03-11</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2022-03-15 17:33:29" itemprop="dateModified" datetime="2022-03-15T17:33:29+08:00">2022-03-15</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/DDD/" itemprop="url" rel="index"><span itemprop="name">DDD</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="核心价值"><a href="#核心价值" class="headerlink" title="核心价值"></a>核心价值</h2><p>1.减少并发冲突<br>2.记录每个操作细节<br>3.解耦领域数据模型与业务消息领域数据（四色模型-消息）</p>
-<h2 id="实施方案"><a href="#实施方案" class="headerlink" title="实施方案"></a>实施方案</h2><p>1.记录事件信息,一定保障（顺序写，时序性，带版本戳，消息ID的生成,微服务节点的无状态化,和ID生成器的workId如何配合）<br>2.配合CQRS使用，实体最新状态使用”物化视图”(可以定时生成快照,避免全量重播事件，可以使用异步模式)<br>3.消费事件的服务，需要注意幂等<br>4.事件解耦后的最终一致性（后续章节描述）<br>5.事件的消费，一般放到领域aggregate中,以实现领域逻辑内聚。（当然具体逻辑可以使用gateway接口，在infrastructure具体实现）<br>事件消费也可以使用状态机，提示领域逻辑的可视化。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@CommandHandler</span><br><span class="line">public ContractAggregate(CreateContractCommand command, MetaData metaData, UIDGenerator generator) &#123;</span><br><span class="line">    if (null == command.getIdentifier()) &#123;</span><br><span class="line">        command.setIdentifier(generator.getId());</span><br><span class="line">    &#125;</span><br><span class="line">    AggregateLifecycle.apply(new ContractCreatedEvent(command.getIdentifier(), command.getName(), command.getPartyA(), command.getPartyB()), metaData);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="框架支持"><a href="#框架支持" class="headerlink" title="框架支持"></a>框架支持</h2><p>Java Axon 框架<br>实体快照，储存事件，事件重试/升级，事件溯源(fetch拉事件)</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="http://soooban.github.io/2019/06/10/Event-Sourcing-And-CQRS/" target="_blank" rel="noopener">http://soooban.github.io/2019/06/10/Event-Sourcing-And-CQRS/</a></p>
-<h2 id="引申问题"><a href="#引申问题" class="headerlink" title="引申问题"></a>引申问题</h2><p>实现可靠消息，参加后续文章</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/11/3种数据库查询引擎/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2022/03/11/3种数据库查询引擎/" class="post-title-link" itemprop="url">3种数据库查询引擎</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2022-03-11 09:34:33 / 修改时间：10:00:17" itemprop="dateCreated datePublished" datetime="2022-03-11T09:34:33+08:00">2022-03-11</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/基础/" itemprop="url" rel="index"><span itemprop="name">基础</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="迭代模型-火山模型（Iterator-Model）"><a href="#迭代模型-火山模型（Iterator-Model）" class="headerlink" title="迭代模型/火山模型（Iterator Model）"></a>迭代模型/火山模型（Iterator Model）</h2><p>又称 Volcano Model 或者 Pipeline Model<br>每一种操作抽象为一个 Operator，将整个 SQL 构建成一个 Operator 树，查询树自顶向下的调用next()接口，数据则自底向上的被拉取处理</p>
-<p>一次pull一条,调用次数太多，CPU执行效率低下。</p>
-<p>相关数据库：SQLite、MongoDB、Impala、DB2、SQLServer、Greenplum、PostgreSQL、Oracle、MySQL</p>
-<h2 id="物化模型（Materialization-Model）"><a href="#物化模型（Materialization-Model）" class="headerlink" title="物化模型（Materialization Model）"></a>物化模型（Materialization Model）</h2><p>同上，批量拉取，但是数据集不能太多。</p>
-<p>##向量化/批处理模型（Vectorized / Batch Model）##</p>
-<p>每次调用 next() 函数会返回一批的元组（tuples）</p>
-<p>相关数据库：Presto、snowflake、SQLServer、Amazon Redshift，Spark 2.x，hive(ORC 格式来存储数据，将 hive.vectorized.execution.enabled 参数设置为 true)</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.modb.pro/db/45265" target="_blank" rel="noopener">https://www.modb.pro/db/45265</a></p>
-<h2 id="物化视图"><a href="#物化视图" class="headerlink" title="物化视图"></a>物化视图</h2><p>这个概念，只是把视图（只保存SQL）进行了计算和数据物化</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/09/分布式链路追踪/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2022/03/09/分布式链路追踪/" class="post-title-link" itemprop="url">分布式链路追踪</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2022-03-09 18:36:17 / 修改时间：18:39:31" itemprop="dateCreated datePublished" datetime="2022-03-09T18:36:17+08:00">2022-03-09</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/" itemprop="url" rel="index"><span itemprop="name">微服务</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/微服务/理论/" itemprop="url" rel="index"><span itemprop="name">理论</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="SleuthZipkin"><a href="#SleuthZipkin" class="headerlink" title="SleuthZipkin"></a>SleuthZipkin</h2><h2 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h2><p>Trace 整个微服务调用树关系<br>Span 树的叶子</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/cy0628/p/15195918.html" target="_blank" rel="noopener">https://www.cnblogs.com/cy0628/p/15195918.html</a><br><a href="https://juejin.cn/post/6844903761438048269" target="_blank" rel="noopener">https://juejin.cn/post/6844903761438048269</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/09/7层网络协议/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2022/03/09/7层网络协议/" class="post-title-link" itemprop="url">7层网络协议</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2022-03-09 18:05:26 / 修改时间：18:07:36" itemprop="dateCreated datePublished" datetime="2022-03-09T18:05:26+08:00">2022-03-09</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/基础层/" itemprop="url" rel="index"><span itemprop="name">基础层</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>一般业务会用到上面的4层</p>
-<p><img src="/2022/03/09/7层网络协议/v2-bd9524fab91608122dc1f44633ba080d_r.jpg" alt="alt"></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kamafeel.github.io/2022/03/09/网关三剑客-APISIX/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Kamafeel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kamafeel">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2022/03/09/网关三剑客-APISIX/" class="post-title-link" itemprop="url">网关三剑客-APISIX</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2022-03-09 17:57:25 / 修改时间：18:09:38" itemprop="dateCreated datePublished" datetime="2022-03-09T17:57:25+08:00">2022-03-09</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/" itemprop="url" rel="index"><span itemprop="name">架构</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/架构/基础层/" itemprop="url" rel="index"><span itemprop="name">基础层</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="总论"><a href="#总论" class="headerlink" title="总论"></a>总论</h2><p>一般场景openresty+lua足够<br><a href="https://moonbingbing.gitbooks.io/openresty-best-practices/content/" target="_blank" rel="noopener">https://moonbingbing.gitbooks.io/openresty-best-practices/content/</a></p>
-<p>喜欢要个API编排界面，KONG</p>
-<p>需要很云原生 APISIX<br><a href="https://www.apiseven.com/zh/blog/why-we-need-Apache-APISIX" target="_blank" rel="noopener">https://www.apiseven.com/zh/blog/why-we-need-Apache-APISIX</a></p>
-<h2 id="对于七层协议的支持"><a href="#对于七层协议的支持" class="headerlink" title="对于七层协议的支持"></a>对于七层协议的支持</h2><p>nginx一般是4层以上</p>
-<p>APISIX支持7层</p>
-<h2 id="APISIX和K8S"><a href="#APISIX和K8S" class="headerlink" title="APISIX和K8S"></a>APISIX和K8S</h2><p><a href="https://www.36dianping.com/case/7672" target="_blank" rel="noopener">https://www.36dianping.com/case/7672</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2067,7 +1991,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">194</span>
+                    <span class="site-state-item-count">200</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2196,7 +2120,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">56</span>
+                      
+                    
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2465,7 +2391,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">126</span>
+                      
+                    
+                    <span class="site-state-item-count">127</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
